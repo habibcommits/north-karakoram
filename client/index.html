@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding and viewport configuration for responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- SEO: Page title and meta description for search engines -->
+    <title>North Karakoram - Adventure Expeditions & Mountain Tours</title>
+    <meta name="description" content="Experience the world's highest peaks with North Karakoram. Professional mountaineering expeditions, trekking adventures, and cultural tours in the Karakoram and Himalaya ranges." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <!-- Google Fonts: Preconnect for performance optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Typography: Oswald for headings (adventure/rugged), Lato for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Prevent theme flash: Apply stored theme before React hydrates -->
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
+    <!-- React app root container -->
+    <div id="root"></div>
+    <!-- Vite entry point for React application -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
