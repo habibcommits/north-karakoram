@@ -121,7 +121,7 @@ export default function PaymentMethod() {
                     </div>
                     <div>
                       <p className="font-semibold mb-1">Send via WhatsApp</p>
-                      <p className="text-muted-foreground text-sm">Send the screenshot to <span className="font-medium">+92 355 4175752</span></p>
+                      <p className="text-muted-foreground text-sm">Send the screenshot to <span className="font-medium">+92 333 0228111</span></p>
                     </div>
                   </div>
                   <div className="flex gap-4">
