@@ -20,9 +20,9 @@ export default function PaymentMethod() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
           <div className="absolute inset-0 flex items-center justify-center text-center">
             <div>
-              <p className="text-white/80 text-lg mb-2">Booking Information</p>
+              <p className="text-white/80 text-lg mb-2">Booking Essentials</p>
               <h1 className="font-heading font-bold text-4xl md:text-5xl text-white">
-                Payment Methods
+                Payment Options
               </h1>
             </div>
           </div>
@@ -34,20 +34,20 @@ export default function PaymentMethod() {
             {/* Introduction */}
             <div className="mb-12">
               <p className="text-muted-foreground text-lg mb-4 font-medium">
-                For Booking make Payment of <span className="text-primary font-bold">30% advance</span> per head and send us Message.
+                To confirm your reservation, please remit an <span className="text-primary font-bold">advance deposit of 30%</span> per person.
               </p>
               <p className="text-muted-foreground mb-6">
-                The <span className="text-primary font-bold">remaining 70%</span> is payable upon arrival. You can deposit money from any bank or through mobile payment services. Choose the method that works best for you. After making the payment, send a screenshot through WhatsApp along with the names and CNIC numbers of all group members.
+                The <span className="text-primary font-bold">remaining 70% balance</span> is due upon your arrival. We accept payments via standard Bank Transfer or Mobile Banking services. Once the transaction is complete, please share the receipt along with the Names and CNIC numbers of all travelers via WhatsApp.
               </p>
               <Card className="p-6 bg-primary/5 border-primary/20 mb-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-1">Payment Currency</p>
+                    <p className="text-sm font-semibold text-muted-foreground mb-1">Currency Accepted</p>
                     <p className="font-medium text-lg">PKR (Pakistani Rupees)</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-1">Advance Required</p>
-                    <p className="font-medium text-lg">30% Per Person</p>
+                    <p className="text-sm font-semibold text-muted-foreground mb-1">Required Deposit</p>
+                    <p className="font-medium text-lg">30% Per Guest</p>
                   </div>
                 </div>
               </Card>
@@ -57,7 +57,7 @@ export default function PaymentMethod() {
             <div className="mb-12">
               <h2 className="font-heading font-bold text-3xl mb-6 flex items-center gap-3">
                 <Banknote className="w-8 h-8 text-primary" />
-                Bank Transfer
+                Banking Details
               </h2>
               {/* Soneri Bank Account */}
               <Card className="p-8 bg-muted/30">
@@ -79,7 +79,7 @@ export default function PaymentMethod() {
                     <p className="font-medium text-lg">PK91SONE0005220015237768</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-1">Product</p>
+                    <p className="text-sm font-semibold text-muted-foreground mb-1">Product Type</p>
                     <p className="font-medium text-lg">Soneri Ikhtiar Account</p>
                   </div>
                   <div>
@@ -91,7 +91,7 @@ export default function PaymentMethod() {
                     <p className="font-medium text-lg">Current</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-muted-foreground mb-1">Status</p>
+                    <p className="text-sm font-semibold text-muted-foreground mb-1">Account Status</p>
                     <p className="font-medium text-lg text-green-600">Active</p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export default function PaymentMethod() {
             <div className="mb-12">
               <h2 className="font-heading font-bold text-3xl mb-6 flex items-center gap-3">
                 <MessageCircle className="w-8 h-8 text-primary" />
-                After Payment
+                Next Steps
               </h2>
               <Card className="p-8 bg-primary/5 border-primary/20">
                 <div className="space-y-4">
@@ -111,8 +111,8 @@ export default function PaymentMethod() {
                       1
                     </div>
                     <div>
-                      <p className="font-semibold mb-1">Take a Screenshot</p>
-                      <p className="text-muted-foreground text-sm">Screenshot of your payment proof from your bank or mobile payment app</p>
+                      <p className="font-semibold mb-1">Save the Receipt</p>
+                      <p className="text-muted-foreground text-sm">Please take a screenshot or photo of your transaction confirmation.</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -120,8 +120,8 @@ export default function PaymentMethod() {
                       2
                     </div>
                     <div>
-                      <p className="font-semibold mb-1">Send via WhatsApp</p>
-                      <p className="text-muted-foreground text-sm">Send the screenshot to <span className="font-medium">+92 333 0228111</span></p>
+                      <p className="font-semibold mb-1">WhatsApp Us</p>
+                      <p className="text-muted-foreground text-sm">Send the proof of payment to our official number: <span className="font-medium">+92 333 0228111</span></p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -129,8 +129,8 @@ export default function PaymentMethod() {
                       3
                     </div>
                     <div>
-                      <p className="font-semibold mb-1">Provide Member Details</p>
-                      <p className="text-muted-foreground text-sm">Send names of all members with their CNIC numbers</p>
+                      <p className="font-semibold mb-1">Submit Guest Details</p>
+                      <p className="text-muted-foreground text-sm">Include the full names and CNIC numbers for all members of your party.</p>
                     </div>
                   </div>
                 </div>
@@ -141,24 +141,24 @@ export default function PaymentMethod() {
             <div className="mb-12">
               <h2 className="font-heading font-bold text-3xl mb-6 flex items-center gap-3">
                 <Users className="w-8 h-8 text-primary" />
-                Group Bookings
+                Group Reservations
               </h2>
               <Card className="p-8 bg-muted/30">
                 <p className="text-muted-foreground mb-4">
-                  For group bookings, please send the names and CNIC numbers of all group members along with the payment screenshot. This helps us process your booking more efficiently and provide you with personalized service.
+                  Traveling with a team? To ensure smooth processing of logistics and permits, please provide a compiled list of all attendees along with their CNIC/Passport numbers when submitting your deposit slip.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span>Contact us before booking to confirm availability for your group size</span>
+                    <span>Check availability for large groups by contacting us beforehand.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span>Group discounts may be available for larger parties</span>
+                    <span>Special discounts may apply for larger expeditions.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span>We offer customized itineraries for group requirements</span>
+                    <span>Customized itineraries are available upon request.</span>
                   </li>
                 </ul>
               </Card>
@@ -166,24 +166,24 @@ export default function PaymentMethod() {
 
             {/* Security & Privacy */}
             <div className="mb-12">
-              <h2 className="font-heading font-bold text-3xl mb-6">Security & Privacy</h2>
+              <h2 className="font-heading font-bold text-3xl mb-6">Data Privacy</h2>
               <Card className="p-8 bg-muted/30">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">All payment information is kept strictly confidential</span>
+                    <span className="text-muted-foreground">Your financial data is handled with strict confidentiality.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Secure bank transfers through verified financial institutions</span>
+                    <span className="text-muted-foreground">Payments are routed through verified banking channels.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Direct payment to authorized company accounts only</span>
+                    <span className="text-muted-foreground">Only transfer funds to the officially listed company accounts.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">Payment receipt issued for all transactions</span>
+                    <span className="text-muted-foreground">Digital receipts can be provided for your records.</span>
                   </li>
                 </ul>
               </Card>
@@ -191,23 +191,23 @@ export default function PaymentMethod() {
 
             {/* FAQs */}
             <div className="mb-12">
-              <h2 className="font-heading font-bold text-3xl mb-6">Frequently Asked Questions</h2>
+              <h2 className="font-heading font-bold text-3xl mb-6">Common Questions</h2>
               <div className="space-y-4">
                 <Card className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">What happens after I pay 30% advance?</h3>
-                  <p className="text-muted-foreground text-sm">Your booking is confirmed after we receive your payment and member details. We will send you a confirmation email with your booking reference and itinerary details.</p>
+                  <h3 className="font-semibold text-lg mb-2">What happens after I pay the 30% deposit?</h3>
+                  <p className="text-muted-foreground text-sm">Once we receive your funds and guest details, your slot is secured. We will promptly send you a booking confirmation message and itinerary details via WhatsApp or Email.</p>
                 </Card>
                 <Card className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">When is the remaining 70% payment due?</h3>
-                  <p className="text-muted-foreground text-sm">The remaining balance must be paid 2 weeks before your expedition or trek start date. We will send you a payment reminder 3 weeks before your departure.</p>
+                  <h3 className="font-semibold text-lg mb-2">When is the remaining 70% due?</h3>
+                  <p className="text-muted-foreground text-sm">The outstanding balance is collected just before the tour begins or upon your arrival at the destination. We will send a courtesy reminder as your trip date approaches.</p>
                 </Card>
                 <Card className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Can I pay via international transfer?</h3>
-                  <p className="text-muted-foreground text-sm">Yes, international bank transfers are accepted. Please contact us directly for international banking details and to ensure a smooth transfer process.</p>
+                  <h3 className="font-semibold text-lg mb-2">Do you accept international transfers?</h3>
+                  <p className="text-muted-foreground text-sm">Yes, we welcome international guests. Please reach out to us for specific SWIFT/IBAN details to facilitate a smooth international transaction.</p>
                 </Card>
                 <Card className="p-6">
-                  <h3 className="font-semibold text-lg mb-2">Is there a cancellation refund policy?</h3>
-                  <p className="text-muted-foreground text-sm">Cancellations made 30+ days before departure receive 80% refund. Cancellations 15-29 days before receive 50% refund. Cancellations within 14 days are non-refundable.</p>
+                  <h3 className="font-semibold text-lg mb-2">What is the cancellation policy?</h3>
+                  <p className="text-muted-foreground text-sm">Refunds depend on the timing of the cancellation. Generally, cancellations 30+ days prior receive an 80% refund. Please refer to our terms and conditions for full details.</p>
                 </Card>
               </div>
             </div>
@@ -215,14 +215,14 @@ export default function PaymentMethod() {
             {/* Contact for Confirmation */}
             <div className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center">
               <p className="text-muted-foreground mb-4">
-                For any questions about payment or booking confirmation, please contact us:
+                Have questions regarding payments or availability? Reach out to us directly:
               </p>
               <div className="space-y-2">
-                <p className="font-heading font-bold text-2xl">+92 355 4175752</p>
-                <p className="text-muted-foreground">WhatsApp: Available 24/7</p>
+                <p className="font-heading font-bold text-2xl">+92 333 0228111</p>
+                <p className="text-muted-foreground">WhatsApp: Active 24/7</p>
                 <p className="text-muted-foreground text-sm mt-3 mb-6">Email: info@northkarakoram.com</p>
                 <Button className="mt-6" data-testid="button-contact-whatsapp">
-                  Contact Us on WhatsApp
+                  Contact via WhatsApp
                 </Button>
               </div>
             </div>
