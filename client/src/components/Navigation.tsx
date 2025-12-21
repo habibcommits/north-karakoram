@@ -167,7 +167,7 @@ function DropdownMenu({ trigger, items, isCategory = false, isActive = false }: 
     <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <button
         className={cn(
-          "flex items-center gap-1 px-3 py-2 text-base font-bold text-white rounded-md transition-all duration-200 border-b border-white",
+          "flex items-center gap-1 px-3 py-2 text-base font-bold text-white rounded-md transition-all duration-200",
           (isActive || isOpen) ? "opacity-100" : "opacity-60 hover:opacity-100"
         )}
       >
@@ -207,7 +207,7 @@ function MobileAccordionItem({ label, items, isCategory = false, onClose, locati
     <div className="border-b border-white/10">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={cn("w-[calc(100%-1rem)] mx-2 my-1 flex items-center justify-between px-4 py-3 text-white text-base font-bold rounded-md transition-all duration-200 border-b border-white", isOpen ? "opacity-100" : "opacity-60 hover:opacity-100")}
+        className={cn("w-[calc(100%-1rem)] mx-2 my-1 flex items-center justify-between px-4 py-3 text-white text-base font-bold rounded-md transition-all duration-200", isOpen ? "opacity-100" : "opacity-60 hover:opacity-100")}
       >
         <span>{label}</span>
         <ChevronDown className={cn("w-5 h-5 transition-transform", isOpen && "rotate-180")} />
@@ -276,16 +276,16 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
           <div className="container mx-auto px-4">
             <div className="flex h-[65px] items-center justify-between gap-4">
               <nav className="hidden lg:flex items-center gap-1">
-                <Link href="/" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200 border-b border-white", location === "/" ? "opacity-100" : "opacity-60 hover:opacity-100")}>HOME</Link>
+                <Link href="/" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200", location === "/" ? "opacity-100" : "opacity-60 hover:opacity-100")}>HOME</Link>
 
                 <DropdownMenu trigger="EXPEDITION" items={expeditionItems} isCategory isActive={location.includes("expedition")} />
                 <DropdownMenu trigger="TREKKING" items={trekkingItems} isActive={location === "/trekking"} />
                 <DropdownMenu trigger="TOURS" items={tourItems} isCategory isActive={location === "/tours"} />
                 <DropdownMenu trigger="ROCK CLIMBING" items={rockClimbingItems} />
 
-                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200 border-b border-white", location === "/travel-info" ? "opacity-100" : "opacity-60 hover:opacity-100")}>TRAVEL INFO</Link>
+                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200", location === "/travel-info" ? "opacity-100" : "opacity-60 hover:opacity-100")}>TRAVEL INFO</Link>
                 <DropdownMenu trigger="ABOUT US" items={aboutItems} isActive={location === "/team"} />
-                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200 border-b border-white", location === "/contact" ? "opacity-100" : "opacity-60 hover:opacity-100")}>CONTACT</Link>
+                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white transition-all duration-200", location === "/contact" ? "opacity-100" : "opacity-60 hover:opacity-100")}>CONTACT</Link>
               </nav>
 
               <div className="flex items-center gap-2 ml-auto">
