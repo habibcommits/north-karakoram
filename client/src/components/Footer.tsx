@@ -92,7 +92,7 @@ export function Footer() {
                 <SiTiktok className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/923555718293"
+                href="https://wa.me/923330228111"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
