@@ -63,12 +63,12 @@ const trekkingItems: NavItem[] = [
   { label: "FIVE 8000m BASE CAMP TREK", href: "/expedition/five-8000m-base-camp-trek" },
   { label: "NANGA PARBAT BASE CAMP TREK", href: "/expedition/nanga-parbat-base-camp-trek" },
   { label: "FAIRY MEADOW TREK", href: "/expedition/fairy-meadows-trek" },
-  { label: "AROUND NANGA PARBAT TREK", href: "/trekking" },
-  { label: "NANGMA VALLEY TREK", href: "/trekking" },
-  { label: "THALLE LA TREK", href: "/trekking" },
-  { label: "SNOW LAKE-HISPAR LA TREK", href: "/trekking" },
-  { label: "PASTORE PEAK", href: "/trekking" },
-  { label: "SHIMSHAL PASS TREK", href: "/trekking" },
+  { label: "AROUND NANGA PARBAT TREK", href: "/expedition/around-nanga-parbat-trek" },
+  { label: "NANGMA VALLEY TREK", href: "/expedition/nangma-valley-trek" },
+  { label: "THALLE LA TREK", href: "/expedition/thalle-la-trek" },
+  { label: "SNOW LAKE-HISPAR LA TREK", href: "/expedition/snow-lake-hispar-trek" },
+  { label: "PASTORE PEAK", href: "/expedition/pastore-peak-trek" },
+  { label: "SHIMSHAL PASS TREK", href: "/expedition/shimshal-pass-trek" },
 ];
 
 const rockClimbingItems: NavItem[] = [
