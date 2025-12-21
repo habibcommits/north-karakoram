@@ -198,33 +198,6 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/20 py-6">
-          <div className="flex flex-col md:flex-row justify-start items-center gap-8 md:gap-16 mb-6">
-            <Link
-              href="/"
-              className="text-white text-sm hover:text-white/80 transition-colors"
-              data-testid="link-footer-home-aligned"
-            >
-              Home
-            </Link>
-            <Link
-              href="/pakistan-visa"
-              className="text-white text-sm hover:text-white/80 transition-colors"
-              data-testid="link-footer-pakistan-visa-aligned"
-            >
-              Pakistan Visa
-            </Link>
-            <Link
-              href="/expedition/k2-base-camp-trek"
-              className="text-white text-sm hover:text-white/80 transition-colors"
-              data-testid="link-footer-k2-base-camp-aligned"
-            >
-              K2 Base Camp
-            </Link>
-            <span className="text-white text-sm" data-testid="text-footer-skardu-aligned">
-              Skardu
-            </span>
-          </div>
-
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white text-sm">
               &copy; {currentYear} North Karakoram. All rights reserved.
