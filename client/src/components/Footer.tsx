@@ -1,6 +1,6 @@
 /**
  * Footer.tsx - Site Footer Component
- * 
+ *
  * Comprehensive footer with:
  * - Company branding and description
  * - Quick navigation links
@@ -54,12 +54,12 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-white text-sm mb-4 leading-relaxed">Offering comprehensive trekking, mountaineering, tour services, and off-road jeep safaris led by experienced local professionals.</p>
-            <div className="flex gap-3">
+            <div className="flex gap-5">
               <a
                 href="https://www.facebook.com/share/1CtcRSQ4Yw/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
+                className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
                 data-testid="link-social-facebook"
               >
                 <SiFacebook className="w-4 h-4" />
@@ -68,7 +68,7 @@ export function Footer() {
                 href="https://www.instagram.com/northkarakoram?igsh=MWlseHgycWNybWx2MA%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
+                className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
                 data-testid="link-social-instagram"
               >
                 <SiInstagram className="w-4 h-4" />
@@ -77,7 +77,7 @@ export function Footer() {
                 href="https://youtube.com/@northkarakoram?si=vYCoNIBV9C3J1flk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
+                className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
                 data-testid="link-social-youtube"
               >
                 <SiYoutube className="w-4 h-4" />
@@ -86,7 +86,7 @@ export function Footer() {
                 href="https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92DeQDrmQvi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
+                className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
                 data-testid="link-social-tiktok"
               >
                 <SiTiktok className="w-4 h-4" />
@@ -95,7 +95,7 @@ export function Footer() {
                 href="https://wa.me/923555718293"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
+                className="rounded-md flex items-center justify-center hover-elevate text-white bg-[#00685d]"
                 data-testid="link-social-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4" />

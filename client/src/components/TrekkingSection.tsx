@@ -9,7 +9,7 @@ import trekkingImage3 from "@assets/stock_images/mountain_trekking_ex_40f18eca.j
 import valleyImage1 from "@assets/stock_images/pakistan_mountain_va_c849d0c5.jpg";
 import valleyImage2 from "@assets/stock_images/pakistan_mountain_va_42ede9d1.jpg";
 import baseCampImage from "@assets/stock_images/mountain_base_camp_t_930df7d7.jpg";
-import backgroundImage from "@assets/treking_new_1766236032430.jpg";
+import backgroundImage from "@assets/stock_images/acf9926e-8695-42aa-a156-e61418a504bf.jfif";
 
 const trekkingTrips = [
   {
@@ -70,14 +70,20 @@ const trekkingTrips = [
 
 export function TrekkingSection() {
   return (
-    <section 
-      className="py-16 section-fade relative bg-cover bg-center bg-fixed" 
-      data-testid="section-trekking"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
+    <section
+      className="py-16 section-fade relative overflow-hidden"
+      data-testid="section-holiday-categories"
     >
-      <div className="absolute inset-0 bg-black/45"></div>
+      {/* Background image */}
+      <img
+        src={backgroundImage}
+        alt="Mountain background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/10 z-10"></div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <p className="text-primary font-medium mb-2">Explore Pakistan</p>
@@ -90,7 +96,7 @@ export function TrekkingSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {trekkingTrips.map((trip) => (
             <Link key={trip.id} href={trip.href}>
-              <Card 
+              <Card
                 className="overflow-visible hover-elevate cursor-pointer group"
                 data-testid={`card-trekking-${trip.id}`}
               >
@@ -100,7 +106,7 @@ export function TrekkingSection() {
                     alt={trip.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <Badge 
+                  <Badge
                     className="absolute top-3 right-3"
                     variant={trip.difficulty === "Challenging" ? "destructive" : trip.difficulty === "Moderate" ? "secondary" : "default"}
                   >
