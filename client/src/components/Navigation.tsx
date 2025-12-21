@@ -34,14 +34,14 @@ interface NavCategory {
 // --- DATA STRUCTURES ---
 
 const expeditionItems: NavCategory = {
-  "8k": [
+  "8000": [
     { label: "K2 Expedition", href: "/expedition/k2-expedition" },
     { label: "Broad Peak Expedition", href: "/expedition/broad-peak-expedition" },
     { label: "Nanga Parbat Expedition", href: "/expedition/nanga-parbat-expedition" },
     { label: "Gasherbrum I Expedition", href: "/expedition/gasherbrum-i" },
     { label: "Gasherbrum II Expedition", href: "/expedition/gasherbrum-ii" },
   ],
-  "7k": [
+  "7000": [
     { label: "Gasherbrum III Expedition", href: "/expeditions" },
     { label: "Gasherbrum IV Expedition", href: "/expeditions" },
     { label: "Masherbrum Expedition", href: "/expeditions" },
@@ -50,7 +50,7 @@ const expeditionItems: NavCategory = {
     { label: "K6 Expedition", href: "/expeditions" },
     { label: "Rakaposhi Expedition", href: "/expeditions" },
   ],
-  "6k and below": [
+  "6000 and below": [
     { label: "Laila Peak Expedition", href: "/expeditions" },
     { label: "Pastore Peak Expedition", href: "/expeditions" },
     { label: "Khusrogang Expedition", href: "/expeditions" },
