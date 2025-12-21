@@ -284,7 +284,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 <DropdownMenu trigger="Tours" items={tourItems} isCategory isActive={location === "/tours"} />
                 <DropdownMenu trigger="Rock Climbing" items={rockClimbingItems} />
 
-                <Link href="/about" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/about" && "border-white")}>Travel Info</Link>
+                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/travel-info" && "border-white")}>Travel Info</Link>
                 <DropdownMenu trigger="About Us" items={aboutItems} isActive={location === "/team"} />
                 <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/contact" && "border-white")}>Contact</Link>
               </nav>
