@@ -38,14 +38,13 @@ const expeditionItems: NavCategory = {
     { label: "K2 EXPEDITION", href: "/expedition/k2-expedition" },
     { label: "BROAD PEAK EXPEDITION", href: "/expedition/broad-peak-expedition" },
     { label: "NANGA PARBAT EXPEDITION", href: "/expedition/nanga-parbat-expedition" },
-    { label: "GASHERBRUM I EXPEDITION", href: "/expedition/gasherbrum-i" },
-    { label: "GASHERBRUM II EXPEDITION", href: "/expedition/gasherbrum-ii" },
+    { label: "GASHERBRUM I & II EXPEDITION", href: "/expedition/gasherbrum-expedition" },
   ],
   "7000m": [
+    { label: "SPANTIK EXPEDITION", href: "/expedition/spantik-expedition" },
     { label: "GASHERBRUM III EXPEDITION", href: "/expeditions" },
     { label: "GASHERBRUM IV EXPEDITION", href: "/expeditions" },
     { label: "MASHERBRUM EXPEDITION", href: "/expeditions" },
-    { label: "SPANTIK EXPEDITION", href: "/expedition/spantik-expedition" },
     { label: "CHOGOLISA EXPEDITION", href: "/expeditions" },
     { label: "K6 EXPEDITION", href: "/expeditions" },
     { label: "RAKAPOSHI EXPEDITION", href: "/expeditions" },
@@ -59,11 +58,11 @@ const expeditionItems: NavCategory = {
 };
 
 const trekkingItems: NavItem[] = [
-  { label: "K2 AND GONDOGORO LA TREK", href: "/trekking" },
-  { label: "K2 BASE CAMP TREK", href: "/trekking" },
-  { label: "FIVE 8000m BASE CAMP TREK", href: "/trekking" },
-  { label: "NANGA PARBAT BASE CAMP TREK", href: "/trekking" },
-  { label: "FAIRY MEADOW TREK", href: "/trekking" },
+  { label: "K2 AND GONDOGORO LA TREK", href: "/expedition/k2-gondogoro-trek" },
+  { label: "K2 BASE CAMP TREK", href: "/expedition/k2-base-camp-trek" },
+  { label: "FIVE 8000m BASE CAMP TREK", href: "/expedition/five-8000m-base-camp-trek" },
+  { label: "NANGA PARBAT BASE CAMP TREK", href: "/expedition/nanga-parbat-base-camp-trek" },
+  { label: "FAIRY MEADOW TREK", href: "/expedition/fairy-meadows-trek" },
   { label: "AROUND NANGA PARBAT TREK", href: "/trekking" },
   { label: "NANGMA VALLEY TREK", href: "/trekking" },
   { label: "THALLE LA TREK", href: "/trekking" },
