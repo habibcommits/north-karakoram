@@ -80,14 +80,12 @@ export function TrekkingSection() {
         alt="Mountain background"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
-
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/10 z-10"></div>
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <p className="text-primary font-medium mb-2">Explore Pakistan</p>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-[#fcfcfc]">
             Trekking in Pakistan
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">Experience the Karakoram and Himalayas with North Karakoram’s professionally guided trekking adventures. Our experienced team delivers safe, meticulously planned treks for all levels, offering travelers an unforgettable journey through some of the world’s most remarkable landscapes.</p>
