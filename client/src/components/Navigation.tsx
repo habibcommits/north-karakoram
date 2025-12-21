@@ -50,10 +50,10 @@ const expeditionItems: NavCategory = {
     { label: "RAKAPOSHI EXPEDITION", href: "/expedition/rakaposhi-expedition" },
   ],
   "6000m": [
-    { label: "LAILA PEAK EXPEDITION", href: "/expeditions" },
-    { label: "PASTORE PEAK EXPEDITION", href: "/expeditions" },
-    { label: "KHUSROGANG EXPEDITION", href: "/expeditions" },
-    { label: "GONDOGORO PEAK EXPEDITION", href: "/expeditions" },
+    { label: "LAILA PEAK EXPEDITION", href: "/expedition/laila-peak-expedition" },
+    { label: "PASTORE PEAK EXPEDITION", href: "/expedition/pastore-peak-expedition" },
+    { label: "KHUSROGANG EXPEDITION", href: "/expedition/khusrogang-expedition" },
+    { label: "GONDOGORO PEAK EXPEDITION", href: "/expedition/gondogoro-peak-expedition" },
   ],
 };
 
