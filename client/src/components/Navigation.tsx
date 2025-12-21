@@ -140,7 +140,7 @@ function FlyoutMenuItem({ label, items, onClose }: { label: string; items: NavIt
               key={item.label}
               href={item.href}
               onClick={onClose}
-              className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0"
+              className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0 border-b-2 border-b-white last:border-b-0"
             >
               {item.label}
             </Link>
@@ -188,7 +188,7 @@ function DropdownMenu({ trigger, items, isCategory = false, isActive = false }: 
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0"
+                className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0 border-b-2 border-b-white last:border-b-0"
               >
                 {item.label}
               </Link>
@@ -226,16 +226,16 @@ function MobileAccordionItem({ label, items, isCategory = false, onClose, locati
                   <span>{cat}</span>
                   <ChevronDown className={cn("w-4 h-4", openSub === cat && "rotate-180")} />
                 </button>
-                {openSub === cat && subItems.map(item => (
-                  <Link key={item.label} href={item.href} onClick={onClose} className="block px-12 py-2 text-white/70 text-base font-bold hover:text-white">
+                {openSub === cat && subItems.map((item, index) => (
+                  <Link key={item.label} href={item.href} onClick={onClose} className={`block px-12 py-2 text-white/70 text-base font-bold hover:text-white border-b-2 border-b-white ${index === subItems.length - 1 ? 'border-b-0' : ''}`}>
                     {item.label}
                   </Link>
                 ))}
               </div>
             ))
           ) : (
-            (items as NavItem[]).map(item => (
-              <Link key={item.label} href={item.href} onClick={onClose} className="block px-8 py-2 text-white/90 text-base font-bold">
+            (items as NavItem[]).map((item, index) => (
+              <Link key={item.label} href={item.href} onClick={onClose} className={`block px-8 py-2 text-white/90 text-base font-bold border-b-2 border-b-white ${index === (items as NavItem[]).length - 1 ? 'border-b-0' : ''}`}>
                 {item.label}
               </Link>
             ))
