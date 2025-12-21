@@ -72,12 +72,12 @@ const trekkingItems: NavItem[] = [
 ];
 
 const rockClimbingItems: NavItem[] = [
-  { label: "TRANGO TOWER", href: "/expeditions" },
-  { label: "GREAT TOWER", href: "/expeditions" },
-  { label: "AMIN BRAQ", href: "/expeditions" },
-  { label: "NANGMA VALLEY", href: "/expeditions" },
-  { label: "LATOK OGRI", href: "/expeditions" },
-  { label: "CHARAKUSA VALLEY", href: "/expeditions" },
+  { label: "TRANGO TOWER", href: "/expedition/trango-tower" },
+  { label: "GREAT TOWER", href: "/expedition/great-tower" },
+  { label: "AMIN BRAQ", href: "/expedition/amin-braq" },
+  { label: "NANGMA VALLEY", href: "/expedition/nangma-valley" },
+  { label: "LATOK OGRI", href: "/expedition/latok-ogri" },
+  { label: "CHARAKUSA VALLEY", href: "/expedition/charakusa-valley" },
 ];
 
 const tourItems: NavCategory = {
