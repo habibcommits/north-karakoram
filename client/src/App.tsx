@@ -28,6 +28,7 @@ import Contact from "@/pages/Contact";
 import TravelInfo from "@/pages/TravelInfo";
 import MountaineeringRules from "@/pages/MountaineeringRules";
 import Mountains from "@/pages/Mountains";
+import PeakRoyalty from "@/pages/PeakRoyalty";
 import TripDetail from "@/pages/TripDetail";
 import PakistanVisa from "@/pages/PakistanVisa";
 import PaymentMethod from "@/pages/PaymentMethod";
@@ -53,6 +54,7 @@ function Router() {
       <Route path="/travel-info" component={TravelInfo} />
       <Route path="/mountaineering-rules" component={MountaineeringRules} />
       <Route path="/mountains" component={Mountains} />
+      <Route path="/peak-royalty" component={PeakRoyalty} />
       <Route path="/contact" component={Contact} />
       <Route path="/pakistan-visa" component={PakistanVisa} />
       <Route path="/payment-method" component={PaymentMethod} />
