@@ -25,7 +25,7 @@ const feeCategories = [
   },
   {
     title: "6,500m to 7,000m Peaks",
-    description: "K7 and summits in the Trango Towers group",
+    description: "Summits in the Trango Towers group",
     items: [
       "Lower royalty fee structure compared to 8,000m giants",
       "Making them attractive objectives for technical alpine teams",

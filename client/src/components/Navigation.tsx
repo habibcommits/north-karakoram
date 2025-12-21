@@ -75,7 +75,6 @@ const trekkingItems: NavItem[] = [
 const rockClimbingItems: NavItem[] = [
   { label: "TRANGO TOWER", href: "/expeditions" },
   { label: "GREAT TOWER", href: "/expeditions" },
-  { label: "K7", href: "/expeditions" },
   { label: "AMIN BRAQ", href: "/expeditions" },
   { label: "NANGMA VALLEY", href: "/expeditions" },
   { label: "LATOK OGRI", href: "/expeditions" },
