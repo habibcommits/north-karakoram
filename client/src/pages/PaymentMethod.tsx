@@ -33,6 +33,9 @@ export default function PaymentMethod() {
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Introduction */}
             <div className="mb-12">
+              <b><p className="text-muted-foreground text-lg mb-4 font-medium">
+               Note that this payment method is only for locals 
+              </p></b>
               <p className="text-muted-foreground text-lg mb-4 font-medium">
                 To confirm your reservation, please remit an <span className="text-primary font-bold">advance deposit of 30%</span> per person.
               </p>
