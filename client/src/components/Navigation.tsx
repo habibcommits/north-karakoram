@@ -108,8 +108,8 @@ const tourItems: NavCategory = {
 
 const aboutItems: NavItem[] = [
   { label: "Our Team", href: "/team" },
-  { label: "Mountaineering Rule", href: "/about" },
-  { label: "Mountains List In Pakistan", href: "/about" },
+  { label: "Mountaineering Rule", href: "/mountaineering-rules" },
+  { label: "Mountains List In Pakistan", href: "/mountains" },
   { label: "Peak Royalty In Pakistan", href: "/about" },
   { label: "Term & Conditions", href: "/about" },
   { label: "Company Info", href: "/about" },

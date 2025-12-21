@@ -26,6 +26,8 @@ import About from "@/pages/About";
 import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
 import TravelInfo from "@/pages/TravelInfo";
+import MountaineeringRules from "@/pages/MountaineeringRules";
+import Mountains from "@/pages/Mountains";
 import TripDetail from "@/pages/TripDetail";
 import PakistanVisa from "@/pages/PakistanVisa";
 import PaymentMethod from "@/pages/PaymentMethod";
@@ -49,6 +51,8 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
       <Route path="/travel-info" component={TravelInfo} />
+      <Route path="/mountaineering-rules" component={MountaineeringRules} />
+      <Route path="/mountains" component={Mountains} />
       <Route path="/contact" component={Contact} />
       <Route path="/pakistan-visa" component={PakistanVisa} />
       <Route path="/payment-method" component={PaymentMethod} />
