@@ -224,7 +224,11 @@ export default function PaymentMethod() {
                 <p className="font-heading font-bold text-2xl">+92 333 0228111</p>
                 <p className="text-muted-foreground">WhatsApp: Active 24/7</p>
                 <p className="text-muted-foreground text-sm mt-3 mb-6">Email: info@northkarakoram.com</p>
-                <Button className="mt-6" data-testid="button-contact-whatsapp">
+                <Button 
+                  className="mt-6" 
+                  data-testid="button-contact-whatsapp"
+                  onClick={() => window.open('https://wa.me/923330228111', '_blank')}
+                >
                   Contact via WhatsApp
                 </Button>
               </div>
