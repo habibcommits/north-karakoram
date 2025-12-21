@@ -181,6 +181,18 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-white flex-shrink-0" />
                 <span className="text-white text-sm">info@northkarakoram.com</span>
               </li>
+              <li className="flex items-center gap-3">
+                <SiWhatsapp className="w-4 h-4 text-white flex-shrink-0" />
+                <a
+                  href="https://wa.me/923330228111"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm hover:text-white/80 transition-colors"
+                  data-testid="link-footer-whatsapp"
+                >
+                  +92 333 0228111
+                </a>
+              </li>
             </ul>
           </div>
         </div>
