@@ -88,7 +88,7 @@ export function TrekkingSection() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-[#fcfcfc]">
             Trekking in Pakistan
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Experience the Karakoram and Himalayas with North Karakoram’s professionally guided trekking adventures. Our experienced team delivers safe, meticulously planned treks for all levels, offering travelers an unforgettable journey through some of the world’s most remarkable landscapes.</p>
+          <p className="max-w-2xl mx-auto text-[#fcfcfc]">Experience the Karakoram and Himalayas with North Karakoram’s professionally guided trekking adventures. Our experienced team delivers safe, meticulously planned treks for all levels, offering travelers an unforgettable journey through some of the world’s most remarkable landscapes.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
