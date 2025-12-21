@@ -34,14 +34,14 @@ interface NavCategory {
 // --- DATA STRUCTURES ---
 
 const expeditionItems: NavCategory = {
-  "8000M": [
+  "8000m": [
     { label: "K2 EXPEDITION", href: "/expedition/k2-expedition" },
     { label: "BROAD PEAK EXPEDITION", href: "/expedition/broad-peak-expedition" },
     { label: "NANGA PARBAT EXPEDITION", href: "/expedition/nanga-parbat-expedition" },
     { label: "GASHERBRUM I EXPEDITION", href: "/expedition/gasherbrum-i" },
     { label: "GASHERBRUM II EXPEDITION", href: "/expedition/gasherbrum-ii" },
   ],
-  "7000M": [
+  "7000m": [
     { label: "GASHERBRUM III EXPEDITION", href: "/expeditions" },
     { label: "GASHERBRUM IV EXPEDITION", href: "/expeditions" },
     { label: "MASHERBRUM EXPEDITION", href: "/expeditions" },
@@ -50,7 +50,7 @@ const expeditionItems: NavCategory = {
     { label: "K6 EXPEDITION", href: "/expeditions" },
     { label: "RAKAPOSHI EXPEDITION", href: "/expeditions" },
   ],
-  "6000M": [
+  "6000m": [
     { label: "LAILA PEAK EXPEDITION", href: "/expeditions" },
     { label: "PASTORE PEAK EXPEDITION", href: "/expeditions" },
     { label: "KHUSROGANG EXPEDITION", href: "/expeditions" },
@@ -61,7 +61,7 @@ const expeditionItems: NavCategory = {
 const trekkingItems: NavItem[] = [
   { label: "K2 AND GONDOGORO LA TREK", href: "/trekking" },
   { label: "K2 BASE CAMP TREK", href: "/trekking" },
-  { label: "FIVE 8000M BASE CAMP TREK", href: "/trekking" },
+  { label: "FIVE 8000m BASE CAMP TREK", href: "/trekking" },
   { label: "NANGA PARBAT BASE CAMP TREK", href: "/trekking" },
   { label: "FAIRY MEADOW TREK", href: "/trekking" },
   { label: "AROUND NANGA PARBAT TREK", href: "/trekking" },
@@ -127,7 +127,7 @@ function FlyoutMenuItem({ label, items, onClose }: { label: string; items: NavIt
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={cn("flex items-center justify-between px-4 py-2.5 text-base font-bold cursor-pointer rounded-md transition-colors mx-1", isHovered ? "text-[#ebeeee]" : "text-[#FAF9F6]")}>
+      <div className="flex items-center justify-between px-4 py-2.5 text-base text-white font-bold cursor-pointer border border-transparent hover:border-white rounded-md transition-all mx-1 border-b-2 border-b-white">
         <span>{label}</span>
         <ChevronRight className="w-4 h-4 text-white/70" />
       </div>
@@ -139,7 +139,7 @@ function FlyoutMenuItem({ label, items, onClose }: { label: string; items: NavIt
               key={item.label}
               href={item.href}
               onClick={onClose}
-              className="block px-4 py-2.5 text-base text-[#FAF9F6] font-bold rounded-md transition-colors mx-1 mb-1 last:mb-0 hover:text-[#ebeeee]"
+              className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0 border-b-2 border-b-white last:border-b-0"
             >
               {item.label}
             </Link>
@@ -167,8 +167,8 @@ function DropdownMenu({ trigger, items, isCategory = false, isActive = false }: 
     <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <button
         className={cn(
-          "flex items-center gap-1 px-3 py-2 text-base font-bold rounded-md transition-colors duration-200",
-          (isActive || isOpen) ? "text-[#ebeeee]" : "text-[#FAF9F6] hover:text-[#ebeeee]"
+          "flex items-center gap-1 px-3 py-2 text-base font-bold text-white rounded-md transition-all duration-200 border-2 border-transparent hover:border-white",
+          (isActive || isOpen) && "border-white"
         )}
       >
         {trigger}
@@ -187,7 +187,7 @@ function DropdownMenu({ trigger, items, isCategory = false, isActive = false }: 
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2.5 text-base text-[#FAF9F6] font-bold rounded-md transition-colors mx-1 mb-1 last:mb-0 hover:text-[#ebeeee]"
+                className="block px-4 py-2.5 text-base text-white font-bold border border-transparent hover:border-white rounded-md transition-all mx-1 mb-1 last:mb-0 border-b-2 border-b-white last:border-b-0"
               >
                 {item.label}
               </Link>
@@ -207,7 +207,7 @@ function MobileAccordionItem({ label, items, isCategory = false, onClose, locati
     <div className="border-b border-white/10">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={cn("w-[calc(100%-1rem)] mx-2 my-1 flex items-center justify-between px-4 py-3 text-base font-bold rounded-md transition-colors", isOpen ? "text-[#ebeeee]" : "text-[#FAF9F6]")}
+        className={cn("w-[calc(100%-1rem)] mx-2 my-1 flex items-center justify-between px-4 py-3 text-white text-base font-bold rounded-md border-2 border-transparent", isOpen && "border-white")}
       >
         <span>{label}</span>
         <ChevronDown className={cn("w-5 h-5 transition-transform", isOpen && "rotate-180")} />
@@ -220,21 +220,21 @@ function MobileAccordionItem({ label, items, isCategory = false, onClose, locati
               <div key={cat}>
                 <button
                   onClick={() => setOpenSub(openSub === cat ? null : cat)}
-                  className="w-full flex items-center justify-between px-8 py-2 text-[#FAF9F6] text-base font-bold transition-colors hover:text-[#ebeeee]"
+                  className="w-full flex items-center justify-between px-8 py-2 text-white/90 text-base font-bold"
                 >
                   <span>{cat}</span>
                   <ChevronDown className={cn("w-4 h-4", openSub === cat && "rotate-180")} />
                 </button>
-                {openSub === cat && subItems.map((item) => (
-                  <Link key={item.label} href={item.href} onClick={onClose} className="block px-12 py-2 text-[#FAF9F6] text-base font-bold transition-colors hover:text-[#ebeeee]">
+                {openSub === cat && subItems.map((item, index) => (
+                  <Link key={item.label} href={item.href} onClick={onClose} className={`block px-12 py-2 text-white/70 text-base font-bold hover:text-white border-b-2 border-b-white ${index === subItems.length - 1 ? 'border-b-0' : ''}`}>
                     {item.label}
                   </Link>
                 ))}
               </div>
             ))
           ) : (
-            (items as NavItem[]).map((item) => (
-              <Link key={item.label} href={item.href} onClick={onClose} className="block px-8 py-2 text-[#FAF9F6] text-base font-bold transition-colors hover:text-[#ebeeee]">
+            (items as NavItem[]).map((item, index) => (
+              <Link key={item.label} href={item.href} onClick={onClose} className={`block px-8 py-2 text-white/90 text-base font-bold border-b-2 border-b-white ${index === (items as NavItem[]).length - 1 ? 'border-b-0' : ''}`}>
                 {item.label}
               </Link>
             ))
@@ -276,16 +276,16 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
           <div className="container mx-auto px-4">
             <div className="flex h-[65px] items-center justify-between gap-4">
               <nav className="hidden lg:flex items-center gap-1">
-                <Link href="/" className={cn("px-3 py-2 text-base font-bold transition-colors duration-200", location === "/" ? "text-[#ebeeee]" : "text-[#FAF9F6] hover:text-[#ebeeee]")}>HOME</Link>
+                <Link href="/" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/" && "border-white")}>HOME</Link>
 
                 <DropdownMenu trigger="EXPEDITION" items={expeditionItems} isCategory isActive={location.includes("expedition")} />
                 <DropdownMenu trigger="TREKKING" items={trekkingItems} isActive={location === "/trekking"} />
                 <DropdownMenu trigger="TOURS" items={tourItems} isCategory isActive={location === "/tours"} />
                 <DropdownMenu trigger="ROCK CLIMBING" items={rockClimbingItems} />
 
-                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold transition-colors duration-200", location === "/travel-info" ? "text-[#ebeeee]" : "text-[#FAF9F6] hover:text-[#ebeeee]")}>TRAVEL INFO</Link>
+                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/travel-info" && "border-white")}>TRAVEL INFO</Link>
                 <DropdownMenu trigger="ABOUT US" items={aboutItems} isActive={location === "/team"} />
-                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold transition-colors duration-200", location === "/contact" ? "text-[#ebeeee]" : "text-[#FAF9F6] hover:text-[#ebeeee]")}>CONTACT</Link>
+                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/contact" && "border-white")}>CONTACT</Link>
               </nav>
 
               <div className="flex items-center gap-2 ml-auto">

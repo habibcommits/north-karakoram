@@ -37,7 +37,7 @@ const destinations = [
   "Gilgit Baltistan Tours",
   "Nangma Valley Trek",
   "Thalle La Trek",
-  "Five 8000M Base Camp Trek, Pakistan",
+  "Five 8000m Base Camp Trek, Pakistan",
 ];
 
 export function Footer() {
