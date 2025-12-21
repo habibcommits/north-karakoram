@@ -277,16 +277,16 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
           <div className="container mx-auto px-4">
             <div className="flex h-[65px] items-center justify-between gap-4">
               <nav className="hidden lg:flex items-center gap-1">
-                <Link href="/" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/" && "border-white")}>Home</Link>
+                <Link href="/" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/" && "border-white")}>HOME</Link>
 
-                <DropdownMenu trigger="Expedition" items={expeditionItems} isCategory isActive={location.includes("expedition")} />
-                <DropdownMenu trigger="Trekking" items={trekkingItems} isActive={location === "/trekking"} />
-                <DropdownMenu trigger="Tours" items={tourItems} isCategory isActive={location === "/tours"} />
-                <DropdownMenu trigger="Rock Climbing" items={rockClimbingItems} />
+                <DropdownMenu trigger="EXPEDITION" items={expeditionItems} isCategory isActive={location.includes("expedition")} />
+                <DropdownMenu trigger="TREKKING" items={trekkingItems} isActive={location === "/trekking"} />
+                <DropdownMenu trigger="TOURS" items={tourItems} isCategory isActive={location === "/tours"} />
+                <DropdownMenu trigger="ROCK CLIMBING" items={rockClimbingItems} />
 
-                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/travel-info" && "border-white")}>Travel Info</Link>
-                <DropdownMenu trigger="About Us" items={aboutItems} isActive={location === "/team"} />
-                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/contact" && "border-white")}>Contact</Link>
+                <Link href="/travel-info" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/travel-info" && "border-white")}>TRAVEL INFO</Link>
+                <DropdownMenu trigger="ABOUT US" items={aboutItems} isActive={location === "/team"} />
+                <Link href="/contact" className={cn("px-3 py-2 text-base font-bold text-white border-2 border-transparent rounded-md", location === "/contact" && "border-white")}>CONTACT</Link>
               </nav>
 
               <div className="flex items-center gap-2 ml-auto">
@@ -314,7 +314,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
 
                 <Link href="/contact" className="hidden sm:block">
                   <Button className="bg-[#f58220] hover:bg-[#e07210] text-white font-bold text-base px-4">
-                    Book Now
+                    BOOK NOW
                   </Button>
                 </Link>
 
@@ -330,15 +330,15 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                         <img src={logoImage} alt="Logo" className="h-12 w-auto" />
                       </div>
                       <nav className="flex-1 overflow-y-auto pt-2">
-                        <MobileAccordionItem label="Expeditions" items={expeditionItems} isCategory onClose={() => setMobileMenuOpen(false)} location={location} />
-                        <MobileAccordionItem label="Treks" items={trekkingItems} onClose={() => setMobileMenuOpen(false)} location={location} />
-                        <MobileAccordionItem label="Tours" items={tourItems} isCategory onClose={() => setMobileMenuOpen(false)} location={location} />
-                        <MobileAccordionItem label="Rock Climbing" items={rockClimbingItems} onClose={() => setMobileMenuOpen(false)} location={location} />
-                        <MobileAccordionItem label="About Us" items={aboutItems} onClose={() => setMobileMenuOpen(false)} location={location} />
+                        <MobileAccordionItem label="EXPEDITIONS" items={expeditionItems} isCategory onClose={() => setMobileMenuOpen(false)} location={location} />
+                        <MobileAccordionItem label="TREKS" items={trekkingItems} onClose={() => setMobileMenuOpen(false)} location={location} />
+                        <MobileAccordionItem label="TOURS" items={tourItems} isCategory onClose={() => setMobileMenuOpen(false)} location={location} />
+                        <MobileAccordionItem label="ROCK CLIMBING" items={rockClimbingItems} onClose={() => setMobileMenuOpen(false)} location={location} />
+                        <MobileAccordionItem label="ABOUT US" items={aboutItems} onClose={() => setMobileMenuOpen(false)} location={location} />
                       </nav>
                       <div className="p-4">
                         <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                          <Button className="w-full bg-[#f58220] font-bold text-base py-6">Book Now</Button>
+                          <Button className="w-full bg-[#f58220] font-bold text-base py-6">BOOK NOW</Button>
                         </Link>
                       </div>
                     </div>
