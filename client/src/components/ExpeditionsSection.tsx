@@ -36,7 +36,7 @@ export function ExpeditionsSection() {
           <span className="text-sm font-semibold tracking-wider uppercase text-primary">
             EXPEDITIONS
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          <h2 className="text-black text-3xl md:text-4xl font-bold mt-2 mb-4">
             Guided Expeditions to Legendary Peaks
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -50,7 +50,7 @@ export function ExpeditionsSection() {
               key={category.title}
               className="bg-white rounded-lg p-6 shadow-lg border flex flex-col"
             >
-              <div 
+              <div
                 className="rounded px-3 py-2 mb-6 text-white font-bold text-sm inline-block"
                 style={{ backgroundColor: "#f58220" }}
               >
@@ -59,17 +59,17 @@ export function ExpeditionsSection() {
               <ul className="space-y-3 mb-6 flex-1">
                 {category.peaks.map((peak) => (
                   <li key={peak.name} className="flex items-center gap-2">
-                    <span 
+                    <span
                       className="w-2 h-2 rounded-full flex-shrink-0"
                       style={{ backgroundColor: "#0d7678" }}
                     ></span>
-                    <span>{peak.name}</span>
+                    <span className="text-black">{peak.name}</span>
                     <span className="text-muted-foreground">({peak.elevation})</span>
                   </li>
                 ))}
               </ul>
               <Link href="/expeditions" className="w-full">
-                <Button 
+                <Button
                   className="w-full rounded-full font-semibold text-white"
                   style={{ backgroundColor: "#f58220" }}
                 >
