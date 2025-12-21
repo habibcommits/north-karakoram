@@ -92,8 +92,7 @@ export function ContactForm() {
           <p className="text-primary font-medium mb-2">Get in Touch</p>
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Contact Us</h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Have questions about our expeditions or tours? We'd love to hear from you.
-            Fill out the form below and our team will get back to you shortly.
+            Have questions about our trekking tours, mountaineering expeditions, or customized adventures in the Karakoram? Our team at North Karakoram is here to assist you. Get in touch with us and we'll respond as soon as possible.
           </p>
         </div>
 
