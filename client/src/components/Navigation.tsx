@@ -50,7 +50,7 @@ const expeditionItems: NavCategory = {
     { label: "K6 EXPEDITION", href: "/expeditions" },
     { label: "RAKAPOSHI EXPEDITION", href: "/expeditions" },
   ],
-  "6000M AND BELOW": [
+  "6000M": [
     { label: "LAILA PEAK EXPEDITION", href: "/expeditions" },
     { label: "PASTORE PEAK EXPEDITION", href: "/expeditions" },
     { label: "KHUSROGANG EXPEDITION", href: "/expeditions" },
