@@ -42,12 +42,12 @@ const expeditionItems: NavCategory = {
   ],
   "7000m": [
     { label: "SPANTIK EXPEDITION", href: "/expedition/spantik-expedition" },
-    { label: "GASHERBRUM III EXPEDITION", href: "/expeditions" },
-    { label: "GASHERBRUM IV EXPEDITION", href: "/expeditions" },
-    { label: "MASHERBRUM EXPEDITION", href: "/expeditions" },
-    { label: "CHOGOLISA EXPEDITION", href: "/expeditions" },
-    { label: "K6 EXPEDITION", href: "/expeditions" },
-    { label: "RAKAPOSHI EXPEDITION", href: "/expeditions" },
+    { label: "GASHERBRUM III EXPEDITION", href: "/expedition/gasherbrum-iii-expedition" },
+    { label: "GASHERBRUM IV EXPEDITION", href: "/expedition/gasherbrum-iv-expedition" },
+    { label: "MASHERBRUM EXPEDITION", href: "/expedition/masherbrum-expedition" },
+    { label: "CHOGOLISA EXPEDITION", href: "/expedition/chogolisa-expedition" },
+    { label: "K6 EXPEDITION", href: "/expedition/k6-expedition" },
+    { label: "RAKAPOSHI EXPEDITION", href: "/expedition/rakaposhi-expedition" },
   ],
   "6000m": [
     { label: "LAILA PEAK EXPEDITION", href: "/expeditions" },
