@@ -34,7 +34,7 @@ export function FloatingButtons() {
           <ArrowUp className="w-5 h-5 text-primary" />
         </button>
       )}
-      
+
       <button
         onClick={openWhatsApp}
         className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"

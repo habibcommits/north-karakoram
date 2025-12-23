@@ -1,12 +1,3 @@
-/**
- * App.tsx - Main Application Entry Point
- *
- * North Karakoram Adventure Tourism Website
- * This file configures the React application with routing, state management,
- * and global UI providers for the adventure tourism platform.
- */
-
-import { ContentProtection } from "@/components/ContentProtection";
 import { FloatingButtons } from "@/components/FloatingButtons";
 import { PageLoader } from "@/components/PageLoader";
 import { WelcomePopup } from "@/components/WelcomePopup";
@@ -30,7 +21,6 @@ import Team from "@/pages/Team";
 import Tours from "@/pages/Tours";
 import TravelInfo from "@/pages/TravelInfo";
 import Trekking from "@/pages/Trekking";
-import TripDetail from "@/pages/TripDetail";
 import NotFound from "@/pages/not-found";
 import { Footer } from "./components/Footer";
 import { Navigation } from "./components/Navigation";
@@ -57,7 +47,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/pakistan-visa" component={PakistanVisa} />
       <Route path="/payment-method" component={PaymentMethod} />
-      <Route path="/trip/:id" component={TripDetail} />
+      {/* <Route path="/trip/:id" component={TripDetail} /> */}
       <Route component={NotFound} />
     </Switch>
   );

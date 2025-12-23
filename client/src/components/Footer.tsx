@@ -181,7 +181,6 @@ export function Footer() {
                       transition-colors duration-200 text-sm"
                     data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
-                    <ChevronRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </Link>
                 </li>
@@ -203,7 +202,6 @@ export function Footer() {
                       transition-colors duration-200 text-sm"
                     data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
-                    <ChevronRight className="w-3 h-3 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </Link>
                 </li>
@@ -303,7 +301,7 @@ export function Footer() {
       </div>
 
       {/* Scroll to Top Button */}
-      <button
+      {/* <button
         onClick={scrollToTop}
         className={`fixed bottom-6 right-6 z-50 w-10 h-10 rounded-lg
           flex items-center justify-center shadow-lg
@@ -313,7 +311,7 @@ export function Footer() {
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-4 h-4 text-white" />
-      </button>
+      </button> */}
     </footer>
   );
 }

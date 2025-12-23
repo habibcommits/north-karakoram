@@ -13,11 +13,9 @@ import {
   Phone,
   Mail,
   ArrowRight,
-  Sparkles,
   Building,
   FileText,
   HelpCircle,
-  ChevronRight,
   AlertCircle,
   Send,
   Mountain,
@@ -162,18 +160,21 @@ export default function PaymentMethod() {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative h-[55vh] min-h-[450px]">
+        <section
+          ref={heroRef}
+          className="relative min-h-[400px] h-[50vh] sm:h-[55vh] md:h-[60vh]"
+        >
           <img
             src={paymentHeaderImage}
             alt="Payment Methods"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
 
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-20 left-10 w-32 h-32 border border-white/10 rounded-full" />
-            <div className="absolute bottom-20 right-10 w-48 h-48 border border-white/10 rounded-full" />
+          {/* Decorative Elements - Hidden on mobile */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+            <div className="absolute top-20 left-10 w-24 lg:w-32 h-24 lg:h-32 border border-white/10 rounded-full" />
+            <div className="absolute bottom-20 right-10 w-32 lg:w-48 h-32 lg:h-48 border border-white/10 rounded-full" />
           </div>
 
           <div
@@ -182,19 +183,19 @@ export default function PaymentMethod() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 sm:px-6">
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.3)" }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
               >
-                <span className="text-white/90 text-sm font-semibold tracking-wide">
+                <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
                   BOOKING ESSENTIALS
                 </span>
               </div>
-              <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-6xl text-white mb-4">
+              <h1 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-3 sm:mb-4">
                 Payment Options
               </h1>
-              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
                 Simple and secure payment methods for your Pakistani adventure
               </p>
 
@@ -203,21 +204,21 @@ export default function PaymentMethod() {
                 onClick={() =>
                   window.open("https://wa.me/923330228111", "_blank")
                 }
-                className={`w-full md:w-fit inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-gray-900 font-semibold text-md md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${heroVisible
+                className={`inline-flex items-center justify-center gap-2 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-fit ${heroVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
                   }`}
                 style={{ transitionDelay: heroVisible ? "500ms" : "0ms" }}
               >
-                <MessageCircle className="hidden md:block w-5 h-5" />
-                Contact via WhatsApp
+                <MessageCircle className="hidden md:block w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Contact via WhatsApp</span>
               </button>
             </div>
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="hidden md:block py-12 md:py-16 relative overflow-hidden">
+        <section className="hidden md:block py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
           <div
             className="absolute inset-0"
             style={{
@@ -225,21 +226,21 @@ export default function PaymentMethod() {
             }}
           />
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 rounded-full bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 md:w-64 h-48 md:h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
-                  <div className="w-14 h-14 mx-auto mb-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                    <stat.icon className="w-7 h-7 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-2 sm:mb-3 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
                   </div>
-                  <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                  <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-0.5 sm:mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-white/70 text-sm md:text-base font-medium">
+                  <div className="text-white/70 text-xs sm:text-sm md:text-base font-medium">
                     {stat.label}
                   </div>
                 </div>
@@ -249,11 +250,11 @@ export default function PaymentMethod() {
         </section>
 
         {/* Introduction Section */}
-        <section className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl"
+              className="absolute -top-20 -right-20 sm:-top-40 sm:-right-40 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full blur-3xl"
               style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
             />
             <div className="absolute top-20 left-10 hidden xl:block">
@@ -271,44 +272,25 @@ export default function PaymentMethod() {
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8 sm:mb-10 md:mb-12">
                 <div
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                   style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                 >
                   <span
-                    className="text-sm font-semibold tracking-wide"
+                    className="text-xs sm:text-sm font-semibold tracking-wide"
                     style={{ color: "#006F61" }}
                   >
                     PAYMENT INFORMATION
                   </span>
                 </div>
 
-                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
                   Secure Your{" "}
-                  <span
-                    className="relative inline-block"
-                    style={{ color: "#006F61" }}
-                  >
-                    Adventure
-                    {/* <svg
-                      className="absolute -bottom-2 left-0 w-full h-3"
-                      viewBox="0 0 200 12"
-                      fill="none"
-                      preserveAspectRatio="none"
-                    >
-                      <path
-                        d="M2 8.5C50 2.5 150 2.5 198 8.5"
-                        stroke="#006F61"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeOpacity="0.3"
-                      />
-                    </svg> */}
-                  </span>
+                  <span style={{ color: "#006F61" }}>Adventure</span>
                 </h2>
 
-                <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto px-2">
                   To confirm your reservation, please remit an{" "}
                   <span className="font-bold" style={{ color: "#006F61" }}>
                     advance deposit of 30%
@@ -320,17 +302,17 @@ export default function PaymentMethod() {
 
               {/* Important Notice */}
               <div
-                className="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex items-start gap-4"
+                className="bg-amber-50 border border-amber-200 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 flex flex-col sm:flex-row items-start gap-3 sm:gap-4"
                 role="alert"
               >
-                <div className="hidden md:flex w-12 h-12 rounded-xl bg-amber-100 items-center justify-center flex-shrink-0">
-                  <AlertCircle className="w-6 h-6 text-amber-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+                  <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-amber-900 mb-1">
+                  <h3 className="font-bold text-amber-900 mb-1 text-sm sm:text-base">
                     Important Notice
                   </h3>
-                  <p className="text-amber-800 text-sm leading-relaxed">
+                  <p className="text-amber-800 text-xs sm:text-sm leading-relaxed">
                     This payment method is only for local payments. We accept
                     payments via standard Bank Transfer or Mobile Banking
                     services. Once the transaction is complete, please share the
@@ -341,25 +323,25 @@ export default function PaymentMethod() {
               </div>
 
               {/* Features Grid */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-10 md:mt-12">
                 {paymentFeatures.map((feature, index) => (
                   <div
                     key={index}
-                    className="text-center p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="text-center p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     <div
-                      className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center"
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center"
                       style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                     >
                       <feature.icon
-                        className="w-7 h-7"
+                        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
                         style={{ color: "#006F61" }}
                       />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
+                    <h3 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 text-xs sm:text-sm hidden sm:block">
                       {feature.description}
                     </p>
                   </div>
@@ -372,32 +354,32 @@ export default function PaymentMethod() {
         {/* Banking Details Section */}
         <section
           ref={bankRef}
-          className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${bankVisible
+              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${bankVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
               >
                 <span
-                  className="text-sm font-semibold tracking-wide"
+                  className="text-xs sm:text-sm font-semibold tracking-wide"
                   style={{ color: "#006F61" }}
                 >
                   BANK TRANSFER
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
                 Banking <span style={{ color: "#006F61" }}>Details</span>
               </h2>
 
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">
                 Transfer your deposit to our official bank account
               </p>
             </div>
@@ -410,27 +392,32 @@ export default function PaymentMethod() {
                   }`}
                 style={{ transitionDelay: bankVisible ? "200ms" : "0ms" }}
               >
-                <div className="h-2" style={{ backgroundColor: "#006F61" }} />
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-4 mb-8">
+                <div
+                  className="h-1.5 sm:h-2"
+                  style={{ backgroundColor: "#006F61" }}
+                />
+                <CardContent className="p-5 sm:p-6 md:p-8">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                     <div
-                      className="hidden md:flex w-16 h-16 rounded-2xl items-center justify-center"
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center"
                       style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                     >
                       <Banknote
-                        className="w-8 h-8"
+                        className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
                         style={{ color: "#006F61" }}
                       />
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-2xl text-gray-900">
+                      <h3 className="font-heading font-bold text-lg sm:text-xl md:text-2xl text-gray-900">
                         Soneri Bank
                       </h3>
-                      <p className="text-gray-600">Soneri Ikhtiar Account</p>
+                      <p className="text-gray-600 text-sm sm:text-base">
+                        Soneri Ikhtiar Account
+                      </p>
                     </div>
                   </div>
 
-                  <div className="grid gap-4">
+                  <div className="grid gap-3 sm:gap-4">
                     {[
                       {
                         label: "Account Title",
@@ -443,21 +430,21 @@ export default function PaymentMethod() {
                     ].map((item, index) => (
                       <div
                         key={index}
-                        className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100"
+                        className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 border border-gray-100 gap-1 sm:gap-2"
                       >
-                        <span className="text-sm font-medium text-gray-500 mb-1 sm:mb-0">
+                        <span className="text-xs sm:text-sm font-medium text-gray-500">
                           {item.label}
                         </span>
-                        <span className="font-semibold text-gray-900 text-sm sm:text-base">
+                        <span className="font-semibold text-gray-900 text-xs sm:text-sm md:text-base break-all sm:break-normal sm:text-right">
                           {item.value}
                         </span>
                       </div>
                     ))}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-green-50 border border-green-200">
-                      <span className="text-sm font-medium text-gray-500 mb-1 sm:mb-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 rounded-lg sm:rounded-xl bg-green-50 border border-green-200 gap-1 sm:gap-2">
+                      <span className="text-xs sm:text-sm font-medium text-gray-500">
                         Account Status
                       </span>
-                      <span className="font-semibold text-green-600 flex items-center gap-2">
+                      <span className="font-semibold text-green-600 flex items-center gap-2 text-sm sm:text-base">
                         <CheckCircle className="w-4 h-4" />
                         Active
                       </span>
@@ -472,42 +459,39 @@ export default function PaymentMethod() {
         {/* Payment Steps Section */}
         <section
           ref={stepsRef}
-          className="py-20 md:py-28 bg-white relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${stepsVisible
+              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${stepsVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
               >
-                <MessageCircle
-                  className="w-4 h-4"
-                  style={{ color: "#006F61" }}
-                />
                 <span
-                  className="text-sm font-semibold tracking-wide"
+                  className="text-xs sm:text-sm font-semibold tracking-wide"
                   style={{ color: "#006F61" }}
                 >
                   HOW IT WORKS
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
                 Simple <span style={{ color: "#006F61" }}>5-Step</span> Process
               </h2>
 
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">
                 Follow these easy steps to complete your booking
               </p>
             </div>
 
             <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-5 gap-6">
+              {/* Mobile: Vertical timeline / Desktop: Horizontal */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 md:gap-6">
                 {paymentSteps.map((step, index) => (
                   <div
                     key={index}
@@ -521,26 +505,26 @@ export default function PaymentMethod() {
                         : "0ms",
                     }}
                   >
-                    {/* Connector Line */}
+                    {/* Connector Line - Only on desktop */}
                     {index < paymentSteps.length - 1 && (
                       <div
-                        className="hidden md:block absolute top-10 left-1/2 w-full h-0.5"
+                        className="hidden lg:block absolute top-8 sm:top-10 left-1/2 w-full h-0.5"
                         style={{ backgroundColor: "rgba(0, 111, 97, 0.2)" }}
                       />
                     )}
 
                     {/* Step Number */}
                     <div
-                      className="relative w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-white font-bold text-xl z-10"
+                      className="relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl z-10"
                       style={{ backgroundColor: "#006F61" }}
                     >
                       {step.step}
                     </div>
 
-                    <h3 className="font-heading font-bold text-lg text-gray-900 mb-2">
+                    <h3 className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 mb-1 sm:mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed px-2">
                       {step.description}
                     </p>
                   </div>
@@ -549,21 +533,27 @@ export default function PaymentMethod() {
             </div>
 
             {/* Detailed Instructions Card */}
-            <div className="max-w-3xl mx-auto mt-16">
+            <div className="max-w-3xl mx-auto mt-10 sm:mt-12 md:mt-16">
               <Card
-                className={`border-gray-100 shadow-xl overflow-hidden transition-all duration-700 ${stepsVisible
+                className={`border-gray-100 shadow-lg sm:shadow-xl overflow-hidden transition-all duration-700 ${stepsVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
                   }`}
                 style={{ transitionDelay: stepsVisible ? "700ms" : "0ms" }}
               >
-                <div className="h-2" style={{ backgroundColor: "#006F61" }} />
-                <CardContent className="p-8">
-                  <h3 className="font-heading font-bold text-xl text-gray-900 mb-6 flex items-center gap-3">
-                    <Send className="w-6 h-6" style={{ color: "#006F61" }} />
+                <div
+                  className="h-1.5 sm:h-2"
+                  style={{ backgroundColor: "#006F61" }}
+                />
+                <CardContent className="p-5 sm:p-6 md:p-8">
+                  <h3 className="font-heading font-bold text-base sm:text-lg md:text-xl text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                    <Send
+                      className="w-5 h-5 sm:w-6 sm:h-6"
+                      style={{ color: "#006F61" }}
+                    />
                     What to Send Us
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {[
                       {
                         num: 1,
@@ -581,33 +571,35 @@ export default function PaymentMethod() {
                         desc: "Valid CNIC numbers for all Pakistani travelers",
                       },
                     ].map((item) => (
-                      <div key={item.num} className="flex gap-4">
+                      <div key={item.num} className="flex gap-3 sm:gap-4">
                         <div
-                          className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold text-sm"
+                          className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm"
                           style={{ backgroundColor: "#006F61" }}
                         >
                           {item.num}
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-900">
+                          <p className="font-semibold text-gray-900 text-sm sm:text-base">
                             {item.title}
                           </p>
-                          <p className="text-gray-600 text-sm">{item.desc}</p>
+                          <p className="text-gray-600 text-xs sm:text-sm">
+                            {item.desc}
+                          </p>
                         </div>
                       </div>
                     ))}
                   </div>
                   <div
-                    className="mt-6 p-4 rounded-xl flex items-center gap-4"
+                    className="mt-5 sm:mt-6 p-3 sm:p-4 rounded-lg sm:rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4"
                     style={{ backgroundColor: "rgba(0, 111, 97, 0.05)" }}
                   >
-                    <Phone className="w-5 h-5" style={{ color: "#006F61" }} />
-                    <span className="text-gray-700">
+                    <Phone
+                      className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
+                      style={{ color: "#006F61" }}
+                    />
+                    <span className="text-gray-700 text-sm sm:text-base">
                       WhatsApp:{" "}
-                      <span
-                        className="font-bold"
-                        style={{ color: "#006F61" }}
-                      >
+                      <span className="font-bold" style={{ color: "#006F61" }}>
                         +92 333 0228111
                       </span>
                     </span>
@@ -621,42 +613,42 @@ export default function PaymentMethod() {
         {/* Group Reservations Section */}
         <section
           ref={groupRef}
-          className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-center max-w-6xl mx-auto">
               {/* Content */}
               <div
-                className={`transition-all duration-700 ${groupVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
+                className={`order-2 lg:order-1 transition-all duration-700 ${groupVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
                   }`}
               >
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                   <div
-                    className="w-12 h-1 rounded-full"
+                    className="w-8 sm:w-10 md:w-12 h-0.5 sm:h-1 rounded-full"
                     style={{ backgroundColor: "#006F61" }}
                   />
                   <span
-                    className="font-semibold text-sm uppercase tracking-wider"
+                    className="font-semibold text-xs sm:text-sm uppercase tracking-wider"
                     style={{ color: "#006F61" }}
                   >
                     Group Bookings
                   </span>
                 </div>
 
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-6">
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-4 sm:mb-6">
                   Traveling with a{" "}
                   <span style={{ color: "#006F61" }}>Team?</span>
                 </h2>
 
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8">
                   To ensure smooth processing of logistics and permits, please
                   provide a compiled list of all attendees along with their
                   CNIC/Passport numbers when submitting your deposit slip.
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {[
                     "Check availability for large groups by contacting us beforehand",
                     "Special discounts may apply for larger expeditions",
@@ -665,7 +657,7 @@ export default function PaymentMethod() {
                   ].map((item, index) => (
                     <div
                       key={index}
-                      className={`flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 ${groupVisible
+                      className={`flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white rounded-lg sm:rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 ${groupVisible
                         ? "opacity-100 translate-x-0"
                         : "opacity-0 -translate-x-4"
                         }`}
@@ -676,15 +668,17 @@ export default function PaymentMethod() {
                       }}
                     >
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                        className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                       >
                         <CheckCircle
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           style={{ color: "#006F61" }}
                         />
                       </div>
-                      <span className="text-gray-700 font-medium">{item}</span>
+                      <span className="text-gray-700 font-medium text-xs sm:text-sm md:text-base">
+                        {item}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -692,30 +686,33 @@ export default function PaymentMethod() {
 
               {/* Card */}
               <div
-                className={`transition-all duration-700 delay-300 ${groupVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-8"
+                className={`order-1 lg:order-2 transition-all duration-700 delay-300 ${groupVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
                   }`}
               >
-                <Card className="shadow-xl border-gray-100 overflow-hidden">
-                  <div className="h-2" style={{ backgroundColor: "#006F61" }} />
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-3 mb-6">
+                <Card className="shadow-lg sm:shadow-xl border-gray-100 overflow-hidden">
+                  <div
+                    className="h-1.5 sm:h-2"
+                    style={{ backgroundColor: "#006F61" }}
+                  />
+                  <CardContent className="p-5 sm:p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4 sm:mb-6">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center"
                         style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                       >
                         <Users
-                          className="w-6 h-6"
+                          className="w-5 h-5 sm:w-6 sm:h-6"
                           style={{ color: "#006F61" }}
                         />
                       </div>
-                      <h3 className="font-heading font-bold text-xl text-gray-900">
+                      <h3 className="font-heading font-bold text-lg sm:text-xl text-gray-900">
                         Group Benefits
                       </h3>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {[
                         {
                           icon: UserCheck,
@@ -738,36 +735,41 @@ export default function PaymentMethod() {
                           desc: "We manage all necessary documentation",
                         },
                       ].map((item, index) => (
-                        <div key={index} className="flex items-start gap-4">
+                        <div
+                          key={index}
+                          className="flex items-start gap-3 sm:gap-4"
+                        >
                           <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                            className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"
                             style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                           >
                             <item.icon
-                              className="w-5 h-5"
+                              className="w-4 h-4 sm:w-5 sm:h-5"
                               style={{ color: "#006F61" }}
                             />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-1">
+                            <h4 className="font-semibold text-gray-900 mb-0.5 sm:mb-1 text-sm sm:text-base">
                               {item.title}
                             </h4>
-                            <p className="text-gray-600 text-sm">{item.desc}</p>
+                            <p className="text-gray-600 text-xs sm:text-sm">
+                              {item.desc}
+                            </p>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-8 pt-6 border-t border-gray-100">
+                    <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-100">
                       <Button
-                        className="w-full text-base py-6 h-auto font-semibold"
+                        className="w-full md:w-fit text-xs md:text-sm py-5 sm:py-6 h-auto font-semibold rounded-lg sm:rounded-xl"
                         style={{ backgroundColor: "#006F61" }}
                         onClick={() =>
                           window.open("https://wa.me/923330228111", "_blank")
                         }
                       >
                         Inquire About Group Booking
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                        <ArrowRight className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                       </Button>
                     </div>
                   </CardContent>
@@ -780,38 +782,37 @@ export default function PaymentMethod() {
         {/* Data Privacy Section */}
         <section
           ref={privacyRef}
-          className="py-20 md:py-28 bg-white relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${privacyVisible
+              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${privacyVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
               >
-                <Shield className="w-4 h-4" style={{ color: "#006F61" }} />
                 <span
-                  className="text-sm font-semibold tracking-wide"
+                  className="text-xs sm:text-sm font-semibold tracking-wide"
                   style={{ color: "#006F61" }}
                 >
                   SECURITY & PRIVACY
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
                 Your Data is <span style={{ color: "#006F61" }}>Safe</span>
               </h2>
 
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">
                 We take your privacy and financial security seriously
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto">
               {[
                 {
                   icon: Shield,
@@ -836,7 +837,7 @@ export default function PaymentMethod() {
               ].map((item, index) => (
                 <Card
                   key={index}
-                  className={`group text-center p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${privacyVisible
+                  className={`group text-center p-4 sm:p-5 md:p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${privacyVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                     }`}
@@ -848,18 +849,20 @@ export default function PaymentMethod() {
                 >
                   <CardContent className="p-0">
                     <div
-                      className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
                       style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                     >
                       <item.icon
-                        className="w-7 h-7"
+                        className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
                         style={{ color: "#006F61" }}
                       />
                     </div>
-                    <h3 className="font-heading font-bold text-lg text-gray-900 mb-2">
+                    <h3 className="font-heading font-bold text-xs sm:text-sm md:text-base lg:text-lg text-gray-900 mb-1 sm:mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">{item.desc}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm hidden sm:block">
+                      {item.desc}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -870,38 +873,37 @@ export default function PaymentMethod() {
         {/* FAQ Section */}
         <section
           ref={faqRef}
-          className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div
-              className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-700 ${faqVisible
+              className={`text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
               >
-                <HelpCircle className="w-4 h-4" style={{ color: "#006F61" }} />
                 <span
-                  className="text-sm font-semibold tracking-wide"
+                  className="text-xs sm:text-sm font-semibold tracking-wide"
                   style={{ color: "#006F61" }}
                 >
                   FAQ
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3 sm:mb-4">
                 Common <span style={{ color: "#006F61" }}>Questions</span>
               </h2>
             </div>
 
-            <div className="max-w-3xl mx-auto space-y-4">
+            <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border border-gray-200 rounded-2xl overflow-hidden bg-white transition-all duration-700 ${faqVisible
+                  className={`border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden bg-white transition-all duration-700 ${faqVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                     }`}
@@ -915,18 +917,18 @@ export default function PaymentMethod() {
                     onClick={() =>
                       setExpandedFaq(expandedFaq === index ? null : index)
                     }
-                    className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                    className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-left hover:bg-gray-50 transition-colors"
                   >
-                    <span className="font-heading font-bold text-lg text-gray-900 pr-4">
+                    <span className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 pr-3 sm:pr-4">
                       {faq.question}
                     </span>
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${expandedFaq === index ? "rotate-45" : ""
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${expandedFaq === index ? "rotate-45" : ""
                         }`}
                       style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                     >
                       <span
-                        className="text-2xl leading-none"
+                        className="text-xl sm:text-2xl leading-none"
                         style={{ color: "#006F61" }}
                       >
                         +
@@ -937,7 +939,7 @@ export default function PaymentMethod() {
                     className={`overflow-hidden transition-all duration-300 ${expandedFaq === index ? "max-h-48" : "max-h-0"
                       }`}
                   >
-                    <p className="px-6 pb-6 text-gray-600 leading-relaxed">
+                    <p className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -950,17 +952,17 @@ export default function PaymentMethod() {
         {/* CTA Section */}
         <section
           ref={ctaRef}
-          className="py-20 md:py-28 relative overflow-hidden"
+          className="py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
           }}
         >
           {/* Decorative Elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-full" />
-            <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
+            <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-10 left-10 w-16 sm:w-20 h-16 sm:h-20 border border-white/10 rounded-full hidden sm:block" />
+            <div className="absolute bottom-10 right-10 w-24 sm:w-32 h-24 sm:h-32 border border-white/10 rounded-full hidden sm:block" />
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -970,54 +972,58 @@ export default function PaymentMethod() {
                 : "opacity-0 translate-y-8"
                 }`}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
-                <MessageCircle className="w-4 h-4 text-white" />
-                <span className="text-white/90 text-sm font-semibold tracking-wide">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4 sm:mb-6">
+                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
                   GET IN TOUCH
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6 px-2">
                 Ready to Book Your Adventure?
               </h2>
 
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8 px-2">
                 Have questions regarding payments or availability? Reach out to
                 us directly. We're here to help 24/7.
               </p>
 
-              <div className="flex flex-col items-center gap-4 mb-10">
-                <p className="font-heading font-bold text-3xl md:text-4xl text-white">
+              <div className="flex flex-col items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <p className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">
                   +92 333 0228111
                 </p>
-                <p className="text-white/70">WhatsApp: Active 24/7</p>
-                <div className="flex items-center gap-2 text-white/70">
+                <p className="text-white/70 text-sm sm:text-base">
+                  WhatsApp: Active 24/7
+                </p>
+                <div className="flex items-center gap-2 text-white/70 text-sm sm:text-base">
                   <Mail className="w-4 h-4" />
-                  <span>info@northkarakoram.com</span>
+                  <span className="break-all sm:break-normal">
+                    info@northkarakoram.com
+                  </span>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                 <Button
                   size="lg"
-                  className="text-lg px-8 py-4 h-auto bg-white text-gray-900 font-semibold hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+                  className="w-full md:w-fit text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto bg-white text-gray-900 font-semibold hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-lg rounded-lg sm:rounded-xl"
                   onClick={() =>
                     window.open("https://wa.me/923330228111", "_blank")
                   }
                 >
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <MessageCircle className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Contact via WhatsApp
                 </Button>
 
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 py-4 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1"
+                  className="w-full md:w-fit text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1 rounded-lg sm:rounded-xl"
                   onClick={() =>
                     (window.location.href = "mailto:info@northkarakoram.com")
                   }
                 >
-                  <Mail className="w-5 h-5 mr-2" />
+                  <Mail className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Send Email
                 </Button>
               </div>
