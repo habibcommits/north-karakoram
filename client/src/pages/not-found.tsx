@@ -1,13 +1,10 @@
-import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-import { Mountain, ArrowLeft } from "lucide-react";
+import { ArrowLeft, Mountain } from "lucide-react";
+import { Link } from "wouter";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       <main className="flex-1 flex items-center justify-center py-20">
         <div className="text-center px-4">
           <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -27,7 +24,6 @@ export default function NotFound() {
           </Link>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

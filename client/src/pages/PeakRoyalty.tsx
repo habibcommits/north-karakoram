@@ -1,8 +1,6 @@
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertCircle, CheckCircle2, DollarSign, Users } from "lucide-react";
 import mountainImage from "@assets/stock_images/mountain_trekking_ex_3477c925.jpg";
+import { AlertCircle, CheckCircle2, DollarSign, Users } from "lucide-react";
 
 const feeCategories = [
   {
@@ -78,7 +76,6 @@ const whatsCovered = [
 export default function PeakRoyalty() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       <main className="flex-1">
         {/* Header Section */}
         <section className="relative h-[40vh] min-h-[300px]">
@@ -210,7 +207,6 @@ export default function PeakRoyalty() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,139 +1,403 @@
-/**
- * Hero.tsx - Homepage Hero Section Component
- * 
- * Features an auto-rotating image carousel with animated text overlays.
- * Displays stunning mountain imagery with call-to-action buttons for
- * exploring expeditions and contacting the company.
- */
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { heroImages } from "@/lib/tripData";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
+  Mountain,
+  Users,
+  Star,
+  Shield,
+  Compass,
+  Play,
+  Pause
+} from "lucide-react";
 
-// Slide content configuration - each slide has subtitle, title, and description
+// Slide content configuration with enhanced content
 const slides = [
   {
-    subtitle: "Plan Your Next Trip with",
+    badge: "Featured Destination",
+    subtitle: "Discover Your Next Adventure",
     title: "North Karakoram",
-    description: "An Excellent Opportunity to Travel and Experience Adventure",
+    highlight: "Expeditions",
+    description: "Experience the world's most majestic peaks with expert guides and unforgettable journeys through Pakistan's breathtaking mountain landscapes.",
+    location: "Gilgit-Baltistan, Pakistan",
   },
   {
-    subtitle: "Discover the world's",
+    badge: "Popular Choice",
+    subtitle: "Journey to the World's",
     title: "Hottest Destinations",
-    description: "Embark on a journey of adventure with our tour company.",
+    highlight: "& Hidden Gems",
+    description: "From ancient Silk Road trails to pristine alpine meadows, discover extraordinary places that few travelers have ever explored.",
+    location: "Multiple Destinations",
   },
   {
-    subtitle: "Experience the majesty of",
+    badge: "Elite Adventures",
+    subtitle: "Conquer the Legendary",
     title: "8000m Peaks",
-    description: "Professional expeditions to K2, Nanga Parbat, and beyond.",
+    highlight: "With Experts",
+    description: "Professional expeditions to K2, Nanga Parbat, Broad Peak, and the world's most challenging summits with certified mountaineers.",
+    location: "Karakoram Range",
   },
+];
+
+// Trust indicators / stats
+const stats = [
+  { icon: Mountain, value: "150+", label: "Expeditions Completed" },
+  { icon: Users, value: "2,500+", label: "Happy Travelers" },
+  { icon: Star, value: "4.9/5", label: "Customer Rating" },
+  { icon: Shield, value: "100%", label: "Safety Record" },
 ];
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentSlide(index);
+    setTimeout(() => setIsTransitioning(false), 700);
+  }, [isTransitioning]);
+
+  const nextSlide = useCallback(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, [currentSlide, goToSlide]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide((currentSlide - 1 + slides.length) % slides.length);
+  }, [currentSlide, goToSlide]);
 
   useEffect(() => {
+    if (!isAutoPlaying) return;
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying]);
+
+  const toggleAutoPlay = () => setIsAutoPlaying(!isAutoPlaying);
+
+  const scrollToContent = () => {
+    window.scrollTo({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+  };
 
   return (
-    <section className="relative w-full h-[80vh] min-h-[500px] overflow-hidden" data-testid="section-hero">
+    <section
+      className="relative w-full min-h-screen min-h-[700px] max-h-[1200px] overflow-hidden bg-gray-900 pt-12"
+      data-testid="section-hero"
+    >
+      {/* Background Images with Ken Burns Effect */}
       {heroImages.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 transition-all duration-1000 ease-out ${index === currentSlide
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-110"
+            }`}
         >
-          <img
-            src={image}
-            alt={`Mountain landscape ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+          <div
+            className={`w-full h-full ${index === currentSlide ? "animate-ken-burns" : ""
+              }`}
+          >
+            <img
+              src={image}
+              alt={`${slides[index]?.title || 'Mountain landscape'}`}
+              className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          </div>
+
+          {/* Multi-layer gradient overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#006F61]/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_0%,rgba(0,0,0,0.4)_70%)]" />
         </div>
       ))}
 
-      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute transition-all duration-700 ${
-              index === currentSlide
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8 pointer-events-none"
-            }`}
-          >
-            <p className="text-white/90 text-lg md:text-xl mb-2 font-medium">
-              {slide.subtitle}
-            </p>
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight">
-              {slide.title}
-            </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              {slide.description}
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" className="text-lg px-8" data-testid="button-hero-contact">
-                  Contact Us
-                </Button>
-              </Link>
-              <Link href="/expeditions">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 bg-white/10 backdrop-blur-sm border-white/30 text-white"
-                  data-testid="button-hero-explore"
-                >
-                  Explore Trips
-                </Button>
-              </Link>
-            </div>
-          </div>
-        ))}
+      {/* Decorative geometric elements */}
+      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        {/* Top gradient fade */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/50 to-transparent" />
+
+        {/* Decorative corner accent */}
+        <div className="absolute top-20 right-20 w-32 h-32 border border-white/10 rounded-full hidden lg:block" />
+        <div className="absolute top-24 right-24 w-24 h-24 border border-[#006F61]/30 rounded-full hidden lg:block" />
+
+        {/* Side line decoration */}
+        <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-4">
+          <div className="w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-white/20" />
+          <div className="w-3 h-3 rounded-full bg-[#006F61] shadow-lg shadow-[#006F61]/50" />
+          <div className="w-px h-24 bg-gradient-to-b from-white/20 via-white/40 to-transparent" />
+        </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 z-10">
-        <Button
-          size="icon"
-          variant="ghost"
-          className="bg-white/10 backdrop-blur-sm text-white border border-white/20"
-          onClick={prevSlide}
-          data-testid="button-hero-prev"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </Button>
-        <div className="flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                index === currentSlide ? "bg-primary w-8" : "bg-white/50"
-              }`}
-              onClick={() => setCurrentSlide(index)}
-              data-testid={`button-hero-dot-${index}`}
-            />
+      {/* Main Content Container */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="h-full flex flex-col justify-center pb-32 lg:pb-40">
+          <div className="max-w-5xl">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={`${index === currentSlide ? "relative" : "absolute"
+                  } transition-all duration-700 ease-out ${index === currentSlide
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8 pointer-events-none"
+                  }`}
+              >
+                {/* Badge */}
+                <div
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full
+                    bg-[#006F61] text-white text-sm font-semibold mb-6
+                    shadow-lg shadow-[#006F61]/30 transition-all duration-500 delay-100
+                    ${index === currentSlide ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
+                >
+                  <Compass className="w-4 h-4 animate-pulse" />
+                  <span className="tracking-wide">{slide.badge}</span>
+                </div>
+
+                {/* Subtitle */}
+                <p
+                  className={`text-white/90 text-lg md:text-xl lg:text-2xl mb-2
+                    font-light tracking-wide transition-all duration-500 delay-150
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                >
+                  {slide.subtitle}
+                </p>
+
+                {/* Main Title */}
+                <h1
+                  className={`font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
+                    text-white mb-1 leading-[1.05] tracking-tight transition-all duration-500 delay-200
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                >
+                  {slide.title}
+                </h1>
+
+                {/* Highlight Text - Brand Color */}
+                <h2
+                  className={`font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
+                    mb-6 leading-tight transition-all duration-500 delay-[250ms]
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                  style={{
+                    color: '#006F61',
+                    textShadow: '0 4px 30px rgba(0, 111, 97, 0.3), 0 0 60px rgba(0, 111, 97, 0.2)'
+                  }}
+                >
+                  {slide.highlight}
+                </h2>
+
+                {/* Description */}
+                <p
+                  className={`text-white/80 text-base sm:text-lg md:text-xl max-w-2xl
+                    leading-relaxed mb-4 transition-all duration-500 delay-300
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                >
+                  {slide.description}
+                </p>
+
+                {/* Location Tag */}
+                <div
+                  className={`flex items-center gap-2 text-white/60 text-sm mb-8
+                    transition-all duration-500 delay-[350ms]
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                >
+                  <MapPin className="w-4 h-4" />
+                  <span>{slide.location}</span>
+                </div>
+
+                {/* CTA Buttons */}
+                <div
+                  className={`flex flex-col sm:flex-row gap-4 transition-all duration-500 delay-[400ms]
+                    ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                >
+                  <Link href="/expeditions">
+                    <Button
+                      size="lg"
+                      className="w-full md:w-fit group text-base sm:text-lg px-8 py-6 h-auto
+                        bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold
+                        shadow-xl shadow-[#006F61]/30
+                        transition-all duration-300
+                        hover:shadow-2xl hover:shadow-[#006F61]/40
+                        hover:-translate-y-1 active:translate-y-0"
+                      data-testid="button-hero-explore"
+                    >
+                      Explore Expeditions
+                      <ChevronRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+
+                  <Link href="/contact">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full md:w-fit group text-base sm:text-lg px-8 py-6 h-auto
+                        bg-white/5 backdrop-blur-md
+                        border-2 border-white/30 text-white font-semibold
+                        hover:bg-white hover:text-[#006F61] hover:border-white
+                        transition-all duration-300
+                        hover:-translate-y-1 active:translate-y-0"
+                      data-testid="button-hero-contact"
+                    >
+                      Plan Your Journey
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Bar - Desktop */}
+        {/* <div className="absolute bottom-36 left-0 right-0 hidden lg:block">
+          <div className="container mx-auto px-8">
+            <div className="flex items-center gap-8 xl:gap-12">
+              <div className="w-16 h-px bg-gradient-to-r from-[#006F61] to-transparent" />
+
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="group flex items-center gap-3 text-white cursor-default"
+                >
+                  <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-sm
+                    border border-white/10 group-hover:bg-[#006F61]
+                    group-hover:border-[#006F61] transition-all duration-300
+                    group-hover:shadow-lg group-hover:shadow-[#006F61]/30">
+                    <stat.icon className="w-5 h-5" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xl xl:text-2xl font-bold tracking-tight">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs xl:text-sm text-white/60 font-medium">
+                      {stat.label}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div> */}
+      </div>
+
+      {/* Navigation Controls */}
+      <div className="absolute bottom-4 lg:bottom-16 left-1/2 -translate-x-1/2 z-30">
+        <div className="flex items-center gap-4 sm:gap-6 px-4 py-3 rounded-full
+          bg-black/20 backdrop-blur-md border border-white/10">
+
+          {/* Previous Button */}
+          <Button
+            size="icon"
+            variant="ghost"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full
+              bg-white/10 text-white border border-white/20
+              hover:bg-[#006F61] hover:border-[#006F61]
+              transition-all duration-300 hover:scale-105"
+            onClick={prevSlide}
+            data-testid="button-hero-prev"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </Button>
+
+          {/* Slide Indicators */}
+          <div className="flex gap-2 sm:gap-3 items-center px-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={`relative h-2.5 rounded-full transition-all duration-500
+                  overflow-hidden ${index === currentSlide
+                    ? "w-10 sm:w-12 bg-[#006F61]"
+                    : "w-2.5 bg-white/40 hover:bg-white/60"
+                  }`}
+                onClick={() => goToSlide(index)}
+                data-testid={`button-hero-dot-${index}`}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={index === currentSlide ? "true" : "false"}
+              >
+                {/* Progress bar animation for active slide */}
+                {index === currentSlide && isAutoPlaying && (
+                  <span
+                    className="absolute inset-0 bg-white/30 origin-left animate-progress"
+                    style={{ animationDuration: '6s' }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <Button
+            size="icon"
+            variant="ghost"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full
+              bg-white/10 text-white border border-white/20
+              hover:bg-[#006F61] hover:border-[#006F61]
+              transition-all duration-300 hover:scale-105"
+            onClick={nextSlide}
+            data-testid="button-hero-next"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </Button>
+
+          {/* Play/Pause Button */}
+          <div className="hidden sm:block w-px h-6 bg-white/20" />
+          <Button
+            size="icon"
+            variant="ghost"
+            className="hidden sm:flex w-10 h-10 rounded-full
+              bg-white/10 text-white border border-white/20
+              hover:bg-[#006F61] hover:border-[#006F61]
+              transition-all duration-300"
+            onClick={toggleAutoPlay}
+            aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
+          >
+            {isAutoPlaying ? (
+              <Pause className="w-4 h-4" />
+            ) : (
+              <Play className="w-4 h-4 ml-0.5" />
+            )}
+          </Button>
+        </div>
+      </div>
+
+      {/* Scroll Indicator - Right Side */}
+      <button
+        onClick={scrollToContent}
+        className="absolute bottom-10 right-8 z-30 hidden md:flex flex-col items-center gap-3
+          text-white/50 hover:text-white transition-all duration-300 group"
+        aria-label="Scroll to explore"
+      >
+        <span className="text-xs font-semibold tracking-[0.2em] uppercase
+          writing-mode-vertical rotate-180"
+          style={{ writingMode: 'vertical-rl' }}>
+          Scroll
+        </span>
+        <div className="w-5 h-10 rounded-full border-2 border-current
+          flex justify-center items-start pt-2
+          group-hover:border-[#006F61] transition-colors">
+          <span className="w-1 h-2 bg-current rounded-full animate-bounce
+            group-hover:bg-[#006F61]" />
+        </div>
+      </button>
+
+      {/* Mobile Stats Bar */}
+      {/* <div className="absolute bottom-24 left-4 right-4 lg:hidden z-20">
+        <div className="flex justify-center gap-6 flex-wrap">
+          {stats.slice(0, 3).map((stat, index) => (
+            <div key={index} className="text-center text-white">
+              <div className="text-lg font-bold">{stat.value}</div>
+              <div className="text-xs text-white/60">{stat.label}</div>
+            </div>
           ))}
         </div>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="bg-white/10 backdrop-blur-sm text-white border border-white/20"
-          onClick={nextSlide}
-          data-testid="button-hero-next"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </Button>
-      </div>
+      </div> */}
     </section>
   );
 }

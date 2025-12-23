@@ -1,42 +1,468 @@
-import { Navigation } from "@/components/Navigation";
-import { TripCatalog } from "@/components/TripCatalog";
-import { Newsletter } from "@/components/Newsletter";
-import { Footer } from "@/components/Footer";
-import { pageImages } from "@/lib/tripData";
+import { useState, useEffect, useRef } from "react";
+import {
+  Mountain,
+  MapPin,
+  Clock,
+  Star,
+  Search,
+  ChevronRight,
+  Filter,
+  X,
+  Compass,
+  Users,
+  Shield,
+  Award
+} from "lucide-react";
 
-export default function Expeditions() {
-  const heroImage = pageImages.expedition;
+// Mock data - replace with your actual data
+const mockTrips = [
+  {
+    id: 1,
+    title: "K2 Base Camp Trek",
+    destination: "Karakoram Range",
+    category: "Expedition",
+    duration: "14 Days",
+    rating: 5,
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+    shortDescription: "Journey to the base of the world's second highest peak through stunning glacial valleys.",
+    difficulty: "Advanced",
+    season: "Summer"
+  },
+  {
+    id: 2,
+    title: "Nanga Parbat Expedition",
+    destination: "Gilgit-Baltistan",
+    category: "Expedition",
+    duration: "21 Days",
+    rating: 5,
+    imageUrl: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop",
+    shortDescription: "Climb the Killer Mountain with expert guides and comprehensive support.",
+    difficulty: "Expert",
+    season: "Summer"
+  },
+  {
+    id: 3,
+    title: "Broad Peak Base Camp",
+    destination: "Karakoram",
+    category: "Expedition",
+    duration: "12 Days",
+    rating: 4,
+    imageUrl: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=600&fit=crop",
+    shortDescription: "Experience the magnificent Broad Peak up close on this challenging trek.",
+    difficulty: "Advanced",
+    season: "Summer"
+  },
+  {
+    id: 4,
+    title: "Gasherbrum Base Camp",
+    destination: "Karakoram Range",
+    category: "Expedition",
+    duration: "16 Days",
+    rating: 5,
+    imageUrl: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&h=600&fit=crop",
+    shortDescription: "Trek to the base of the beautiful Gasherbrum peaks in remote wilderness.",
+    difficulty: "Advanced",
+    season: "Summer"
+  },
+  {
+    id: 5,
+    title: "Rakaposhi Base Camp",
+    destination: "Hunza Valley",
+    category: "Expedition",
+    duration: "8 Days",
+    rating: 4,
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+    shortDescription: "Accessible expedition to one of Pakistan's most photogenic peaks.",
+    difficulty: "Moderate",
+    season: "All Year"
+  },
+  {
+    id: 6,
+    title: "Masherbrum Expedition",
+    destination: "Karakoram",
+    category: "Expedition",
+    duration: "18 Days",
+    rating: 5,
+    imageUrl: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop",
+    shortDescription: "Conquer one of the most technically challenging peaks in the region.",
+    difficulty: "Expert",
+    season: "Summer"
+  }
+];
+
+const stats = [
+  { icon: Mountain, value: "50+", label: "8000m Peaks" },
+  { icon: Users, value: "2,500+", label: "Climbers Guided" },
+  { icon: Shield, value: "100%", label: "Safety Record" },
+  { icon: Award, value: "25 Years", label: "Experience" }
+];
+
+const categories = ["All Activities", "Expedition", "Trekking", "Climbing"];
+const seasons = ["All Seasons", "Summer", "Winter", "Spring", "Autumn"];
+const destinations = ["All Destinations", "Karakoram Range", "Gilgit-Baltistan", "Hunza Valley"];
+
+function ExpeditionCard({ trip }) {
+  const renderStars = (rating) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star
+        key={i}
+        className={`w-3.5 h-3.5 ${i < Math.floor(rating)
+          ? "fill-yellow-400 text-yellow-400"
+          : "text-white/30"
+          }`}
+      />
+    ));
+  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navigation />
-      <main className="flex-1">
-        <section className="relative h-[40vh] min-h-[300px]">
-          <img
-            src={heroImage}
-            alt="Mountain expedition"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
-          <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div>
-              <p className="text-white/80 text-lg mb-2">Conquer the Giants</p>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl text-white">
-                8000m Expeditions
-              </h1>
+    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+      {/* Image Container */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img
+          src={trip.imageUrl}
+          alt={trip.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+
+        {/* Top Badges */}
+        <div className="absolute top-4 left-4 flex gap-2 z-10">
+          <span className="px-3 py-1.5 rounded-full bg-[#006F61] text-white text-xs font-semibold shadow-lg">
+            {trip.category}
+          </span>
+          <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold border border-white/30">
+            {trip.difficulty}
+          </span>
+        </div>
+
+        {/* Rating Stars */}
+        <div className="hidden md:flex absolute top-4 right-4 gap-0.5 z-10">
+          {renderStars(trip.rating)}
+        </div>
+
+        {/* Bottom Info Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-5 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+          <div className="flex items-center gap-2 text-white/80 text-sm mb-2">
+            <MapPin className="w-4 h-4" />
+            <span>{trip.destination}</span>
+          </div>
+          <h3 className="font-bold text-xl text-white mb-1 line-clamp-2">
+            {trip.title}
+          </h3>
+        </div>
+      </div>
+
+      {/* Card Content */}
+      <div className="p-5">
+        <p className="text-gray-600 text-sm line-clamp-2 mb-4">
+          {trip.shortDescription}
+        </p>
+
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2 text-gray-500 text-sm">
+            <Clock className="w-4 h-4" />
+            <span>{trip.duration}</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-500 text-sm">
+            <Compass className="w-4 h-4" />
+            <span>{trip.season}</span>
+          </div>
+        </div>
+
+        <button className="w-full bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-[#006F61]/30 flex items-center justify-center gap-2 group/btn">
+          <span>Book Now</span>
+          <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+        </button>
+      </div>
+
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#006F61]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    </div>
+  );
+}
+
+export default function Expeditions() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Activities");
+  const [selectedSeason, setSelectedSeason] = useState("All Seasons");
+  const [selectedDestination, setSelectedDestination] = useState("All Destinations");
+  const [showFilters, setShowFilters] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const filteredTrips = mockTrips.filter(trip => {
+    const matchesSearch = trip.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      trip.shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === "All Activities" || trip.category === selectedCategory;
+    const matchesSeason = selectedSeason === "All Seasons" || trip.season === selectedSeason;
+    const matchesDestination = selectedDestination === "All Destinations" || trip.destination === selectedDestination;
+
+    return matchesSearch && matchesCategory && matchesSeason && matchesDestination;
+  });
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory("All Activities");
+    setSelectedSeason("All Seasons");
+    setSelectedDestination("All Destinations");
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] md:h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden bg-gray-900">
+        {/* Background Image with Ken Burns Effect */}
+        <div className="absolute inset-0">
+          <div className="w-full h-full animate-ken-burns">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop"
+              alt="Mountain expedition"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Multi-layer Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#006F61]/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_0%,rgba(0,0,0,0.4)_70%)]" />
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/50 to-transparent" />
+          <div className="absolute top-20 right-20 w-32 h-32 border border-white/10 rounded-full hidden lg:block" />
+          <div className="absolute top-24 right-24 w-24 h-24 border border-[#006F61]/30 rounded-full hidden lg:block" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="h-full flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#006F61] text-white text-sm font-semibold mb-6 shadow-lg shadow-[#006F61]/30 animate-fade-in">
+              <span className="tracking-wide">Elite Mountain Expeditions</span>
+            </div>
+
+            {/* Subtitle */}
+            <p className="text-white/90 text-lg md:text-xl lg:text-2xl mb-3 font-light tracking-wide animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              Conquer the Giants
+            </p>
+
+            {/* Main Title */}
+            <h1 className="font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-3 leading-tight tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              8000m Peak
+            </h1>
+
+            <h2 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight animate-fade-in-up" style={{ animationDelay: '0.3s', color: '#006F61', textShadow: '0 4px 30px rgba(0, 111, 97, 0.3), 0 0 60px rgba(0, 111, 97, 0.2)' }}>
+              Expeditions
+            </h2>
+
+            {/* Description */}
+            <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              Challenge yourself with world-class expeditions to the highest peaks on Earth. Professional guidance, comprehensive support, and unforgettable adventures await.
+            </p>
+          </div>
+        </div>
+
+        {/* Stats Bar */}
+        {/* <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/30 backdrop-blur-md border-t border-white/10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex items-center gap-3 text-white">
+                  <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-[#006F61] hover:border-[#006F61] transition-all duration-300">
+                    <stat.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xl md:text-2xl font-bold">{stat.value}</div>
+                    <div className="text-xs text-white/60">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+        </div> */}
+      </section>
 
-        <TripCatalog
-          initialCategory="Expedition"
-          title="Mountain Expeditions"
-          subtitle="Challenge Yourself With"
-          showFilters={true}
-        />
-        <Newsletter />
-      </main>
-      <Footer />
+      {/* Filter Section */}
+      <section className={`sticky top-0 z-30 bg-white shadow-md transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          {/* Mobile Filter Toggle */}
+          <div className="flex md:hidden justify-between items-center mb-4">
+            <h3 className="font-semibold text-lg">Filters</h3>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+            >
+              {showFilters ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+              <span className="text-sm font-medium">{showFilters ? 'Close' : 'Filters'}</span>
+            </button>
+          </div>
+
+          {/* Filter Controls */}
+          <div className={`${showFilters ? 'block' : 'hidden md:block'} space-y-4`}>
+            {/* Search Bar */}
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="search"
+                placeholder="Search expeditions..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 placeholder-gray-400"
+              />
+            </div>
+
+            {/* Filter Dropdowns */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <select
+                value={selectedDestination}
+                onChange={(e) => setSelectedDestination(e.target.value)}
+                className="px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer"
+              >
+                {destinations.map((dest) => (
+                  <option key={dest} value={dest}>{dest}</option>
+                ))}
+              </select>
+
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer"
+              >
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+
+              <select
+                value={selectedSeason}
+                onChange={(e) => setSelectedSeason(e.target.value)}
+                className="px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer"
+              >
+                {seasons.map((season) => (
+                  <option key={season} value={season}>{season}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Active Filters Display */}
+            {(searchQuery || selectedCategory !== "All Activities" || selectedSeason !== "All Seasons" || selectedDestination !== "All Destinations") && (
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm text-gray-600">Active filters:</span>
+                {searchQuery && (
+                  <span className="px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                    "{searchQuery}"
+                  </span>
+                )}
+                {selectedCategory !== "All Activities" && (
+                  <span className="px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                    {selectedCategory}
+                  </span>
+                )}
+                {selectedSeason !== "All Seasons" && (
+                  <span className="px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                    {selectedSeason}
+                  </span>
+                )}
+                {selectedDestination !== "All Destinations" && (
+                  <span className="px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                    {selectedDestination}
+                  </span>
+                )}
+                <button
+                  onClick={clearFilters}
+                  className="px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium transition-colors"
+                >
+                  Clear all
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Trips Grid */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <p className="text-[#006F61] font-semibold text-sm uppercase tracking-wider mb-2">
+              Challenge Yourself With
+            </p>
+            <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900">
+              Mountain Expeditions
+            </h2>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              {filteredTrips.length} {filteredTrips.length === 1 ? 'expedition' : 'expeditions'} available
+            </p>
+          </div>
+
+          {/* No Results */}
+          {filteredTrips.length === 0 ? (
+            <div className="text-center py-20">
+              <Mountain className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500 text-lg mb-6">No expeditions found matching your criteria.</p>
+              <button
+                onClick={clearFilters}
+                className="px-6 py-3 rounded-xl bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold transition-colors"
+              >
+                Clear Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredTrips.map((trip) => (
+                <ExpeditionCard key={trip.id} trip={trip} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <style>{`
+        @keyframes ken-burns {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.1); }
+        }
+
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-ken-burns {
+          animation: ken-burns 20s ease-out infinite alternate;
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
     </div>
   );
 }

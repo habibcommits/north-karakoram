@@ -1,19 +1,15 @@
-import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
+import { ClientReviews } from "@/components/ClientReviews";
+import { ExpeditionsSection } from "@/components/ExpeditionsSection";
+import { Hero } from "@/components/Hero";
 import { HolidayCategories } from "@/components/HolidayCategories";
 import { SeasonWiseSection } from "@/components/SeasonWiseSection";
-import { TrekkingSection } from "@/components/TrekkingSection";
-import { ExpeditionsSection } from "@/components/ExpeditionsSection";
-import { ClientReviews } from "@/components/ClientReviews";
 import { SocialIcons } from "@/components/SocialIcons";
-import { LocationsSection } from "@/components/LocationsSection";
-import { Footer } from "@/components/Footer";
+import { TrekkingSection } from "@/components/TrekkingSection";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       <main className="flex-1">
         <Hero />
         <AboutSection />
@@ -23,9 +19,7 @@ export default function Home() {
         <ExpeditionsSection />
         <ClientReviews />
         <SocialIcons />
-        <LocationsSection />
       </main>
-      <Footer />
     </div>
   );
 }

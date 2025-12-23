@@ -42,7 +42,6 @@ const mountainsData = [
 export default function Mountains() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       <main className="flex-1">
         {/* Header */}
         <div className="bg-gradient-to-r from-primary to-primary/80 py-12">
@@ -99,7 +98,6 @@ export default function Mountains() {
           </Card>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

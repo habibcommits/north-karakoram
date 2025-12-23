@@ -371,3 +371,607 @@
     inset: -1px;
   }
 }
+
+/* Hero Section Animations */
+
+/* Ken Burns zoom effect for background images */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 8s ease-out forwards;
+}
+
+/* Progress bar animation for slide indicators */
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-progress {
+  animation: progress linear forwards;
+}
+
+/* Smooth bounce animation for scroll indicator */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Custom scrollbar for hero section */
+.hero-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus states for accessibility */
+.hero-section button:focus-visible {
+  outline: 2px solid #006f61;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns,
+  .animate-progress,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* About Section Animations */
+
+/* Floating animation for badges */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Subtle pulse for icons */
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Counter animation helper */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shine effect for buttons */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn-shine:hover::after {
+  animation: shine 0.75s ease-in-out;
+}
+
+/* Image hover zoom effect */
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Staggered fade-in for list items */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .fade-in-up {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Holiday Categories Animations */
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Parallax background fix for mobile */
+@media (max-width: 768px) {
+  .bg-fixed {
+    background-attachment: scroll;
+  }
+}
+
+/* Smooth card transitions */
+.category-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon filter animation */
+@keyframes icon-glow {
+  0%,
+  100% {
+    filter: brightness(0) invert(1);
+  }
+  50% {
+    filter: brightness(0) invert(1)
+      drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Season Tours Section Styles */
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card image zoom effect */
+.tour-card-image {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tour-card:hover .tour-card-image {
+  transform: scale(1.1);
+}
+
+/* Staggered card animations */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tour-card-animate {
+  animation: card-enter 0.6s ease-out forwards;
+}
+
+/* Filter button active state animation */
+@keyframes filter-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.filter-active {
+  animation: filter-pop 0.3s ease-out;
+}
+
+/* Like button heart animation */
+@keyframes heart-beat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-liked {
+  animation: heart-beat 0.4s ease-out;
+}
+
+/* Price tag hover effect */
+.price-tag {
+  transition: transform 0.3s ease-out;
+}
+
+.tour-card:hover .price-tag {
+  transform: translateY(-4px);
+}
+
+/* Season badge glow effect */
+.season-badge-spring {
+  box-shadow: 0 4px 15px -3px rgba(236, 72, 153, 0.4);
+}
+
+.season-badge-summer {
+  box-shadow: 0 4px 15px -3px rgba(245, 158, 11, 0.4);
+}
+
+.season-badge-autumn {
+  box-shadow: 0 4px 15px -3px rgba(234, 88, 12, 0.4);
+}
+
+.season-badge-winter {
+  box-shadow: 0 4px 15px -3px rgba(14, 165, 233, 0.4);
+}
+
+/* Smooth scroll for filter changes */
+.tours-grid {
+  transition: opacity 0.3s ease-out;
+}
+
+.tours-grid-loading {
+  opacity: 0.5;
+}
+
+/* Highlight tag hover effect */
+.highlight-tag {
+  transition: all 0.2s ease-out;
+}
+
+.highlight-tag:hover {
+  background-color: rgba(0, 111, 97, 0.1);
+  color: #006f61;
+}
+
+/* Stats counter animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-value {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tour-card-animate,
+  .filter-active,
+  .heart-liked {
+    animation: none;
+  }
+
+  .tour-card-image,
+  .price-tag,
+  .highlight-tag {
+    transition: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tour-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Trekking Section Styles */
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card hover image zoom */
+.trek-card-image {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trek-card:hover .trek-card-image {
+  transform: scale(1.1);
+}
+
+/* Difficulty badge animations */
+@keyframes difficulty-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  50% {
+    box-shadow: 0 0 0 4px transparent;
+  }
+}
+
+.difficulty-badge-pulse {
+  animation: difficulty-pulse 2s ease-in-out infinite;
+}
+
+/* Staggered card entrance */
+@keyframes trek-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.trek-card-animate {
+  animation: trek-card-enter 0.6s ease-out forwards;
+}
+
+/* Filter button transitions */
+.filter-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:active {
+  transform: scale(0.95);
+}
+
+/* Rating star animation */
+@keyframes star-shine {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.star-animated:hover {
+  animation: star-shine 0.5s ease-out;
+}
+
+/* Highlight tag hover effect */
+.highlight-tag {
+  transition: all 0.2s ease-out;
+}
+
+.highlight-tag:hover {
+  background-color: rgba(0, 111, 97, 0.1);
+  color: #006f61;
+}
+
+/* Mountain background wave animation */
+@keyframes wave-flow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+.mountain-wave {
+  animation: wave-flow 20s linear infinite;
+}
+
+/* CTA button shine effect */
+.cta-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.cta-btn-shine:hover::after {
+  left: 100%;
+}
+
+/* Elevation badge float effect */
+@keyframes float-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.elevation-badge {
+  animation: float-subtle 3s ease-in-out infinite;
+}
+
+/* Grid layout for mobile responsiveness */
+@media (max-width: 640px) {
+  .trek-cards-grid {
+    gap: 1rem;
+  }
+
+  .trek-card {
+    max-width: 100%;
+  }
+}
+
+/* Parallax effect for background */
+@media (min-width: 1024px) {
+  .trek-section-bg {
+    background-attachment: fixed;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .trek-card-animate,
+  .difficulty-badge-pulse,
+  .star-animated:hover,
+  .mountain-wave,
+  .elevation-badge {
+    animation: none;
+  }
+
+  .trek-card-image,
+  .filter-btn,
+  .highlight-tag,
+  .cta-btn-shine::after {
+    transition: none;
+  }
+}
+
+/* Focus states for accessibility */
+.filter-btn:focus-visible,
+.trek-card:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .trek-section-bg,
+  .decorative-elements {
+    display: none;
+  }
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Allow selection in form fields */
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}

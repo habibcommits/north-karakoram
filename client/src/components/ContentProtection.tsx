@@ -40,7 +40,7 @@ export function ContentProtection() {
   if (!showWarning) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm pointer-events-none"
       data-testid="overlay-copy-warning"
     >

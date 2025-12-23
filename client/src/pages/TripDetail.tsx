@@ -1,28 +1,26 @@
-import { useParams, Link } from "wouter";
-import { useQuery } from "@tanstack/react-query";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { TripCard } from "@/components/TripCard";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  MapPin,
-  Clock,
-  Users,
-  Star,
-  Calendar,
-  Mountain,
-  Thermometer,
-  Check,
-  ArrowLeft,
-} from "lucide-react";
 import type { Trip } from "@shared/schema";
+import { useQuery } from "@tanstack/react-query";
+import {
+  ArrowLeft,
+  Calendar,
+  Check,
+  Clock,
+  MapPin,
+  Mountain,
+  Star,
+  Thermometer,
+  Users,
+} from "lucide-react";
+import { Link, useParams } from "wouter";
 
 export default function TripDetail() {
   const { id } = useParams<{ id: string }>();
-  
+
   const { data: trip, isLoading, error } = useQuery<Trip>({
     queryKey: ["/api/trips", id],
     queryFn: async () => {
@@ -45,9 +43,8 @@ export default function TripDetail() {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${
-          i < Math.floor(rating) ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
-        }`}
+        className={`w-4 h-4 ${i < Math.floor(rating) ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
+          }`}
       />
     ));
   };
@@ -64,7 +61,6 @@ export default function TripDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col">
-        <Navigation />
         <main className="flex-1">
           <Skeleton className="h-[50vh] w-full" />
           <section className="py-12">
@@ -85,7 +81,6 @@ export default function TripDetail() {
             </div>
           </section>
         </main>
-        <Footer />
       </div>
     );
   }
@@ -93,7 +88,6 @@ export default function TripDetail() {
   if (error || !trip) {
     return (
       <div className="min-h-screen flex flex-col">
-        <Navigation />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h1 className="font-heading font-bold text-3xl mb-4">Trip Not Found</h1>
@@ -108,7 +102,6 @@ export default function TripDetail() {
             </Link>
           </div>
         </main>
-        <Footer />
       </div>
     );
   }
@@ -119,7 +112,6 @@ export default function TripDetail() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       <main className="flex-1">
         <section className="relative h-[50vh] min-h-[400px]">
           <img
@@ -290,7 +282,6 @@ export default function TripDetail() {
           </section>
         )}
       </main>
-      <Footer />
     </div>
   );
 }
