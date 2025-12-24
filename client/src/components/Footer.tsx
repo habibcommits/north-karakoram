@@ -218,7 +218,7 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-white/60 mt-0.5 flex-shrink-0" />
                 <span className="text-white/75 text-sm">
-                  Skardu, Gilgit Baltistan, Pakistan
+                  Near Hishpar Hotel, Sathang, Skardu, Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-2">

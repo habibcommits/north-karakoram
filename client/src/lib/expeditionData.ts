@@ -1,10 +1,14 @@
-import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
-import expeditionImage2 from "@assets/stock_images/mountain_expedition__b33a227e.jpg";
-import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
-import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
-import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
+import {
+  COMMON_SERVICES_INCLUDED,
+  COMMON_SERVICES_NOT_INCLUDED,
+  COMMON_SERVICES_REQUIREMENTS,
+} from "@/constants/expeditionData";
 import nangaParbatImage1 from "@assets/nanga_parbat_1_1766090260999.png";
 import nangaParbatImage2 from "@assets/nanga_perbat_2_1766090261000.png";
+import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
+import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
+import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
+import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
 
 export interface ExpeditionTimeline {
   day: string;
@@ -14,13 +18,14 @@ export interface ExpeditionTimeline {
 
 export interface ExpeditionData {
   id: string;
+  peak?: string;
   slug: string;
   name: string;
   altitude: string;
   location: string;
   duration: string;
   difficulty: string;
-  bestSeason: string;
+  bestSeason: string | null;
   price: number;
   groupSize: string;
   image: string;
@@ -37,62 +42,164 @@ export interface ExpeditionData {
 export const expeditions: ExpeditionData[] = [
   {
     id: "k2",
+    peak: "8000",
     slug: "k2-expedition",
-    name: "K2 Expedition",
+    name: "K2 Expeditions",
     altitude: "8,611m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "60-65 Days",
+    duration: "50-55 Days",
     difficulty: "Extremely Difficult",
-    bestSeason: "June - August",
+    bestSeason: "February - August",
     price: 45000,
     groupSize: "6-12 climbers",
     image: expeditionImage1,
-    description: "K2, the second highest mountain in the world, stands at 8,611 meters. Known as the 'Savage Mountain,' K2 is considered the most difficult and dangerous climb of all the 8,000m peaks.",
-    overview: "The K2 Expedition is the ultimate mountaineering challenge. Located in the Karakoram Range on the China-Pakistan border, K2 demands exceptional climbing skills, physical fitness, and mental fortitude. Our expedition provides comprehensive support including experienced high-altitude guides, premium equipment, and thorough acclimatization schedules to maximize your summit success.",
+    description:
+      "K2, the second highest mountain in the world, stands at 8,611 meters. Known as the 'Savage Mountain,' K2 is considered the most difficult and dangerous climb of all the 8,000m peaks.",
+    overview:
+      "The K2 Expedition is the ultimate mountaineering challenge. Located in the Karakoram Range on the China-Pakistan border, K2 demands exceptional climbing skills, physical fitness, and mental fortitude. Our expedition provides comprehensive support including experienced high-altitude guides, premium equipment, and thorough acclimatization schedules to maximize your summit success.",
     timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Arrive in Islamabad. Team briefing, gear check, and documentation. Rest and acclimatization." },
-      { day: "Day 3", title: "Fly to Skardu", description: "Scenic flight to Skardu (weather permitting) or drive via Karakoram Highway. Check into hotel." },
-      { day: "Day 4-5", title: "Skardu Acclimatization", description: "Rest days in Skardu. Visit local attractions, final gear purchases, and team preparation." },
-      { day: "Day 6-7", title: "Drive to Askole", description: "Jeep drive from Skardu to Askole, the last village before the trek begins. Organize porters and supplies." },
-      { day: "Day 8-14", title: "Trek to Base Camp", description: "7-day trek through the Baltoro Glacier to K2 Base Camp (5,150m). Stops at Jola, Paiju, Urdukas, Gore II, and Concordia." },
-      { day: "Day 15-20", title: "Base Camp Setup", description: "Establish base camp, acclimatization walks, and preparation for climbing. Medical checks and team meetings." },
-      { day: "Day 21-35", title: "Rotations to Higher Camps", description: "Progressive acclimatization climbs. Establish Camp 1 (6,100m), Camp 2 (6,700m), and Camp 3 (7,300m)." },
-      { day: "Day 36-50", title: "Summit Push Window", description: "Wait for optimal weather window. Final rest at base camp before summit attempt via Camp 4 (7,800m) to summit." },
-      { day: "Day 51-57", title: "Descent & Trek Out", description: "Descend from summit, pack up camps, and trek back to Askole through Concordia and Baltoro." },
-      { day: "Day 58-60", title: "Return Journey", description: "Drive to Skardu, fly to Islamabad. Celebration dinner and expedition debrief." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at the airport in Islamabad. Altitude: 540 m. Meals: Breakfast.",
+      },
+      {
+        day: "Day 02",
+        title: "Free Day in Islamabad",
+        description:
+          "A day dedicated to official briefing and exploring local cultural sites. Altitude: 540 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 03",
+        title: "Flight to Skardu",
+        description:
+          "Flight to Skardu followed by relaxation and time for last-minute gear shopping. Altitude: 2,498 m. Meals: Breakfast, Dinner.",
+      },
+      {
+        day: "Day 04",
+        title: "Free Day in Skardu",
+        description:
+          "Sightseeing around Skardu, including Kharpocho Fort, Sadpara Lake, and the local Bazaar. Altitude: 2,498 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Askole Village",
+        description:
+          "Jeep safari drive to Askole Village. Altitude: 3,015 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Jhola",
+        description:
+          "Commencement of the trek from Askole to Jhola. Altitude: 3,103 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Paiju",
+        description:
+          "Trekking from Jhola to Paiju. Altitude: 3,418 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 08",
+        title: "Acclimatization in Paiju",
+        description:
+          "A scheduled rest and acclimatization day in Paiju. Altitude: 3,418 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Khoburtse",
+        description:
+          "Trekking from Paiju to Khoburtse. Altitude: 3,788 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Urdukas",
+        description:
+          "Trekking from Khoburtse to Urdukas. Altitude: 3,905 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Goro II",
+        description:
+          "Trek to Goro II at the junction of the Baltoro and Younghusband Glaciers. Altitude: 4,285 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 12",
+        title: "Trek to Concordia",
+        description:
+          "Trekking to the Concordia campsite. Altitude: 4,512 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 13",
+        title: "Trek to K2 Base Camp",
+        description:
+          "Trekking from Concordia to K2 Base Camp. Altitude: 5,155 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 14–43",
+        title: "Ascent of K2",
+        description:
+          "The dedicated climbing period for the ascent of K2. Altitude: 5,150 m to 8,611 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 44",
+        title: "Return to Concordia",
+        description:
+          "Trek back to Concordia followed by a period of rest. Altitude: 4,512 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 45",
+        title: "Trek to Ali Camp",
+        description:
+          "Trekking from Concordia to Ali Camp. Altitude: 4,500 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 46",
+        title: "Gondogoro La Crossing",
+        description:
+          "Crossing Gondogoro La and trekking down to Khuispang. Altitude: 5,585 m (Pass) to 4,600 m (Khuispang). Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 47",
+        title: "Trek to Saicho",
+        description:
+          "Trekking from Khuispang to Saicho. Altitude: 3,350 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 48",
+        title: "Hushe and Skardu",
+        description:
+          "Trek to Hushe followed by a drive back to Skardu. Altitude: 2,498 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 49",
+        title: "Debriefing in Skardu",
+        description:
+          "Official debriefing session in Skardu. Altitude: 2,288 m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 50",
+        title: "Return Flight to Islamabad",
+        description:
+          "Flight from Skardu back to Islamabad. Altitude: 538 m. Meals: Breakfast.",
+      },
+      {
+        day: "Day 51",
+        title: "Contingency Day",
+        description:
+          "A buffer day in Islamabad reserved for potential flight cancellations. Altitude: 540 m. Meals: Breakfast.",
+      },
+      {
+        day: "Day 52",
+        title: "Final Departure",
+        description:
+          "Transfer for your departure flight to your home country. Meals: Breakfast.",
+      },
     ],
-    servicesIncluded: [
-      "All government permits and royalties",
-      "Liaison Officer and their expenses",
-      "Experienced high-altitude climbing guides",
-      "All meals at base camp and higher camps",
-      "High-altitude tents and camping equipment",
-      "Fixed ropes and technical climbing gear",
-      "Oxygen bottles and regulators for summit",
-      "Satellite phone and communication equipment",
-      "Emergency evacuation insurance",
-      "Porter and pack animal services for approach",
-      "Airport transfers and ground transportation",
-      "Hotel accommodation in cities",
-    ],
-    servicesNotIncluded: [
-      "International flights to/from Pakistan",
-      "Personal climbing gear and clothing",
-      "Personal travel and medical insurance",
-      "Tips and gratuities for staff",
-      "Extra oxygen bottles beyond allocation",
-      "Personal expenses and souvenirs",
-      "Visa fees and passport expenses",
-      "Additional hotel nights due to delays",
-    ],
-    requirements: [
-      "Previous 8000m peak experience strongly recommended",
-      "Minimum 7000m summit experience required",
-      "Technical ice and rock climbing proficiency",
-      "Excellent physical conditioning",
-      "Medical clearance for high altitude",
-      "Current mountaineering insurance",
-    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Summit the world's second highest peak",
       "Experience the legendary Baltoro Glacier",
@@ -100,190 +207,126 @@ export const expeditions: ExpeditionData[] = [
       "Challenge yourself on the most technical 8000m mountain",
     ],
   },
-  {
-    id: "nanga-parbat",
-    slug: "nanga-parbat-expedition",
-    name: "Nanga Parbat Expedition",
-    altitude: "8,126m",
-    location: "Diamer District, Pakistan",
-    duration: "45-50 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - August",
-    price: 35000,
-    groupSize: "6-10 climbers",
-    image: nangaParbatImage1,
-    gallery: [nangaParbatImage1, nangaParbatImage2, nangaParbatImage1],
-    description: "Nanga Parbat, the 'Killer Mountain,' rises 8,126 meters in the western Himalayas. It features the world's largest mountain face - the Rupal Face - rising 4,600m from base to summit.",
-    overview: "The Nanga Parbat Expedition offers a challenging climb on one of the world's most dramatic peaks. Known for its massive size and unpredictable weather, Nanga Parbat requires excellent mountaineering skills. We offer routes via the Diamir Face (normal route) or the more challenging Rupal Face for experienced climbers.",
-    timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Arrive in Islamabad. Team briefing, permits verification, and gear check. Hotel accommodation." },
-      { day: "Day 3", title: "Drive to Chilas", description: "Drive along the Karakoram Highway to Chilas. Views of the Indus River and Himalayan foothills." },
-      { day: "Day 4", title: "Drive to Herligkoffer Base", description: "Continue drive to Diamir valley. Short trek to Herligkoffer Base Camp area." },
-      { day: "Day 5-8", title: "Trek to Base Camp", description: "4-day trek to Diamir Base Camp (4,100m). Gradual acclimatization along the route." },
-      { day: "Day 9-14", title: "Base Camp Acclimatization", description: "Establish base camp, acclimatization hikes, and preparation for climbing phase." },
-      { day: "Day 15-30", title: "Rotations to Higher Camps", description: "Establish Camp 1 (5,000m), Camp 2 (5,800m), and Camp 3 (6,700m). Multiple acclimatization rotations." },
-      { day: "Day 31-40", title: "Summit Push Window", description: "Wait for weather window. Summit push via Camp 4 (7,200m) to the summit (8,126m)." },
-      { day: "Day 41-45", title: "Descent & Return", description: "Descend, pack up camps, trek out to road head. Drive back to Islamabad." },
-    ],
-    servicesIncluded: [
-      "Climbing and trekking permits",
-      "Liaison Officer expenses",
-      "Professional mountain guides",
-      "All meals at base camp and above",
-      "High-altitude camping equipment",
-      "Fixed ropes and anchors",
-      "Supplemental oxygen for summit",
-      "Emergency communication devices",
-      "Helicopter rescue insurance",
-      "Porter services to base camp",
-      "Ground transportation in Pakistan",
-      "City hotel accommodations",
-    ],
-    servicesNotIncluded: [
-      "International airfare",
-      "Personal climbing equipment",
-      "Travel and medical insurance",
-      "Staff gratuities",
-      "Extra oxygen beyond standard",
-      "Personal expenses",
-      "Visa costs",
-      "Delays due to weather",
-    ],
-    requirements: [
-      "Previous 7000m+ peak experience",
-      "Strong technical climbing skills",
-      "Excellent physical fitness",
-      "High altitude medical clearance",
-      "Comprehensive mountaineering insurance",
-    ],
-    highlights: [
-      "Climb the 'Killer Mountain' - 9th highest peak",
-      "Witness the massive Rupal Face",
-      "Experience authentic Himalayan adventure",
-      "Stunning views of the western Himalayas",
-    ],
-  },
-  {
-    id: "gasherbrum",
-    slug: "gasherbrum-expedition",
-    name: "Gasherbrum I & II Expedition",
-    altitude: "8,080m / 8,035m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "55-60 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - August",
-    price: 38000,
-    groupSize: "6-10 climbers",
-    image: expeditionImage3,
-    description: "The Gasherbrum peaks offer an incredible double-header expedition. Gasherbrum I (Hidden Peak) at 8,080m and Gasherbrum II at 8,035m are the 11th and 13th highest mountains in the world.",
-    overview: "Our Gasherbrum Expedition offers the unique opportunity to summit two 8000m peaks in one expedition. Located in the Karakoram Range, these peaks share a similar approach via the Baltoro Glacier. Gasherbrum II is often climbed first as preparation for the more technical Gasherbrum I.",
-    timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Arrive in Islamabad. Expedition briefing, permit verification, and equipment check." },
-      { day: "Day 3", title: "Fly to Skardu", description: "Morning flight to Skardu with spectacular mountain views. Hotel check-in and rest." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Organize porters, final supplies, and team preparation. Acclimatization walks." },
-      { day: "Day 6-7", title: "Drive to Askole", description: "Scenic jeep drive to Askole village. Porter and equipment organization." },
-      { day: "Day 8-14", title: "Trek to Base Camp", description: "7-day trek through Baltoro Glacier via Concordia to Gasherbrum Base Camp (5,200m)." },
-      { day: "Day 15-20", title: "Base Camp Setup", description: "Establish base camp, acclimatization, and preparation for climbing both peaks." },
-      { day: "Day 21-35", title: "GII Climb & Rotations", description: "Establish camps on Gasherbrum II. Summit GII (8,035m) as acclimatization for GI." },
-      { day: "Day 36-48", title: "GI Summit Push", description: "After GII success, attempt Gasherbrum I (Hidden Peak) at 8,080m." },
-      { day: "Day 49-55", title: "Descent & Trek Out", description: "Pack up camps, trek back to Askole via Concordia and Baltoro." },
-      { day: "Day 56-60", title: "Return to Islamabad", description: "Drive and fly to Islamabad. Expedition debrief and celebration." },
-    ],
-    servicesIncluded: [
-      "Permits for both Gasherbrum I & II",
-      "Liaison Officer support",
-      "IFMGA certified guides",
-      "All base camp and high camp meals",
-      "High-altitude tents and equipment",
-      "Fixed ropes and technical gear",
-      "Supplemental oxygen supplies",
-      "Satellite communication",
-      "Emergency evacuation coverage",
-      "Porter services throughout",
-      "All ground transportation",
-      "Hotel stays in cities",
-    ],
-    servicesNotIncluded: [
-      "International flights",
-      "Personal climbing gear",
-      "Personal insurance policies",
-      "Tips for local staff",
-      "Additional oxygen requests",
-      "Personal spending money",
-      "Pakistan visa fees",
-      "Weather delay costs",
-    ],
-    requirements: [
-      "Previous 6000m+ climbing experience",
-      "Technical ice climbing ability",
-      "Excellent cardiovascular fitness",
-      "High altitude medical approval",
-      "Valid mountaineering insurance",
-    ],
-    highlights: [
-      "Climb two 8000m peaks in one expedition",
-      "Trek the legendary Baltoro Glacier",
-      "Experience the beauty of Concordia",
-      "Achieve rare double 8000m summit",
-    ],
-  },
+
   {
     id: "broad-peak",
-    slug: "broad-peak-expedition",
+    peak: "8000",
+    slug: "broad-expedition",
     name: "Broad Peak Expedition",
     altitude: "8,051m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "50-55 Days",
+    duration: "35-40 Days",
     difficulty: "Difficult",
-    bestSeason: "June - August",
+    bestSeason: "February - August",
     price: 32000,
     groupSize: "6-12 climbers",
     image: heroImage1,
-    description: "Broad Peak, at 8,051m, is the 12th highest mountain in the world. Known for its massive summit plateau, it offers a technically accessible route compared to its neighbor K2.",
-    overview: "The Broad Peak Expedition is an excellent choice for climbers seeking their first 8000m summit. While still demanding extreme fitness and mountaineering skills, the normal route is less technical than K2 or Nanga Parbat. Located just 8km from K2, Broad Peak offers stunning Karakoram views.",
+    gallery: [nangaParbatImage1, nangaParbatImage2, nangaParbatImage1],
+    description:
+      "Broad Peak, at 8,051m, is the 12th highest mountain in the world. Known for its massive summit plateau, it offers a technically accessible route compared to its neighbor K2.",
+    overview:
+      "The Broad Peak Expedition is an excellent choice for climbers seeking their first 8000m summit. While still demanding extreme fitness and mountaineering skills, the normal route is less technical than K2 or Nanga Parbat. Located just 8km from K2, Broad Peak offers stunning Karakoram views.",
     timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Arrive in Islamabad. Team meeting, briefing, and gear verification." },
-      { day: "Day 3", title: "Fly to Skardu", description: "Fly to Skardu (weather dependent). Enjoy views of the Karakoram Range." },
-      { day: "Day 4-5", title: "Skardu Rest Days", description: "Acclimatization and rest in Skardu. Final preparations and shopping." },
-      { day: "Day 6-7", title: "Drive to Askole", description: "Jeep journey to Askole. Organize porters and pack animals." },
-      { day: "Day 8-14", title: "Trek to Base Camp", description: "Trek through Baltoro Glacier to Broad Peak Base Camp (4,900m)." },
-      { day: "Day 15-20", title: "Base Camp Setup", description: "Establish base camp, acclimatization walks, and climbing preparation." },
-      { day: "Day 21-35", title: "Rotations to High Camps", description: "Establish Camp 1 (5,700m), Camp 2 (6,400m), and Camp 3 (7,100m)." },
-      { day: "Day 36-45", title: "Summit Window", description: "Wait for weather. Summit push to 8,051m via the West Spur route." },
-      { day: "Day 46-50", title: "Descent & Trek Out", description: "Descend and pack camps. Trek back to Askole." },
-      { day: "Day 51-55", title: "Return Journey", description: "Return to Skardu and fly to Islamabad. Celebration and departure." },
+      {
+        day: "Day 01",
+        title: "Team Meeting and Briefing",
+        description:
+          "Meet the expedition team for a briefing at the Alpine Club of Pakistan. Activities include gear checks and last-minute purchases. Overnight at a hotel in Islamabad.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu (2,230m) via a 1-hour scenic flight or a 2-day drive via the Karakoram Highway if flights are grounded. Overnight in Skardu. Altitude: 2,230 m.",
+      },
+      {
+        day: "Day 03",
+        title: "Preparation in Skardu",
+        description:
+          "Rest and preparation day to obtain climbing permits and purchase fresh supplies. Optional acclimatization hikes to Shangrila Lake or Kharpocho Fort. Overnight at a hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Askole",
+        description:
+          "A 7-8 hour jeep journey on a rough 4x4 track along the Braldu River to Askole, the last inhabited village. Altitude: 3,000 m. Accommodation: Tent or Guesthouse.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Jhola",
+        description:
+          "A 6-7 hour trek along the Braldu River, passing through Korofon and crossing suspension bridges to reach the camp at Jhula. Altitude: 3,200 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Paiju",
+        description:
+          "A 6-7 hour trek entering the Baltoro Glacier region with views of Cathedral Peak and Trango Towers. Altitude: 3,450 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 07",
+        title: "Rest at Paiju",
+        description:
+          "Optional rest and acclimatization day involving hydration, short hikes, and recovery while porters prepare supplies. Accommodation: Tent.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Urdukas",
+        description:
+          "A 6-7 hour trek marking the first day of travel on the Baltoro Glacier, featuring views of Masherbrum. Camp on rocky terraces. Altitude: 4,130 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Goro II",
+        description:
+          "A 6-7 hour trek on glacier ice and moraine with views of Gasherbrum IV. The campsite is known for cold and windy conditions. Altitude: 4,300 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Concordia",
+        description:
+          "A 6-7 hour trek to the heart of the Karakoram, offering panoramic views of K2, Broad Peak, and the Gasherbrums. Altitude: 4,600 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Broad Peak Base Camp",
+        description:
+          "A 3-4 hour walk across the Broad Peak Glacier to establish a permanent base camp with dining and communication facilities. Altitude: 4,900 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 12-15",
+        title: "Training and Puja Ceremony",
+        description:
+          "Days dedicated to rest, technical training (fixed ropes, ice climbing, crevasse rescue), and a traditional Puja ceremony for safe passage. First load carries begin. Accommodation: Tent.",
+      },
+      {
+        day: "Day 16-22",
+        title: "First Rotation",
+        description:
+          "Acclimatization rotations reaching Camp 1 (5,700m - 6,000m) and Camp 2 (6,400m - 6,500m), including gear deposits and returns to Base Camp. Accommodation: Tent.",
+      },
+      {
+        day: "Day 23-28",
+        title: "Second Rotation",
+        description:
+          "Further acclimatization rotations reaching Camp 3 (7,200m - 7,300m) with descents to Base Camp for full recovery. Accommodation: Tent.",
+      },
+      {
+        day: "Day 29-35",
+        title: "Summit Push",
+        description:
+          "Weather-dependent window for the final push to the summit of Broad Peak (8,051m), followed by descent and recovery. Includes buffer days for weather. Altitude: 8,051 m. Accommodation: Tent.",
+      },
+      {
+        day: "Day 36-37",
+        title: "Base Camp Packing",
+        description:
+          "Rest, base camp clean-up operations, celebrations, and distribution of porter bonuses before departure. Accommodation: Tent.",
+      },
     ],
-    servicesIncluded: [
-      "All climbing permits and fees",
-      "Liaison Officer provision",
-      "Experienced climbing guides",
-      "Base camp and high camp meals",
-      "Camping and climbing equipment",
-      "Fixed rope installation",
-      "Supplemental oxygen (3 bottles)",
-      "Communication equipment",
-      "Emergency rescue insurance",
-      "Porter and animal transport",
-      "Overland transportation",
-      "Hotel accommodation",
-    ],
-    servicesNotIncluded: [
-      "International airfare",
-      "Personal climbing equipment",
-      "Travel insurance",
-      "Staff tips and gratuities",
-      "Extra oxygen bottles",
-      "Personal expenses",
-      "Pakistan visa",
-      "Weather-related delays",
-    ],
-    requirements: [
-      "Previous 6000m peak experience",
-      "Good technical climbing skills",
-      "Excellent physical condition",
-      "Medical fitness certificate",
-      "Mountaineering insurance required",
-    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible first 8000m peak",
       "Views of K2 from base camp",
@@ -291,54 +334,573 @@ export const expeditions: ExpeditionData[] = [
       "Climb in the heart of the Karakoram",
     ],
   },
+
+  {
+    id: "nanga-parbat",
+    slug: "nanga-parbat-expedition",
+    name: "Nanga Parbat Expedition",
+    altitude: "8,126m",
+    location: "Diamer District, Pakistan",
+    duration: "35-40 Days",
+    difficulty: "Very Difficult",
+    bestSeason: null,
+    price: 35000,
+    groupSize: "6-10 climbers",
+    image: nangaParbatImage1,
+    gallery: [nangaParbatImage1, nangaParbatImage2, nangaParbatImage1],
+    description:
+      "Nanga Parbat, the 'Killer Mountain,' rises 8,126 meters in the western Himalayas. It features the world's largest mountain face - the Rupal Face - rising 4,600m from base to summit.",
+    overview:
+      "The Nanga Parbat Expedition offers a challenging climb on one of the world's most dramatic peaks. Known for its massive size and unpredictable weather, Nanga Parbat requires excellent mountaineering skills. We offer routes via the Diamir Face (normal route) or the more challenging Rupal Face for experienced climbers.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival in Islamabad via international flight. Following a warm welcome at the airport and transfer to the hotel, the day includes rest and a brief tour of Islamabad and Rawalpindi. Transport: Private minibus. Meals: Lunch, Dinner.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via flight (weather permitting) or an 11-hour drive to Chilas by private vehicle. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing or Transit",
+        description:
+          "Local sightseeing in Skardu or completion of the drive from Chilas to Skardu. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 04",
+        title: "Official Briefing and Preparation",
+        description:
+          "Official expedition briefing at the Ministry of Tourism in Skardu and final technical preparations with the staff. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Hushe",
+        description:
+          "Overland journey from Skardu to Hushe village. Meals: Breakfast, Lunch, Dinner. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Brum Bramah",
+        description:
+          "Commencement of the trek from Hushe to Brum Bramah. Meals: Breakfast, Lunch, Dinner. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Masherbrum Base Camp",
+        description:
+          "Trekking from Brum Bramah to establish Masherbrum Base Camp. Meals: Breakfast, Lunch, Dinner. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08-32",
+        title: "Climbing Period",
+        description:
+          "A 26-day window dedicated to the climbing expedition. Meals: Breakfast, Lunch, Dinner. Accommodation: Camping.",
+      },
+      {
+        day: "Day 33",
+        title: "Descent to Hushe",
+        description:
+          "Trek down from Masherbrum Base Camp back to Hushe village. Meals: Breakfast, Lunch, Dinner. Accommodation: Camping.",
+      },
+      {
+        day: "Day 34",
+        title: "Drive to Skardu",
+        description:
+          "Return drive from Hushe to Skardu. Meals: Breakfast, Lunch, Dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 35",
+        title: "Debriefing and Farewell",
+        description:
+          "Official expedition debriefing in Skardu followed by a final farewell dinner. Meals: Breakfast, Lunch, Dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 36",
+        title: "Return to Islamabad or Chilas",
+        description:
+          "Return flight to Islamabad or drive to Chilas, depending on weather conditions. Meals: Breakfast, Lunch, Dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 37",
+        title: "Islamabad Sightseeing or Transit",
+        description:
+          "Sightseeing in Islamabad or completion of the drive from Chilas to Islamabad. Meals: Breakfast, Lunch, Dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 38",
+        title: "Final Departure",
+        description:
+          "Transfer to the airport for your international flight home. Meals: Breakfast.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Climb the 'Killer Mountain' - the 9th highest mountain in the world",
+      "Witness the massive Rupal Face, the world's highest mountain face",
+      "Experience an authentic Himalayan expedition",
+      "Stunning views of the western Himalayas",
+    ],
+  },
+
+  {
+    id: "gasherbrum",
+    peak: "8000",
+    slug: "gasherbrum-I-expedition",
+    name: "Gasherbrum I Expedition",
+    altitude: "8,080m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "45-40 Days",
+    difficulty: "Very Difficult",
+    bestSeason: "June - August",
+    price: 38000,
+    groupSize: "6-10 climbers",
+    image: expeditionImage3,
+    description:
+      "Gasherbrum I, also known as Hidden Peak, rises to 8,080m and is the 11th highest mountain in the world. Located deep in the Karakoram Range, it is known for its remote setting and technically demanding upper sections.",
+    overview:
+      "The Gasherbrum I Expedition is a challenging 8000m climb in the heart of the Karakoram. Accessed via the Baltoro Glacier, Gasherbrum I requires strong high-altitude experience, solid acclimatization, and excellent physical conditioning. It is more technical than Gasherbrum II and is often attempted by experienced 8000m climbers.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival in the capital city of Islamabad. Altitude: 540 m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu via a domestic flight or an overland journey via the Karakoram Highway. Altitude: 2,230 m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Rest and Preparation",
+        description:
+          "A day in Skardu dedicated to rest and final expedition preparations. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Askole",
+        description:
+          "A 7-8 hour drive to the village of Askole, the gateway to the high Karakoram. Altitude: 3,000 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Jhula",
+        description:
+          "Commencement of the trekking phase with a 6-7 hour journey to Jhula. Altitude: 3,200 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Paiju",
+        description:
+          "A 6-7 hour trek leading to the Paiju campsite. Altitude: 3,450 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Acclimatization at Paiju",
+        description:
+          "An optional day for rest and altitude acclimatization in Paiju. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Urdukas",
+        description:
+          "A 6-7 hour trek continuing up the glacier to Urdukas. Altitude: 4,130 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Goro II",
+        description:
+          "Trekking for 6-7 hours across the glacial moraine to Goro II. Altitude: 4,300 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Concordia",
+        description:
+          "A 6-7 hour trek to the famous Concordia junction. Altitude: 4,600 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Gasherbrum Base Camp",
+        description:
+          "A 4-5 hour trek to establish the primary Base Camp for the Gasherbrum expedition. Altitude: 5,100 m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12-15",
+        title: "Base Camp Training and Puja",
+        description:
+          "Days focused on rest, technical training, and the traditional Puja ceremony to bless the expedition. Accommodation: Camping.",
+      },
+      {
+        day: "Day 16-22",
+        title: "First Rotation",
+        description:
+          "Initial acclimatization phase with rotations up to Camp 2. Accommodation: Camping.",
+      },
+      {
+        day: "Day 23-28",
+        title: "Second Rotation",
+        description:
+          "Advanced acclimatization phase with rotations reaching Camp 3. Accommodation: Camping.",
+      },
+      {
+        day: "Day 29-35",
+        title: "Summit Push",
+        description:
+          "The primary climbing window for the summit attempt, subject to weather conditions. Accommodation: Camping.",
+      },
+      {
+        day: "Day 36-37",
+        title: "Rest and Packing",
+        description:
+          "Recovery and packing of equipment at Base Camp following the climbing period. Accommodation: Camping.",
+      },
+      {
+        day: "Day 38-42",
+        title: "Return Trek to Skardu",
+        description:
+          "The multi-day return trek from the mountains back toward Skardu. Accommodation: Camping.",
+      },
+      {
+        day: "Day 43",
+        title: "Rest in Skardu",
+        description:
+          "A well-earned day of rest upon returning to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 44",
+        title: "Return to Islamabad",
+        description:
+          "Travel back to Islamabad via flight or the Karakoram Highway. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 45-46",
+        title: "Contingency Days",
+        description:
+          "Extra days reserved to account for any travel or weather-related delays. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 47",
+        title: "Sightseeing and Celebration",
+        description:
+          "A day for local sightseeing in Islamabad and celebrating the expedition’s conclusion. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 48",
+        title: "Official Debriefing",
+        description:
+          "Final official debriefing and formal wrap-up of the expedition services. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 49",
+        title: "Departure",
+        description:
+          "Final transfer for departure from Islamabad. Transport: Fly out.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Summit Gasherbrum I (Hidden Peak), the 11th highest mountain in the world",
+      "Remote and less-crowded Karakoram expedition",
+      "Trek the legendary Baltoro Glacier",
+      "Climb one of the most elegant 8000m peaks",
+    ],
+  },
+
+  {
+    id: "gasherbrum",
+    slug: "gasherbrum-II-expedition",
+    name: "Gasherbrum II Expedition",
+    altitude: "8,035m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "45-50 Days",
+    difficulty: "Very Difficult",
+    bestSeason: "June - August",
+    price: 38000,
+    groupSize: "6-10 climbers",
+    image: expeditionImage3,
+    description:
+      "Gasherbrum II rises to 8,035m and is the 13th highest mountain in the world. Known for its relatively more accessible route, it is a popular first 8000m peak for experienced climbers in the Karakoram.",
+    overview:
+      "The Gasherbrum II Expedition offers climbers a challenging yet technically less demanding 8000m summit in the Karakoram Range. Accessed via the Baltoro Glacier, it provides an excellent high-altitude experience and preparation for more technical peaks like Gasherbrum I or K2.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Team Assembly and Briefing",
+        description:
+          "Meet the expedition team for a formal briefing at the Alpine Club of Pakistan. This day includes gear checks and last-minute purchases. Accommodation: Hotel in Islamabad.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu via a 1-hour scenic flight or a 2-day drive via the Karakoram Highway should flights be cancelled. Overnight in Skardu. Altitude: 2,230m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Preparation in Skardu",
+        description:
+          "Rest and preparation day to obtain climbing permits from the Gilgit-Baltistan government and finalize fresh food supplies. Optional acclimatization hikes to Shigar Fort or Satpara Lake. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Askole",
+        description:
+          "A 7-8 hour drive via 4x4 jeep along the Braldu River to Askole, the final inhabited village before the wilderness. Altitude: 3,000m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Jhula",
+        description:
+          "A 6-7 hour trek along the Braldu River, involving suspension bridge crossings to reach the camp at Jhula. Altitude: 3,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Paiju",
+        description:
+          "A 6-7 hour trek into the Baltoro Glacier region, offering views of Cathedral Peak and Trango Towers. Altitude: 3,450m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Paiju Rest Day",
+        description:
+          "Optional rest and acclimatization day for recovery and short hikes while porters prepare provisions for the glacier. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Urdukas",
+        description:
+          "A 6-7 hour trek marking the first day of glacier travel on the Baltoro, featuring views of Masherbrum. Altitude: 4,130m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Goro II",
+        description:
+          "A 6-7 hour trek over ice and moraine with stunning views of Gasherbrum IV. Altitude: 4,300m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Concordia",
+        description:
+          "A 6-7 hour trek to the heart of the Karakoram, providing panoramic views of K2, Broad Peak, and the Gasherbrums. Altitude: 4,600m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Gasherbrum Base Camp",
+        description:
+          "A 4-5 hour final trek across the Upper Baltoro Glacier to establish a permanent base camp with full facilities. Altitude: 5,100m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12-15",
+        title: "Training and Puja Ceremony",
+        description:
+          "Technical training on fixed ropes, ice climbing, and crevasse rescue, followed by a traditional Puja ceremony. Initial load carries to Camp 1 (5,950m) begin. Accommodation: Camping.",
+      },
+      {
+        day: "Day 16-22",
+        title: "First Rotation",
+        description:
+          "Acclimatization rotations to Camp 1 (5,950m) and Camp 2 (6,400m), including gear deposits and overnight stays before returning to Base Camp for rest. Accommodation: Camping.",
+      },
+      {
+        day: "Day 23-28",
+        title: "Second Rotation",
+        description:
+          "Advanced acclimatization reaching Camp 3 (7,000m) for an overnight stay, followed by descent for full recovery and weather monitoring. Accommodation: Camping.",
+      },
+      {
+        day: "Day 29-35",
+        title: "Summit Push",
+        description:
+          "A weather-dependent summit attempt of the peak (8,035m). Includes ascent through camps and a 10-15 hour summit day, with buffer days for contingencies. Altitude: 8,035m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 36-37",
+        title: "Rest and Packing",
+        description:
+          "Post-climb recovery, base camp clean-up operations, and celebrations with the porter team. Accommodation: Camping.",
+      },
+      {
+        day: "Day 38-42",
+        title: "Return Trek to Skardu",
+        description:
+          "Trekking back via Concordia, Goro II, Urdukas, Paiju, and Askole, followed by the drive back to Skardu. Accommodation: Camping.",
+      },
+      {
+        day: "Day 43",
+        title: "Skardu Debriefing",
+        description:
+          "Official debriefing with local authorities in Skardu. Optional sightseeing in Shigar Valley or Satpara Lake. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 44",
+        title: "Return to Islamabad",
+        description:
+          "Return travel to Islamabad via flight or a 2-day drive along the Karakoram Highway. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 45-46",
+        title: "Extra Contingency Days",
+        description:
+          "Buffer days reserved for weather-related delays or additional recovery time. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 47",
+        title: "Islamabad Sightseeing",
+        description:
+          "Visit local landmarks such as Faisal Mosque and Rawal Lake, concluding with an expedition celebration dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 48",
+        title: "Official Wrap-Up",
+        description:
+          "Final debriefing with the Alpine Club and the formal return of climbing permits. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 49",
+        title: "Final Departure",
+        description:
+          "Transfer to Islamabad International Airport for your flight home. Transport: Fly out.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Summit Gasherbrum II, the 13th highest mountain in the world",
+      "Trek the legendary Baltoro Glacier",
+      "Experience stunning views at Concordia",
+      "Ideal first 8000m peak in the Karakoram",
+    ],
+  },
+
   {
     id: "spantik",
     slug: "spantik-expedition",
     name: "Spantik Expedition",
     altitude: "7,027m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "25-30 Days",
+    duration: "15-20 Days",
     difficulty: "Moderate to Difficult",
-    bestSeason: "June - August",
+    bestSeason: null,
     price: 6500,
     groupSize: "4-10 climbers",
     image: heroImage2,
-    description: "Spantik, or Golden Peak, rises to 7,027m in the Karakoram. Known for its stunning golden color at sunset, it's an excellent introduction to high-altitude mountaineering.",
-    overview: "The Spantik Expedition is ideal for climbers looking to gain experience on 7000m peaks. The normal route via the Southeast Ridge is technically moderate but requires solid mountaineering fundamentals. The peak offers spectacular views of Nanga Parbat, Rakaposhi, and the Karakoram giants.",
+    description:
+      "Spantik, or Golden Peak, rises to 7,027m in the Karakoram. Known for its stunning golden color at sunset, it's an excellent introduction to high-altitude mountaineering.",
+    overview:
+      "The Spantik Expedition is ideal for climbers looking to gain experience on 7000m peaks. The normal route via the Southeast Ridge is technically moderate but requires solid mountaineering fundamentals. The peak offers spectacular views of Nanga Parbat, Rakaposhi, and the Karakoram giants.",
     timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Arrive and meet the team. Briefing and gear check." },
-      { day: "Day 3", title: "Drive to Gilgit", description: "Scenic drive along the Karakoram Highway to Gilgit." },
-      { day: "Day 4", title: "Drive to Arandu", description: "Continue to Arandu village in the Chogo Lungma Valley." },
-      { day: "Day 5-8", title: "Trek to Base Camp", description: "4-day trek to Spantik Base Camp (4,500m)." },
-      { day: "Day 9-12", title: "Acclimatization", description: "Rest and acclimatization at base camp. Short hikes." },
-      { day: "Day 13-20", title: "Summit Rotations", description: "Establish Camp 1 (5,400m) and Camp 2 (6,100m). Summit attempts." },
-      { day: "Day 21-25", title: "Summit & Descent", description: "Final summit push and descent to base camp." },
-      { day: "Day 26-30", title: "Trek Out & Return", description: "Trek to road head and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a meet and greet. The day includes transfer to the hotel, expedition briefings, paperwork, equipment checks, and last-minute shopping. Altitude: 540m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu via a domestic flight or a 2-day drive via the Karakoram Highway if flights are unavailable. The afternoon offers time to explore local markets and ancient forts. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Expedition Preparations",
+        description:
+          "A dedicated day in Skardu for obtaining climbing permits and finalizing logistics. Optional sightseeing includes Kachura Lake and Shigar Fort. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Arandu Village",
+        description:
+          "A scenic 6-7 hour jeep journey through the Braldu River Valley to Arandu, the final village before the trek. Here, the team meets the porters and prepares for the march. Altitude: 2,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Chogo Brangsa",
+        description:
+          "Commencement of the trek, walking 6-7 hours through green pastures and rocky terrain along the Bolocho Glacier. Altitude: 3,500m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Spantik Base Camp",
+        description:
+          "A 6-7 hour trek across moraines and glacier trails to reach Spantik Base Camp. The site offers views of the Golden Pillar and surrounding peaks. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07-08",
+        title: "Acclimatization and Training",
+        description:
+          "Rest days at Base Camp focused on altitude adjustment and technical training, including glacier travel, rope techniques, ice climbing, and load ferrying. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Climb to Camp 1",
+        description:
+          "A 5-6 hour steady climb over mixed terrain and crevasses to establish Camp 1. Altitude: 5,100m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Load Carry to Camp 2",
+        description:
+          "An acclimatization day spent carrying supplies to Camp 2 (5,900m) before returning to Camp 1 for the night. Altitude: 5,900m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Move to Camp 2",
+        description:
+          "A 5-6 hour ascent over steep snow and ice sections to establish a high camp in preparation for the summit push. Altitude: 5,900m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12",
+        title: "Climb to Camp 3",
+        description:
+          "A 4-5 hour gradual ascent to the final high camp. The afternoon is spent resting and preparing for the summit attempt. Altitude: 6,400m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 13-14",
+        title: "Summit Push and Return",
+        description:
+          "A 12-14 hour round-trip summit attempt of Spantik (7,027m). The climb follows a final ridge to the Golden Peak summit, offering views of Rakaposhi, Diran, K2, and Broad Peak, followed by descent to Camp 2. Altitude: 7,027m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 15-16",
+        title: "Descent to Base Camp",
+        description:
+          "Return journey to Base Camp for rest and celebration of the climb. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 17",
+        title: "Trek to Chogo Brangsa",
+        description:
+          "Beginning the trek back down toward Arandu Village. Altitude: 3,500m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 18",
+        title: "Return to Skardu",
+        description:
+          "Final trek to Arandu followed by a jeep drive back to Skardu for celebrations. Altitude: 2,800m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 19",
+        title: "Buffer Day",
+        description:
+          "A contingency day reserved for potential weather delays or travel interruptions.",
+      },
     ],
-    servicesIncluded: [
-      "Climbing and trekking permits",
-      "Professional mountain guide",
-      "All meals during expedition",
-      "Camping equipment",
-      "Fixed ropes where needed",
-      "Porter services",
-      "Ground transportation",
-      "Hotel accommodation in cities",
-    ],
-    servicesNotIncluded: [
-      "International flights",
-      "Personal climbing gear",
-      "Travel insurance",
-      "Tips for staff",
-      "Personal expenses",
-      "Visa fees",
-    ],
-    requirements: [
-      "Previous high altitude trekking experience",
-      "Basic mountaineering skills",
-      "Good physical fitness",
-      "Medical clearance",
-    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Perfect 7000m training peak",
       "Stunning 'Golden Peak' sunset views",
@@ -346,745 +908,1769 @@ export const expeditions: ExpeditionData[] = [
       "Experience authentic mountain culture",
     ],
   },
-  {
-    id: "k2-gondogoro-trek",
-    slug: "k2-gondogoro-trek",
-    name: "K2 and Gondogoro La Trek",
-    altitude: "5,128m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "14-16 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - September",
-    price: 1800,
-    groupSize: "4-12 trekkers",
-    image: heroImage1,
-    description: "Trek to K2 Base Camp and cross the scenic Gondogoro La pass with stunning views of the Karakoram Range.",
-    overview: "This challenging trek combines the iconic K2 Base Camp trek with a crossing of Gondogoro La (5,128m), offering spectacular alpine scenery and access to remote mountain regions.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad to Skardu", description: "Arrive and travel to Skardu" },
-      { day: "Day 3-4", title: "Skardu Preparation", description: "Organize supplies and permits" },
-      { day: "Day 5-11", title: "Trek to K2 Base Camp", description: "Trek through Baltoro Glacier to K2 BC" },
-      { day: "Day 12-14", title: "Gondogoro La Pass", description: "Cross the scenic pass and descend" },
-      { day: "Day 15-16", title: "Return to Islamabad", description: "Return journey to Islamabad" },
-    ],
-    servicesIncluded: ["Trekking permits", "Professional guides", "All meals", "Camping equipment", "Porter services", "Transportation"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Travel insurance", "Tips", "Personal expenses"],
-    requirements: ["Good physical fitness", "Trekking experience", "Medical clearance"],
-    highlights: ["K2 Base Camp views", "Alpine pass crossing", "Stunning glacier scenery"],
-  },
-  {
-    id: "k2-base-camp-trek",
-    slug: "k2-base-camp-trek",
-    name: "K2 Base Camp Trek",
-    altitude: "5,150m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "12-14 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - September",
-    price: 1500,
-    groupSize: "4-12 trekkers",
-    image: heroImage2,
-    description: "Trek to the base camp of K2, the world's second highest mountain, via the legendary Baltoro Glacier.",
-    overview: "Experience the majesty of K2 Base Camp on this iconic trek through the Karakoram, featuring the world's longest glacier outside the polar regions.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad to Skardu", description: "Arrive and travel to Skardu" },
-      { day: "Day 3-4", title: "Skardu Rest", description: "Acclimatization in Skardu" },
-      { day: "Day 5-11", title: "Baltoro Trek", description: "Trek via Jola, Paiju, Urdukas to K2 BC" },
-      { day: "Day 12-14", title: "Return Journey", description: "Return to Islamabad" },
-    ],
-    servicesIncluded: ["Trekking permits", "Professional guides", "All meals", "Camping equipment", "Porter services"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Travel insurance", "Tips"],
-    requirements: ["Moderate physical fitness", "Trekking experience", "Acclimatization readiness"],
-    highlights: ["K2 Base Camp", "Baltoro Glacier", "Concordia views", "Alpine scenery"],
-  },
-  {
-    id: "five-8000m-base-camp",
-    slug: "five-8000m-base-camp-trek",
-    name: "Five 8000m Base Camp Trek",
-    altitude: "5,200m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "16-18 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - September",
-    price: 2200,
-    groupSize: "4-10 trekkers",
-    image: heroImage1,
-    description: "Visit base camps of five 8000m peaks: K2, Broad Peak, Gasherbrum I & II, and a stunning alpine experience.",
-    overview: "An exclusive trek visiting the base camps of multiple 8000m peaks, showcasing the heart of the Karakoram Range and its majestic mountains.",
-    timeline: [
-      { day: "Day 1-4", title: "Islamabad to Base Camps", description: "Travel and preparation" },
-      { day: "Day 5-14", title: "Multi Base Camp Trek", description: "Visit five different base camps" },
-      { day: "Day 15-18", title: "Return to Islamabad", description: "Return journey" },
-    ],
-    servicesIncluded: ["Trekking permits", "Expert guides", "Full meals", "Equipment", "Porters", "Transportation"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Tips"],
-    requirements: ["Excellent fitness", "High altitude experience", "Medical clearance"],
-    highlights: ["Multiple 8000m peaks", "Baltoro Glacier", "Alpine adventure"],
-  },
-  {
-    id: "nanga-parbat-base-camp-trek",
-    slug: "nanga-parbat-base-camp-trek",
-    name: "Nanga Parbat Base Camp Trek",
-    altitude: "4,100m",
-    location: "Diamer District, Pakistan",
-    duration: "10-12 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - September",
-    price: 1300,
-    groupSize: "4-10 trekkers",
-    image: heroImage2,
-    description: "Trek to the base camp of Nanga Parbat, the 9th highest mountain in the world, via the scenic Diamir valley.",
-    overview: "A challenging trek featuring dramatic mountain scenery and access to one of the world's most impressive peaks from the Diamir Face.",
-    timeline: [
-      { day: "Day 1-2", title: "Travel to Chilas", description: "Journey from Islamabad" },
-      { day: "Day 3-8", title: "Trek to Base Camp", description: "Trek through Diamir valley" },
-      { day: "Day 9-12", title: "Exploration & Return", description: "Base camp views and return" },
-    ],
-    servicesIncluded: ["Permits", "Guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance", "Tips"],
-    requirements: ["Good fitness", "Trekking experience"],
-    highlights: ["Nanga Parbat views", "Diamir valley", "High altitude scenery"],
-  },
-  {
-    id: "fairy-meadows-trek",
-    slug: "fairy-meadows-trek",
-    name: "Fairy Meadows Trek",
-    altitude: "3,300m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "8-10 Days",
-    difficulty: "Moderate",
-    bestSeason: "May - September",
-    price: 900,
-    groupSize: "4-15 trekkers",
-    image: heroImage1,
-    description: "Trek through lush alpine meadows with spectacular views of Nanga Parbat, the 'Killer Mountain'.",
-    overview: "A scenic trek to the famous Fairy Meadows offering close-up views of Nanga Parbat and picturesque mountain landscape.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad to Base", description: "Travel and preparation" },
-      { day: "Day 3-7", title: "Meadows Trek", description: "Trek through alpine meadows" },
-      { day: "Day 8-10", title: "Return", description: "Return to Islamabad" },
-    ],
-    servicesIncluded: ["Permits", "Guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance"],
-    requirements: ["Basic fitness", "Moderate experience"],
-    highlights: ["Nanga Parbat views", "Alpine meadows", "Scenic photography"],
-  },
-  {
-    id: "around-nanga-parbat-trek",
-    slug: "around-nanga-parbat-trek",
-    name: "Around Nanga Parbat Trek",
-    altitude: "4,500m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "14-16 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - August",
-    price: 1900,
-    groupSize: "4-8 trekkers",
-    image: heroImage2,
-    description: "Circumnavigate Nanga Parbat, experiencing diverse valleys and mountain scenery from all angles.",
-    overview: "A rarely attempted trek that circles Nanga Parbat, providing unique perspectives of the 'Killer Mountain' and remote Himalayan valleys.",
-    timeline: [
-      { day: "Day 1-3", title: "Preparation", description: "Travel and setup" },
-      { day: "Day 4-13", title: "Circuit Trek", description: "Trek around Nanga Parbat" },
-      { day: "Day 14-16", title: "Return", description: "Return journey" },
-    ],
-    servicesIncluded: ["Permits", "Expert guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance", "Tips"],
-    requirements: ["Excellent fitness", "High altitude experience", "Technical skills"],
-    highlights: ["360-degree views", "Remote valleys", "Alpine adventure"],
-  },
-  {
-    id: "nangma-valley-trek",
-    slug: "nangma-valley-trek",
-    name: "Nangma Valley Trek",
-    altitude: "3,800m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "9-11 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - September",
-    price: 1100,
-    groupSize: "4-12 trekkers",
-    image: heroImage1,
-    description: "Trek through the pristine Nangma Valley with views of surrounding peaks and traditional mountain villages.",
-    overview: "An off-the-beaten-path trek offering authentic mountain culture, stunning scenery, and interaction with local communities.",
-    timeline: [
-      { day: "Day 1-2", title: "Travel", description: "Journey to valley base" },
-      { day: "Day 3-8", title: "Valley Trek", description: "Trek through Nangma Valley" },
-      { day: "Day 9-11", title: "Return", description: "Return to Islamabad" },
-    ],
-    servicesIncluded: ["Permits", "Guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance"],
-    requirements: ["Moderate fitness", "Cultural appreciation"],
-    highlights: ["Valley scenery", "Local villages", "Mountain culture"],
-  },
-  {
-    id: "thalle-la-trek",
-    slug: "thalle-la-trek",
-    name: "Thalle La Trek",
-    altitude: "4,600m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "11-13 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - August",
-    price: 1400,
-    groupSize: "4-10 trekkers",
-    image: heroImage2,
-    description: "Trek over Thalle La pass with panoramic views of multiple Karakoram peaks and pristine alpine terrain.",
-    overview: "A high mountain pass trek offering dramatic alpine scenery, technical terrain, and stunning mountain vistas.",
-    timeline: [
-      { day: "Day 1-3", title: "Preparation", description: "Travel and acclimatization" },
-      { day: "Day 4-10", title: "Pass Trek", description: "Trek to and cross Thalle La" },
-      { day: "Day 11-13", title: "Return", description: "Return journey" },
-    ],
-    servicesIncluded: ["Permits", "Guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance"],
-    requirements: ["Good fitness", "Alpine experience", "Technical ability"],
-    highlights: ["Mountain pass", "Alpine scenery", "Peak views"],
-  },
-  {
-    id: "snow-lake-hispar-trek",
-    slug: "snow-lake-hispar-trek",
-    name: "Snow Lake - Hispar La Trek",
-    altitude: "5,151m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "15-17 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "July - September",
-    price: 2000,
-    groupSize: "4-10 trekkers",
-    image: heroImage1,
-    description: "Cross two major mountain passes via Snow Lake with traverse of alpine glaciers and Hispar La pass.",
-    overview: "A challenging high-altitude trek crossing multiple glaciers and passes through the heart of the Karakoram Range.",
-    timeline: [
-      { day: "Day 1-3", title: "Travel", description: "Journey to trek base" },
-      { day: "Day 4-13", title: "Glacier Trek", description: "Cross Snow Lake and Hispar La" },
-      { day: "Day 14-17", title: "Return", description: "Return to Islamabad" },
-    ],
-    servicesIncluded: ["Permits", "Expert guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance", "Tips"],
-    requirements: ["Excellent fitness", "High altitude experience", "Technical skills required"],
-    highlights: ["Glacier crossing", "Mountain passes", "Alpine wilderness"],
-  },
-  {
-    id: "pastore-peak-trek",
-    slug: "pastore-peak-trek",
-    name: "Pastore Peak Trek",
-    altitude: "4,708m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "10-12 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - September",
-    price: 1300,
-    groupSize: "4-10 trekkers",
-    image: heroImage2,
-    description: "Trek and climb Pastore Peak with sweeping views of the Karakoram and Hindukush ranges.",
-    overview: "A trek combining mountaineering with scenic alpine hiking, offering stunning panoramic views from the summit.",
-    timeline: [
-      { day: "Day 1-2", title: "Travel", description: "Journey to base" },
-      { day: "Day 3-8", title: "Peak Trek", description: "Trek to and climb Pastore Peak" },
-      { day: "Day 9-12", title: "Return", description: "Return journey" },
-    ],
-    servicesIncluded: ["Permits", "Guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance"],
-    requirements: ["Good fitness", "Climbing experience"],
-    highlights: ["Peak summit", "Panoramic views", "Alpine climbing"],
-  },
-  {
-    id: "shimshal-pass-trek",
-    slug: "shimshal-pass-trek",
-    name: "Shimshal Pass Trek",
-    altitude: "4,720m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "12-14 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "July - September",
-    price: 1700,
-    groupSize: "4-8 trekkers",
-    image: heroImage1,
-    description: "Trek through remote Shimshal Valley and cross the high Shimshal Pass with stunning mountain scenery.",
-    overview: "An adventurous trek through one of the most remote regions of the Karakoram, crossing a scenic high-altitude pass.",
-    timeline: [
-      { day: "Day 1-2", title: "Travel", description: "Journey to Shimshal Valley" },
-      { day: "Day 3-10", title: "Valley Trek", description: "Trek through valley to pass" },
-      { day: "Day 11-14", title: "Pass Crossing & Return", description: "Cross pass and return" },
-    ],
-    servicesIncluded: ["Permits", "Expert guides", "Meals", "Equipment", "Porters"],
-    servicesNotIncluded: ["Flights", "Gear", "Insurance", "Tips"],
-    requirements: ["Excellent fitness", "High altitude experience", "Remote area trekking"],
-    highlights: ["Remote valley", "High pass", "Mountain wilderness"],
-  },
-  {
-    id: "gasherbrum-iii",
-    slug: "gasherbrum-iii-expedition",
-    name: "Gasherbrum III Expedition",
-    altitude: "7,952m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "40-45 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - August",
-    price: 28000,
-    groupSize: "4-8 climbers",
-    image: heroImage1,
-    description: "Gasherbrum III at 7,952m is the 15th highest mountain in the world. A challenging yet rewarding 7000m expedition.",
-    overview: "The Gasherbrum III Expedition offers an excellent intermediate challenge between 6000m training peaks and 8000m summits. Located in the Karakoram, it provides spectacular alpine experiences with well-established climbing routes.",
-    timeline: [
-      { day: "Day 1-2", title: "Arrival & Briefing", description: "Arrive in Islamabad for expedition briefing and final preparations." },
-      { day: "Day 3", title: "Fly to Skardu", description: "Scenic flight to Skardu with panoramic mountain views." },
-      { day: "Day 4-5", title: "Skardu Acclimatization", description: "Rest and acclimatization in Skardu with final gear checks." },
-      { day: "Day 6-7", title: "Drive to Askole", description: "Jeep journey to Askole and porter organization." },
-      { day: "Day 8-14", title: "Trek to Base Camp", description: "7-day trek through Baltoro Glacier to Gasherbrum Base Camp." },
-      { day: "Day 15-20", title: "Base Camp Setup", description: "Establish base camp and acclimatization hikes." },
-      { day: "Day 21-35", title: "Camp Rotations", description: "Establish higher camps with progressive acclimatization climbs." },
-      { day: "Day 36-42", title: "Summit Window", description: "Wait for optimal weather and summit push." },
-      { day: "Day 43-45", title: "Descent & Return", description: "Descend and trek back to Askole, return to Islamabad." },
-    ],
-    servicesIncluded: ["Climbing permits", "Liaison Officer", "Professional guides", "All meals", "Camping equipment", "Fixed ropes", "Emergency communication", "Porter services", "Ground transportation"],
-    servicesNotIncluded: ["International flights", "Personal climbing gear", "Travel insurance", "Staff tips", "Personal expenses"],
-    requirements: ["Previous 6000m+ experience", "Technical climbing skills", "Excellent physical fitness", "Medical clearance"],
-    highlights: ["Climb a technical 7000m peak", "Experience Baltoro Glacier", "Alpine climbing adventure", "Spectacular Karakoram views"],
-  },
+
   {
     id: "gasherbrum-iv",
     slug: "gasherbrum-iv-expedition",
     name: "Gasherbrum IV Expedition",
     altitude: "7,932m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "40-45 Days",
+    duration: "45-50 Days",
     difficulty: "Very Difficult",
-    bestSeason: "June - August",
+    bestSeason: null,
     price: 28500,
     groupSize: "4-8 climbers",
     image: heroImage2,
-    description: "Gasherbrum IV at 7,932m is a challenging Alpine climb offering technical mountaineering experience in the Karakoram Range.",
-    overview: "The Gasherbrum IV Expedition combines technical climbing with high-altitude mountaineering. This peak is ideal for climbers seeking their first 7000m+ summit after completing 6000m peaks.",
+    description:
+      "Gasherbrum IV, rising to 7,932m in the Karakoram Range, is a highly technical and remote peak renowned for its dramatic granite faces and extreme climbing challenges.",
+    overview:
+      "The Gasherbrum IV Expedition is designed for elite mountaineers seeking a serious technical challenge in the Karakoram. This peak demands advanced alpine climbing skills, experience at high altitudes, and the ability to navigate one of the most remote and difficult environments in the world.",
     timeline: [
-      { day: "Day 1-2", title: "Arrival in Islamabad", description: "Team briefing and expedition orientation in Islamabad." },
-      { day: "Day 3", title: "Flight to Skardu", description: "Morning flight to Skardu with stunning mountain views." },
-      { day: "Day 4-5", title: "Skardu Rest Days", description: "Acclimatization and final preparations in Skardu." },
-      { day: "Day 6-7", title: "Drive to Askole", description: "Scenic jeep journey and porter organization." },
-      { day: "Day 8-14", title: "Baltoro Trek", description: "Trek to Gasherbrum Base Camp via Baltoro Glacier." },
-      { day: "Day 15-20", title: "Base Camp Establishment", description: "Set up base camp and begin acclimatization." },
-      { day: "Day 21-35", title: "Higher Camp Rotations", description: "Establish camps with multiple acclimatization climbs." },
-      { day: "Day 36-42", title: "Summit Push", description: "Wait for weather window and summit attempt." },
-      { day: "Day 43-45", title: "Descent & Return", description: "Descend camps and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival in Islamabad followed by transfer to the hotel. The day includes a team briefing and a comprehensive equipment check. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Ministry Briefing",
+        description:
+          "Attend the official expedition briefing at the Ministry of Tourism and complete last-minute preparations. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu via flight (weather-dependent) or a 2-day drive via the Karakoram Highway if flights are grounded. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Preparation in Skardu",
+        description:
+          "A rest day in Skardu dedicated to gear checks, permit clearance, and final supply shopping. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Askole",
+        description:
+          "Overland journey from Skardu to Askole, the final village before the commencement of the trek. Altitude: 3,000m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Jhola",
+        description:
+          "Beginning the trek from Askole to Jhola, a journey of approximately 6-7 hours. Altitude: 3,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Paiyu",
+        description:
+          "A 5-6 hour trek from Jhola to the Paiju campsite. Altitude: 3,450m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Acclimatization at Paiyu",
+        description:
+          "A scheduled day for rest and altitude acclimatization at Paiju. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Urdukas",
+        description:
+          "A 7-8 hour trek from Paiju to Urdukas. Altitude: 4,000m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Goro II",
+        description:
+          "Continuing the trek for 6-7 hours to reach the Goro II campsite. Altitude: 4,300m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Base Camp",
+        description:
+          "A 6-8 hour trek from Goro II to establish the Base Camp. Altitude: 5,000m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12",
+        title: "Base Camp Operations",
+        description:
+          "Rest and acclimatization at Base Camp while setting up expedition facilities. Altitude: 5,000m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 13-15",
+        title: "Technical Training",
+        description:
+          "Final Base Camp setup, technical training sessions, and the commencement of the first rotations. Altitude: 5,000m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 16-35",
+        title: "Climbing Rotations",
+        description:
+          "Acclimatization rotations between Camp 1 (5,900m), Camp 2 (6,500m), and Camp 3 (7,200m). The exact schedule is determined by weather and route conditions. Altitude: 5,900m - 7,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 36-40",
+        title: "Summit Window",
+        description:
+          "A weather-dependent window for the summit attempt, climbing from Camp 3 to the peak (7,925m) followed by a safe descent to lower camps. Altitude: 7,925m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 41",
+        title: "Base Camp Decommissioning",
+        description:
+          "Packing equipment and conducting a thorough clean-up of the Base Camp area. Accommodation: Camping.",
+      },
+      {
+        day: "Day 42-44",
+        title: "Return Trek to Askole",
+        description:
+          "Trekking back to Askole, retracing the original route over three days. Accommodation: Camping.",
+      },
+      {
+        day: "Day 45",
+        title: "Return to Skardu",
+        description: "Drive from Askole back to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 46",
+        title: "Return to Islamabad",
+        description: "Flight or drive back to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 47",
+        title: "Debriefing and Leisure",
+        description:
+          "Official debriefing at the Tourism Office followed by free time for local sightseeing. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 48-49",
+        title: "Contingency Days",
+        description:
+          "Extra days reserved for potential delays related to weather, logistics, or flight cancellations. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 50",
+        title: "International Departure",
+        description:
+          "Transfer for your international departure flight. Transport: Fly out.",
+      },
     ],
-    servicesIncluded: ["Permits and royalties", "Liaison Officer", "Expert guides", "All meals", "High-altitude tents", "Fixed ropes", "Communication equipment", "Porter services", "Transportation"],
-    servicesNotIncluded: ["International airfare", "Personal climbing gear", "Insurance policies", "Staff gratuities", "Personal expenses"],
-    requirements: ["6000m climbing experience", "Advanced technical skills", "Superior physical conditioning", "Medical fitness clearance"],
-    highlights: ["Technical 7000m peak", "Alpine climbing experience", "Remote mountain adventure", "Karakoram wilderness"],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Extremely technical high-altitude climb",
+      "Remote and pristine Karakoram wilderness",
+      "Dramatic granite faces and alpine routes",
+      "For experienced mountaineers seeking elite challenges",
+    ],
   },
+
+  {
+    id: "gasherbrum-v",
+    slug: "gasherbrum-v-expedition",
+    name: "Gasherbrum V Expedition",
+    altitude: "7,147 m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "35-40 Days",
+    difficulty: "Very Difficult",
+    bestSeason: null,
+    price: 28500,
+    groupSize: "4-8 climbers",
+    image: heroImage2,
+    description:
+      "Gasherbrum V, at 7,422m in the Karakoram Range, is a challenging but less technical 7000m peak, offering adventurous high-altitude climbing in a remote setting.",
+    overview:
+      "The Gasherbrum V Expedition provides climbers with the opportunity to experience a high-altitude Karakoram peak. While still remote, it is more accessible than Gasherbrum IV and can be attempted by climbers with solid 6000–7000m mountaineering experience seeking to gain experience on technical 7000m peaks.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a transfer to the hotel. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via flight PK-451. In the event of inclement weather, the journey will proceed via an overland drive from Islamabad to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing or Transit",
+        description:
+          "Dedicated to sightseeing in Skardu or completing the drive from Chilas to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Official Briefing and Preparation",
+        description:
+          "Official expedition briefing at the Ministry of Tourism and final logistical preparations with the staff. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Askoli",
+        description:
+          "Overland journey from Skardu to Askoli. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Jhola",
+        description:
+          "Commencement of the trek from Askoli to Jhola. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Paju",
+        description: "Trek from Jhola to Paju. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Rest and Acclimatization",
+        description:
+          "A scheduled rest day in Paju for altitude acclimatization. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Urdukas",
+        description:
+          "Continuing the trek from Paju to Urdukas. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Goro II",
+        description: "Trek from Urdukas to Goro II. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Base Camp",
+        description:
+          "Final trek from Goro II to establish the Gasherbrum Base Camp. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12-31",
+        title: "Climbing Period",
+        description:
+          "A 20-day dedicated climbing window for the expedition. Accommodation: Camping.",
+      },
+      {
+        day: "Day 32",
+        title: "Descent to Goro II",
+        description:
+          "Trek down from Base Camp to Goro II. Accommodation: Camping.",
+      },
+      {
+        day: "Day 33",
+        title: "Descent to Khobursay",
+        description:
+          "Trek down from Goro II to Khobursay. Accommodation: Camping.",
+      },
+      {
+        day: "Day 34",
+        title: "Descent to Bardumal",
+        description:
+          "Trek down from Khobursay to Bardumal. Accommodation: Camping.",
+      },
+      {
+        day: "Day 35",
+        title: "Return to Askoli",
+        description:
+          "Final trek from Bardumal back to Askoli. Accommodation: Camping.",
+      },
+      {
+        day: "Day 36",
+        title: "Drive to Skardu",
+        description:
+          "Overland drive from Askoli back to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 37",
+        title: "Debriefing and Farewell",
+        description:
+          "Official expedition debriefing in Skardu followed by a final farewell dinner. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 38",
+        title: "Return to Islamabad or Chilas",
+        description:
+          "Flight to Islamabad via PK452 or a drive to Chilas if the flight is grounded due to weather. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 39",
+        title: "Islamabad Sightseeing or Transit",
+        description:
+          "Local sightseeing in Islamabad or completion of the drive from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 40",
+        title: "International Departure",
+        description:
+          "Transfer to the airport for your flight home. Services conclude upon departure. Transport: Fly out.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Challenging 7000m peak",
+      "Remote Karakoram adventure",
+      "Experience high-altitude climbing",
+      "For climbers with prior 6000m+ experience",
+    ],
+  },
+
   {
     id: "masherbrum",
+    peak: "7000",
     slug: "masherbrum-expedition",
     name: "Masherbrum Expedition",
     altitude: "7,806m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "35-40 Days",
+    duration: "40-45 Days",
     difficulty: "Difficult",
-    bestSeason: "June - August",
+    bestSeason: null,
     price: 26000,
     groupSize: "4-10 climbers",
     image: heroImage1,
-    description: "Masherbrum at 7,806m offers a technically moderate 7000m peak with excellent mountaineering training value.",
-    overview: "The Masherbrum Expedition provides an ideal transition climb for mountaineers moving from 6000m to 8000m peaks. The mountain offers good climbing conditions and stunning views of the Karakoram Range.",
+    description:
+      "Masherbrum, standing at 7,806m in the Karakoram Range, is a technically demanding peak renowned for its steep snow and ice routes, glacier travel, and remote, rugged beauty.",
+    overview:
+      "The Masherbrum Expedition offers experienced mountaineers a challenging high-altitude climb in a remote Karakoram setting. The peak requires strong alpine skills, glacier navigation, and prior experience on 6000m+ peaks. Climbers are rewarded with dramatic views of the surrounding Karakoram giants and pristine mountain landscapes.",
+
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Arrival", description: "Team gathering and expedition briefing." },
-      { day: "Day 3", title: "Fly to Skardu", description: "Flight to Skardu with mountain panoramas." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Organize supplies and acclimatize in Skardu." },
-      { day: "Day 6-7", title: "Jeep to Askole", description: "Travel to Askole and porter coordination." },
-      { day: "Day 8-12", title: "Trek to Base Camp", description: "Trek to Masherbrum Base Camp." },
-      { day: "Day 13-18", title: "Base Camp Setup", description: "Establish base camp and acclimatization walks." },
-      { day: "Day 19-32", title: "Camp Establishment", description: "Set up higher camps with climbing rotations." },
-      { day: "Day 33-38", title: "Summit Push", description: "Summit attempt during favorable weather window." },
-      { day: "Day 39-40", title: "Descent & Departure", description: "Descend and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a meet and greet. The day includes transfer to the hotel, rest, a briefing at the Tourism Office, and final preparations for the expedition. Altitude: 540m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "A one-hour scenic flight to Skardu (weather dependent). In the event of a cancellation, the team will drive to Chilas (12-14 hrs) along the Karakoram Highway. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Free Day in Skardu or Transit",
+        description:
+          "If the flight operated, this day is reserved for gear checks, permit processing, and shopping. If driving, the journey continues from Chilas to Skardu (8-9 hrs). Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Hushe Valley",
+        description:
+          "A 6-7 hour jeep departure from Skardu through local valleys to reach Hushe, the final village before the trek. Altitude: 3,050m. Accommodation: Camping (Tent or Guesthouse).",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Saicho Camp",
+        description:
+          "The trek commences along the Hushe River with a gentle 5-6 hour ascent through meadows and moraines to Saicho. Altitude: 3,350m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Masherbrum Base Camp",
+        description:
+          "A 5-6 hour trek through rocky and icy terrain, gaining elevation to establish the Base Camp facilities amidst the surrounding peaks. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07-35",
+        title: "Acclimatization and Climbing Period",
+        description:
+          "A dedicated window for acclimatization, technical briefings, and establishing high camps: Camp 1 (5,600m), Camp 2 (6,400m) with fixed ropes, and Camp 3 (7,000m). The summit push to 7,821m involves mixed rock and ice slopes, followed by a descent to high camps. Altitude: 5,600m - 7,821m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 36-37",
+        title: "Descent and Cleanup",
+        description:
+          "A safe descent from the high camps back to Base Camp. Activities include packing expedition gear and conducting environmental waste removal. Accommodation: Camping.",
+      },
+      {
+        day: "Day 38",
+        title: "Return Trek to Hushe",
+        description:
+          "Retracing the trekking route back to Hushe village, concluded by a celebration dinner with the local staff. Accommodation: Camping.",
+      },
+      {
+        day: "Day 39",
+        title: "Return to Skardu",
+        description:
+          "Return journey to Skardu via 4x4 jeeps with time to rest and explore the town. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 40",
+        title: "Travel to Islamabad or Chilas",
+        description:
+          "Transfer to Islamabad via flight (weather permitting) or a drive to Chilas if flights are grounded. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 41",
+        title: "Free Day in Islamabad or Transit",
+        description:
+          "A day for sightseeing in Islamabad for those who flew, or completion of the road journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 42",
+        title: "International Departure",
+        description:
+          "Final transfer to Islamabad International Airport for your departure flight, marking the end of the expedition services. Transport: Fly out.",
+      },
     ],
-    servicesIncluded: ["Climbing permits", "Liaison Officer", "Professional guides", "All meals", "Camping equipment", "Ropes and anchors", "Communication gear", "Porter services"],
-    servicesNotIncluded: ["International flights", "Personal equipment", "Insurance", "Tips and gratuities", "Personal costs"],
-    requirements: ["Good 6000m experience", "Solid technical skills", "Strong cardiovascular fitness", "Medical clearance"],
-    highlights: ["Excellent training 7000m peak", "Technical climbing", "Karakoram adventure", "Alpine mountaineering"],
-  },
-  {
-    id: "chogolisa",
-    slug: "chogolisa-expedition",
-    name: "Chogolisa Expedition",
-    altitude: "7,668m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "35-40 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - August",
-    price: 25500,
-    groupSize: "4-10 climbers",
-    image: heroImage2,
-    description: "Chogolisa at 7,668m is one of the more accessible 7000m peaks, ideal for mountaineers gaining high-altitude experience.",
-    overview: "The Chogolisa Expedition offers an excellent stepping stone to 8000m peaks. Known for its relatively moderate technical difficulty and good success rates, Chogolisa is perfect for climbers building their high-altitude portfolio.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Expedition team orientation and final briefings." },
-      { day: "Day 3", title: "Skardu Flight", description: "Morning flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization and preparation in Skardu." },
-      { day: "Day 6-7", title: "Askole Journey", description: "Drive to Askole and organize porters." },
-      { day: "Day 8-12", title: "Base Camp Trek", description: "Trek to Chogolisa Base Camp." },
-      { day: "Day 13-18", title: "Base Camp Acclimatization", description: "Establish camp and acclimatization hikes." },
-      { day: "Day 19-32", title: "Higher Camp Climbs", description: "Progressive camps with climbing rotations." },
-      { day: "Day 33-38", title: "Summit Window", description: "Await weather and summit attempt." },
-      { day: "Day 39-40", title: "Descent & Return", description: "Descend and return to Islamabad." },
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Technically demanding 7000m peak",
+      "Glacier and alpine climbing experience",
+      "Remote Karakoram adventure",
+      "Stunning high-altitude scenery",
     ],
-    servicesIncluded: ["Permits and royalties", "Liaison Officer", "Expert guides", "Full meals", "Tents and equipment", "Fixed ropes", "Radio communication", "Porters", "Transportation"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Staff tips", "Personal expenses"],
-    requirements: ["Previous 6000m experience", "Good technical climbing", "Excellent fitness", "Medical clearance"],
-    highlights: ["Accessible 7000m peak", "Good training mountain", "Spectacular views", "High success rates"],
   },
-  {
-    id: "k6",
-    slug: "k6-expedition",
-    name: "K6 Expedition",
-    altitude: "7,462m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "30-35 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - August",
-    price: 23000,
-    groupSize: "4-10 climbers",
-    image: heroImage1,
-    description: "K6 at 7,462m is one of the most accessible 7000m peaks in the Karakoram, ideal for ambitious high-altitude mountaineers.",
-    overview: "The K6 Expedition is perfect for climbers seeking their first 7000m summit or those training for higher peaks. The mountain offers moderate technical difficulty with good climbing routes and high success rates.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Arrival", description: "Team briefing and preparation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Acclimatization", description: "Rest and acclimatization in Skardu." },
-      { day: "Day 6-7", title: "Askole Drive", description: "Jeep to Askole and porter setup." },
-      { day: "Day 8-11", title: "Base Camp Trek", description: "Trek to K6 Base Camp." },
-      { day: "Day 12-17", title: "Base Camp Rest", description: "Establish camp and acclimatize." },
-      { day: "Day 18-28", title: "Camp Climbs", description: "Establish camps with multiple rotations." },
-      { day: "Day 29-33", title: "Summit & Descent", description: "Summit push and descent." },
-      { day: "Day 34-35", title: "Return Journey", description: "Return to Islamabad." },
-    ],
-    servicesIncluded: ["Permits", "Liaison Officer", "Professional guides", "All meals", "Equipment", "Fixed ropes", "Communication", "Porters", "Transportation"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Tips", "Personal spending"],
-    requirements: ["5000m+ climbing experience", "Basic technical skills", "Good physical fitness", "Medical approval"],
-    highlights: ["Accessible 7000m peak", "Perfect first 7000m mountain", "Great views", "Good success rates"],
-  },
+
   {
     id: "rakaposhi",
     slug: "rakaposhi-expedition",
     name: "Rakaposhi Expedition",
     altitude: "7,788m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "30-35 Days",
+    duration: "20-25 Days",
     difficulty: "Moderate to Difficult",
-    bestSeason: "May - September",
+    bestSeason: null,
     price: 24000,
     groupSize: "4-10 climbers",
     image: heroImage2,
-    description: "Rakaposhi at 7,788m dominates the Hunza valley with its spectacular pyramid. A technically moderate 7000m peak with excellent views.",
-    overview: "The Rakaposhi Expedition is ideal for mountaineers seeking a relatively straightforward 7000m climb with stunning mountain scenery. The peak's proximity to civilization and moderate technical demands make it accessible yet rewarding.",
+    description:
+      "Rakaposhi, at 7,788m, towers over the Hunza Valley with its stunning pyramid-shaped peak. It is a technically moderate 7000m mountain offering spectacular high-altitude scenery.",
+    overview:
+      "The Rakaposhi Expedition provides climbers with an accessible yet serious 7000m climb in the Karakoram. While technically moderate, it requires prior high-altitude experience. The peak offers breathtaking views of the Hunza Valley and surrounding mountains, making it both rewarding and scenic.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Team orientation and final preparations." },
-      { day: "Day 3-4", title: "Drive to Hunza", description: "Drive from Islamabad to Hunza Valley." },
-      { day: "Day 5", title: "Hunza Rest", description: "Rest and acclimatization in Hunza." },
-      { day: "Day 6-8", title: "Base Camp Trek", description: "Trek to Rakaposhi Base Camp." },
-      { day: "Day 9-15", title: "Base Camp Acclimatization", description: "Establish camp and acclimatization hikes." },
-      { day: "Day 16-28", title: "Higher Camp Climbs", description: "Establish camps with climbing rotations." },
-      { day: "Day 29-32", title: "Summit Push", description: "Summit attempt during weather window." },
-      { day: "Day 33-35", title: "Return", description: "Descent and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a meet and greet. The day includes transfer to the hotel, an expedition briefing, paperwork, equipment checks, and last-minute shopping. Altitude: 540m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu",
+        description:
+          "Transfer to Skardu via a one-hour domestic flight (weather permitting) or a 2-day drive via the Karakoram Highway. The afternoon offers time to explore Skardu's local markets and ancient forts. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Expedition Preparations in Skardu",
+        description:
+          "A day dedicated to obtaining climbing permits and finalizing logistics. Optional sightseeing includes Kachura Lake or Shigar Fort. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Arandu Village",
+        description:
+          "A scenic 6-7 hour jeep journey through the Braldu River Valley to Arandu, the final village before the trek. Here, the team meets the porters and prepares for the march. Altitude: 2,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Chogo Brangsa",
+        description:
+          "The trek commences with a 6-7 hour journey through green pastures and rocky terrain along the Bolocho Glacier. Altitude: 3,500m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Spantik Base Camp",
+        description:
+          "A 6-7 hour trek across moraines and glacier trails to reach Base Camp. The site offers stunning views of the Golden Pillar and surrounding peaks. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07-08",
+        title: "Acclimatization and Training",
+        description:
+          "Rest days at Base Camp for altitude adjustment and technical training, including glacier travel, rope techniques, and ice climbing. Load ferrying to higher camps begins. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Climb to Camp 1",
+        description:
+          "A steady 5-6 hour climb over crevasses and mixed terrain to establish and rest at Camp 1. Altitude: 5,100m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Load Carry to Camp 2",
+        description:
+          "Supplies are carried to Camp 2 (5,900m) as part of the acclimatization process before returning to Camp 1 for the night. Altitude: 5,900m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Move to Camp 2",
+        description:
+          "A 5-6 hour ascent through steep snow and ice sections to establish Camp 2 in preparation for the summit push. Altitude: 5,900m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12",
+        title: "Climb to Camp 3",
+        description:
+          "A 4-5 hour gradual ascent to the high camp. The day is spent resting and preparing for the final summit attempt. Altitude: 6,400m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 13-14",
+        title: "Summit Push and Return",
+        description:
+          "An early morning summit attempt involving a 12-14 hour round trip. The climb follows the final ridge to the Golden Peak summit, offering views of Rakaposhi, Diran, K2, and Broad Peak, followed by a descent to Camp 2. Altitude: 7,027m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 15-16",
+        title: "Descent to Base Camp",
+        description:
+          "Return to Base Camp for rest and celebration of the expedition's progress. Altitude: 4,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 17",
+        title: "Return Trek to Chogo Brangsa",
+        description:
+          "Descending from Base Camp back toward Arandu Village. Altitude: 3,500m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 18",
+        title: "Trek to Arandu and Return to Skardu",
+        description:
+          "Final trek to Arandu followed by a jeep drive to Skardu for hot showers and celebrations. Altitude: 2,800m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 19",
+        title: "Contingency Day",
+        description:
+          "An extra day reserved to account for potential bad weather or travel delays.",
+      },
+      {
+        day: "Day 20",
+        title: "Travel to Islamabad",
+        description:
+          "Return to Islamabad via flight or a 2-day drive along the Karakoram Highway. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 21",
+        title: "Departure from Islamabad",
+        description:
+          "Free time for shopping and sightseeing at locations such as Faisal Mosque and Lok Virsa Museum, followed by transfer to the airport for your flight home. Transport: Fly out.",
+      },
     ],
-    servicesIncluded: ["Permits and royalties", "Liaison Officer", "Experienced guides", "All meals", "High-altitude equipment", "Fixed ropes", "Communication equipment", "Porter services", "Ground transportation"],
-    servicesNotIncluded: ["International flights", "Personal climbing gear", "Travel insurance", "Staff gratuities", "Personal expenses"],
-    requirements: ["Previous 6000m experience", "Good technical climbing ability", "Excellent physical condition", "Medical fitness certificate"],
-    highlights: ["Spectacular Hunza Valley views", "Accessible 7000m climb", "Moderate technical difficulty", "Great training mountain"],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Accessible 7000m climb with moderate technical difficulty",
+      "Spectacular views of Hunza Valley",
+      "Ideal for climbers gaining high-altitude experience",
+      "Stunning Karakoram scenery",
+    ],
   },
+
+  {
+    id: "chogolisa",
+    slug: "chogolisa-expedition",
+    name: "Chogolisa Expedition",
+    altitude: "7,668m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "40-45 Days",
+    difficulty: "Difficult",
+    bestSeason: null,
+    price: 25500,
+    groupSize: "4-10 climbers",
+    image: heroImage2,
+    description:
+      "Chogolisa, at 7,668m in the Karakoram Range, is a high-altitude peak offering moderate technical climbing and excellent experience for mountaineers preparing for higher summits.",
+    overview:
+      "The Chogolisa Expedition serves as a stepping stone for climbers aiming for 8000m peaks. While technically moderate, it demands strong high-altitude skills and careful acclimatization. The peak rewards climbers with spectacular views of the surrounding Karakoram mountains.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival in Islamabad followed by a transfer to the hotel. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Expedition Briefing",
+        description:
+          "Attend the official expedition briefing session at the Alpine Club of Pakistan. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Drive to Chilas",
+        description:
+          "An 11-12 hour overland journey from Islamabad to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Skardu",
+        description:
+          "An 8-9 hour drive continuing from Chilas to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Rest Day in Skardu",
+        description:
+          "A dedicated day for rest and final preparations in Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 06",
+        title: "Drive to Askoli",
+        description:
+          "Overland journey to Askoli, where Chogolisa Peak can be viewed in the distance from the Baltoro glacier route. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Bardumal",
+        description:
+          "Commencement of the trek from Askoli to Bardumal. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Paiju",
+        description:
+          "Continuing the trek from Bardumal to Paiju. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Rest Day at Paiju",
+        description:
+          "A scheduled rest and recovery day at the Paiju campsite. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Urdukas",
+        description: "Trekking from Paiju to Urdukas. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Goro II",
+        description:
+          "Trekking from Urdukas to Goro II. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12",
+        title: "Trek to Vigne Glacier",
+        description:
+          "Proceeding from Goro II to the Vigne Glacier. Accommodation: Camping.",
+      },
+      {
+        day: "Day 13",
+        title: "Trek to Base Camp",
+        description:
+          "Final trek from the Vigne Glacier to establish Chogolisa Base Camp. Accommodation: Camping.",
+      },
+      {
+        day: "Day 14-36",
+        title: "Climbing Period",
+        description:
+          "A 23-day window dedicated to the climbing ascent and summit operations. Accommodation: Camping.",
+      },
+      {
+        day: "Day 37",
+        title: "Descent to Goro II",
+        description:
+          "Trek back from Base Camp to Goro II. Accommodation: Camping.",
+      },
+      {
+        day: "Day 38",
+        title: "Trek to Paiju",
+        description:
+          "Continuing the return trek from Goro II back to Paiju. Accommodation: Camping.",
+      },
+      {
+        day: "Day 39",
+        title: "Trek to Korofong",
+        description: "Trekking from Paiju to Korofong. Accommodation: Camping.",
+      },
+      {
+        day: "Day 40",
+        title: "Trek to Askoli",
+        description:
+          "Final day of trekking, returning to Askoli village. Accommodation: Camping.",
+      },
+      {
+        day: "Day 41",
+        title: "Drive to Skardu",
+        description:
+          "Overland drive from Askoli back to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 42",
+        title: "Drive to Chilas",
+        description:
+          "Beginning the return road journey from Skardu to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 43",
+        title: "Return to Islamabad",
+        description:
+          "Concluding the road journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 44",
+        title: "Debriefing",
+        description:
+          "Final expedition debriefing session in Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 45",
+        title: "Final Departure",
+        description:
+          "Transfer for your departure to your respective international destinations.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Moderate technical 7000m peak",
+      "Ideal for gaining high-altitude experience",
+      "Stunning Karakoram scenery",
+      "Suitable for climbers building 8000m readiness",
+    ],
+  },
+
+  {
+    id: "trich-mir",
+    slug: "trich-mir-expedition",
+    name: "Trich Mir Expedition",
+    altitude: "7,708m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "30-35 Days",
+    difficulty: "Difficult",
+    bestSeason: null,
+    price: 25500,
+    groupSize: "4-10 climbers",
+    image: heroImage2,
+    description:
+      "Trich Mir, at 7,708m in the Hindu Kush, is the highest peak of the range, offering a challenging high-altitude climb with spectacular views of Afghanistan and northern Pakistan.",
+    overview:
+      "The Trich Mir Expedition is ideal for experienced climbers seeking a remote 7000m+ peak. While technically moderate, it requires strong high-altitude skills, proper acclimatization, and preparation for remote mountain conditions. The climb provides breathtaking vistas and a true adventure in the Hindu Kush region.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival and Briefing",
+        description:
+          "Arrival in Islamabad followed by an official briefing with the Alpine Club of Pakistan to finalize permit clearance. Altitude: 540m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Chitral",
+        description:
+          "Transfer to Chitral via a domestic flight or overland drive, noting that flights are weather-dependent. Altitude: 1,500m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Chitral Preparations",
+        description:
+          "A day dedicated to final preparations in Chitral, including comprehensive gear checks and initial acclimatization. Altitude: 1,500m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Shagrom Village",
+        description:
+          "Overland journey to Shagrom Village, the final road-accessible point before the trek. Altitude: 2,400m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Tirich Glacier Base Camp",
+        description:
+          "Commencement of the trek from Shagrom (2,800m) to the Tirich Glacier Base Camp. Altitude: 3,600m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Base Camp Acclimatization",
+        description:
+          "A scheduled day for rest and altitude acclimatization at Base Camp. Altitude: 3,600m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07-09",
+        title: "Establish Advanced Base Camp",
+        description:
+          "Moving supplies via load ferry to establish the Advanced Base Camp. Altitude: 4,500m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10-12",
+        title: "Establish Camp 1",
+        description:
+          "Setting up Camp 1, involving technical ice climbing and careful crevasse navigation. Altitude: 5,200m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 13-15",
+        title: "Establish Camp 2",
+        description:
+          "Technical ascent across steep snow and ice slopes to establish Camp 2. Altitude: 6,100m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 16-18",
+        title: "Establish Camp 3",
+        description:
+          "Pushing further to set up Camp 3, requiring tough technical climbing. Altitude: 6,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 19-21",
+        title: "Summit Preparations",
+        description:
+          "Days reserved for rest and final preparations for the summit attempt. Accommodation: Camping.",
+      },
+      {
+        day: "Day 22",
+        title: "Summit Push",
+        description:
+          "Early morning summit attempt of Tirich Mir (7,708m) via steep ice and rock slopes. Altitude: 7,708m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 23",
+        title: "Descent for Recovery",
+        description:
+          "Safe descent back to Camp 3 for post-summit recovery. Altitude: 6,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 24-25",
+        title: "Return to Base Camp",
+        description:
+          "Continuing the descent back to the primary Base Camp. Altitude: 3,600m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 26-27",
+        title: "Trek to Shagrom Village",
+        description:
+          "Retracing the trekking route back to Shagrom Village. Altitude: 2,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 28",
+        title: "Return to Chitral",
+        description:
+          "Drive from Shagrom Village back to Chitral. Altitude: 1,500m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 29",
+        title: "Rest and Contingency",
+        description:
+          "A rest day in Chitral also serving as a buffer for weather contingencies. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 30",
+        title: "Return to Islamabad",
+        description:
+          "Transfer back to Islamabad via flight or overland drive. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 31",
+        title: "Debriefing and Farewell",
+        description:
+          "Official expedition debriefing followed by a farewell dinner in Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 32",
+        title: "International Departure",
+        description:
+          "Transfer to the airport for your international departure flight home.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Highest peak of the Hindu Kush",
+      "Moderate technical 7000m+ climb",
+      "Remote and adventurous expedition",
+      "Stunning views of Afghanistan and Pakistan",
+    ],
+  },
+
   {
     id: "laila-peak",
-    slug: "laila-peak-expedition",
+    slug: "laila-expedition",
     name: "Laila Peak Expedition",
     altitude: "6,096m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "25-30 Days",
+    duration: "20-25 Days",
     difficulty: "Moderate",
-    bestSeason: "June - August",
+    bestSeason: null,
     price: 18000,
     groupSize: "4-10 climbers",
     image: heroImage1,
-    description: "Laila Peak at 6,096m offers an excellent introduction to high-altitude mountaineering in the Karakoram Range.",
-    overview: "The Laila Peak Expedition is ideal for climbers new to alpine mountaineering or those seeking additional acclimatization experience. The peak offers good climbing routes and stunning views of the surrounding mountains.",
+    description:
+      "Laila Peak, at 6,096m in the Karakoram Range, is a strikingly steep and technical 6000m peak, offering climbers an excellent introduction to high-altitude alpine mountaineering.",
+    overview:
+      "The Laila Peak Expedition is ideal for climbers seeking their first high-altitude experience in the Karakoram. While the routes are relatively straightforward, the peak requires good alpine skills and proper acclimatization. Climbers are rewarded with stunning views of the surrounding mountains and valleys.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Team orientation and expedition briefing." },
-      { day: "Day 3", title: "Flight to Skardu", description: "Scenic flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Acclimatization and gear preparation in Skardu." },
-      { day: "Day 6-7", title: "Askole Journey", description: "Drive to Askole and organize porters." },
-      { day: "Day 8-11", title: "Base Camp Trek", description: "Trek to Laila Peak Base Camp." },
-      { day: "Day 12-17", title: "Base Camp Acclimatization", description: "Establish camp and acclimatization climbs." },
-      { day: "Day 18-25", title: "Camp Setup & Climbs", description: "Set up higher camps with climbing rotations." },
-      { day: "Day 26-28", title: "Summit Push", description: "Summit attempt during favorable weather." },
-      { day: "Day 29-30", title: "Descent & Return", description: "Descend and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our staff and transferred to the group hotel for rest and recovery. The day concludes with a comprehensive expedition briefing and optional sightseeing in the capital city. Altitude: 540m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 02",
+        title: "Flight to Skardu",
+        description:
+          "Take a spectacular 45-minute mountain flight to Skardu, offering views of Nanga Parbat and K2. If flights are cancelled due to weather, the journey proceeds via a scenic 8-9 hour drive on the Karakoram Highway to Chilas. Altitude: 2,230m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 03",
+        title: "Sightseeing and Preparation",
+        description:
+          "Attend an official briefing at the tourism department and meet your expedition crew. The afternoon offers opportunities to explore the historical Kharpocho Fort, the Organic Village, or the 8th-century Manthal Buddha Rock. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Hushe Village",
+        description:
+          "An early morning 6-hour jeep journey crossing the Indus and Shyok rivers. The route winds through Khaplu and picturesque valleys to reach Hushe, situated at the foot of Masherbrum. Altitude: 3,170m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Saicho",
+        description:
+          "The expedition’s first trekking day is an easy 5-hour walk to the Saicho campsite. The trail provides pleasant views of Masherbrum Peak (7,821m), with the afternoon free for relaxation. Altitude: 3,330m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Laila Peak Base Camp",
+        description:
+          "A 4-5 hour trek toward the Gondogoro Glacier to establish Base Camp. The site offers a stunning vantage point of the surrounding high peaks. Altitude: 4,535m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 07-17",
+        title: "Acclimatization and Climbing Period",
+        description:
+          "A dedicated window for non-guided climbing and altitude adjustment. The ascent involves mid-grade climbing at a 55-degree inclination on mixed terrain and ice, typically utilizing an advanced base camp at 5,765m. Base camp staff provide nutritional support throughout. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 18",
+        title: "Return to Saicho",
+        description:
+          "Following the conclusion of the climbing session, the team packs all gear and conducts a thorough campsite cleanup before trekking 4 hours back to Saicho. Altitude: 3,330m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 19",
+        title: "Trek to Hushe",
+        description:
+          "A final 3-4 hour walk back to Hushe village. The afternoon is reserved for celebrations with the porter team and the distribution of tips and gear as tokens of appreciation. Altitude: 3,170m. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 20",
+        title: "Return Drive to Skardu",
+        description:
+          "Drive back to Skardu via the Khaplu Valley, with optional stops at Khaplu Fort and the historical Chaqchan Mosque. Enjoy the comfort of a hotel stay and a hot shower. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 21",
+        title: "Fly to Islamabad",
+        description:
+          "Transfer to Skardu airport for the return flight to Islamabad. If weather prevents flying, the team will drive the Karakoram Highway toward Naran. The evening in the capital features a celebratory traditional dinner. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 22",
+        title: "Contingency Day",
+        description:
+          "A buffer day to account for potential travel delays. If already in Islamabad, this day is free for independent sightseeing and a final group meal. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 23",
+        title: "International Departure",
+        description:
+          "After breakfast, transfer to Islamabad International Airport for your return flight home, marking the conclusion of the Laila Peak expedition. Meals: Breakfast.",
+      },
     ],
-    servicesIncluded: ["Permits", "Liaison Officer", "Professional guides", "All meals", "Equipment", "Fixed ropes", "Communication gear", "Porter services"],
-    servicesNotIncluded: ["International flights", "Personal climbing gear", "Insurance", "Tips and gratuities", "Personal expenses"],
-    requirements: ["Good physical fitness", "Basic mountaineering skills", "Previous trekking experience", "Medical clearance"],
-    highlights: ["Excellent training 6000m peak", "Good climbing routes", "Stunning alpine views", "Ideal first high peak"],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Technical yet accessible 6000m peak",
+      "Good alpine climbing routes",
+      "Stunning Karakoram scenery",
+      "Ideal introduction to high-altitude mountaineering",
+    ],
   },
+
   {
-    id: "pastore-peak",
-    slug: "pastore-peak-expedition",
+    id: "pastore-expedition",
+    slug: "pastore-expedition",
     name: "Pastore Peak Expedition",
-    altitude: "6,618m",
+    altitude: "4,708m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "28-32 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - August",
-    price: 20000,
-    groupSize: "4-8 climbers",
+    duration: "20-25 Days",
+    difficulty: "Difficult",
+    bestSeason: null,
+    price: 1300,
+    groupSize: "4-10 trekkers",
     image: heroImage2,
-    description: "Pastore Peak at 6,618m combines mountaineering with technical climbing for an intermediate mountain experience.",
-    overview: "The Pastore Peak Expedition offers an excellent stepping stone for climbers progressing toward 7000m peaks. The mountain features moderate technical climbing with panoramic views of the Karakoram and Hindu Kush ranges.",
+    description:
+      "Pastore Peak, at 4,708m near Skardu, offers a scenic trekking and mountaineering experience with sweeping views of the Karakoram and Hindukush ranges.",
+    overview:
+      "The Pastore Peak Expedition combines trekking with light alpine climbing, making it ideal for acclimatization and beginners seeking high-altitude experience. The summit provides panoramic vistas of the surrounding mountains.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Arrival", description: "Team briefing and expedition orientation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu with mountain views." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization and preparation." },
-      { day: "Day 6-7", title: "Askole Drive", description: "Travel to Askole and porter setup." },
-      { day: "Day 8-12", title: "Base Camp Trek", description: "Trek to Pastore Peak Base Camp." },
-      { day: "Day 13-18", title: "Base Camp Acclimatization", description: "Establish camp and acclimatization hikes." },
-      { day: "Day 19-28", title: "Higher Camp Climbs", description: "Establish camps with multiple rotations." },
-      { day: "Day 29-31", title: "Summit Push", description: "Summit attempt during weather window." },
-      { day: "Day 32", title: "Return", description: "Descent and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our representative and transferred to the group hotel. The remainder of the day is dedicated to recovery and a group briefing regarding the Pastore Peak, K2, and Gondogoro La expedition. If time permits, optional sightseeing in the purpose-built capital of Islamabad is available. Accommodation: Grand Islamabad Hotel or similar. Meals: Dinner.",
+      },
+      {
+        day: "Day 02",
+        title: "Flight to Skardu",
+        description:
+          "Transfer to the airport for a spectacular 45-minute flight to Skardu, the capital of Baltistan, offering views of the Himalayas and Karakoram, including Nanga Parbat (8,126m). If weather prevents flying, the journey proceeds via a scenic 8-9 hour drive on the Karakoram Highway to Naran or Chilas. Afternoon activities include visiting local bazaars and the 8th-century Manthal Buddha Rock. Altitude: 2,230m. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing and Preparation",
+        description:
+          "A day to explore the ancient gateway to the high peaks. Activities include a hike to the early 18th-century Kharpocho Fort for panoramic views of the Indus River and a visit to the Organic Village. Optional jeep tours to Satpara Lake are available. Final preparations for the trek are completed here. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Johla via Askole",
+        description:
+          "A dramatic 8-hour drive along the Indus, Shigar, and Braldu rivers leads to Askole, the final settlement. After meeting the porter team, the trek begins across the snout of the Biafo Glacier to Korofong. The route continues through side valleys and across the Braldu River bridge to reach Johla camp, offering views of Bakhor Das (5,809m) and Paiju Peak. Altitude: 3,100m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Paiju",
+        description:
+          "The first full walking day follows the Braldu River, ascending toward the green oasis of Paiju. The 6-hour trek offers excellent views of Paiju Peak (6,611m) and the first glimpses of the immense Baltoro Glacier and the Trango Towers. Altitude: 3,380m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Khoburtse",
+        description:
+          "A challenging 7-hour day begins with a walk to the snout of the Baltoro Glacier. The trail climbs onto the glacier's rubble-covered surface, undulating across the moraine toward the southern side. The day concludes at Khoburtse, featuring sensational views of the Cathedral Towers, Uli Biaho, and the Trango Group. Altitude: 3,760m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Urdukas",
+        description:
+          "A shorter but strenuous 4-hour ascent along the undulating lateral moraine. The route passes the Great Trango and the 'Nameless Tower' to reach Urdukas, a site perched high above the glacier with rampart-like views of Cathedral Peak and Lobsang. Altitude: 4,130m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 08",
+        title: "Acclimatization at Urdukas",
+        description:
+          "A dedicated rest day to facilitate the acclimatization process. This is the last organized campsite on grassy slopes, providing facilities for washing and short hikes among alpine flowers. This 'climb high, sleep low' strategy is essential preparation for Pastore Peak. Altitude: 4,130m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Goro II",
+        description:
+          "Follow the moraine edge before climbing back onto the broad back of the Baltoro Glacier. The 6-7 hour trek passes the Yermanandu Glacier and offers views of Muztagh (7,270m) and Gasherbrum IV. The campsite is established directly on the glacier ice. Altitude: 4,250m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 10",
+        title: "Trek to Concordia",
+        description:
+          "A 5-hour trek into the heart of the Karakoram. Passing Mustagh Tower, the route leads to the famous glacial junction of Concordia. Here, the full height of K2 is revealed, standing within 24 kilometers of four 8,000-meter peaks and surrounded by giants like Mitre Peak and Chogolisa. Altitude: 4,600m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 11",
+        title: "Trek to Broad Peak Base Camp",
+        description:
+          "A 4-hour trek through ice fins and moraine ridges leads to the medial moraine of the Godwin Austen glacier. Established at the base of the Broad Peak climbing route, this camp offers one of the most iconic views of K2. Altitude: 5,000m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 12",
+        title: "K2 Base Camp and Pastore Base Camp",
+        description:
+          "An early morning start for a scenic walk to the Mighty K2 Base Camp, a highlight of the trek. After exploring the actual base of the world's second-highest peak, the team returns to establish Pastore Peak Base Camp. Altitude: 5,100m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 13-16",
+        title: "Pastore Peak Climbing Period",
+        description:
+          "This window is dedicated to the ascent of Pastore Peak. Following a day of technical training on the Pastore Glacier, the team attempts the summit on Day 15—a challenging 10-12 hour climb led by an experienced high-altitude guide. Logistical support remains stationed at Base Camp throughout. On Day 16, the team returns to Broad Peak Base Camp. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 17",
+        title: "Trek to Ali Camp",
+        description:
+          "Navigate the Upper Baltoro and the Vigne Glacier toward the base of the Gondogoro La. The 6-hour trek across flatter glacial surfaces leads to Ali Camp. The afternoon includes a technical skills session to practice the use of jumars on fixed lines for the upcoming pass crossing. Altitude: 5,000m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 18",
+        title: "Gondogoro La Crossing to Khuspang",
+        description:
+          "An alpine start at 2 a.m. to safely cross the Gondogoro La (5,600m) before the sun increases rockfall risk. A 10-11 hour day involving steep 50-degree snow slopes and fixed ropes. The summit offers views of K2, Broad Peak, and the Gasherbrums, before a descent into the Gondogoro Valley to the oasis of Khuspang. Altitude: 5,600m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 19",
+        title: "Contingency Day",
+        description:
+          "A buffer day reserved for potential delays or inclement weather. If the pass was crossed successfully on schedule, this day serves as an opportunity for rest or exploration in the Hushe Valley. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 20",
+        title: "Trek to Saicho",
+        description:
+          "A 6-7 hour descent across moraine and ice to reach Dalsangpa and eventually Saicho. This pleasant walk passes yak pastures and the first trees encountered since Paiju, returning to oxygen-rich air at the junction of the Gondogoro and Charakusa valleys. Altitude: 3,350m. Accommodation: Full-service Camping. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 21",
+        title: "Return to Hushe and Skardu",
+        description:
+          "A final 2-hour walk to the village of Hushe, followed by a 7-hour drive through the lush Khaplu Valley. The journey concludes on paved roads back to Skardu, where the team enjoys a hotel stay and a real bed. Accommodation: Summit Hotel. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 22",
+        title: "Return to Islamabad",
+        description:
+          "A scenic return flight to Islamabad, once again passing Nanga Parbat. In the event of flight cancellation, a two-day drive begins along the Karakoram Highway to Chilas. The evening in the capital is reserved for a celebratory meal. Accommodation: Hotel De Papae or similar. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 23",
+        title: "Contingency and Sightseeing",
+        description:
+          "A final buffer day to account for travel from Chilas to Islamabad or for sightseeing in the capital if the flight was successful. This ensures all travelers have ample time for international connections. Accommodation: Hotel De Papae or similar. Meals: Breakfast, Lunch, Dinner.",
+      },
+      {
+        day: "Day 24",
+        title: "Final Departure",
+        description:
+          "Following breakfast, transfer to Islamabad International Airport for your return flight home, marking the conclusion of the Pastore Peak expedition. Meals: Breakfast.",
+      },
     ],
-    servicesIncluded: ["Permits and royalties", "Liaison Officer", "Expert guides", "All meals", "High-altitude equipment", "Fixed ropes", "Communication", "Porters"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Staff tips", "Personal costs"],
-    requirements: ["5000m+ climbing experience", "Solid technical climbing skills", "Good physical fitness", "Medical clearance"],
-    highlights: ["Technical 6000m climb", "Great training mountain", "Panoramic views", "Karakoram adventure"],
-  },
-  {
-    id: "khusrogang",
-    slug: "khusrogang-expedition",
-    name: "Khusrogang Expedition",
-    altitude: "6,400m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "26-30 Days",
-    difficulty: "Moderate",
-    bestSeason: "June - August",
-    price: 19000,
-    groupSize: "4-10 climbers",
-    image: heroImage1,
-    description: "Khusrogang at 6,400m provides an excellent training ground for higher altitude climbing with moderate technical difficulty.",
-    overview: "The Khusrogang Expedition is perfect for mountaineers building experience toward 7000m peaks. The mountain offers accessible climbing routes with good acclimatization opportunities and spectacular mountain scenery.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Team gathering and final briefings." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Acclimatization", description: "Rest and acclimatization in Skardu." },
-      { day: "Day 6-7", title: "Askole Journey", description: "Drive to Askole and organize logistics." },
-      { day: "Day 8-11", title: "Base Camp Trek", description: "Trek to Khusrogang Base Camp." },
-      { day: "Day 12-17", title: "Base Camp Setup", description: "Establish camp and acclimatization activities." },
-      { day: "Day 18-26", title: "Camp Establishment", description: "Set up higher camps with climbing rotations." },
-      { day: "Day 27-29", title: "Summit Window", description: "Summit attempt during favorable weather." },
-      { day: "Day 30", title: "Descent", description: "Descend and return to Islamabad." },
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Scenic summit views",
+      "Ideal for acclimatization",
+      "Beginner-friendly alpine climbing",
+      "Panoramic views of Karakoram and Hindukush",
     ],
-    servicesIncluded: ["Climbing permits", "Liaison Officer", "Experienced guides", "All meals", "Camping equipment", "Fixed ropes", "Radio communication", "Porter services"],
-    servicesNotIncluded: ["International flights", "Personal climbing equipment", "Insurance", "Staff gratuities", "Personal spending"],
-    requirements: ["Previous 5000m+ experience", "Intermediate technical skills", "Strong physical fitness", "Medical approval"],
-    highlights: ["Moderate 6000m peak", "Good training mountain", "Accessible climbing", "Alpine mountain views"],
   },
+
   {
     id: "gondogoro-peak",
-    slug: "gondogoro-peak-expedition",
+    slug: "gondogoro-expedition",
     name: "Gondogoro Peak Expedition",
     altitude: "5,950m",
     location: "Gilgit Baltistan, Pakistan",
-    duration: "22-26 Days",
+    duration: "10-15 Days",
     difficulty: "Moderate",
-    bestSeason: "June - August",
+    bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
     image: heroImage2,
-    description: "Gondogoro Peak at 5,950m is one of the most accessible high-altitude peaks, ideal for building mountain climbing experience.",
-    overview: "The Gondogoro Peak Expedition offers an excellent introduction to high-altitude climbing with minimal technical difficulty. Perfect for climbers new to the Karakoram or those seeking their first significant altitude climb.",
+    description:
+      "Gondogoro Peak, at 5,950m in the Karakoram, is a high-altitude peak offering an accessible yet rewarding alpine climbing experience for climbers with basic mountaineering skills.",
+    overview:
+      "The Gondogoro Peak Expedition provides an excellent introduction to high-altitude mountaineering. While technically less demanding than higher peaks, it involves glacier travel and snow climbing, making it perfect for climbers gaining experience in the Karakoram.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Orientation", description: "Team briefing and expedition preparation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization in Skardu." },
-      { day: "Day 6-7", title: "Askole Drive", description: "Drive to Askole." },
-      { day: "Day 8-10", title: "Base Camp Trek", description: "Trek to Gondogoro Base Camp." },
-      { day: "Day 11-16", title: "Base Camp Acclimatization", description: "Establish camp and altitude acclimatization." },
-      { day: "Day 17-22", title: "Higher Camp Climbs", description: "Set up camps and climbing rotations." },
-      { day: "Day 23-24", title: "Summit Push", description: "Summit attempt during weather window." },
-      { day: "Day 25-26", title: "Return", description: "Descend and return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival in the capital city of Islamabad. Our team will meet you for an initial expedition briefing followed by a transfer to the group hotel. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via a 1-hour domestic flight. Skardu serves as the administrative, commercial, and transportation hub of Baltistan. In the event of a flight cancellation, we will undertake a 480km drive to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Transit and Sightseeing",
+        description:
+          "A free day in Skardu to explore the town. If traveling from Chilas, the 7-8 hour morning drive offers spectacular views of Nanga Parbat (8,125m) at the junction of the Indus River. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Hushe",
+        description:
+          "An early morning departure for the drive to Hushe village, passing through Kande and the scenic junction of the Hushe and Shyok Rivers. Altitude: 3,050m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Shaieshcho",
+        description:
+          "A scenic 4-5 hour trek along the lateral moraine, winding through wild rose and gooseberry bushes. Shaieshcho is located at the junction of the Charakusa and Gondogoro valleys, where the routes to K6 and K7 Base Camps bifurcate. Altitude: 3,330m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Gondogoro Camp",
+        description:
+          "A 2-3 hour walk through the ablation valley on the eastern side of the Gondogoro Glacier. The trail leads past grassy expanses and juniper groves to reach the campsite. Altitude: 3,950m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Dalzampa",
+        description:
+          "Follow a well-established trail to Golong for lunch. The journey continues over glacial rubble—requiring caution for rockfall—and climbs toward the beautiful pastures of Dalzampa, sheltered within an ablation valley. Altitude: 4,300m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Khuspang",
+        description:
+          "A 4-5 hour trek along the moraine and glacial trails to reach the next camp at Khuspang. Altitude: 4,680m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 09",
+        title: "Trek to Gondogoro Peak Base Camp",
+        description:
+          "Trek to the higher established Base Camp of Gondogoro Peak to prepare for the ascent. Accommodation: Camping.",
+      },
+      {
+        day: "Day 10",
+        title: "Return to Dalzampa",
+        description:
+          "Following the activities at Base Camp, trek back down to the Dalzampa campsite. Accommodation: Camping.",
+      },
+      {
+        day: "Day 11",
+        title: "Descent to Shaieshcho",
+        description:
+          "A 6-7 hour walk descending through the lateral moraine, surrounded by wild roses, cedar, and tamarisk bushes, returning to the junction at Shaieshcho. Accommodation: Camping.",
+      },
+      {
+        day: "Day 12",
+        title: "Return to Hushe and Skardu",
+        description:
+          "A 2-3 hour final trek to Hushe followed by a 5-6 hour drive to Skardu via Khaplu. Khaplu was once the second-largest kingdom in Baltistan, guarding the ancient trade routes to Ladakh. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 13",
+        title: "Return to Islamabad or Chilas",
+        description:
+          "Flight to Islamabad (subject to weather) and transfer to the hotel. In the event of a cancellation, the journey proceeds via an overland drive to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 14",
+        title: "Leisure Day in Islamabad",
+        description:
+          "A day for rest and leisure in Islamabad. Those traveling by road will complete the final leg of the journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 15",
+        title: "Debriefing and Departure",
+        description:
+          "Official farewell meeting and debriefing session. The afternoon is available for sightseeing in Islamabad before the final evening transfer to the airport for your return flight home.",
+      },
     ],
-    servicesIncluded: ["Permits", "Liaison Officer", "Professional guides", "All meals", "Equipment", "Fixed ropes", "Communication", "Porters"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Tips", "Personal spending"],
-    requirements: ["Good physical fitness", "Basic mountaineering experience", "High altitude trekking background", "Medical clearance"],
-    highlights: ["Accessible 6000m peak", "Ideal training mountain", "Minimal technical difficulty", "Great introduction to mountaineering"],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Accessible 6000m peak for acclimatization",
+      "Introduction to glacier and alpine climbing",
+      "Great training mountain for high-altitude experience",
+      "Scenic views of the Karakoram",
+    ],
   },
+
   {
-    id: "trango-tower",
-    slug: "trango-tower",
-    name: "Trango Tower Climbing",
-    altitude: "6,286m",
-    location: "Karakoram, Gilgit Baltistan, Pakistan",
+    id: "bondit-peak",
+    slug: "bondit-expedition",
+    name: "Bondit Peak Expedition",
+    altitude: "5,800m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "25-30 Days",
+    difficulty: "Moderate",
+    bestSeason: null,
+    price: 17500,
+    groupSize: "4-10 climbers",
+    image: heroImage2,
+    description:
+      "Bondit Peak, at 5,800m in the Karakoram near Hushe, is a trekking and climbing peak ideal for gaining high-altitude experience with minimal technical challenges.",
+    overview:
+      "The Bondit Peak Expedition provides climbers with an accessible high-altitude climb suitable for acclimatization and training. The routes are relatively straightforward, making it perfect for trekkers and beginner mountaineers seeking their first 5000–6000m summit.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a meet and greet and transfer to your hotel. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via flight PK-451. In the event of inclement weather preventing the flight, the journey will proceed via an overland drive from Islamabad to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing or Transit",
+        description:
+          "A day dedicated to local sightseeing in Skardu or completing the road journey from Chilas to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Official Briefing and Preparation",
+        description:
+          "Attend the official expedition briefing at the Ministry of Tourism and finalize all logistical preparations with the staff. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Kanday",
+        description:
+          "Overland journey from Skardu to the village of Kanday. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Khotid",
+        description:
+          "The first day of trekking, moving from Kanday toward the Khotid campsite. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Bondit Peak Base Camp",
+        description:
+          "Continue the trek from Khotid to establish the Bondit Peak Base Camp. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08-23",
+        title: "Climbing Period",
+        description:
+          "A 16-day window dedicated to the climbing phase, technical rotations, and summit attempts of Bondit Peak. Accommodation: Camping.",
+      },
+      {
+        day: "Day 25",
+        title: "Return Trek to Kanday",
+        description:
+          "Descend from the Base Camp and trek back to Kanday village. Accommodation: Camping.",
+      },
+      {
+        day: "Day 26",
+        title: "Drive to Skardu",
+        description:
+          "Overland drive from Kanday back to Skardu for rest and recovery. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 27",
+        title: "Debriefing and Farewell",
+        description:
+          "Official expedition debriefing followed by a celebratory farewell dinner with the crew. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 28",
+        title: "Return Travel to Islamabad",
+        description:
+          "Flight to Islamabad via PK-452 or a drive to Chilas if the flight is unavailable due to weather. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 29",
+        title: "Islamabad Sightseeing or Transit",
+        description:
+          "A day for local sightseeing in Islamabad or completion of the road journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 30",
+        title: "Final Departure",
+        description:
+          "Transfer to the airport for your international flight home. End of expedition services. Transport: Fly out.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Accessible 5000–6000m peak",
+      "Ideal for acclimatization and training",
+      "Minimal technical difficulty",
+      "Scenic views of the Karakoram mountains",
+    ],
+  },
+
+  {
+    id: "k7-peak",
+    slug: "k7-expedition",
+    name: "K7 Peak Expedition",
+    altitude: "6,934m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "30-35 Days",
+    difficulty: "Moderate",
+    bestSeason: null,
+    price: 17500,
+    groupSize: "4-10 climbers",
+    image: heroImage2,
+    description:
+      "K7, at 6,934m in the Karakoram Range, is a technical high-altitude peak offering climbers a serious alpine challenge with glacier travel, snow, and mixed climbing sections.",
+    overview:
+      "The K7 Expedition is designed for experienced mountaineers seeking a demanding 6000m+ climb. The peak requires strong alpine skills, glacier navigation, and proper acclimatization. Climbers are rewarded with spectacular views of the Charakusa and Hushe valleys, along with surrounding Karakoram giants.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our team and transferred to the group hotel. Altitude: 500m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via flight PK-451. In the event of a flight cancellation due to weather, the journey will proceed via an overland drive from Islamabad to Chilas. Altitude: 1,200m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing or Transit",
+        description:
+          "A day dedicated to local sightseeing in Skardu or completing the road journey from Chilas to Skardu. Altitude: 2,300m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Official Briefing and Preparation",
+        description:
+          "Attend the mandatory expedition briefing at the Ministry of Tourism and finalize all technical preparations with the expedition staff. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Hushe Village",
+        description:
+          "A scenic jeep journey from Skardu to Hushe, the final gateway before the trek into the Charakusa Valley. Altitude: 3,048m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Shaicho",
+        description:
+          "Commencement of the trek from Hushe to the Shaicho campsite, a pleasant walk through local summer pastures. Altitude: 3,300m. Accommodation: Camp.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Spangser",
+        description:
+          "Continue the ascent from Shaicho to Spangser, gaining altitude as the granite spires of the valley come into view. Altitude: 4,000m. Accommodation: Camp.",
+      },
+      {
+        day: "Day 08",
+        title: "Trek to Charakusa Base Camp",
+        description:
+          "Final trek from Spangser to establish the primary Base Camp for K6 and K7. Altitude: 4,600m. Accommodation: Camp.",
+      },
+      {
+        day: "Day 09-29",
+        title: "K7 Peak Climbing Period",
+        description:
+          "A 20-day dedicated window for acclimatization, technical climbing, and summit attempts on K7 Peak. Accommodation: Camp.",
+      },
+      {
+        day: "Day 30",
+        title: "Descent to Shaicho",
+        description:
+          "Following the conclusion of the climbing period, the team treks down from the K7 Base Camp to reach Shaicho. Accommodation: Camp.",
+      },
+      {
+        day: "Day 31",
+        title: "Return to Hushe and Skardu",
+        description:
+          "A final 4-hour trek down to Hushe village, followed immediately by a jeep drive back to Skardu town.",
+      },
+      {
+        day: "Day 32",
+        title: "Return to Islamabad or Chilas",
+        description:
+          "Transfer to Islamabad via flight or, in the event of a cancellation, begin the return drive to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 33",
+        title: "Drive from Chilas to Islamabad",
+        description:
+          "Complete the final leg of the road journey from Chilas back to the capital city of Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 34",
+        title: "International Departure",
+        description:
+          "Final transfer to Islamabad International Airport for your return flight home. End of expedition services.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Technical 6000m+ climb",
+      "Glacier and alpine climbing experience",
+      "Challenging high-altitude expedition",
+      "Breathtaking views of Karakoram valleys and peaks",
+    ],
+  },
+
+  {
+    id: "drifika-peak",
+    slug: "drifika-expedition",
+    name: "Drifika Peak Expedition",
+    altitude: "6,200m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "25-30 Days",
+    difficulty: "Moderate",
+    bestSeason: null,
+    price: 17500,
+    groupSize: "4-10 climbers",
+    image: heroImage2,
+    description:
+      "Drifika Peak, at 6,200m in the Karakoram near Hushe, is a moderately technical high-altitude peak offering climbers excellent experience in glacier travel and alpine climbing.",
+    overview:
+      "The Drifika Peak Expedition is ideal for mountaineers seeking to gain high-altitude experience before attempting more challenging 6000–7000m peaks. The climb involves glacier navigation and moderate alpine technical sections, rewarding climbers with panoramic views of the Hushe and Charakusa valleys.",
+    timeline: [
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Arrival at Islamabad International Airport followed by a meet and greet. Transfer to your hotel for rest and orientation. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via flight PK-451. In the event of inclement weather, the journey proceeds via an overland drive from Islamabad to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Sightseeing or Transit",
+        description:
+          "A day dedicated to local sightseeing in Skardu or completing the road journey from Chilas to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Official Briefing and Preparation",
+        description:
+          "Attend the official expedition briefing at the Ministry of Tourism and finalize all logistical preparations with the staff. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 05",
+        title: "Drive to Kanday",
+        description:
+          "Overland journey from Skardu to the village of Kanday, the starting point of the trek. Accommodation: Camping.",
+      },
+      {
+        day: "Day 06",
+        title: "Trek to Mingulo Broq",
+        description:
+          "The trekking phase begins with a walk from Kanday to the scenic pastures of Mingulo Broq. Accommodation: Camping.",
+      },
+      {
+        day: "Day 07",
+        title: "Trek to Drifika Base Camp",
+        description:
+          "Continue the trek from Mingulo Broq into the Nangma Valley to establish the Drifika Base Camp. Accommodation: Camping.",
+      },
+      {
+        day: "Day 08-23",
+        title: "Drifika Peak Climbing Period",
+        description:
+          "A 16-day window dedicated to technical climbing, high camp rotations, and summit attempts of Drifika Peak. Accommodation: Camping.",
+      },
+      {
+        day: "Day 25",
+        title: "Return Trek to Kanday",
+        description:
+          "Following the climbing phase, descend from the Nangma Valley and trek back to Kanday village. Accommodation: Camping.",
+      },
+      {
+        day: "Day 26",
+        title: "Drive to Skardu",
+        description:
+          "Overland drive from Kanday back to Skardu for a well-deserved rest. Accommodation: Camping.",
+      },
+      {
+        day: "Day 27",
+        title: "Debriefing and Farewell",
+        description:
+          "Official expedition debriefing in Skardu followed by a celebratory farewell dinner with the crew. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 28",
+        title: "Return Travel to Islamabad",
+        description:
+          "Flight to Islamabad via PK-452 or a drive to Chilas if the flight is unavailable due to weather. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 29",
+        title: "Islamabad Sightseeing or Transit",
+        description:
+          "A day for local sightseeing in Islamabad or completion of the road journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 30",
+        title: "Final Departure",
+        description:
+          "Transfer to the airport for your international flight home. End of expedition services. Transport: Fly out.",
+      },
+    ],
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Moderately technical 6000m peak",
+      "Glacier and alpine climbing experience",
+      "High-altitude training peak",
+      "Panoramic Karakoram views",
+    ],
+  },
+
+  {
+    id: "cigarette-peak",
+    slug: "cigarette-expedition",
+    name: "Cigarette Peak Expedition",
+    altitude: "6,160m",
+    location: "Gilgit Baltistan, Pakistan",
     duration: "20-25 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - September",
-    price: 22000,
-    groupSize: "2-6 climbers",
-    image: heroImage1,
-    description: "Trango Tower is one of the most challenging and iconic rock climbing destinations in the world, featuring pristine granite walls.",
-    overview: "The Trango Tower Climbing expedition offers world-class rock climbing on one of the most magnificent granite towers. This advanced technical climb requires serious mountaineering and rock climbing expertise.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Team gathering and expedition preparation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Fly to Skardu." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Organize equipment and logistics." },
-      { day: "Day 6-7", title: "Askole Journey", description: "Travel to Askole base village." },
-      { day: "Day 8-11", title: "Trek to Base Camp", description: "Trek to Trango Base Camp via Baltoro Glacier." },
-      { day: "Day 12-20", title: "Climbing & Acclimatization", description: "Rock climbing and technical training on various pitches." },
-      { day: "Day 21-24", title: "Tower Attempt", description: "Climb Trango Tower with multiple advanced pitches." },
-      { day: "Day 25", title: "Return", description: "Descent and return to Islamabad." },
-    ],
-    servicesIncluded: ["Permits", "Expert climbing guides", "Base camp equipment", "All meals", "Fixed ropes", "Communication gear", "Porter services"],
-    servicesNotIncluded: ["International flights", "Personal climbing gear", "Insurance", "Staff tips", "Personal expenses"],
-    requirements: ["Advanced rock climbing experience", "Previous 5.10+ climbing background", "Excellent physical fitness", "Technical mountaineering skills"],
-    highlights: ["Iconic granite tower", "World-class climbing", "Advanced technical routes", "Alpine adventure"],
-  },
-  {
-    id: "great-tower",
-    slug: "great-tower",
-    name: "Great Tower Climbing",
-    altitude: "5,971m",
-    location: "Karakoram, Gilgit Baltistan, Pakistan",
-    duration: "18-22 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - September",
-    price: 20000,
-    groupSize: "2-6 climbers",
+    difficulty: "Moderate",
+    bestSeason: null,
+    price: 17500,
+    groupSize: "4-10 climbers",
     image: heroImage2,
-    description: "Great Tower offers challenging rock climbing with stunning Karakoram views and technical alpine routes.",
-    overview: "The Great Tower Climbing expedition combines technical rock climbing with alpine mountaineering. A fantastic objective for climbers seeking to develop advanced skills in high-altitude rock climbing.",
+    description:
+      "Cigarette Peak, at 6,160m in the Karakoram near the Charakusa Glacier, is a moderately technical high-altitude peak offering climbers excellent experience in alpine and glacier climbing.",
+    overview:
+      "The Cigarette Peak Expedition is ideal for mountaineers seeking to gain experience on technical 6000m peaks before attempting higher 7000m expeditions. The climb involves glacier travel and moderate alpine sections, with rewarding panoramic views of the Charakusa and Hushe valleys.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Arrival", description: "Team briefing and preparations." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization and gear organization." },
-      { day: "Day 6-7", title: "Askole Drive", description: "Travel to Askole." },
-      { day: "Day 8-10", title: "Base Camp Trek", description: "Trek to Great Tower Base Camp." },
-      { day: "Day 11-18", title: "Climbing Days", description: "Technical climbing on various rock pitches." },
-      { day: "Day 19-21", title: "Tower Climb", description: "Summit attempt on Great Tower." },
-      { day: "Day 22", title: "Return", description: "Descent and return journey." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Welcome to Pakistan. Upon arrival in Islamabad, you will be met by our team and transferred to your hotel for rest and orientation. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "Transfer to Skardu via a domestic flight. In the event of a flight cancellation due to weather, the journey will proceed via an 11-12 hour overland drive to Chilas. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Skardu Transit and Leisure",
+        description:
+          "A free day to explore the town of Skardu. For those traveling by road, this day involves an 8-9 hour drive from Chilas to Skardu. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04",
+        title: "Drive to Hushe Village",
+        description:
+          "A 5-6 hour scenic jeep journey from Skardu to the village of Hushe, the final gateway before the trek begins. Accommodation: Camp.",
+      },
+      {
+        day: "Day 05",
+        title: "Trek to Cigarette Peak Base Camp",
+        description:
+          "Commencement of the trek with a 3-4 hour walk to Humbroq, establishing the primary Base Camp for Cigarette Peak. Accommodation: Camp.",
+      },
+      {
+        day: "Day 06-20",
+        title: "Cigarette Peak Climbing Period",
+        description:
+          "A 15-day dedicated window for acclimatization, technical climbing, and summit attempts on Cigarette Peak. Accommodation: Camp.",
+      },
+      {
+        day: "Day 21",
+        title: "Return Trek to Hushe",
+        description:
+          "Following the conclusion of the climbing phase, a 3-4 hour trek back down to Hushe village. Accommodation: Camp.",
+      },
+      {
+        day: "Day 22",
+        title: "Drive to Skardu",
+        description:
+          "A 6-7 hour return jeep drive from Hushe back to Skardu for a well-deserved rest. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 23",
+        title: "Travel to Islamabad or Chilas",
+        description:
+          "Flight to Islamabad (weather permitting). If the flight is cancelled, the day involves an 8-9 hour drive to Chilas for an overnight stay. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 24",
+        title: "Return to Islamabad",
+        description:
+          "Complete the final 11-12 hour leg of the road journey from Chilas back to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 25",
+        title: "Final Departure",
+        description:
+          "Transfer to the airport for your onward flight to your own destination. End of expedition services. Accommodation: Hotel.",
+      },
     ],
-    servicesIncluded: ["Permits", "Rock climbing guides", "Base camp setup", "All meals", "Climbing equipment", "Communication", "Porters"],
-    servicesNotIncluded: ["International flights", "Personal climbing gear", "Insurance", "Tips", "Personal costs"],
-    requirements: ["Advanced rock climbing skills", "5.9-5.10 climbing experience", "Alpine mountaineering experience", "Technical ability"],
-    highlights: ["Excellent rock climbing", "Alpine environment", "Advanced technical routes", "Karakoram wilderness"],
-  },
-  {
-    id: "amin-braq",
-    slug: "amin-braq",
-    name: "Amin Braq Climbing",
-    altitude: "5,610m",
-    location: "Charakusa Valley, Gilgit Baltistan, Pakistan",
-    duration: "16-20 Days",
-    difficulty: "Difficult",
-    bestSeason: "June - September",
-    price: 18000,
-    groupSize: "2-8 climbers",
-    image: heroImage1,
-    description: "Amin Braq in the Charakusa Valley offers excellent rock climbing with multiple route options and stunning alpine scenery.",
-    overview: "The Amin Braq Climbing expedition provides superb rock climbing in a pristine alpine environment. Perfect for climbers developing technical skills with several challenging pitches and beautiful Karakoram views.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Team orientation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Fly to Skardu." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Prepare and acclimatize." },
-      { day: "Day 6", title: "Valley Drive", description: "Drive to Charakusa Valley." },
-      { day: "Day 7-9", title: "Base Camp Trek", description: "Trek to Amin Braq Base Camp." },
-      { day: "Day 10-16", title: "Rock Climbing", description: "Technical climbing and practice on various routes." },
-      { day: "Day 17-19", title: "Peak Climbing", description: "Climb Amin Braq with multiple pitches." },
-      { day: "Day 20", title: "Return", description: "Descent and return to Islamabad." },
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Moderately technical 6000m peak",
+      "Glacier and alpine climbing experience",
+      "High-altitude training peak",
+      "Panoramic views of Charakusa and Hushe valleys",
     ],
-    servicesIncluded: ["Permits", "Climbing guides", "Base camp", "All meals", "Equipment", "Ropes", "Communication"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Tips", "Personal spending"],
-    requirements: ["Intermediate-advanced rock climbing", "5.8-5.9 climbing experience", "Alpine trekking background", "Technical skills"],
-    highlights: ["Excellent rock climbing", "Pristine valleys", "Multiple route options", "Remote alpine climbing"],
   },
+
   {
-    id: "nangma-valley",
-    slug: "nangma-valley",
-    name: "Nangma Valley Climbing",
-    altitude: "5,200m",
-    location: "Nangma Valley, Gilgit Baltistan, Pakistan",
-    duration: "14-18 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - September",
-    price: 16000,
-    groupSize: "2-10 climbers",
+    id: "khosar-gank-peak",
+    slug: "khosar-gang-expedition",
+    name: "Khosar Gang Peak Expedition",
+    altitude: "6,400m",
+    location: "Gilgit Baltistan, Pakistan",
+    duration: "20-25 Days",
+    difficulty: "Moderate",
+    bestSeason: null,
+    price: 17500,
+    groupSize: "4-10 climbers",
     image: heroImage2,
-    description: "Nangma Valley provides excellent rock climbing terrain with moderate technical difficulty and stunning mountain views.",
-    overview: "The Nangma Valley Climbing expedition offers fantastic rock climbing in a beautiful alpine valley. Ideal for climbers building intermediate to advanced skills in a remote mountain environment.",
+    description:
+      "Khosar Gang Peak, at 6,400m in the Karakoram near Hushe, is a challenging high-altitude peak offering steep snow, ice, and glacier climbing for mountaineers seeking advanced alpine experience.",
+    overview:
+      "The Khosar Gang Expedition is ideal for climbers looking to build experience on technical 6000m peaks. The ascent involves steep glacier and snow routes, requiring solid alpine skills and proper acclimatization. Climbers are rewarded with panoramic views of the Charakusa and Hushe valleys and surrounding Karakoram giants.",
     timeline: [
-      { day: "Day 1-2", title: "Islamabad Preparation", description: "Team briefing." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization." },
-      { day: "Day 6", title: "Valley Travel", description: "Travel to Nangma Valley." },
-      { day: "Day 7-8", title: "Base Camp Setup", description: "Trek to and establish base camp." },
-      { day: "Day 9-15", title: "Climbing Days", description: "Rock climbing on various routes." },
-      { day: "Day 16-17", title: "Peak Climb", description: "Climb to valley summits." },
-      { day: "Day 18", title: "Return", description: "Return to Islamabad." },
+      {
+        day: "Day 01",
+        title: "Arrival in Islamabad",
+        description:
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be transferred to your hotel. The day includes completing official procedures, attending a welcome reception, and resting. Altitude: 500m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 02",
+        title: "Travel to Skardu or Chilas",
+        description:
+          "A 45-minute domestic flight to Skardu (PK-451). Flights are subject to weather conditions. In the event of a cancellation, the journey proceeds via a 13-14 hour (480 km) coach drive to Chilas along the Karakoram Highway. Altitude: 500m to 1,200m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 03",
+        title: "Transit to Skardu and Official Briefing",
+        description:
+          "For those who flew, this is a free day in Skardu. If driving, you will complete the remaining 10-11 hour (275 km) journey from Chilas, offering views of Nanga Parbat (8,125m) and the Indus River rapids. The day concludes with official procedures and a welcome briefing at the Ministry of Tourism in Skardu. Altitude: 1,200m to 2,300m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 04-10",
+        title: "Approach and Khosar Gang Climbing Period",
+        description:
+          "Depart Skardu by road for Shigar's Sildi village to begin the trek. This week is dedicated to establishing camps, acclimatization, and the climbing phase of Khosar Gang Peak. Accommodation: Camp.",
+      },
+      {
+        day: "Day 11",
+        title: "Return to Skardu",
+        description:
+          "Conclude the expedition in the mountains and drive back to Skardu town for rest and recovery. Accommodation: Camp.",
+      },
+      {
+        day: "Day 12",
+        title: "Travel to Islamabad or Chilas",
+        description:
+          "Return flight to Islamabad via PK-451 (weather dependent). Upon arrival, transfer to the hotel. In case of flight cancellation, the team will drive to Chilas for an overnight stay. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 13",
+        title: "Leisure Day in Islamabad",
+        description:
+          "A day at leisure in the capital. For those traveling by road, this day is used to complete the journey from Chilas to Islamabad. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 14",
+        title: "International Departure",
+        description:
+          "Transfer to Islamabad International Airport for your return flight home. Transport: On board.",
+      },
     ],
-    servicesIncluded: ["Permits", "Climbing guides", "Base camp", "All meals", "Equipment", "Fixed ropes", "Communication"],
-    servicesNotIncluded: ["International flights", "Personal gear", "Insurance", "Tips", "Personal spending"],
-    requirements: ["Intermediate rock climbing experience", "5.7-5.8 climbing ability", "Alpine trekking experience", "Good fitness"],
-    highlights: ["Beautiful valley climbing", "Moderate technical terrain", "Remote location", "Great training environment"],
-  },
-  {
-    id: "latok-ogri",
-    slug: "latok-ogri",
-    name: "Latok Ogri Climbing",
-    altitude: "5,840m",
-    location: "Karakoram, Gilgit Baltistan, Pakistan",
-    duration: "18-22 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - September",
-    price: 21000,
-    groupSize: "2-6 climbers",
-    image: heroImage1,
-    description: "Latok Ogri features challenging mixed climbing with technical rock and ice sections in a remote Karakoram setting.",
-    overview: "The Latok Ogri Climbing expedition combines technical rock climbing with alpine ice climbing. A serious mountaineering objective for experienced climbers seeking remote alpine challenges.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Briefing", description: "Expedition orientation." },
-      { day: "Day 3", title: "Skardu Flight", description: "Fly to Skardu." },
-      { day: "Day 4-5", title: "Skardu Preparation", description: "Organize gear and logistics." },
-      { day: "Day 6-7", title: "Askole Journey", description: "Travel to Askole." },
-      { day: "Day 8-11", title: "Base Camp Trek", description: "Trek to Latok Base Camp." },
-      { day: "Day 12-18", title: "Technical Climbing", description: "Mixed climbing on rock and ice." },
-      { day: "Day 19-21", title: "Summit Push", description: "Climb Latok Ogri." },
-      { day: "Day 22", title: "Return", description: "Descent and return." },
+    servicesIncluded: COMMON_SERVICES_INCLUDED,
+    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    requirements: COMMON_SERVICES_REQUIREMENTS,
+    highlights: [
+      "Challenging technical 6000m peak",
+      "Steep glacier and snow climbing",
+      "Advanced high-altitude training peak",
+      "Panoramic views of Charakusa and Hushe valleys",
     ],
-    servicesIncluded: ["Permits", "Expert guides", "Base camp", "All meals", "Climbing gear", "Ropes", "Communication equipment"],
-    servicesNotIncluded: ["International flights", "Personal equipment", "Insurance", "Tips", "Personal expenses"],
-    requirements: ["Advanced rock and ice climbing", "5.9+ experience", "Excellent alpine skills", "Remote climbing experience"],
-    highlights: ["Mixed climbing adventure", "Technical challenges", "Remote Karakoram location", "Expert mountaineering"],
-  },
-  {
-    id: "charakusa-valley",
-    slug: "charakusa-valley",
-    name: "Charakusa Valley Climbing",
-    altitude: "5,100m",
-    location: "Charakusa Valley, Gilgit Baltistan, Pakistan",
-    duration: "14-18 Days",
-    difficulty: "Moderate to Difficult",
-    bestSeason: "June - September",
-    price: 15500,
-    groupSize: "2-10 climbers",
-    image: heroImage2,
-    description: "Charakusa Valley is renowned for its excellent rock climbing terrain with multiple crags and varied climbing routes.",
-    overview: "The Charakusa Valley Climbing expedition offers world-class rock climbing in a pristine remote valley. Featuring multiple climbing areas with routes for various skill levels and stunning Karakoram scenery.",
-    timeline: [
-      { day: "Day 1-2", title: "Islamabad Preparation", description: "Team briefing." },
-      { day: "Day 3", title: "Skardu Flight", description: "Flight to Skardu." },
-      { day: "Day 4-5", title: "Skardu Rest", description: "Acclimatization." },
-      { day: "Day 6", title: "Valley Drive", description: "Drive to Charakusa Valley." },
-      { day: "Day 7-8", title: "Base Camp Trek", description: "Trek to valley base camp." },
-      { day: "Day 9-15", title: "Multi-Day Climbing", description: "Rock climbing on various crags and routes." },
-      { day: "Day 16-17", title: "Advanced Routes", description: "Climb challenging pitches." },
-      { day: "Day 18", title: "Return", description: "Return to Islamabad." },
-    ],
-    servicesIncluded: ["Permits", "Climbing guides", "Base camp", "All meals", "Equipment", "Fixed ropes", "Safety gear"],
-    servicesNotIncluded: ["International flights", "Personal climbing equipment", "Insurance", "Tips", "Personal costs"],
-    requirements: ["Intermediate rock climbing skills", "5.7-5.8 climbing ability", "Alpine experience", "Good physical fitness"],
-    highlights: ["Multiple crags", "Varied climbing routes", "Remote valley setting", "Excellent climbing conditions"],
   },
 ];
 

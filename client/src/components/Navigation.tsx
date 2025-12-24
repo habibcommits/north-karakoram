@@ -38,21 +38,29 @@ interface NavCategory {
 const expeditionItems: NavCategory = {
   "8000m Peaks": [
     { label: "K2 Expedition", href: "/expedition/k2-expedition" },
-    { label: "Broad Peak Expedition", href: "/expedition/broad-peak-expedition" },
+    { label: "Broad Peak Expedition", href: "/expedition/broad-expedition" },
     { label: "Nanga Parbat Expedition", href: "/expedition/nanga-parbat-expedition" },
-    { label: "Gasherbrum I & II", href: "/expedition/gasherbrum-expedition" },
+    { label: "Gasherbrum I Expedition", href: "/expedition/gasherbrum-I-expedition" },
+    { label: "Gasherbrum II Expedition", href: "/expedition/gasherbrum-II-expedition" },
   ],
   "7000m Peaks": [
     { label: "Spantik Expedition", href: "/expedition/spantik-expedition" },
-    { label: "Gasherbrum III", href: "/expedition/gasherbrum-iii-expedition" },
-    { label: "Gasherbrum IV", href: "/expedition/gasherbrum-iv-expedition" },
+    { label: "Gasherbrum IV Expedition", href: "/expedition/gasherbrum-iv-expedition" },
+    { label: "Gasherbrum V Expedition", href: "/expedition/gasherbrum-v-expedition" },
     { label: "Masherbrum Expedition", href: "/expedition/masherbrum-expedition" },
     { label: "Rakaposhi Expedition", href: "/expedition/rakaposhi-expedition" },
+    { label: "Chogolisa Expedition", href: "/expedition/chogolisa-expedition" },
+    { label: "Trich Mir Expedition", href: "/expedition/trich-mir-expedition" },
   ],
   "6000m Peaks": [
-    { label: "Laila Peak Expedition", href: "/expedition/laila-peak-expedition" },
-    { label: "Pastore Peak", href: "/expedition/pastore-peak-expedition" },
-    { label: "Gondogoro Peak", href: "/expedition/gondogoro-peak-expedition" },
+    { label: "Laila Peak Expedition", href: "/expedition/laila-expedition" },
+    { label: "Pastore Expedition", href: "/expedition/pastore-expedition" },
+    { label: "Gondogoro Expedition", href: "/expedition/gondogoro-expedition" },
+    { label: "Bondit Expedition", href: "/expedition/bondit-expedition" },
+    { label: "K7 Expedition", href: "/expedition/k7-expedition" },
+    { label: "Drifika Expedition", href: "/expedition/drifika-expedition" },
+    { label: "Cigarette Expedition", href: "/expedition/cigarette-expedition" },
+    { label: "Khosar Gang Expedition", href: "/expedition/khosar-gang-expedition" },
   ],
 };
 
@@ -92,8 +100,8 @@ const tourItems: NavCategory = {
 const aboutItems: NavItem[] = [
   { label: "Our Team", href: "/team" },
   { label: "Company Info", href: "/about" },
+  { label: "Travel Info", href: "/travel-info" },
   { label: "Mountaineering Rules", href: "/mountaineering-rules" },
-  { label: "Terms & Conditions", href: "/about" },
 ];
 
 const socialLinks = [
@@ -479,9 +487,9 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
     <>
       {/* Top Bar - Hidden on mobile */}
       <div
-        className="hidden lg:block border-b transition-all duration-300"
+        className="hidden lg:block border-b transition-all duration-300 text-black"
         style={{
-          backgroundColor: "#004d44",
+          backgroundColor: "#fff",
           borderColor: "rgba(255,255,255,0.1)",
         }}
       >
@@ -491,18 +499,18 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
             <div className="flex items-center gap-6">
               <a
                 href="tel:+923330228111"
-                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+                className="flex items-center gap-2 text-black hover:text-[#f58220] transition-colors text-sm font-semibold"
               >
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
                   <Phone className="w-3 h-3" />
                 </div>
                 <span className="font-medium">+92 333 0228111</span>
               </a>
               <a
                 href="mailto:info@northkarakoram.com"
-                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+                className="flex items-center gap-2 text-black font-semibold hover:text-[#f58220] transition-colors text-sm"
               >
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
                   <Mail className="w-3 h-3" />
                 </div>
                 <span className="font-medium">info@northkarakoram.com</span>
@@ -511,9 +519,9 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
 
             {/* Right - Location & Social */}
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-white/70 text-sm">
+              <div className="flex items-center gap-2 text-black text-sm">
                 <MapPin className="w-3.5 h-3.5" />
-                <span>Skardu, Gilgit Baltistan, Pakistan</span>
+                <span>Near Hishpar Hotel, Sathang, Skardu</span>
               </div>
 
               {/* Social Media Icons */}
@@ -524,8 +532,8 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center
-                      text-white/70 hover:text-white hover:bg-white/20 transition-all duration-200"
+                    className="w-7 h-7 rounded-full bg-[#f58220] flex items-center justify-center
+                      text-white border border-[#f58220] hover:text-black hover:bg-white transition-all duration-200"
                     aria-label={social.label}
                   >
                     <social.icon className="w-3.5 h-3.5" />
@@ -601,7 +609,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 viewAllHref="/rock-climbing"
               />
 
-              <Link
+              {/* <Link
                 href="/travel-info"
                 className={cn(
                   "px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200",
@@ -611,7 +619,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 )}
               >
                 Travel Info
-              </Link>
+              </Link> */}
 
               <Link
                 href="/pakistan-visa"
@@ -781,7 +789,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                         viewAllHref="/about"
                       />
 
-                      <Link
+                      {/* <Link
                         href="/travel-info"
                         onClick={() => setMobileMenuOpen(false)}
                         className="flex items-center px-5 py-4 text-base font-semibold
@@ -789,7 +797,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                           border-b border-white/10 transition-all"
                       >
                         Travel Info
-                      </Link>
+                      </Link> */}
 
                       <Link
                         href="/pakistan-visa"

@@ -1,20 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, useParams } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { expeditions, getExpeditionBySlug } from "@/lib/expeditionData";
 import {
-  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Calendar,
   Check,
-  ChevronRight,
   Clock,
+  Compass,
   Download,
   Heart,
+  Image as ImageIcon,
   MapPin,
   Mountain,
   Phone,
@@ -22,14 +20,14 @@ import {
   Shield,
   Sparkles,
   Star,
-  Users,
-  X,
-  Compass,
   Sun,
   Thermometer,
-  Image as ImageIcon,
+  Users,
+  X
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { SiWhatsapp } from "react-icons/si";
+import { Link, useParams } from "wouter";
 
 export default function ExpeditionDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -169,7 +167,7 @@ export default function ExpeditionDetail() {
                     className="px-3 py-1.5 text-sm font-medium border-white/40 text-white bg-white/10 backdrop-blur-sm"
                   >
                     <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                    {expedition.bestSeason}
+                    {expedition.bestSeason !== null ? expedition.bestSeason : "N/A"}
                   </Badge>
                 </div>
 
@@ -195,12 +193,12 @@ export default function ExpeditionDetail() {
                     </div>
                     <span className="text-sm md:text-base">{expedition.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
                       <Users className="w-4 h-4" />
                     </div>
                     <span className="text-sm md:text-base">{expedition.groupSize}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -218,7 +216,7 @@ export default function ExpeditionDetail() {
                 transition-all duration-700 delay-300
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 {[
                   {
                     icon: Mountain,
@@ -235,15 +233,15 @@ export default function ExpeditionDetail() {
                   {
                     icon: Sun,
                     label: "Best Season",
-                    value: expedition.bestSeason,
+                    value: expedition.bestSeason !== null ? expedition.bestSeason : "N/A",
                     color: "#0ea5e9",
                   },
-                  {
-                    icon: Users,
-                    label: "Group Size",
-                    value: expedition.groupSize,
-                    color: "#8b5cf6",
-                  },
+                  // {
+                  //   icon: Users,
+                  //   label: "Group Size",
+                  //   value: expedition.groupSize,
+                  //   color: "#8b5cf6",
+                  // },
                 ].map((stat, index) => (
                   <div
                     key={index}
@@ -333,13 +331,13 @@ export default function ExpeditionDetail() {
                   className={`transition-all duration-700 delay-600
                     ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
-                  <Tabs defaultValue="details" className="w-full">
+                  <Tabs defaultValue="itinerary" className="w-full">
                     <TabsList
                       className="w-full h-auto p-1.5 bg-gray-100 rounded-xl grid grid-cols-2 sm:grid-cols-5 gap-1"
                     >
                       {[
-                        { value: "details", label: "Details", icon: Compass },
                         { value: "itinerary", label: "Itinerary", icon: MapPin },
+                        { value: "services", label: "Services", icon: Compass },
                         { value: "prices", label: "Prices", icon: Calendar },
                         { value: "info", label: "Info", icon: Shield },
                         { value: "photos", label: "Photos", icon: ImageIcon },
@@ -358,95 +356,6 @@ export default function ExpeditionDetail() {
                         </TabsTrigger>
                       ))}
                     </TabsList>
-
-                    {/* Details Tab */}
-                    <TabsContent value="details" className="mt-8">
-                      <div className="space-y-6">
-                        {/* Requirements */}
-                        <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
-                          <div
-                            className="px-6 py-4 border-b border-gray-100"
-                            style={{ backgroundColor: "rgba(245, 130, 32, 0.05)" }}
-                          >
-                            <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                              <div
-                                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                                style={{ backgroundColor: "rgba(245, 130, 32, 0.15)" }}
-                              >
-                                <AlertTriangle className="w-5 h-5" style={{ color: "#f58220" }} />
-                              </div>
-                              Climber Requirements
-                            </h3>
-                          </div>
-                          <CardContent className="p-6">
-                            <ul className="space-y-3">
-                              {expedition.requirements.map((req, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                  <ChevronRight
-                                    className="w-5 h-5 flex-shrink-0 mt-0.5"
-                                    style={{ color: "#006F61" }}
-                                  />
-                                  <span className="text-gray-700">{req}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </CardContent>
-                        </Card>
-
-                        {/* Services Grid */}
-                        <div className="grid md:grid-cols-2 gap-6">
-                          {/* Included */}
-                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
-                            <div
-                              className="px-6 py-4 border-b border-gray-100"
-                              style={{ backgroundColor: "rgba(34, 197, 94, 0.05)" }}
-                            >
-                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
-                                  <Check className="w-5 h-5 text-green-600" />
-                                </div>
-                                What's Included
-                              </h3>
-                            </div>
-                            <CardContent className="p-6">
-                              <ul className="space-y-3">
-                                {expedition.servicesIncluded.map((service, index) => (
-                                  <li key={index} className="flex items-start gap-3 text-sm">
-                                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">{service}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </CardContent>
-                          </Card>
-
-                          {/* Not Included */}
-                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
-                            <div
-                              className="px-6 py-4 border-b border-gray-100"
-                              style={{ backgroundColor: "rgba(239, 68, 68, 0.05)" }}
-                            >
-                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                                <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
-                                  <X className="w-5 h-5 text-red-600" />
-                                </div>
-                                Not Included
-                              </h3>
-                            </div>
-                            <CardContent className="p-6">
-                              <ul className="space-y-3">
-                                {expedition.servicesNotIncluded.map((service, index) => (
-                                  <li key={index} className="flex items-start gap-3 text-sm">
-                                    <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">{service}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </div>
-                    </TabsContent>
 
                     {/* Itinerary Tab */}
                     <TabsContent value="itinerary" className="mt-8">
@@ -500,6 +409,95 @@ export default function ExpeditionDetail() {
                               </Card>
                             </div>
                           ))}
+                        </div>
+                      </div>
+                    </TabsContent>
+
+                    {/* Services Tab */}
+                    <TabsContent value="services" className="mt-8">
+                      <div className="space-y-6">
+                        {/* Requirements */}
+                        {/* <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
+                          <div
+                            className="px-6 py-4 border-b border-gray-100"
+                            style={{ backgroundColor: "rgba(245, 130, 32, 0.05)" }}
+                          >
+                            <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
+                              <div
+                                className="w-10 h-10 rounded-lg flex items-center justify-center"
+                                style={{ backgroundColor: "rgba(245, 130, 32, 0.15)" }}
+                              >
+                                <AlertTriangle className="w-5 h-5" style={{ color: "#f58220" }} />
+                              </div>
+                              Climber Requirements
+                            </h3>
+                          </div>
+                          <CardContent className="p-6">
+                            <ul className="space-y-3">
+                              {expedition.requirements.map((req, index) => (
+                                <li key={index} className="flex items-start gap-3">
+                                  <ChevronRight
+                                    className="w-5 h-5 flex-shrink-0 mt-0.5"
+                                    style={{ color: "#006F61" }}
+                                  />
+                                  <span className="text-gray-700">{req}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                        </Card> */}
+
+                        {/* Services Grid */}
+                        <div className="grid md:grid-cols-2 gap-6">
+                          {/* Included */}
+                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
+                            <div
+                              className="px-6 py-4 border-b border-gray-100"
+                              style={{ backgroundColor: "rgba(34, 197, 94, 0.05)" }}
+                            >
+                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
+                                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
+                                  <Check className="w-5 h-5 text-green-600" />
+                                </div>
+                                What's Included
+                              </h3>
+                            </div>
+                            <CardContent className="p-6">
+                              <ul className="space-y-3">
+                                {expedition.servicesIncluded.map((service, index) => (
+                                  <li key={index} className="flex items-start gap-3 text-sm">
+                                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                    <span className="text-gray-700">{service}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
+
+                          {/* Not Included */}
+                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
+                            <div
+                              className="px-6 py-4 border-b border-gray-100"
+                              style={{ backgroundColor: "rgba(239, 68, 68, 0.05)" }}
+                            >
+                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
+                                <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
+                                  <X className="w-5 h-5 text-red-600" />
+                                </div>
+                                Not Included
+                              </h3>
+                            </div>
+                            <CardContent className="p-6">
+                              <ul className="space-y-3">
+                                {expedition.servicesNotIncluded.map((service, index) => (
+                                  <li key={index} className="flex items-start gap-3 text-sm">
+                                    <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                                    <span className="text-gray-700">{service}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </CardContent>
+                          </Card>
                         </div>
                       </div>
                     </TabsContent>
@@ -575,7 +573,7 @@ export default function ExpeditionDetail() {
                               {
                                 icon: Sun,
                                 label: "Best Time",
-                                value: expedition.bestSeason,
+                                value: expedition.bestSeason !== null ? expedition.bestSeason : "N/A",
                                 color: "#0ea5e9",
                               },
                               {
@@ -708,8 +706,8 @@ export default function ExpeditionDetail() {
                           { label: "Duration", value: expedition.duration },
                           { label: "Difficulty", value: expedition.difficulty },
                           { label: "Location", value: expedition.location },
-                          { label: "Season", value: expedition.bestSeason },
-                          { label: "Group Size", value: expedition.groupSize },
+                          { label: "Season", value: expedition.bestSeason !== null ? expedition.bestSeason : "N/A" },
+                          // { label: "Group Size", value: expedition.groupSize },
                         ].map((item, index) => (
                           <div
                             key={index}
