@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import visaHeaderImage from "@assets/stock_images/mountain_trekking_ex_3477c925.jpg";
+import visaHeaderImage from "@assets/stock_images/beautiful_mountain_p_1088467d.jpg";
 import {
   CheckCircle,
   Clock,

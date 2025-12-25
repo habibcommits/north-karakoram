@@ -1,6 +1,7 @@
-import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
-import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
-import heroImage3 from "@assets/stock_images/majestic_mountain_pe_37c42122.jpg";
+import heroImage1 from "@assets/rakaposhi/r1.jpeg";
+import heroImage2 from "@assets/bara-broq/b1.jpeg";
+import heroImage3 from "@assets/skardu-valley/s1.jpeg";
+import heroImage4 from "@assets/mitre-peak/m1.jpeg";
 import trekkingImage1 from "@assets/stock_images/mountain_trekking_ex_54bf77cb.jpg";
 import trekkingImage2 from "@assets/stock_images/mountain_trekking_ex_3477c925.jpg";
 import trekkingImage3 from "@assets/stock_images/mountain_trekking_ex_40f18eca.jpg";
@@ -20,7 +21,7 @@ import valleyImage3 from "@assets/stock_images/pakistan_mountain_va_33d46532.jpg
 import adventureImage1 from "@assets/stock_images/adventure_trekking_g_ebb73f85.jpg";
 import adventureImage2 from "@assets/stock_images/adventure_trekking_g_ae9918f3.jpg";
 
-export const heroImages = [heroImage1, heroImage2, heroImage3];
+export const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
 export const seasonImages = {
   Spring: springImage,

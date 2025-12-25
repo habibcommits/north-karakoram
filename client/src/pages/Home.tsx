@@ -3,6 +3,7 @@ import { ClientReviews } from "@/components/ClientReviews";
 import { ExpeditionsSection } from "@/components/ExpeditionsSection";
 import { Hero } from "@/components/Hero";
 import { HolidayCategories } from "@/components/HolidayCategories";
+import { RockClimbingSection } from "@/components/RockClimbingSection";
 import { SeasonWiseSection } from "@/components/SeasonWiseSection";
 import { SocialIcons } from "@/components/SocialIcons";
 import { TrekkingSection } from "@/components/TrekkingSection";
@@ -17,6 +18,7 @@ export default function Home() {
         <SeasonWiseSection />
         <TrekkingSection />
         <ExpeditionsSection />
+        <RockClimbingSection />
         <ClientReviews />
         <SocialIcons />
       </main>

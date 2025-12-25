@@ -24,7 +24,7 @@ import {
   Target,
   AlertCircle,
 } from "lucide-react";
-import mountainImage from "@assets/stock_images/mountain_trekking_ex_3477c925.jpg";
+import mountainImage from "@assets/stock_images/beautiful_mountain_p_1088467d.jpg";
 
 const sections = [
   {

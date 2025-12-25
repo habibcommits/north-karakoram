@@ -3,28 +3,22 @@ import {
   COMMON_SERVICES_NOT_INCLUDED,
   COMMON_SERVICES_REQUIREMENTS,
 } from "@/constants/expeditionData";
-import nangaParbatImage1 from "@assets/nanga_parbat_1_1766090260999.png";
-import nangaParbatImage2 from "@assets/nanga_perbat_2_1766090261000.png";
-import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
-import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
-import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
-import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
 
+import GreatTowerImg1 from "@assets/great-tower/g1.jpeg";
+import GreatTowerImg2 from "@assets/great-tower/g2.jpeg";
 import TrangoTowerImg1 from "@assets/trango-tower/t1.jpeg";
 import TrangoTowerImg2 from "@assets/trango-tower/t2.jpg";
 import TrangoTowerImg3 from "@assets/trango-tower/t3.jpeg";
-import GreatTowerImg1 from "@assets/great-tower/g1.jpeg";
-import GreatTowerImg2 from "@assets/great-tower/g2.jpeg";
 // import GreatTowerImg3 from "@assets/"
 import MitrePeakImg1 from "@assets/mitre-peak/m1.jpeg";
 import MitrePeakImg2 from "@assets/mitre-peak/m2.jpeg";
 // import MitrePeakImg3 from "@assets/"
-import K7CharkusaImg1 from "@assets/k7-valley/k1.jpeg";
-import K7CharkusaImg2 from "@assets/k7-valley/k2.jpeg";
-import K7CharkusaImg3 from "@assets/k7-valley/k3.jpg";
 import AminBraqImg1 from "@assets/amin-braq/a1.jpeg";
 import AminBraqImg2 from "@assets/amin-braq/a2.jpeg";
 import AminBraqImg3 from "@assets/amin-braq/a3.jpeg";
+import K7CharkusaImg1 from "@assets/k7-valley/k1.jpeg";
+import K7CharkusaImg2 from "@assets/k7-valley/k2.jpeg";
+import K7CharkusaImg3 from "@assets/k7-valley/k3.jpg";
 import ShiptonSpireImg1 from "@assets/shipton/s1.jfif";
 // import ShiptonSpireImg2 from "@assets/"
 // import ShiptonSpireImg3 from "@assets/"

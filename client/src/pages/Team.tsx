@@ -8,7 +8,7 @@ import operationManagerImage from "@assets/Mohsin_Ali_Operation_Manager_17657439
 import ceoImage from "@assets/Muhammad_AliFounder_&_CEO_1765743996704.png";
 import tourGuideImage from "@assets/Murtaza_Ali_Field_Manager_&_tour_guide_1765743996705.png";
 import logisticsImage from "@assets/ghulam_abbas_logistic_specilist_1765743996703.png";
-import trekkingImage from "@assets/stock_images/mountain_trekking_ex_3477c925.jpg";
+import trekkingImage from "@assets/stock_images/beautiful_mountain_p_1088467d.jpg";
 import {
   SiFacebook,
   SiInstagram,

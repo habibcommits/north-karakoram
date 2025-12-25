@@ -8,62 +8,58 @@ import {
   Users,
   Award,
   Globe,
-  Sparkles,
   MapPin,
-  Heart
+  Heart,
+  Shield,
+  Compass,
+  TreePine,
+  BadgeCheck
 } from "lucide-react";
-import mountainImage1 from "@assets/stock_images/mountain_landscape_s_61ab8953.jpg";
-import mountainImage2 from "@assets/stock_images/mountain_landscape_s_c524040f.jpg";
-import mountainImage3 from "@assets/stock_images/mountain_landscape_s_e00bb14a.jpg";
-import mountainImage4 from "@assets/stock_images/mountain_landscape_s_39d9031b.jpg";
+import mountainImage1 from "@assets/k7/k1.jpeg";
+import mountainImage2 from "@assets/k2-base-camp-trek/k1.jpeg";
+import mountainImage3 from "@assets/shandoor/s1.jpg";
+import mountainImage4 from "@assets/great-tower/g1.jpeg";
 
-// Key selling points displayed in the benefits list
+// Key selling points based on actual company strengths
 const whyChooseUs = [
   {
-    text: "Tailored adventures for every pace",
-    icon: Sparkles,
+    text: "Licensed & Registered (DTS #2640)",
+    icon: Shield,
   },
   {
-    text: "Authentic culture and heritage",
-    icon: Heart,
-  },
-  {
-    text: "Expert guidance and full support",
+    text: "Local Experts with Mountain Experience",
     icon: Users,
   },
   {
-    text: "Small groups, deeper connections",
+    text: "Small Groups, Personalized Itineraries",
+    icon: Heart,
+  },
+  {
+    text: "Full-Service Expedition Support",
+    icon: Compass,
+  },
+  {
+    text: "Authentic Cultural Immersion",
     icon: Globe,
   },
   {
-    text: "Life-changing experiences",
-    icon: Mountain,
-  },
-  {
-    text: "Adventure. Culture. Mountains",
-    icon: MapPin,
+    text: "Responsible & Sustainable Tourism",
+    icon: TreePine,
   },
 ];
 
-// Company statistics
-const stats = [
-  { value: "15+", label: "Years Experience", icon: Award },
-  { value: "150+", label: "Expeditions", icon: Mountain },
-  { value: "2500+", label: "Happy Travelers", icon: Users },
-  { value: "50+", label: "Destinations", icon: Globe },
-];
-
-// Image gallery data
-const galleryImages = [
-  { src: mountainImage1, alt: "Majestic Karakoram peaks at sunrise", span: "large" },
-  { src: mountainImage2, alt: "Trekkers on mountain trail", span: "small" },
-  { src: mountainImage3, alt: "Traditional mountain village", span: "small" },
-  { src: mountainImage4, alt: "Himalayan landscape panorama", span: "medium" },
+// Featured destinations
+const destinations = [
+  "K2 & Concordia",
+  "Hunza Valley",
+  "Fairy Meadows",
+  "Skardu",
+  "Deosai Plateau",
+  "Nanga Parbat"
 ];
 
 export function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Intersection observer for scroll animations
@@ -84,14 +80,6 @@ export function AboutSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-rotate featured image
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveImageIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section
       ref={sectionRef}
@@ -100,7 +88,6 @@ export function AboutSection() {
     >
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large decorative circle */}
         <div
           className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full
             bg-[#006F61]/[0.03] blur-3xl"
@@ -122,7 +109,6 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Decorative line accent */}
         <div
           className="absolute top-1/2 right-0 w-32 h-px
             bg-gradient-to-l from-[#006F61]/20 to-transparent hidden lg:block"
@@ -130,7 +116,7 @@ export function AboutSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header - Centered */}
+        {/* Section Header */}
         <div
           className={`text-center max-w-3xl mx-auto mb-16 md:mb-20 transition-all duration-700
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -138,37 +124,20 @@ export function AboutSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
             bg-[#006F61]/10 text-[#006F61] text-sm font-semibold mb-6">
-            <span>Discover Our Story</span>
+            <Mountain className="w-4 h-4" />
+            <span>Our Story</span>
           </div>
 
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl
             text-gray-900 mb-4 leading-tight">
-            Welcome to{" "}
-            <span
-              className="relative inline-block"
-              style={{ color: '#006F61' }}
-            >
-              North Karakoram
-              {/* Decorative underline */}
-              {/* <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 8.5C50 2.5 150 2.5 198 8.5"
-                  stroke="#006F61"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeOpacity="0.3"
-                />
-              </svg> */}
+            Not Just Adventures —{" "}
+            <span className="text-[#006F61]">
+              Life-Changing Experiences
             </span>
           </h2>
 
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-            Your licensed guide to the majestic Karakoram and Himalaya ranges
+            Gateway to the world's greatest mountain ranges — the Karakoram, Himalaya, and Hindu Kush
           </p>
         </div>
 
@@ -180,7 +149,6 @@ export function AboutSection() {
             className={`relative transition-all duration-700 delay-200
               ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
           >
-            {/* Image Gallery with Overlapping Design */}
             <div className="relative h-[500px] md:h-[600px]">
 
               {/* Main Large Image */}
@@ -190,18 +158,18 @@ export function AboutSection() {
               >
                 <img
                   src={mountainImage1}
-                  alt="Majestic Karakoram peaks"
+                  alt="K2 and Concordia region - Karakoram Range"
                   className="w-full h-full object-cover transition-transform duration-700
                     group-hover:scale-105"
                 />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-                {/* Floating badge */}
+                {/* Location badge */}
                 <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full
-                  bg-white/90 backdrop-blur-sm shadow-lg">
-                  <span className="text-sm font-semibold text-gray-800">
-                    📍 Karakoram Range
+                  bg-white/95 backdrop-blur-sm shadow-lg">
+                  <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#006F61]" />
+                    Gilgit-Baltistan, Pakistan
                   </span>
                 </div>
               </div>
@@ -213,7 +181,7 @@ export function AboutSection() {
               >
                 <img
                   src={mountainImage2}
-                  alt="Mountain trekking adventure"
+                  alt="Trekking expedition in Hunza Valley"
                   className="w-full h-full object-cover transition-transform duration-700
                     group-hover:scale-105"
                 />
@@ -226,7 +194,7 @@ export function AboutSection() {
               >
                 <img
                   src={mountainImage3}
-                  alt="Cultural heritage experience"
+                  alt="Cultural heritage and local communities"
                   className="w-full h-full object-cover transition-transform duration-700
                     group-hover:scale-105"
                 />
@@ -239,31 +207,30 @@ export function AboutSection() {
               >
                 <img
                   src={mountainImage4}
-                  alt="Himalayan landscape"
+                  alt="Deosai Plateau landscape"
                   className="w-full h-full object-cover transition-transform duration-700
                     group-hover:scale-105"
                 />
               </div>
 
-              {/* Experience Badge - Floating Card */}
-              {/* <div
+              {/* License Badge - Floating Card */}
+              <div
                 className="absolute -bottom-6 -left-6 md:left-0 z-40
-                  bg-white rounded-2xl shadow-2xl shadow-black/10 p-5
-                  border border-gray-100 animate-float"
+                  bg-white rounded-2xl shadow-2xl shadow-black/10 p-4
+                  border border-gray-100"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: '#006F61' }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#006F61]"
                   >
-                    <Award className="w-7 h-7 text-white" />
+                    <BadgeCheck className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">15+</div>
-                    <div className="text-sm text-gray-500 font-medium">Years of Excellence</div>
+                    <div className="text-sm font-bold text-gray-900">DTS License #2640</div>
+                    <div className="text-xs text-gray-500">Registered & Verified</div>
                   </div>
                 </div>
-              </div> */}
+              </div>
 
               {/* Decorative Element */}
               <div
@@ -282,32 +249,52 @@ export function AboutSection() {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-1 rounded-full bg-[#006F61]" />
               <span className="text-[#006F61] font-semibold text-sm uppercase tracking-wider">
-                About Us
+                About North Karakoram
               </span>
             </div>
 
             {/* Main Heading */}
             <h3 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl
               text-gray-900 mb-6 leading-tight">
-              Crafting Unforgettable{" "}
-              <span style={{ color: '#006F61' }}>Mountain Adventures</span>{" "}
-              Since 2009
+              Your Trusted Partner for{" "}
+              <span className="text-[#006F61]">Mountain Adventures</span>{" "}
+              in Pakistan
             </h3>
 
-            {/* Description Paragraphs */}
+            {/* Description */}
             <div className="space-y-4 mb-8">
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                Step into the extraordinary with North Karakoram, your licensed guide to the
-                majestic Karakoram and Himalaya ranges. We offer trekking, hiking, and
-                mountaineering expeditions designed to give you more than just a journey —
-                <span className="font-semibold text-gray-800"> an immersive experience</span> of
-                the mountains, the people, and the culture.
+                <span className="font-semibold text-gray-800">North Karakoram Trek & Tours</span> is
+                a registered adventure travel company based in Gilgit-Baltistan, Pakistan. Founded by
+                local professionals with firsthand mountain experience, we specialize in{" "}
+                <span className="font-medium text-gray-700">trekking expeditions, mountaineering logistics,
+                  K2 Base Camp treks, cultural tours, and jeep safaris</span> throughout the highlands
+                of northern Pakistan.
               </p>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                What makes us different? Every adventure is personalized, small-group, and
-                authentic. Walk through hidden valleys, connect with local communities, and
-                discover the rich heritage that thrives alongside the peaks.
+                We don't just take you to the mountains — <span className="font-semibold text-gray-800">
+                  we help you experience them</span>. Our journeys combine adventure, culture, and nature,
+                offering genuine connections with the land and the people who call it home. From permits
+                and logistics to accommodation and professional guiding, every detail is handled with precision.
               </p>
+            </div>
+
+            {/* Destinations Tag Cloud */}
+            <div className="mb-8">
+              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                Destinations We Cover
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {destinations.map((dest, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1.5 text-sm font-medium text-[#006F61] bg-[#006F61]/10
+                      rounded-full border border-[#006F61]/20"
+                  >
+                    {dest}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Why Choose Us Section */}
@@ -315,9 +302,9 @@ export function AboutSection() {
               <h4 className="font-heading font-bold text-xl text-gray-900 mb-5
                 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-lg bg-[#006F61]/10 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-[#006F61]" />
+                  <Award className="w-4 h-4 text-[#006F61]" />
                 </span>
-                Why Choose Us?
+                What Sets Us Apart
               </h4>
 
               {/* Benefits Grid */}
@@ -336,7 +323,6 @@ export function AboutSection() {
                     data-testid={`item-benefit-${index}`}
                   >
                     <div className="flex items-center gap-3">
-                      {/* Icon with animated background */}
                       <div
                         className="w-10 h-10 rounded-xl flex items-center justify-center
                           bg-[#006F61]/10 group-hover:bg-[#006F61]
@@ -347,15 +333,11 @@ export function AboutSection() {
                             transition-colors duration-300"
                         />
                       </div>
-
-                      {/* Text */}
                       <span className="text-sm md:text-base text-gray-700 font-medium
                         group-hover:text-gray-900 transition-colors">
                         {item.text}
                       </span>
                     </div>
-
-                    {/* Hover accent line */}
                     <div
                       className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full
                         bg-[#006F61] scale-x-0 group-hover:scale-x-100
@@ -398,15 +380,15 @@ export function AboutSection() {
                   data-testid="button-about-contact"
                 >
                   <MapPin className="w-5 h-5 mr-2" />
-                  Get in Touch
+                  Plan Your Adventure
                 </Button>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Stats Section */}
-        {/* <div
+        {/* Trust & Expertise Section */}
+        <div
           className={`mt-20 md:mt-28 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
@@ -414,6 +396,7 @@ export function AboutSection() {
             className="relative bg-gradient-to-br from-[#006F61] to-[#005249]
               rounded-3xl p-8 md:p-12 overflow-hidden"
           >
+            {/* Background decorations */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-96 h-96 rounded-full
                 bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -421,53 +404,85 @@ export function AboutSection() {
                 bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
             </div>
 
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="text-center group"
-                >
-                  <div
-                    className="w-14 h-14 mx-auto mb-4 rounded-2xl
-                      bg-white/10 backdrop-blur-sm border border-white/20
-                      flex items-center justify-center
-                      group-hover:bg-white/20 group-hover:scale-110
-                      transition-all duration-300"
-                  >
-                    <stat.icon className="w-7 h-7 text-white" />
-                  </div>
+            <div className="relative z-10">
+              {/* Header */}
+              <div className="text-center mb-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  Explore Northern Pakistan With Confidence
+                </h3>
+                <p className="text-white/80 max-w-2xl mx-auto">
+                  From the legendary K2 region to the peaceful landscapes of Hunza Valley,
+                  Skardu, and beyond — we open access to Pakistan's most breathtaking destinations.
+                </p>
+              </div>
 
-                  <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-                    {stat.value}
+              {/* Features Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10
+                  hover:bg-white/15 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
+                    <Shield className="w-6 h-6 text-white" />
                   </div>
-
-                  <div className="text-white/70 text-sm md:text-base font-medium">
-                    {stat.label}
-                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Safety First</h4>
+                  <p className="text-white/70 text-sm">
+                    Experienced local guides and support staff who prioritize your safety with
+                    deep knowledge of terrain and weather conditions.
+                  </p>
                 </div>
-              ))}
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10
+                  hover:bg-white/15 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
+                    <Compass className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Complete Logistics</h4>
+                  <p className="text-white/70 text-sm">
+                    Full-board expedition services including permits, accommodation, transport,
+                    equipment, and professional guiding — all handled with precision.
+                  </p>
+                </div>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10
+                  hover:bg-white/15 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
+                    <Heart className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">Community Focus</h4>
+                  <p className="text-white/70 text-sm">
+                    We work closely with local communities, following ethical practices to ensure
+                    tourism benefits the region sustainably.
+                  </p>
+                </div>
+              </div>
             </div>
 
+            {/* Decorative circles */}
             <div className="absolute top-6 left-6 w-20 h-20 border border-white/10 rounded-full" />
             <div className="absolute bottom-6 right-6 w-32 h-32 border border-white/10 rounded-full" />
           </div>
-        </div> */}
+        </div>
 
-        {/* Trust Badges / Partners */}
+        {/* Trust Badges */}
         <div
           className={`mt-16 text-center transition-all duration-700 delay-700
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <p className="text-gray-500 text-sm font-medium mb-6 uppercase tracking-wider">
-            Trusted & Certified By
+            Trusted By Travelers From Around The World
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {/* Placeholder for partner/certification logos */}
-            {['Tourism Board', 'Safety Certified', 'Eco Friendly', 'Local Partner'].map((item, index) => (
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            {[
+              'DTS Licensed',
+              'Safety Certified',
+              'Eco-Friendly Practices',
+              'Local Community Partner',
+              'International Travelers Welcome'
+            ].map((item, index) => (
               <div
                 key={index}
                 className="flex items-center gap-2 px-4 py-2 rounded-full
-                  bg-gray-50 border border-gray-100"
+                  bg-gray-50 border border-gray-100 hover:border-[#006F61]/30
+                  hover:bg-[#006F61]/5 transition-colors duration-300"
               >
                 <Check className="w-4 h-4 text-[#006F61]" />
                 <span className="text-gray-600 text-sm font-medium">{item}</span>

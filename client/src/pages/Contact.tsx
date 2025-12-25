@@ -47,7 +47,7 @@ import {
   SiYoutube,
 } from "react-icons/si";
 import type { Trip } from "@shared/schema";
-import baseCampImage from "@assets/stock_images/mountain_base_camp_t_3e7d1acc.jpg";
+import baseCampImage from "@assets/stock_images/fairy_meadow_mountai_a8bee0ee.jpg";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),

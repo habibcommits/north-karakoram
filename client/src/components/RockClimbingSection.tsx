@@ -7,19 +7,19 @@ import {
   Clock,
   Mountain,
   ArrowRight,
-  Sparkles,
   TrendingUp,
   ChevronRight,
   ArrowUpRight,
-  Compass
+  Gem,
+  Anchor
 } from "lucide-react";
-import { tours } from "@/lib/tourData";
+import { rockClimbings } from "@/lib/rockClimbingData";
 import type { ExpeditionData } from "@/lib/expeditionData";
 
-// Peak category configuration with colors for tours
+// Category configuration with colors for rock climbing
 const categoryConfig = {
   "all": {
-    label: "All Tours",
+    label: "All Climbs",
     color: "#006F61",
     bgColor: "bg-[#006F61]",
     lightBg: "bg-emerald-50",
@@ -47,7 +47,7 @@ const categoryConfig = {
     bgColor: "bg-gradient-to-r from-emerald-500 to-teal-500",
     lightBg: "bg-emerald-50",
     textColor: "text-emerald-600",
-    badge: "Scenic"
+    badge: "Technical"
   },
 };
 
@@ -60,7 +60,7 @@ const getAltitudeNumber = (altitude: string): number => {
   return 0;
 };
 
-// Helper to get peak category for tours
+// Helper to get peak category
 const getPeakCategory = (altitude: string): "6000m" | "5000m" | "4000m" => {
   const alt = getAltitudeNumber(altitude);
   if (alt >= 6000) return "6000m";
@@ -68,32 +68,32 @@ const getPeakCategory = (altitude: string): "6000m" | "5000m" | "4000m" => {
   return "4000m";
 };
 
-// Tour Card Component
-function TourCard({ tour, index, isVisible }: {
-  tour: ExpeditionData;
+// Rock Climbing Card Component
+function RockClimbingCard({ climb, index, isVisible }: {
+  climb: ExpeditionData;
   index: number;
   isVisible: boolean;
 }) {
-  const peakCategory = getPeakCategory(tour.altitude);
+  const peakCategory = getPeakCategory(climb.altitude);
   const categoryData = categoryConfig[peakCategory];
 
   return (
-    <Link href={`/tour/${tour.slug}`}>
+    <Link href={`/rock-climbing/${climb.slug}`}>
       <div
         className={`group relative h-full transition-all duration-700
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         style={{ transitionDelay: isVisible ? `${200 + index * 100}ms` : '0ms' }}
       >
         <div className="relative h-full bg-white rounded-2xl lg:rounded-3xl overflow-hidden
-          shadow-sm hover:shadow-2xl hover:shadow-black/10
+          shadow-xl shadow-black/10 hover:shadow-2xl hover:shadow-black/15
           border border-gray-100 hover:border-gray-200
           transition-all duration-500 hover:-translate-y-2">
 
           {/* Image Container */}
           <div className="relative aspect-[4/3] overflow-hidden">
             <img
-              src={tour.image}
-              alt={tour.name}
+              src={climb.image}
+              alt={climb.name}
               className="w-full h-full object-cover transition-transform duration-700
                 group-hover:scale-110"
             />
@@ -113,7 +113,7 @@ function TourCard({ tour, index, isVisible }: {
                 <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full
                   bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs
                   font-medium border border-white/30">
-                  {tour.difficulty}
+                  {climb.difficulty}
                 </span>
               </div>
 
@@ -122,7 +122,7 @@ function TourCard({ tour, index, isVisible }: {
                 rounded-xl bg-black/40 backdrop-blur-md border border-white/20">
                 <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#006F61]" />
                 <span className="text-white text-xs sm:text-sm font-bold">
-                  {tour.altitude}
+                  {climb.altitude}
                 </span>
               </div>
             </div>
@@ -131,12 +131,12 @@ function TourCard({ tour, index, isVisible }: {
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
               <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm mb-2">
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-                <span className="truncate">{tour.location}</span>
+                <span className="truncate">{climb.location}</span>
               </div>
               <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-white
                 leading-tight line-clamp-2 group-hover:text-[#006F61]
                 transition-colors duration-300">
-                {tour.name}
+                {climb.name}
               </h3>
             </div>
 
@@ -152,7 +152,7 @@ function TourCard({ tour, index, isVisible }: {
           <div className="p-4 sm:p-5 lg:p-6">
             {/* Description */}
             <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
-              {tour.description}
+              {climb.description}
             </p>
 
             {/* Info Grid */}
@@ -162,7 +162,7 @@ function TourCard({ tour, index, isVisible }: {
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
                 <span className="text-[10px] sm:text-xs text-gray-500">Duration</span>
                 <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
-                  {tour.duration}
+                  {climb.duration}
                 </span>
               </div>
               <div className="flex flex-col items-center p-2.5 sm:p-3 rounded-xl
@@ -170,7 +170,7 @@ function TourCard({ tour, index, isVisible }: {
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
                 <span className="text-[10px] sm:text-xs text-gray-500">Season</span>
                 <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
-                  {tour.bestSeason || "All Year"}
+                  {climb.bestSeason || "Summer"}
                 </span>
               </div>
             </div>
@@ -181,7 +181,7 @@ function TourCard({ tour, index, isVisible }: {
                 bg-[#006F61] hover:bg-[#005a4d] transition-all duration-300
                 hover:shadow-lg hover:shadow-[#006F61]/30"
             >
-              <span>View Tour Details</span>
+              <span>View Climb Details</span>
               <ChevronRight className="w-4 h-4 ml-2 transition-transform
                 group-hover/btn:translate-x-1" />
             </Button>
@@ -198,7 +198,7 @@ function TourCard({ tour, index, isVisible }: {
   );
 }
 
-export function SeasonWiseSection() {
+export function RockClimbingSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const sectionRef = useRef<HTMLElement>(null);
@@ -211,13 +211,13 @@ export function SeasonWiseSection() {
       .map(({ value }) => value);
   };
 
-  // Get filtered and randomized tours - always limited to 4
-  const displayedTours = useMemo(() => {
-    let filteredList = tours;
+  // Get filtered and randomized climbs - always limited to 4
+  const displayedClimbs = useMemo(() => {
+    let filteredList = rockClimbings;
 
     if (activeFilter !== "all") {
-      filteredList = tours.filter(tour => {
-        const alt = getAltitudeNumber(tour.altitude);
+      filteredList = rockClimbings.filter(climb => {
+        const alt = getAltitudeNumber(climb.altitude);
         if (activeFilter === "6000m") return alt >= 6000;
         if (activeFilter === "5000m") return alt >= 5000 && alt < 6000;
         if (activeFilter === "4000m") return alt >= 4000 && alt < 5000;
@@ -225,7 +225,7 @@ export function SeasonWiseSection() {
       });
     }
 
-    // Always shuffle and return max 4 tours
+    // Always shuffle and return max 4 climbs
     return shuffleArray(filteredList).slice(0, 4);
   }, [activeFilter]);
 
@@ -250,15 +250,15 @@ export function SeasonWiseSection() {
   // Filter options
   const filters = ["all", "6000m", "5000m", "4000m"];
 
-  // Count tours by category
+  // Count climbs by category
   const counts = {
-    all: tours.length,
-    "6000m": tours.filter(e => getAltitudeNumber(e.altitude) >= 6000).length,
-    "5000m": tours.filter(e => {
+    all: rockClimbings.length,
+    "6000m": rockClimbings.filter(e => getAltitudeNumber(e.altitude) >= 6000).length,
+    "5000m": rockClimbings.filter(e => {
       const alt = getAltitudeNumber(e.altitude);
       return alt >= 5000 && alt < 6000;
     }).length,
-    "4000m": tours.filter(e => {
+    "4000m": rockClimbings.filter(e => {
       const alt = getAltitudeNumber(e.altitude);
       return alt >= 4000 && alt < 5000;
     }).length,
@@ -267,39 +267,37 @@ export function SeasonWiseSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 sm:py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
-      data-testid="section-tours"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden"
+      style={{ backgroundColor: '#006F61' }}
+      data-testid="section-rock-climbing"
     >
-      {/* Decorative Background Elements */}
+      {/* Background Pattern & Decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large gradient blobs */}
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#005a4d] via-[#006F61] to-[#007d6e]" />
+
+        {/* Subtle pattern */}
         <div
-          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-[0.03]"
-          style={{ backgroundColor: '#006F61' }}
-        />
-        <div
-          className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full opacity-[0.02]"
-          style={{ backgroundColor: '#006F61' }}
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='1'/%3E%3C/svg%3E")`,
+            backgroundSize: '30px 30px',
+          }}
         />
 
-        {/* Decorative dots pattern */}
-        <div className="absolute top-40 right-10 hidden xl:block">
+        {/* Large decorative circles */}
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full border border-white/5" />
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full border border-white/5" />
+        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full border border-white/5" />
+
+        {/* Floating accent dots */}
+        <div className="absolute top-20 right-20 hidden lg:block">
           <div className="grid grid-cols-4 gap-3">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: 'rgba(0, 111, 97, 0.1)' }}
-              />
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="w-2 h-2 rounded-full bg-white/10" />
             ))}
           </div>
         </div>
-
-        {/* Decorative line */}
-        <div
-          className="absolute top-1/3 left-0 w-32 h-px hidden lg:block"
-          style={{ background: 'linear-gradient(90deg, rgba(0,111,97,0.2) 0%, transparent 100%)' }}
-        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -310,27 +308,25 @@ export function SeasonWiseSection() {
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 sm:mb-6"
-            style={{ backgroundColor: 'rgba(0, 111, 97, 0.1)' }}
-          >
-            <Compass className="w-4 h-4" style={{ color: '#006F61' }} />
-            <span className="text-sm font-semibold" style={{ color: '#006F61' }}>
-              Scenic Adventures
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
+            bg-white/10 backdrop-blur-sm border border-white/20
+            text-white text-sm font-semibold mb-4 sm:mb-6">
+            <Gem className="w-4 h-4" />
+            <span>Technical Rock Climbing</span>
           </div>
 
           {/* Title */}
-          <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
-            Discover Our{" "}
-            <span className="relative inline-block" style={{ color: '#006F61' }}>
-              Valley Tours
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-3 sm:mb-4">
+            Conquer the{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">Granite Spires</span>
+              <span className="absolute bottom-1 left-0 w-full h-3 bg-white/20 rounded-full transform -rotate-1" />
             </span>
           </h2>
 
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed px-4 sm:px-0">
-            Explore the breathtaking landscapes of Hunza, Skardu, Deosai, and beyond.
-            Experience the rich culture and natural beauty of Gilgit-Baltistan.
+          <p className="text-white/80 text-base sm:text-lg md:text-xl leading-relaxed px-4 sm:px-0">
+            World-class rock climbing on Trango Towers, Amin Brakk, Shipton Spire and more.
+            Experience the legendary granite walls of the Karakoram.
           </p>
         </div>
 
@@ -350,21 +346,16 @@ export function SeasonWiseSection() {
                 className={`group flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-medium
                   transition-all duration-300 text-sm
                   ${isActive
-                    ? 'text-white shadow-lg'
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:shadow-md'
+                    ? 'bg-white text-gray-900 shadow-lg shadow-black/20'
+                    : 'bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20'
                   }`}
-                style={isActive ? {
-                  backgroundColor: configData.color,
-                  boxShadow: `0 10px 30px -10px ${configData.color}66`
-                } : {}}
               >
-                <Mountain className={`w-4 h-4 transition-transform group-hover:scale-110
-                  ${isActive ? 'text-white' : ''}`}
-                  style={!isActive ? { color: configData.color } : {}}
+                <Anchor className={`w-4 h-4 transition-transform group-hover:scale-110`}
+                  style={isActive ? { color: configData.color } : {}}
                 />
                 <span>{configData.label}</span>
                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold
-                  ${isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'}`}>
+                  ${isActive ? 'bg-gray-100 text-gray-600' : 'bg-white/20 text-white'}`}>
                   {counts[filter as keyof typeof counts]}
                 </span>
               </button>
@@ -372,12 +363,12 @@ export function SeasonWiseSection() {
           })}
         </div>
 
-        {/* Tours Grid - Always shows max 4 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
-          {displayedTours.map((tour, index) => (
-            <TourCard
-              key={tour.id}
-              tour={tour}
+        {/* Climbs Grid - Always shows max 4 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+          {displayedClimbs.map((climb, index) => (
+            <RockClimbingCard
+              key={climb.id}
+              climb={climb}
               index={index}
               isVisible={isVisible}
             />
@@ -385,26 +376,24 @@ export function SeasonWiseSection() {
         </div>
 
         {/* Empty State */}
-        {displayedTours.length === 0 && (
+        {displayedClimbs.length === 0 && (
           <div className="text-center py-12 sm:py-16">
-            <div
-              className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(0, 111, 97, 0.1)' }}
-            >
-              <Mountain className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#006F61' }} />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full
+              bg-white/10 flex items-center justify-center">
+              <Mountain className="w-8 h-8 sm:w-10 sm:h-10 text-white/60" />
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
-              No tours available
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+              No climbs available
             </h3>
-            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+            <p className="text-white/60 mb-6 text-sm sm:text-base">
               Check back soon or explore other categories.
             </p>
             <Button
               onClick={() => setActiveFilter("all")}
-              style={{ backgroundColor: '#006F61' }}
-              className="text-white"
+              className="bg-white hover:bg-gray-100"
+              style={{ color: '#006F61' }}
             >
-              View All Tours
+              View All Climbs
             </Button>
           </div>
         )}
@@ -415,14 +404,16 @@ export function SeasonWiseSection() {
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link href="/tours">
+            <Link href="/rock-climbing">
               <Button
                 size="lg"
-                className="w-full sm:w-fit group bg-[#006F61] hover:bg-[#005a4d] font-semibold
-                  px-6 sm:px-8 py-5 sm:py-6 h-auto rounded-xl shadow-lg transition-all duration-300
-                  hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#006F61]/30"
+                className="w-full sm:w-fit group bg-white hover:bg-gray-100 font-semibold
+                  px-6 sm:px-8 py-5 sm:py-6 h-auto rounded-xl shadow-xl transition-all duration-300
+                  hover:-translate-y-0.5 hover:shadow-2xl"
+                style={{ color: '#006F61' }}
               >
-                <span>Explore All Tours</span>
+                <Anchor className="w-5 h-5 mr-2" />
+                <span>Explore All Climbs</span>
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform
                   group-hover:translate-x-1" />
               </Button>
@@ -433,11 +424,12 @@ export function SeasonWiseSection() {
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-fit group font-semibold px-6 sm:px-8 py-5 sm:py-6 h-auto rounded-xl
-                  border-2 border-gray-300 text-gray-700 bg-white
-                  hover:bg-[#006F61] hover:border-[#006F61] hover:text-white
+                  border-2 border-white/80 text-white bg-transparent
+                  hover:bg-white hover:text-[#006F61] hover:border-white
                   transition-all duration-300 hover:-translate-y-0.5"
               >
-                <span>Plan Custom Tour</span>
+                <Gem className="w-5 h-5 mr-2" />
+                <span>Plan Custom Climb</span>
               </Button>
             </Link>
           </div>
