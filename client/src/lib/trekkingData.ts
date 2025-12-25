@@ -6,6 +6,52 @@ import {
 import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
 import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
 
+import K2BasecampGondogorlaImg1 from "@assets/k2-base-camp-trek/k1.jpeg";
+import K2BasecampGondogorlaImg2 from "@assets/k2-base-camp-trek/k2.jpeg";
+import K2BasecampGondogorlaImg3 from "@assets/k2-base-camp-trek/k3.jpeg";
+import K2BasecampConcordiaImg1 from "@assets/k2-base-camp-concordia-trek/k1.jpeg";
+import K2BasecampConcordiaImg2 from "@assets/k2-base-camp-concordia-trek/k2.jpeg";
+import K2BasecampConcordiaImg3 from "@assets/k2-base-camp-concordia-trek/k3.jpg";
+import Five8000mBasecampImg1 from "@assets/five-8000m-base-camp/f1.jpeg";
+import Five8000mBasecampImg2 from "@assets/five-8000m-base-camp/f2.jpg";
+import Five8000mBasecampImg3 from "@assets/five-8000m-base-camp/f3.jpeg";
+import NangmaValleyImg1 from "@assets/nangma-valley-trek/n1.jpeg";
+import NangmaValleyImg2 from "@assets/nangma-valley-trek/n2.jpg";
+// import NangmaValleyImg3 from "@assets/nangma-valley-trek/n1.jpeg"
+import ThalleLaImg1 from "@assets/thalle-la-trek/t1.jpeg";
+import ThalleLaImg2 from "@assets/thalle-la-trek/t2.jpeg";
+import ThalleLaImg3 from "@assets/thalle-la-trek/t3.jpeg";
+import FairyMeadowImg1 from "@assets/fairy-meadow/f1.jpeg";
+import FairyMeadowImg2 from "@assets/fairy-meadow/f2.jpeg";
+import FairyMeadowImg3 from "@assets/fairy-meadow/f3.jpeg";
+import AroundNangaParbatImg1 from "@assets/around-nanga-parbat/a1.jpeg";
+import AroundNangaParbatImg2 from "@assets/around-nanga-parbat/a2.jpeg";
+import AroundNangaParbatImg3 from "@assets/around-nanga-parbat/a3.jpeg";
+import SnowLakeHisperLaImg1 from "@assets/snow-lake/s1.jpeg";
+// import SnowLakeHisperLaImg2 from "@assets/"
+// import SnowLakeHisperLaImg3 from "@assets/"
+import BaraBroqImg1 from "@assets/bara-broq/b1.jpeg";
+import BaraBroqImg2 from "@assets/bara-broq/b2.jpeg";
+import BaraBroqImg3 from "@assets/bara-broq/b3.jpeg";
+import MasherbrumBasecampImg1 from "@assets/mashabrum-trek/m1.jpg";
+import MasherbrumBasecampImg2 from "@assets/mashabrum-trek/m2.jpeg";
+import MasherbrumBasecampImg3 from "@assets/mashabrum-trek/m3.jpeg";
+import CharkusaValleyImg1 from "@assets/charakusa/c1.jfif";
+// import CharkusaValleyImg2 from "@assets/"
+// import CharkusaValleyImg3 from "@assets/"
+import MachuloLaImg1 from "@assets/machulo/m1.jpeg";
+// import MachuloLaImg2 from "@assets/"
+// import MachuloLaImg3 from "@assets/"
+import IqbalTopImg1 from "@assets/iqbal-top/i1.jpg";
+// import IqbalTopImg2 from "@assets/"
+// import IqbalTopImg3 from "@assets/"
+import ShimshalPassImg1 from "@assets/shimshal/s1.jpeg";
+import ShimshalPassImg2 from "@assets/shimshal/s2.jpeg";
+import ShimshalPassImg3 from "@assets/shimshal/s3.jpeg";
+import NalterPassImg1 from "@assets/naltar/n1.jfif";
+// import NalterPassImg2 from "@assets/"
+// import NalterPassImg3 from "@assets/"
+
 export interface TrekkingTimeline {
   day: string;
   title: string;
@@ -47,7 +93,12 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1800,
     groupSize: "4-12 trekkers",
-    image: heroImage1,
+    image: K2BasecampGondogorlaImg1,
+    gallery: [
+      K2BasecampGondogorlaImg1,
+      K2BasecampGondogorlaImg2,
+      K2BasecampGondogorlaImg3,
+    ],
     description:
       "The K2 Base Camp via Gondogoro La Trek is one of the most spectacular and adventurous trekking routes in the Karakoram, combining the iconic K2 Base Camp with a high-altitude crossing of Gondogoro La Pass.",
     overview:
@@ -208,7 +259,12 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1500,
     groupSize: "4-12 trekkers",
-    image: heroImage2,
+    image: K2BasecampConcordiaImg1,
+    gallery: [
+      K2BasecampConcordiaImg1,
+      K2BasecampConcordiaImg2,
+      K2BasecampConcordiaImg3,
+    ],
     description:
       "The K2 Base Camp and Concordia Trek is one of the world’s greatest high-altitude treks, leading through the legendary Baltoro Glacier to the base of K2, the world’s second-highest mountain.",
     overview:
@@ -369,7 +425,12 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2200,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: Five8000mBasecampImg1,
+    gallery: [
+      Five8000mBasecampImg1,
+      Five8000mBasecampImg2,
+      Five8000mBasecampImg3,
+    ],
     description:
       "The Five Base Camps Trek is one of the most comprehensive and adventurous high-altitude treks in Pakistan, visiting the base camps of five 8000m peaks across the Karakoram and Himalaya.",
     overview:
@@ -575,7 +636,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1100,
     groupSize: "4-12 trekkers",
-    image: heroImage1,
+    image: NangmaValleyImg1,
+    gallery: [NangmaValleyImg1, NangmaValleyImg2],
     description:
       "The Nangma Valley Trek is a scenic and culturally rich journey through one of the most beautiful valleys in the Karakoram, known for its dramatic granite spires, alpine meadows, and traditional mountain villages.",
     overview:
@@ -676,7 +738,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1400,
     groupSize: "4-10 trekkers",
-    image: heroImage2,
+    image: ThalleLaImg1,
+    gallery: [ThalleLaImg1, ThalleLaImg2, ThalleLaImg3],
     description:
       "The Thalle La Trek is a challenging high-altitude pass crossing in the Karakoram, offering panoramic views of surrounding peaks and pristine alpine landscapes.",
     overview:
@@ -771,7 +834,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: SnowLakeHisperLaImg1,
+    gallery: [SnowLakeHisperLaImg1],
     description:
       "The Snow Lake – Hispar La Trek is one of the most remote and spectacular high-altitude treks in the world, traversing vast glaciers and crossing the iconic Hispar La Pass in the heart of the Karakoram Range.",
     overview:
@@ -934,7 +998,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: BaraBroqImg1,
+    gallery: [BaraBroqImg1, BaraBroqImg2, BaraBroqImg3],
     description:
       "The Barah Broq (Moses Peak) Trek is a short yet challenging K2 viewpoint trek in the Ganche Valley, offering spectacular mountain scenery without the need for glacier travel.",
     overview:
@@ -1031,7 +1096,12 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: MasherbrumBasecampImg1,
+    gallery: [
+      MasherbrumBasecampImg1,
+      MasherbrumBasecampImg2,
+      MasherbrumBasecampImg3,
+    ],
     description:
       "The Masherbrum Base Camp Trek is a scenic and accessible trek in the Hushe Valley, leading to the base of Masherbrum (K1), one of the most iconic peaks of the Karakoram Range.",
     overview:
@@ -1146,7 +1216,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: CharkusaValleyImg1,
+    gallery: [CharkusaValleyImg1],
     description:
       "The Charakusa Valley Trek is a remote and visually stunning journey into the heart of the Karakoram, offering close-up views of the iconic K6 and K7 peaks.",
     overview:
@@ -1261,7 +1332,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: MachuloLaImg1,
+    gallery: [MachuloLaImg1],
     description:
       "The Machulo La Trek is a scenic high mountain pass trek in Baltistan, offering trekkers breathtaking views of K2 and surrounding Karakoram peaks.",
     overview:
@@ -1364,7 +1436,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 2000,
     groupSize: "4-10 trekkers",
-    image: heroImage1,
+    image: IqbalTopImg1,
+    gallery: [IqbalTopImg1],
     description:
       "The Iqbal Top Trek is a high-altitude K2 viewpoint trek in the Karakoram, offering spectacular panoramic views of K2 and neighboring peaks from a remote vantage point.",
     overview:
@@ -1467,7 +1540,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1700,
     groupSize: "4-8 trekkers",
-    image: heroImage1,
+    image: ShimshalPassImg1,
+    gallery: [ShimshalPassImg1, ShimshalPassImg2, ShimshalPassImg3],
     description:
       "The Shimshal Pass Trek is a remote high-altitude adventure through the isolated Shimshal Valley, leading to the historic Shimshal Pass on the border between Pakistan and China.",
     overview:
@@ -1612,7 +1686,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1700,
     groupSize: "4-8 trekkers",
-    image: heroImage1,
+    image: NalterPassImg1,
+    gallery: [NalterPassImg1],
     description:
       "The Naltar Pass Trek is a scenic high-altitude journey linking the beautiful Naltar Valley with Ishkoman, offering breathtaking views of the Hindukush range and surprisingly lush alpine landscapes.",
     overview:
@@ -1763,7 +1838,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: "May - September",
     price: 900,
     groupSize: "4-15 trekkers",
-    image: heroImage1,
+    image: FairyMeadowImg1,
+    gallery: [FairyMeadowImg1, FairyMeadowImg2, FairyMeadowImg3],
     description:
       "The Fairy Meadows Trek is a classic Himalayan adventure leading to the famous Fairy Meadows and onward to the base camp of Nanga Parbat, the world’s ninth-highest mountain.",
     overview:
@@ -1848,7 +1924,12 @@ export const trekkings: TrekkingData[] = [
     bestSeason: "June - August",
     price: 1900,
     groupSize: "4-8 trekkers",
-    image: heroImage2,
+    image: AroundNangaParbatImg1,
+    gallery: [
+      AroundNangaParbatImg1,
+      AroundNangaParbatImg2,
+      AroundNangaParbatImg3,
+    ],
     description:
       "The Around Nanga Parbat Trek is an epic high-altitude circuit that encircles Nanga Parbat, offering rare access to all three of its legendary faces and the remote valleys that surround the mountain.",
     overview:
