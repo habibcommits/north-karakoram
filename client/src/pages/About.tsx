@@ -119,7 +119,7 @@ const destinations = [
 const stats = [
   { value: "15+", label: "Years Experience", icon: Award },
   { value: "150+", label: "Expeditions", icon: Mountain },
-  { value: "2500+", label: "Happy Travelers", icon: Users },
+  { value: "1000+", label: "Happy Travelers", icon: Users },
   { value: "50+", label: "Destinations", icon: Globe },
 ];
 
@@ -583,7 +583,7 @@ export default function About() {
                     {[
                       { icon: BadgeCheck, value: "Licensed", label: "Tour Operator" },
                       { icon: Shield, value: "100%", label: "Safety Record" },
-                      { icon: Users, value: "2500+", label: "Happy Travelers" },
+                      { icon: Users, value: "1000+", label: "Happy Travelers" },
                       { icon: Star, value: "4.9/5", label: "Customer Rating" },
                     ].map((stat, index) => (
                       <div

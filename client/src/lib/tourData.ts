@@ -37,7 +37,7 @@ export interface TourData {
 export const tours: TourData[] = [
   {
     id: "deosai-plateau-tour",
-    slug: "deosai-plateua-tour",
+    slug: "deosai-plateau-tour",
     name: "Deosai Plateau Tour",
     altitude: "4,114m",
     location: "Gilgit Baltistan, Pakistan",
@@ -486,37 +486,37 @@ export const tours: TourData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, our staff will greet you and provide a transfer to our group hotel. This day is dedicated to recovering from your travels. Once all participants have arrived, we will convene for a comprehensive briefing on our upcoming Hunza Valley Tour. Depending on the schedule, an optional afternoon tour of Islamabad—the nation’s purpose-built capital established in 1961—may be available. Accommodation: Hill View Hotel or equivalent. Meals: Dinner.",
+          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, our staff will greet you and provide a transfer to our group hotel. This day is dedicated to recovering from your travels. Once all participants have arrived, we will convene for a comprehensive briefing on our upcoming Hunza Valley Tour. Depending on the schedule, an optional afternoon tour of Islamabad—the nation’s purpose-built capital established in 1961—may be available. Accommodation: Hotel. Meals: Dinner.",
       },
       {
         day: "Day 02",
         title: "Drive to Chilas or Naran",
         description:
-          "After breakfast, we depart the capital and begin our journey north via mini-coach along the legendary Karakoram Highway. The drive takes us through historical towns and vibrant green valleys as we head toward the high mountains. We will spend the night in a comfortable hotel in either Naran or Chilas, both serving as traditional gateways to the deep north. Distance: 461km. Duration: 8-9 hours. Accommodation: Shangrila Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "After breakfast, we depart the capital and begin our journey north via mini-coach along the legendary Karakoram Highway. The drive takes us through historical towns and vibrant green valleys as we head toward the high mountains. We will spend the night in a comfortable hotel in either Naran or Chilas, both serving as traditional gateways to the deep north. Distance: 461km. Duration: 8-9 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Travel to Karimabad",
         description:
-          "We continue our journey toward Karimabad, traveling along the ancient Silk Road route now occupied by the modern Karakoram Highway. Following the Indus and Hunza Rivers, this drive is a spectacular introduction to the region’s geography; twenty-one of the world’s one hundred highest peaks are visible from this road. As civilization fades behind us, we enter the heart of the Karakoram. Distance: 150km. Duration: 5 hours. Accommodation: Hunza Embassy Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We continue our journey toward Karimabad, traveling along the ancient Silk Road route now occupied by the modern Karakoram Highway. Following the Indus and Hunza Rivers, this drive is a spectacular introduction to the region’s geography; twenty-one of the world’s one hundred highest peaks are visible from this road. As civilization fades behind us, we enter the heart of the Karakoram. Distance: 150km. Duration: 5 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
         title: "Sightseeing in Karimabad",
         description:
-          "Today is dedicated to exploring Karimabad, the ancient capital of the Hunza Valley. You can wander through cobblestone streets, browse local handicrafts and rubies, or sample authentic Hunza cuisine. We will visit the UNESCO-listed Baltit and Altit Forts to learn about the region’s complex history. From Altit Fort, enjoy a commanding view of the old Silk Road and a spectacular sunset over the river. Altitude: 2,440m. Accommodation: Hunza Embassy Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Today is dedicated to exploring Karimabad, the ancient capital of the Hunza Valley. You can wander through cobblestone streets, browse local handicrafts and rubies, or sample authentic Hunza cuisine. We will visit the UNESCO-listed Baltit and Altit Forts to learn about the region’s complex history. From Altit Fort, enjoy a commanding view of the old Silk Road and a spectacular sunset over the river. Altitude: 2,440m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 05",
         title: "Excursion to Eagle’s Nest",
         description:
-          "Following a morning in Karimabad, we ascend a steep switchback road to reach Eagle’s Nest. Known as the premier viewpoint in Hunza, it offers a 360-degree panorama of jagged cliffs and pink-hued peaks. We will spend the evening here to witness a magical sunset and a star-filled sky, followed by an early sunrise the next morning. Altitude: 2,850m. Accommodation: Hunza Embassy Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Following a morning in Karimabad, we ascend a steep switchback road to reach Eagle’s Nest. Known as the premier viewpoint in Hunza, it offers a 360-degree panorama of jagged cliffs and pink-hued peaks. We will spend the evening here to witness a magical sunset and a star-filled sky, followed by an early sunrise the next morning. Altitude: 2,850m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 06",
         title: "Khunjerab Pass and the Chinese Border",
         description:
-          "Today features an epic drive to the Khunjerab Pass (4,880m), the highest paved border crossing in the world, connecting Pakistan and China. En route, we stop at the mesmerising Attabad Lake and the Hussaini Suspension Bridge. The pass is located within the Khunjerab National Park, home to the rare snow leopard and Marco Polo sheep. After exploring this high-altitude frontier, we return to the iconic village of Passu for the night. Duration: 4 hours. Accommodation: Silk Route Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Today features an epic drive to the Khunjerab Pass (4,880m), the highest paved border crossing in the world, connecting Pakistan and China. En route, we stop at the mesmerising Attabad Lake and the Hussaini Suspension Bridge. The pass is located within the Khunjerab National Park, home to the rare snow leopard and Marco Polo sheep. After exploring this high-altitude frontier, we return to the iconic village of Passu for the night. Duration: 4 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 07",
@@ -534,13 +534,13 @@ export const tours: TourData[] = [
         day: "Day 10",
         title: "Return to Islamabad",
         description:
-          "Our tour concludes its mountain phase as we descend to Tattu, take the jeeps back to Raikot Bridge, and rejoin our minibus for the drive back to Islamabad. Upon arrival, you can enjoy a hot shower and the comforts of the city after your wilderness adventure. Duration: 10 hours. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Our tour concludes its mountain phase as we descend to Tattu, take the jeeps back to Raikot Bridge, and rejoin our minibus for the drive back to Islamabad. Upon arrival, you can enjoy a hot shower and the comforts of the city after your wilderness adventure. Duration: 10 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 11",
         title: "Contingency and Exploration Day",
         description:
-          "A flexible day in Islamabad to rest, prepare for your journey home, or conduct some last-minute shopping in the local markets. We will enjoy a final group dinner to celebrate the conclusion of our journey through the Hunza Valley. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "A flexible day in Islamabad to rest, prepare for your journey home, or conduct some last-minute shopping in the local markets. We will enjoy a final group dinner to celebrate the conclusion of our journey through the Hunza Valley. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 12",
@@ -698,67 +698,67 @@ export const tours: TourData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, your guide will meet you and provide a transfer to the group hotel. The day is yours to recover from your journey. In the evening, we will convene for a group briefing regarding the Skardu Tour. Depending on the schedule, optional sightseeing in Islamabad—the purpose-built capital established in 1961—may be available. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, your guide will meet you and provide a transfer to the group hotel. The day is yours to recover from your journey. In the evening, we will convene for a group briefing regarding the Skardu Tour. Depending on the schedule, optional sightseeing in Islamabad—the purpose-built capital established in 1961—may be available. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu: The Gateway to the Karakoram",
         description:
-          "We transfer to the airport for a spectacular 45-minute flight to Skardu, offering aerial views of K2, Nanga Parbat, and the Karakoram giants. Upon arrival in Skardu, the historical capital of Baltistan (often called 'Little Tibet'), you will be escorted to the hotel. The afternoon is free to explore the town and its unique Tibetan-influenced culture. Note: In the rare event of a flight cancellation, we travel by road via the Karakoram Highway with an overnight stay in Naran. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We transfer to the airport for a spectacular 45-minute flight to Skardu, offering aerial views of K2, Nanga Parbat, and the Karakoram giants. Upon arrival in Skardu, the historical capital of Baltistan (often called 'Little Tibet'), you will be escorted to the hotel. The afternoon is free to explore the town and its unique Tibetan-influenced culture. Note: In the rare event of a flight cancellation, we travel by road via the Karakoram Highway with an overnight stay in Naran. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Shigar Valley and the Cold Desert",
         description:
-          "After a luxury breakfast, we travel to the picturesque Shigar Valley, the gateway to the world's highest peaks. We visit the 17th-century Shigar Fort, a masterfully restored heritage site, and the 14th-century Amburiq Masjid, the first mosque built in the valley. The day includes a visit to the Sarfaranga Cold Desert, a high-altitude landscape of sand dunes framed by snow-capped mountains. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "After a luxury breakfast, we travel to the picturesque Shigar Valley, the gateway to the world's highest peaks. We visit the 17th-century Shigar Fort, a masterfully restored heritage site, and the 14th-century Amburiq Masjid, the first mosque built in the valley. The day includes a visit to the Sarfaranga Cold Desert, a high-altitude landscape of sand dunes framed by snow-capped mountains. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
         title: "Skardu Sightseeing: Lakes and Ancient History",
         description:
-          "Today's exploration begins with a drive to the turquoise Satpara Lake, the primary water source for Skardu. We then visit the 8th-century Manthal Buddha Rock, an ancient granite carving testifying to the region's Buddhist history. In the afternoon, we visit the Kachura village to see the serene Upper Kachura Lake and the famous Shangrila Resort (Lower Kachura Lake). The evening is free to explore the local markets. Altitude: 2,230m. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Today's exploration begins with a drive to the turquoise Satpara Lake, the primary water source for Skardu. We then visit the 8th-century Manthal Buddha Rock, an ancient granite carving testifying to the region's Buddhist history. In the afternoon, we visit the Kachura village to see the serene Upper Kachura Lake and the famous Shangrila Resort (Lower Kachura Lake). The evening is free to explore the local markets. Altitude: 2,230m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 05",
         title: "Journey to Khaplu Valley",
         description:
-          "We continue our tour toward Khaplu, following the Indus and Shyok Rivers. Khaplu was the second-largest kingdom in old Baltistan and served as a crucial guardian of the trade route to Ladakh. Today, it remains the administrative capital of the Ghanche District and a primary base for trekkers heading toward Masherbrum and the Hushe Valley. Distance: 103km. Duration: 2-3 hours. Accommodation: Karakoram Lodge or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We continue our tour toward Khaplu, following the Indus and Shyok Rivers. Khaplu was the second-largest kingdom in old Baltistan and served as a crucial guardian of the trade route to Ladakh. Today, it remains the administrative capital of the Ghanche District and a primary base for trekkers heading toward Masherbrum and the Hushe Valley. Distance: 103km. Duration: 2-3 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 06",
         title: "Khaplu Heritage: Palace and Chaqchan Mosque",
         description:
-          "We spend the day exploring Khaplu’s rich heritage. We visit the 700-year-old Chaqchan Mosque, one of the region's oldest mosques dating back to the mass conversion from Buddhism to Islam. We also tour the iconic Khaplu Palace (Yabgo Khar), a four-story architectural marvel built in 1840 that blends Tibetan, Kashmiri, and Central Asian influences, now serving as a museum and heritage hotel. Altitude: 2,600m. Accommodation: Karakoram Lodge or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We spend the day exploring Khaplu’s rich heritage. We visit the 700-year-old Chaqchan Mosque, one of the region's oldest mosques dating back to the mass conversion from Buddhism to Islam. We also tour the iconic Khaplu Palace (Yabgo Khar), a four-story architectural marvel built in 1840 that blends Tibetan, Kashmiri, and Central Asian influences, now serving as a museum and heritage hotel. Altitude: 2,600m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 07",
         title: "Return to Skardu",
         description:
-          "We begin our return journey to Skardu, winding through picturesque valleys and traditional Balti villages along the Shyok River. The drive offers a stunning contrast between the lush green fields of the valley and the rugged, arid terrain as we approach the wider Skardu Valley. This scenic transfer provides ample opportunities to witness local life and the constant backdrop of the Karakoram Range. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We begin our return journey to Skardu, winding through picturesque valleys and traditional Balti villages along the Shyok River. The drive offers a stunning contrast between the lush green fields of the valley and the rugged, arid terrain as we approach the wider Skardu Valley. This scenic transfer provides ample opportunities to witness local life and the constant backdrop of the Karakoram Range. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 08",
         title: "Deosai Plateau to Astore",
         description:
-          "We embark on a scenic drive to Astore via the Deosai Plateau, the world's second-highest plateau at 4,111m. This 'Land of Giants' is a vast wilderness home to the Himalayan brown bear and unique flora. Though the road is rugged and bumpy, the landscape of open grasslands and alpine lakes is unparalleled. We stop for lunch on the plateau before descending into the Astore Valley. Distance: 152km. Duration: 6 hours. Accommodation: PTDC Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We embark on a scenic drive to Astore via the Deosai Plateau, the world's second-highest plateau at 4,111m. This 'Land of Giants' is a vast wilderness home to the Himalayan brown bear and unique flora. Though the road is rugged and bumpy, the landscape of open grasslands and alpine lakes is unparalleled. We stop for lunch on the plateau before descending into the Astore Valley. Distance: 152km. Duration: 6 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 09",
         title: "Astore to Naran via Babusar Pass",
         description:
-          "Today’s drive follows the Astore River to the junction of the Karakoram Highway, where we catch glimpses of the mighty Nanga Parbat (8,126m). We then ascend the Babusar Pass (4,173m), the highest point of our road journey, offering panoramic views of snow-capped peaks. From the pass, we descend into the lush Kaghan Valley to reach Naran. Distance: 210km. Duration: 6 hours. Accommodation: Hotel One or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Today’s drive follows the Astore River to the junction of the Karakoram Highway, where we catch glimpses of the mighty Nanga Parbat (8,126m). We then ascend the Babusar Pass (4,173m), the highest point of our road journey, offering panoramic views of snow-capped peaks. From the pass, we descend into the lush Kaghan Valley to reach Naran. Distance: 210km. Duration: 6 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 10",
         title: "Return to Islamabad via Taxila",
         description:
-          "We travel from Naran back to Islamabad, rejoining the Karakoram Highway at Mansehra. The route passes through the colonial-era hill station of Abbottabad and the historical town of Hasan Abdal. Before reaching the capital, we visit the UNESCO World Heritage site of Taxila, an ancient center of learning and Gandharan civilization. Distance: 280km. Duration: 6 hours. Accommodation: Grand Islamabad Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We travel from Naran back to Islamabad, rejoining the Karakoram Highway at Mansehra. The route passes through the colonial-era hill station of Abbottabad and the historical town of Hasan Abdal. Before reaching the capital, we visit the UNESCO World Heritage site of Taxila, an ancient center of learning and Gandharan civilization. Distance: 280km. Duration: 6 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 11",
         title: "Contingency and Exploration in Islamabad",
         description:
-          "This is a free day in Islamabad to ensure flexibility in our itinerary. You can relax at the hotel or visit the city’s landmarks, including the Faisal Mosque, Daman-e-Koh viewpoint, the Pakistan Monument, and the Lok Virsa Museum. It is an ideal time for souvenir shopping or enjoying a peaceful afternoon at Rawal Lake. Accommodation: Grand Islamabad Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "This is a free day in Islamabad to ensure flexibility in our itinerary. You can relax at the hotel or visit the city’s landmarks, including the Faisal Mosque, Daman-e-Koh viewpoint, the Pakistan Monument, and the Lok Virsa Museum. It is an ideal time for souvenir shopping or enjoying a peaceful afternoon at Rawal Lake. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 12",

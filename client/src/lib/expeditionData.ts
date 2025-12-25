@@ -62,139 +62,133 @@ export const expeditions: ExpeditionData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Arrival at the airport in Islamabad. Altitude: 540 m. Meals: Breakfast.",
+          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, you will be met by our representative and transferred to the group hotel. The rest of the day is yours to rest and prepare for the expedition ahead. Altitude: 512m. Accommodation: Hotel.",
       },
       {
         day: "Day 02",
-        title: "Free Day in Islamabad",
+        title: "Flight to Skardu or Drive to Chilas",
         description:
-          "A day dedicated to official briefing and exploring local cultural sites. Altitude: 540 m. Meals: Breakfast, Lunch, Dinner.",
+          "We transfer to the airport for the spectacular flight to Skardu. In the event of a flight cancellation due to weather, we will begin the journey by road, driving along the Karakoram Highway to Chilas. Altitude: 1,265m. Accommodation: Hotel.",
       },
       {
         day: "Day 03",
-        title: "Flight to Skardu",
+        title: "Skardu Sightseeing or Arrival from Chilas",
         description:
-          "Flight to Skardu followed by relaxation and time for last-minute gear shopping. Altitude: 2,498 m. Meals: Breakfast, Dinner.",
+          "For those who flew, today is dedicated to local sightseeing in Skardu. If traveling by road, we complete the second leg of the journey from Chilas to Skardu, following the Indus River. Altitude: 2,228m. Accommodation: Hotel.",
       },
       {
         day: "Day 04",
-        title: "Free Day in Skardu",
+        title: "Expedition Briefing and Final Preparations",
         description:
-          "Sightseeing around Skardu, including Kharpocho Fort, Sadpara Lake, and the local Bazaar. Altitude: 2,498 m. Meals: Breakfast, Lunch, Dinner.",
+          "We attend the mandatory expedition briefing at the Ministry of Tourism in Skardu. The remainder of the day is spent on final gear checks and coordinating with the expedition staff. Accommodation: Hotel.",
       },
       {
         day: "Day 05",
-        title: "Drive to Askole Village",
+        title: "Drive from Skardu to Askole",
         description:
-          "Jeep safari drive to Askole Village. Altitude: 3,015 m. Meals: Breakfast, Lunch, Dinner.",
+          "We depart Skardu by jeep for the rugged drive to Askole, the last inhabited village before we enter the high wilderness of the Karakoram. Altitude: 3,050m. Accommodation: Camping.",
       },
       {
         day: "Day 06",
-        title: "Trek to Jhola",
+        title: "Trek from Askole to Jhola",
         description:
-          "Commencement of the trek from Askole to Jhola. Altitude: 3,103 m. Meals: Breakfast, Lunch, Dinner.",
+          "The trekking phase begins. We leave Askole and follow the Braldu River toward Jhola, navigating the rocky terrain and crossing the snout of the Biafo Glacier. Altitude: 3,200m. Accommodation: Camping.",
       },
       {
         day: "Day 07",
-        title: "Trek to Paiju",
+        title: "Trek from Jhola to Paiju",
         description:
-          "Trekking from Jhola to Paiju. Altitude: 3,418 m. Meals: Breakfast, Lunch, Dinner.",
+          "We continue our trek toward the green oasis of Paiju. This section offers the first glimpses of the massive granite spires of the Cathedral and Trango groups. Altitude: 3,400m. Accommodation: Camping.",
       },
       {
         day: "Day 08",
-        title: "Acclimatization in Paiju",
+        title: "Rest and Acclimatization at Paiju",
         description:
-          "A scheduled rest and acclimatization day in Paiju. Altitude: 3,418 m. Meals: Breakfast, Lunch, Dinner.",
+          "A vital day for rest and altitude adjustment at Paiju. Our crew will organize porter loads and prepare for the transition onto the Baltoro Glacier. Altitude: 3,400m. Accommodation: Camping.",
       },
       {
         day: "Day 09",
-        title: "Trek to Khoburtse",
+        title: "Trek from Paiju to Urdukas",
         description:
-          "Trekking from Paiju to Khoburtse. Altitude: 3,788 m. Meals: Breakfast, Lunch, Dinner.",
+          "We ascend onto the Baltoro Glacier, trekking across the lateral moraine to reach Urdukas. This campsite provides a stunning vantage point over the Trango Towers. Altitude: 4,000m. Accommodation: Camping.",
       },
       {
         day: "Day 10",
-        title: "Trek to Urdukas",
+        title: "Trek from Urdukas to Goro II",
         description:
-          "Trekking from Khoburtse to Urdukas. Altitude: 3,905 m. Meals: Breakfast, Lunch, Dinner.",
+          "Today’s trek takes us deeper onto the glacier toward Goro II. We are now surrounded by some of the world’s highest peaks, including Masherbrum and Muztagh Tower. Altitude: 4,300m. Accommodation: Camping.",
       },
       {
         day: "Day 11",
-        title: "Trek to Goro II",
+        title: "Trek from Goro II to Concordia",
         description:
-          "Trek to Goro II at the junction of the Baltoro and Younghusband Glaciers. Altitude: 4,285 m. Meals: Breakfast, Lunch, Dinner.",
+          "We trek to Concordia, the famous junction of the Baltoro and Godwin-Austen glaciers. This site offers unparalleled 360-degree views of the mountain giants, including K2. Altitude: 4,600m. Accommodation: Camping.",
       },
       {
         day: "Day 12",
-        title: "Trek to Concordia",
+        title: "Trek from Concordia to K2 Base Camp",
         description:
-          "Trekking to the Concordia campsite. Altitude: 4,512 m. Meals: Breakfast, Lunch, Dinner.",
+          "The final approach trek takes us to the foot of the world’s second-highest peak. We establish our base camp on the Godwin-Austen Glacier beneath the Abruzzi Spur. Altitude: 5,100m. Accommodation: Camping.",
       },
       {
-        day: "Day 13",
-        title: "Trek to K2 Base Camp",
+        day: "Day 13 - 50",
+        title: "K2 Climbing Period (38 Days)",
         description:
-          "Trekking from Concordia to K2 Base Camp. Altitude: 5,155 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 14–43",
-        title: "Ascent of K2",
-        description:
-          "The dedicated climbing period for the ascent of K2. Altitude: 5,150 m to 8,611 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 44",
-        title: "Return to Concordia",
-        description:
-          "Trek back to Concordia followed by a period of rest. Altitude: 4,512 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 45",
-        title: "Trek to Ali Camp",
-        description:
-          "Trekking from Concordia to Ali Camp. Altitude: 4,500 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 46",
-        title: "Gondogoro La Crossing",
-        description:
-          "Crossing Gondogoro La and trekking down to Khuispang. Altitude: 5,585 m (Pass) to 4,600 m (Khuispang). Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 47",
-        title: "Trek to Saicho",
-        description:
-          "Trekking from Khuispang to Saicho. Altitude: 3,350 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 48",
-        title: "Hushe and Skardu",
-        description:
-          "Trek to Hushe followed by a drive back to Skardu. Altitude: 2,498 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 49",
-        title: "Debriefing in Skardu",
-        description:
-          "Official debriefing session in Skardu. Altitude: 2,288 m. Meals: Breakfast, Lunch, Dinner.",
-      },
-      {
-        day: "Day 50",
-        title: "Return Flight to Islamabad",
-        description:
-          "Flight from Skardu back to Islamabad. Altitude: 538 m. Meals: Breakfast.",
-      },
-      {
-        day: "Day 51",
-        title: "Contingency Day",
-        description:
-          "A buffer day in Islamabad reserved for potential flight cancellations. Altitude: 540 m. Meals: Breakfast.",
+          "Thirty-eight days are dedicated to the technical ascent of K2. This window allows for acclimatization cycles, route fixing, establishing high camps, and the final summit push. Accommodation: Camping.",
       },
       {
         day: "Day 52",
+        title: "Descent from K2 Base Camp to Goro II",
+        description:
+          "Following the conclusion of the climbing period, we dismantle our high camps and begin our descent, trekking back through Concordia to Goro II. Altitude: 4,300m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 53",
+        title: "Trek from Goro II to Khobursay",
+        description:
+          "We continue our return journey down the Baltoro Glacier, trekking past Urdukas to our campsite at Khobursay. Altitude: 3,800m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 54",
+        title: "Trek from Khobursay to Bardumal",
+        description:
+          "As we descend further, we move off the glacier and trek toward the campsite at Bardumal, following the river valley. Altitude: 3,300m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 55",
+        title: "Return Trek to Askole",
+        description:
+          "The final trekking day takes us back to the village of Askole, where we conclude the walking portion of our expedition. Altitude: 3,050m. Accommodation: Camping.",
+      },
+      {
+        day: "Day 56",
+        title: "Drive from Askole to Skardu",
+        description:
+          "We rejoin our vehicles for the jeep drive back to Skardu. This evening marks a welcome return to the comforts of a hotel and a celebratory meal. Altitude: 2,228m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 57",
+        title: "De-briefing and Farewell Dinner",
+        description:
+          "A final day in Skardu for an official debriefing with the authorities and a farewell dinner with the local staff and expedition team. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 58",
+        title: "Return Flight to Islamabad or Drive to Chilas",
+        description:
+          "We transfer for the return flight to Islamabad. In the event of a cancellation, we will begin the two-day drive back to the capital via Chilas. Altitude: 1,265m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 59",
+        title: "Islamabad Sightseeing or Completion of Road Journey",
+        description:
+          "A day for sightseeing in Islamabad or, for those traveling by road, completing the final leg of the journey from Chilas to the capital. Altitude: 512m. Accommodation: Hotel.",
+      },
+      {
+        day: "Day 60",
         title: "Final Departure",
         description:
-          "Transfer for your departure flight to your home country. Meals: Breakfast.",
+          "We provide a transfer to Islamabad International Airport for your international flight back home. End of services.",
       },
     ],
     servicesIncluded: COMMON_SERVICES_INCLUDED,
@@ -1851,79 +1845,79 @@ export const expeditions: ExpeditionData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our staff and transferred to the group hotel for rest and recovery. The day concludes with a comprehensive expedition briefing and optional sightseeing in the capital city. Altitude: 540m. Meals: Breakfast, Lunch, Dinner.",
+          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, our staff will meet and transfer you to the group hotel. The remainder of the day is yours to recover from your journey. Once the group has assembled, we will conduct a formal briefing regarding the Laila Peak Expedition. Depending on the schedule, there may be an opportunity for afternoon sightseeing in Islamabad, the nation's purpose-built capital. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 02",
-        title: "Flight to Skardu",
+        title: "Spectacular Flight to Skardu (2,230m)",
         description:
-          "Take a spectacular 45-minute mountain flight to Skardu, offering views of Nanga Parbat and K2. If flights are cancelled due to weather, the journey proceeds via a scenic 8-9 hour drive on the Karakoram Highway to Chilas. Altitude: 2,230m. Meals: Breakfast, Lunch, Dinner.",
+          "We transfer to Islamabad Airport for a breathtaking 45-minute flight to Skardu, the capital of Baltistan. This aerial route offers stunning vistas of the Himalayas and Karakoram, including Nanga Parbat, K2, and the Gondogoro Pass. After checking into the hotel, the afternoon is free to explore the local bazaar or visit the 8th-century Manthal Lord Buddha Rock. Note: If the flight is cancelled due to weather, we will drive the Karakoram Highway to Chilas for an overnight stay. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
-        title: "Sightseeing and Preparation",
+        title: "Sightseeing and Expedition Preparation",
         description:
-          "Attend an official briefing at the tourism department and meet your expedition crew. The afternoon offers opportunities to explore the historical Kharpocho Fort, the Organic Village, or the 8th-century Manthal Buddha Rock. Meals: Breakfast, Lunch, Dinner.",
+          "Today includes an official briefing at the tourism department and a meeting with your expedition crew, including porters and guides. Later, we visit the historic Kharpocho Fort for panoramic views of the Indus River and Skardu town—a prime location for photography. You may also visit the nearby Organic Village to see traditional local farming. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
-        title: "Drive to Hushe Village",
+        title: "Drive to Hushe Village (3,170m)",
         description:
-          "An early morning 6-hour jeep journey crossing the Indus and Shyok rivers. The route winds through Khaplu and picturesque valleys to reach Hushe, situated at the foot of Masherbrum. Altitude: 3,170m. Meals: Breakfast, Lunch, Dinner.",
+          "We begin an exciting 6-hour jeep journey from Skardu, crossing the Indus and Shyok rivers. The route winds through Khaplu and picturesque lower Hushe Valley villages. We arrive in Hushe by early afternoon to establish our camp, dominated by the massive presence of Masherbrum (7,821m) to the north. Duration: 6 hours drive. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 05",
-        title: "Trek to Saicho",
+        title: "Trek to Saicho (3,300m)",
         description:
-          "The expedition’s first trekking day is an easy 5-hour walk to the Saicho campsite. The trail provides pleasant views of Masherbrum Peak (7,821m), with the afternoon free for relaxation. Altitude: 3,330m. Meals: Breakfast, Lunch, Dinner.",
+          "Our first trekking day is a smooth 5-hour walk toward Saicho. The trail offers pleasant views of Masherbrum Peak as our porters transport the expedition equipment. We arrive at the Saicho campsite by lunchtime, leaving the afternoon free for rest. Duration: 5 hours walk. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 06",
-        title: "Trek to Laila Peak Base Camp",
+        title: "Trek to Laila Peak Base Camp (4,535m)",
         description:
-          "A 4-5 hour trek toward the Gondogoro Glacier to establish Base Camp. The site offers a stunning vantage point of the surrounding high peaks. Altitude: 4,535m. Meals: Breakfast, Lunch, Dinner.",
+          "After breakfast, we trek toward the Laila Peak Base Camp. This 4-5 hour journey takes us close to the Gondogoro Glacier, providing an exceptional vantage point for Masherbrum. We establish our camp by early afternoon. Duration: 4 hours walk. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
-        day: "Day 07-17",
+        day: "Day 07 - 17",
         title: "Acclimatization and Climbing Period",
         description:
-          "A dedicated window for non-guided climbing and altitude adjustment. The ascent involves mid-grade climbing at a 55-degree inclination on mixed terrain and ice, typically utilizing an advanced base camp at 5,765m. Base camp staff provide nutritional support throughout. Meals: Breakfast, Lunch, Dinner.",
+          "This period is dedicated to the non-guided climbing of Laila Peak. We utilize an advanced base camp at 5,765m on the east side of the Gondogoro Glacier. The climb involves approximately 1,500m of ascent on 55-degree slopes, featuring mixed terrain at the base and ice toward the summit. Our professional staff remains at base camp to provide logistical support and nutritious meals. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 18",
-        title: "Return to Saicho",
+        title: "Return Trek to Saicho (3,300m)",
         description:
-          "Following the conclusion of the climbing session, the team packs all gear and conducts a thorough campsite cleanup before trekking 4 hours back to Saicho. Altitude: 3,330m. Meals: Breakfast, Lunch, Dinner.",
+          "Upon concluding the climbing session, we dismantle our high camps and trek back to Saicho. This is a day for packing gear and ensuring the mountain environment is left clean. Duration: 4 hours walk. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 19",
-        title: "Trek to Hushe",
+        title: "Return Trek to Hushe (3,170m)",
         description:
-          "A final 3-4 hour walk back to Hushe village. The afternoon is reserved for celebrations with the porter team and the distribution of tips and gear as tokens of appreciation. Altitude: 3,170m. Meals: Breakfast, Lunch, Dinner.",
+          "An early start for our final short trek back to Hushe village. We celebrate the successful expedition with our porters and distribute tips and equipment as tokens of gratitude for their hard work. Duration: 4 hours walk. Accommodation: Full-service camping. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 20",
-        title: "Return Drive to Skardu",
+        title: "Drive to Skardu via Khaplu Valley",
         description:
-          "Drive back to Skardu via the Khaplu Valley, with optional stops at Khaplu Fort and the historical Chaqchan Mosque. Enjoy the comfort of a hotel stay and a hot shower. Meals: Breakfast, Lunch, Dinner.",
+          "We bid farewell to our local staff and drive down the valley to Khaplu. We visit the historic Khaplu Fort and the Chaqchan Mosque before continuing along the Indus River back to Skardu. This evening marks a welcome return to hotel comforts and a warm shower. Duration: 6 hours drive. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 21",
-        title: "Fly to Islamabad",
+        title: "Return Flight to Islamabad",
         description:
-          "Transfer to Skardu airport for the return flight to Islamabad. If weather prevents flying, the team will drive the Karakoram Highway toward Naran. The evening in the capital features a celebratory traditional dinner. Meals: Breakfast, Lunch, Dinner.",
+          "We transfer to Skardu Airport for the return flight to Islamabad, once again viewing Nanga Parbat from the air. Upon arrival, we transfer to the hotel. The afternoon is free for independent sightseeing or rug shopping. Note: In case of flight cancellation, we will drive the Karakoram Highway to Naran for an overnight stay. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 22",
-        title: "Contingency Day",
+        title: "Contingency and Sightseeing Day",
         description:
-          "A buffer day to account for potential travel delays. If already in Islamabad, this day is free for independent sightseeing and a final group meal. Meals: Breakfast, Lunch, Dinner.",
+          "This is a vital contingency day to account for potential travel delays. If we arrived in Islamabad as scheduled, the day is free for further city exploration. In the evening, we convene for a final celebratory group dinner featuring traditional Pakistani cuisine. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 23",
-        title: "International Departure",
+        title: "Final Departure",
         description:
-          "After breakfast, transfer to Islamabad International Airport for your return flight home, marking the conclusion of the Laila Peak expedition. Meals: Breakfast.",
+          "Following breakfast, we provide a final transfer to Islamabad International Airport for your departure flight. End of services. Meals: Breakfast.",
       },
     ],
     servicesIncluded: COMMON_SERVICES_INCLUDED,
@@ -1958,19 +1952,19 @@ export const expeditions: ExpeditionData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our representative and transferred to the group hotel. The remainder of the day is dedicated to recovery and a group briefing regarding the Pastore Peak, K2, and Gondogoro La expedition. If time permits, optional sightseeing in the purpose-built capital of Islamabad is available. Accommodation: Grand Islamabad Hotel or similar. Meals: Dinner.",
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our representative and transferred to the group hotel. The remainder of the day is dedicated to recovery and a group briefing regarding the Pastore Peak, K2, and Gondogoro La expedition. If time permits, optional sightseeing in the purpose-built capital of Islamabad is available. Accommodation: Hotel. Meals: Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu",
         description:
-          "Transfer to the airport for a spectacular 45-minute flight to Skardu, the capital of Baltistan, offering views of the Himalayas and Karakoram, including Nanga Parbat (8,126m). If weather prevents flying, the journey proceeds via a scenic 8-9 hour drive on the Karakoram Highway to Naran or Chilas. Afternoon activities include visiting local bazaars and the 8th-century Manthal Buddha Rock. Altitude: 2,230m. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Transfer to the airport for a spectacular 45-minute flight to Skardu, the capital of Baltistan, offering views of the Himalayas and Karakoram, including Nanga Parbat (8,126m). If weather prevents flying, the journey proceeds via a scenic 8-9 hour drive on the Karakoram Highway to Naran or Chilas. Afternoon activities include visiting local bazaars and the 8th-century Manthal Buddha Rock. Altitude: 2,230m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Skardu Sightseeing and Preparation",
         description:
-          "A day to explore the ancient gateway to the high peaks. Activities include a hike to the early 18th-century Kharpocho Fort for panoramic views of the Indus River and a visit to the Organic Village. Optional jeep tours to Satpara Lake are available. Final preparations for the trek are completed here. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A day to explore the ancient gateway to the high peaks. Activities include a hike to the early 18th-century Kharpocho Fort for panoramic views of the Indus River and a visit to the Organic Village. Optional jeep tours to Satpara Lake are available. Final preparations for the trek are completed here. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
@@ -2060,19 +2054,19 @@ export const expeditions: ExpeditionData[] = [
         day: "Day 21",
         title: "Return to Hushe and Skardu",
         description:
-          "A final 2-hour walk to the village of Hushe, followed by a 7-hour drive through the lush Khaplu Valley. The journey concludes on paved roads back to Skardu, where the team enjoys a hotel stay and a real bed. Accommodation: Summit Hotel. Meals: Breakfast, Lunch, Dinner.",
+          "A final 2-hour walk to the village of Hushe, followed by a 7-hour drive through the lush Khaplu Valley. The journey concludes on paved roads back to Skardu, where the team enjoys a hotel stay and a real bed. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 22",
         title: "Return to Islamabad",
         description:
-          "A scenic return flight to Islamabad, once again passing Nanga Parbat. In the event of flight cancellation, a two-day drive begins along the Karakoram Highway to Chilas. The evening in the capital is reserved for a celebratory meal. Accommodation: Hotel De Papae or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A scenic return flight to Islamabad, once again passing Nanga Parbat. In the event of flight cancellation, a two-day drive begins along the Karakoram Highway to Chilas. The evening in the capital is reserved for a celebratory meal. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 23",
         title: "Contingency and Sightseeing",
         description:
-          "A final buffer day to account for travel from Chilas to Islamabad or for sightseeing in the capital if the flight was successful. This ensures all travelers have ample time for international connections. Accommodation: Hotel De Papae or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A final buffer day to account for travel from Chilas to Islamabad or for sightseeing in the capital if the flight was successful. This ensures all travelers have ample time for international connections. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 24",

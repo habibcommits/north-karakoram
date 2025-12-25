@@ -246,7 +246,7 @@ export function AboutSection() {
               </div>
 
               {/* Experience Badge - Floating Card */}
-              <div
+              {/* <div
                 className="absolute -bottom-6 -left-6 md:left-0 z-40
                   bg-white rounded-2xl shadow-2xl shadow-black/10 p-5
                   border border-gray-100 animate-float"
@@ -263,7 +263,7 @@ export function AboutSection() {
                     <div className="text-sm text-gray-500 font-medium">Years of Excellence</div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Decorative Element */}
               <div

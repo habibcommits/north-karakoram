@@ -61,19 +61,19 @@ export const rockClimbings: RockClimbingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Most international flights arrive at Islamabad International Airport in the morning. Your guide will meet and greet you upon arrival and provide a transfer to our group hotel. The remainder of the day is yours to rest and recover from your journey. Once all participants have arrived, we will convene for a comprehensive briefing regarding the Trango Tower Rock Climbing expedition. Depending on the schedule, there may be an option for afternoon sightseeing in Islamabad, the nation's purpose-built capital. Accommodation: Hill View Hotel or equivalent. Meals: Dinner.",
+          "Welcome to Pakistan. Most international flights arrive at Islamabad International Airport in the morning. Your guide will meet and greet you upon arrival and provide a transfer to our group hotel. The remainder of the day is yours to rest and recover from your journey. Once all participants have arrived, we will convene for a comprehensive briefing regarding the Trango Tower Rock Climbing expedition. Depending on the schedule, there may be an option for afternoon sightseeing in Islamabad, the nation's purpose-built capital. Accommodation: Hotel. Meals: Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu (2,230m)",
         description:
-          "We transfer to Islamabad Airport for a spectacular 45-minute flight across the Himalayas and Karakoram ranges to Skardu. This flight offers breathtaking views of Nanga Parbat (8,126m), and on clear days, K2 and Gondogoro Pass. After checking into the hotel, we will visit the local bazaar, historical forts, and the 8th-century Manthal Buddha Rock, a significant trace of Buddhist influence in the region. Note: If the flight is cancelled due to weather, we will begin an 8-9 hour drive to Chilas (461km) via the Karakoram Highway. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We transfer to Islamabad Airport for a spectacular 45-minute flight across the Himalayas and Karakoram ranges to Skardu. This flight offers breathtaking views of Nanga Parbat (8,126m), and on clear days, K2 and Gondogoro Pass. After checking into the hotel, we will visit the local bazaar, historical forts, and the 8th-century Manthal Buddha Rock, a significant trace of Buddhist influence in the region. Note: If the flight is cancelled due to weather, we will begin an 8-9 hour drive to Chilas (461km) via the Karakoram Highway. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Sightseeing and Expedition Preparation",
         description:
-          "The morning features a walk to the remains of the early 18th-century Kharpocho Fort, offering panoramic views of the Indus River and Skardu town. We will also visit the nearby Organic Village to see traditional sustainable farming. The afternoon is free for final gear preparations or an optional jeep tour to Satpara Lake. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "The morning features a walk to the remains of the early 18th-century Kharpocho Fort, offering panoramic views of the Indus River and Skardu town. We will also visit the nearby Organic Village to see traditional sustainable farming. The afternoon is free for final gear preparations or an optional jeep tour to Satpara Lake. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
@@ -115,19 +115,19 @@ export const rockClimbings: RockClimbingData[] = [
         day: "Day 35",
         title: "Drive to Skardu via Shigar Valley",
         description:
-          "We rejoin our vehicles at Jhola and drive back toward civilization. The route passes through Korofon and the 'King’s Polo Ground' before descending into the fertile Shigar Valley. We cross the Braldu on a suspension bridge and navigate the gorge road to meet the Indus River. Upon arriving in Skardu, we enjoy a welcome shower and the comfort of a real bed. Duration: 8 hours drive. Accommodation: Summit Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We rejoin our vehicles at Jhola and drive back toward civilization. The route passes through Korofon and the 'King’s Polo Ground' before descending into the fertile Shigar Valley. We cross the Braldu on a suspension bridge and navigate the gorge road to meet the Indus River. Upon arriving in Skardu, we enjoy a welcome shower and the comfort of a real bed. Duration: 8 hours drive. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 36",
         title: "Return Flight to Islamabad",
         description:
-          "We take the flight from Skardu to Islamabad, once again passing the majestic Nanga Parbat. Upon arrival in the capital, our private bus will transfer us to the hotel. The afternoon is free for independent sightseeing or shopping for traditional Afghan and Iranian rugs. In the event of a flight cancellation, we will drive the Karakoram Highway to Chilas. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We take the flight from Skardu to Islamabad, once again passing the majestic Nanga Parbat. Upon arrival in the capital, our private bus will transfer us to the hotel. The afternoon is free for independent sightseeing or shopping for traditional Afghan and Iranian rugs. In the event of a flight cancellation, we will drive the Karakoram Highway to Chilas. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 37",
         title: "Contingency and Sightseeing Day",
         description:
-          "This is a vital contingency day to allow for the two-day drive from Skardu if flights are grounded. If we have already arrived in Islamabad, the day is dedicated to sightseeing at landmarks like the Faisal Mosque or exploring the city’s markets. We will conclude the evening with a final group celebratory meal. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "This is a vital contingency day to allow for the two-day drive from Skardu if flights are grounded. If we have already arrived in Islamabad, the day is dedicated to sightseeing at landmarks like the Faisal Mosque or exploring the city’s markets. We will conclude the evening with a final group celebratory meal. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 38",

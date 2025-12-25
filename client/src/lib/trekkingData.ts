@@ -585,25 +585,25 @@ export const trekkings: TrekkingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our representative and transferred to your hotel. The afternoon is reserved for recovery and a group briefing regarding the Nangma Valley Trek. If time permits, optional sightseeing in the capital is available. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met by our representative and transferred to your hotel. The afternoon is reserved for recovery and a group briefing regarding the Nangma Valley Trek. If time permits, optional sightseeing in the capital is available. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu",
         description:
-          "Transfer to the airport for a spectacular 45-minute mountain flight to Skardu, offering views of Nanga Parbat, K2, and the Gondogoro Pass. In the event of a flight cancellation, the journey proceeds via an 8-9 hour drive (461km) on the Karakoram Highway to Chilas. Altitude: 2,230m. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Transfer to the airport for a spectacular 45-minute mountain flight to Skardu, offering views of Nanga Parbat, K2, and the Gondogoro Pass. In the event of a flight cancellation, the journey proceeds via an 8-9 hour drive (461km) on the Karakoram Highway to Chilas. Altitude: 2,230m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Contingency and Exploration",
         description:
-          "A free day to explore Skardu, the capital of Baltistan. Nestled between the Karakoram and Himalayan ranges, the town offers access to Shangrila Resort, Upper Kachura Lake, Skardu Fort, and the historic 8th-century Manthal Buddha Rock. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A free day to explore Skardu, the capital of Baltistan. Nestled between the Karakoram and Himalayan ranges, the town offers access to Shangrila Resort, Upper Kachura Lake, Skardu Fort, and the historic 8th-century Manthal Buddha Rock. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
         title: "Drive to Khaplu",
         description:
-          "A spectacular 3-hour jeep journey along the Indus and Shyok rivers to the town of Khaplu. Known for its rich cultural heritage, the town features the Chaqchan Mosque and the 19th-century Khaplu Palace. Altitude: 2,500m. Accommodation: Karakoram Lodge or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A spectacular 3-hour jeep journey along the Indus and Shyok rivers to the town of Khaplu. Known for its rich cultural heritage, the town features the Chaqchan Mosque and the 19th-century Khaplu Palace. Altitude: 2,500m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 05",
@@ -633,19 +633,19 @@ export const trekkings: TrekkingData[] = [
         day: "Day 09",
         title: "Drive to Skardu via Khaplu",
         description:
-          "Bid farewell to the local porter team and depart via jeep. The route follows the Shyok River to its confluence with the Indus, eventually returning to Skardu on tarmac roads for a hot shower and a comfortable hotel stay. Accommodation: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Bid farewell to the local porter team and depart via jeep. The route follows the Shyok River to its confluence with the Indus, eventually returning to Skardu on tarmac roads for a hot shower and a comfortable hotel stay. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 10",
         title: "Return to Islamabad",
         description:
-          "Transfer to Skardu airport for the return flight over Nanga Parbat. Upon arrival in Islamabad, the afternoon is free for independent sightseeing or rug shopping. The day concludes with a celebratory farewell dinner. In case of flight cancellation, the team will drive to Chilas. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Transfer to Skardu airport for the return flight over Nanga Parbat. Upon arrival in Islamabad, the afternoon is free for independent sightseeing or rug shopping. The day concludes with a celebratory farewell dinner. In case of flight cancellation, the team will drive to Chilas. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 11",
         title: "Contingency Day",
         description:
-          "A final buffer day to account for travel delays. If already in Islamabad, this day is used for sightseeing at the city’s many landmarks or relaxing. If driving, the team completes the final leg of the Karakoram Highway. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A final buffer day to account for travel delays. If already in Islamabad, this day is used for sightseeing at the city’s many landmarks or relaxing. If driving, the team completes the final leg of the Karakoram Highway. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 12",
@@ -686,25 +686,25 @@ export const trekkings: TrekkingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, our staff will meet and greet you before transferring you to the group hotel. The remainder of the day is yours to recover from your travels. Later in the evening, we will convene for a comprehensive group briefing on the Thalle La Trek. Optional sightseeing in the purpose-built capital is available depending on arrival times. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Dinner.",
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, our staff will meet and greet you before transferring you to the group hotel. The remainder of the day is yours to recover from your travels. Later in the evening, we will convene for a comprehensive group briefing on the Thalle La Trek. Optional sightseeing in the purpose-built capital is available depending on arrival times. Accommodation: Hotel. Meals: Breakfast, Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu",
         description:
-          "Transfer to the airport for a spectacular 45-minute mountain flight to Skardu, the capital of Baltistan, offering vistas of Nanga Parbat, K2, and Gondogoro Pass. Should the flight be cancelled, we will undertake an 8-9 hour (461km) drive to Naran via the Karakoram Highway. The afternoon in Skardu includes visits to local bazaars, historical forts, and the 8th-century Manthal Buddha Rock. Accommodation: Summit Hotel or similar. Meals: Breakfast, Dinner.",
+          "Transfer to the airport for a spectacular 45-minute mountain flight to Skardu, the capital of Baltistan, offering vistas of Nanga Parbat, K2, and Gondogoro Pass. Should the flight be cancelled, we will undertake an 8-9 hour (461km) drive to Naran via the Karakoram Highway. The afternoon in Skardu includes visits to local bazaars, historical forts, and the 8th-century Manthal Buddha Rock. Accommodation: Hotel. Meals: Breakfast, Dinner.",
       },
       {
         day: "Day 03",
         title: "Skardu Sightseeing",
         description:
-          "Begin the morning with a hike to the 18th-century Kharpocho Fort for panoramic views of the Indus River and Skardu town. We will then visit the Organic Village, known for its traditional sustainable farming. The afternoon is free for independent exploration, with optional jeep tours to Satpara Lake or local market visits available upon request. Accommodation: Summit Hotel or similar. Meals: Breakfast, Dinner.",
+          "Begin the morning with a hike to the 18th-century Kharpocho Fort for panoramic views of the Indus River and Skardu town. We will then visit the Organic Village, known for its traditional sustainable farming. The afternoon is free for independent exploration, with optional jeep tours to Satpara Lake or local market visits available upon request. Accommodation: Hotel. Meals: Breakfast, Dinner.",
       },
       {
         day: "Day 04",
         title: "Drive to Khaplu",
         description:
-          "A 3-hour journey following the Indus and Shyok rivers leads us 105 kilometers east to Khaplu. The drive provides a dramatic contrast between seasonal blossoms and rugged peaks. After checking into the hotel, we will visit the 14th-century Chaqchan Monastery, one of the oldest and most significant religious sites in Baltistan. Accommodation: PTDC Hotel or similar. Meals: Breakfast, Dinner.",
+          "A 3-hour journey following the Indus and Shyok rivers leads us 105 kilometers east to Khaplu. The drive provides a dramatic contrast between seasonal blossoms and rugged peaks. After checking into the hotel, we will visit the 14th-century Chaqchan Monastery, one of the oldest and most significant religious sites in Baltistan. Accommodation: Hotel. Meals: Breakfast, Dinner.",
       },
       {
         day: "Day 05",
@@ -728,19 +728,19 @@ export const trekkings: TrekkingData[] = [
         day: "Day 08",
         title: "Trek to Shigar",
         description:
-          "Our final walking day involves a 4-hour descent through green pastures and across the Bangma River. The trek concludes in Shigar town, where we walk directly into the Shigar Fort Residence. This 17th-century restored Raja palace offers a unique heritage experience and a well-earned hot shower. Ascent: 500m. Accommodation: Serena Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Our final walking day involves a 4-hour descent through green pastures and across the Bangma River. The trek concludes in Shigar town, where we walk directly into the Shigar Fort Residence. This 17th-century restored Raja palace offers a unique heritage experience and a well-earned hot shower. Ascent: 500m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 09",
         title: "Return Flight to Islamabad",
         description:
-          "Weather permitting, we fly back to Islamabad, passing Nanga Parbat once more. Upon arrival, a private bus transfers the group to the hotel. The afternoon is free for self-guided sightseeing or shopping for hand-made Iranian and Afghan rugs. We will gather in the evening for a celebratory farewell meal. In case of flight cancellation, we will drive to Chilas. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Weather permitting, we fly back to Islamabad, passing Nanga Parbat once more. Upon arrival, a private bus transfers the group to the hotel. The afternoon is free for self-guided sightseeing or shopping for hand-made Iranian and Afghan rugs. We will gather in the evening for a celebratory farewell meal. In case of flight cancellation, we will drive to Chilas. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 10",
         title: "Contingency Day",
         description:
-          "This day is reserved as a buffer for travel delays. If the road journey from Chilas is required, we will arrive in the capital by late afternoon. If the flight was successful, the day is dedicated to further sightseeing in Islamabad with recommendations provided by our staff. We will enjoy a final group dinner together. Accommodation: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "This day is reserved as a buffer for travel delays. If the road journey from Chilas is required, we will arrive in the capital by late afternoon. If the flight was successful, the day is dedicated to further sightseeing in Islamabad with recommendations provided by our staff. We will enjoy a final group dinner together. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 11",
@@ -781,19 +781,19 @@ export const trekkings: TrekkingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met and transferred to the group hotel. The day is yours to recover from your journey. In the evening, we will conduct a comprehensive briefing for the Snow Lake – Hispar La Trek. If time permits, an optional self-guided tour of the capital, purpose-built in 1961, is available. Overnight: Hill View Hotel or similar. Meals: Dinner.",
+          "Welcome to Pakistan. Upon arrival at Islamabad International Airport, you will be met and transferred to the group hotel. The day is yours to recover from your journey. In the evening, we will conduct a comprehensive briefing for the Snow Lake – Hispar La Trek. If time permits, an optional self-guided tour of the capital, purpose-built in 1961, is available. Overnight: Hotel. Meals: Dinner.",
       },
       {
         day: "Day 02",
         title: "Flight to Skardu",
         description:
-          "Transfer to the airport for a spectacular 45-minute flight to Skardu (2,228m), offering breathtaking views of Nanga Parbat, K2, and the Gondogoro La. Upon arrival, you may explore the local bazaar or the 8th-century Manthal Lord Buddha Rock. Note: In the event of a flight cancellation, we will undertake an 8-9 hour (461km) drive to Chilas on the Karakoram Highway. Overnight: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "Transfer to the airport for a spectacular 45-minute flight to Skardu (2,228m), offering breathtaking views of Nanga Parbat, K2, and the Gondogoro La. Upon arrival, you may explore the local bazaar or the 8th-century Manthal Lord Buddha Rock. Note: In the event of a flight cancellation, we will undertake an 8-9 hour (461km) drive to Chilas on the Karakoram Highway. Overnight: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Sightseeing and Preparation in Skardu",
         description:
-          "A day dedicated to acclimatization and exploration in the capital of Baltistan. Highlights include a hike to the 18th-century Kharpocho Fort for views of the Indus River, a visit to an organic farming village, and a jeep excursion to the turquoise waters of Satpara and Kachura Lakes. If you traveled by road, this day will be used to complete the drive from Chilas to Skardu. Overnight: Summit Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A day dedicated to acclimatization and exploration in the capital of Baltistan. Highlights include a hike to the 18th-century Kharpocho Fort for views of the Indus River, a visit to an organic farming village, and a jeep excursion to the turquoise waters of Satpara and Kachura Lakes. If you traveled by road, this day will be used to complete the drive from Chilas to Skardu. Overnight: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
@@ -895,13 +895,13 @@ export const trekkings: TrekkingData[] = [
         day: "Day 20",
         title: "Return Flight to Islamabad",
         description:
-          "We aim for the early morning 40-minute flight from Gilgit to Islamabad. Should weather conditions prevent flying, we will begin the return drive via the Karakoram Highway to Chilas or Besham. Overnight: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "We aim for the early morning 40-minute flight from Gilgit to Islamabad. Should weather conditions prevent flying, we will begin the return drive via the Karakoram Highway to Chilas or Besham. Overnight: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 21",
         title: "Contingency Day",
         description:
-          "A buffer day to account for travel delays. If already in Islamabad, this is a free day for urban exploration. If driving, we will arrive in the capital by late afternoon. Overnight: Hill View Hotel or similar. Meals: Breakfast, Lunch, Dinner.",
+          "A buffer day to account for travel delays. If already in Islamabad, this is a free day for urban exploration. If driving, we will arrive in the capital by late afternoon. Overnight: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 22",
@@ -1773,19 +1773,19 @@ export const trekkings: TrekkingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, usually in the afternoon, our representative will meet you and provide a transfer to your hotel. This first day is dedicated to relaxation and recovery from your international flight. Altitude: 540m. Accommodation: Hotel (Chateau Royale, Prestige Residence, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "Welcome to Pakistan. Upon your arrival at Islamabad International Airport, usually in the afternoon, our representative will meet you and provide a transfer to your hotel. This first day is dedicated to relaxation and recovery from your international flight. Altitude: 540m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 02",
         title: "Drive to Chilas via Karakoram Highway",
         description:
-          "Today we begin our journey north, driving along the legendary Karakoram Highway. The route takes us through the towns and villages of Abbottabad, Mansehra, Besham, Dasu, and Sazin before arriving in Chilas for the night. Altitude: 1,265m. Accommodation: Hotel (Shangrila Raikot, Shangrila Chilas, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "Today we begin our journey north, driving along the legendary Karakoram Highway. The route takes us through the towns and villages of Abbottabad, Mansehra, Besham, Dasu, and Sazin before arriving in Chilas for the night. Altitude: 1,265m. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
         title: "Drive to Tatu and Hike to Fairy Meadows",
         description:
-          "After breakfast, we head toward the Raikot Bridge where we transfer to 4x4 jeeps for an adventurous drive to Tatu village. From Tatu, we begin a 2-3 hour hike to reach the iconic Fairy Meadows. Once there, you can relax, explore the meadows, or enjoy the hospitality of the local community. Altitude: 3,300m. Accommodation: Cottage/Camping (Raikot Sarai, Greenland Hotel, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "After breakfast, we head toward the Raikot Bridge where we transfer to 4x4 jeeps for an adventurous drive to Tatu village. From Tatu, we begin a 2-3 hour hike to reach the iconic Fairy Meadows. Once there, you can relax, explore the meadows, or enjoy the hospitality of the local community. Altitude: 3,300m. Accommodation: Camp. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 04",
@@ -1803,19 +1803,19 @@ export const trekkings: TrekkingData[] = [
         day: "Day 06",
         title: "Return to Fairy Meadows",
         description:
-          "We retrace our steps back to Fairy Meadows. The remainder of the day is yours to enjoy at leisure. It is an ideal time for photography, sketching, or simply watching the play of light on Nanga Parbat during sunset and moonrise. Altitude: 3,300m. Accommodation: Cottage/Camping (Raikot Sarai, Greenland Hotel, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "We retrace our steps back to Fairy Meadows. The remainder of the day is yours to enjoy at leisure. It is an ideal time for photography, sketching, or simply watching the play of light on Nanga Parbat during sunset and moonrise. Altitude: 3,300m. Accommodation: Camp. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 07",
         title: "Return to Islamabad via Naran or Besham",
         description:
-          "We depart Fairy Meadows and begin our return journey. Depending on weather and road conditions, we will aim to travel via the scenic Naran road and Babusar Pass, allowing for further exploration. Alternatively, we will return via the Karakoram Highway through Besham and the Indus River valley. Accommodation: Hotel (Chateau Royale, Prestige Residence, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "We depart Fairy Meadows and begin our return journey. Depending on weather and road conditions, we will aim to travel via the scenic Naran road and Babusar Pass, allowing for further exploration. Alternatively, we will return via the Karakoram Highway through Besham and the Indus River valley. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 08",
         title: "Sightseeing in Islamabad and Rawalpindi",
         description:
-          "Enjoy a day exploring the distinct personalities of the twin cities. Islamabad offers modern architecture and wide boulevards perfect for sightseeing, while the historic city of Rawalpindi features bustling British-era streets and intricate traditional bazaars. Accommodation: Hotel (Chateau Royale, Prestige Residence, or equivalent). Meals: Breakfast, Lunch, Dinner.",
+          "Enjoy a day exploring the distinct personalities of the twin cities. Islamabad offers modern architecture and wide boulevards perfect for sightseeing, while the historic city of Rawalpindi features bustling British-era streets and intricate traditional bazaars. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 09",
@@ -1858,13 +1858,13 @@ export const trekkings: TrekkingData[] = [
         day: "Day 01",
         title: "Arrival in Islamabad",
         description:
-          "Welcome to Islamabad, the primary gateway to the Karakoram and Himalayan ranges. Upon your morning arrival at Islamabad International Airport, our representative will meet you and provide a transfer to the group hotel. The remainder of the day is at your leisure to recover from your journey. In the evening, we will convene for a comprehensive group briefing regarding the Around Nanga Parbat Trek. Accommodation: Hill View Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Welcome to Islamabad, the primary gateway to the Karakoram and Himalayan ranges. Upon your morning arrival at Islamabad International Airport, our representative will meet you and provide a transfer to the group hotel. The remainder of the day is at your leisure to recover from your journey. In the evening, we will convene for a comprehensive group briefing regarding the Around Nanga Parbat Trek. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 02",
         title: "Drive to Chilas or Naran",
         description:
-          "We depart the capital city today for an epic journey north along the famous Karakoram Highway. The route traverses lush green valleys and traditional towns as we head toward Chilas. Known as the gateway to Nanga Parbat and Fairy Meadows, Chilas will be our stopping point for the night. Distance: 461km. Duration: 8-9 hours. Accommodation: PTDC Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We depart the capital city today for an epic journey north along the famous Karakoram Highway. The route traverses lush green valleys and traditional towns as we head toward Chilas. Known as the gateway to Nanga Parbat and Fairy Meadows, Chilas will be our stopping point for the night. Distance: 461km. Duration: 8-9 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 03",
@@ -1978,13 +1978,13 @@ export const trekkings: TrekkingData[] = [
         day: "Day 21",
         title: "Fairy Meadows to Naran",
         description:
-          "We depart Fairy Meadows and travel back to Raikot Bridge. From there, we join the Karakoram Highway briefly before turning onto Naran Road. We cross the high Babusar Pass to arrive in the popular alpine town of Naran. Duration: 6 hours. Accommodation: PTDC Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "We depart Fairy Meadows and travel back to Raikot Bridge. From there, we join the Karakoram Highway briefly before turning onto Naran Road. We cross the high Babusar Pass to arrive in the popular alpine town of Naran. Duration: 6 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 22",
         title: "Naran to Islamabad via Taxila",
         description:
-          "Our final drive takes us through the Naran Valley toward Islamabad. En route, we pass through Abbottabad and visit Taxila, a UNESCO World Heritage site and a center of ancient Gandharan civilization dating back to 1000 BCE. Distance: 231km. Duration: 9 hours. Accommodation: Grand Islamabad Hotel or equivalent. Meals: Breakfast, Lunch, Dinner.",
+          "Our final drive takes us through the Naran Valley toward Islamabad. En route, we pass through Abbottabad and visit Taxila, a UNESCO World Heritage site and a center of ancient Gandharan civilization dating back to 1000 BCE. Distance: 231km. Duration: 9 hours. Accommodation: Hotel. Meals: Breakfast, Lunch, Dinner.",
       },
       {
         day: "Day 23",
