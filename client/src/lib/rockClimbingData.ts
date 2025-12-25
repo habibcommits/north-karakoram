@@ -10,6 +10,28 @@ import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
 import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
 import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
 
+import TrangoTowerImg1 from "@assets/trango-tower/t1.jpeg";
+import TrangoTowerImg2 from "@assets/trango-tower/t2.jpg";
+import TrangoTowerImg3 from "@assets/trango-tower/t3.jpeg";
+import GreatTowerImg1 from "@assets/great-tower/g1.jpeg";
+import GreatTowerImg2 from "@assets/great-tower/g2.jpeg";
+// import GreatTowerImg3 from "@assets/"
+import MitrePeakImg1 from "@assets/mitre-peak/m1.jpeg";
+import MitrePeakImg2 from "@assets/mitre-peak/m2.jpeg";
+// import MitrePeakImg3 from "@assets/"
+import K7CharkusaImg1 from "@assets/k7-valley/k1.jpeg";
+import K7CharkusaImg2 from "@assets/k7-valley/k2.jpeg";
+import K7CharkusaImg3 from "@assets/k7-valley/k3.jpg";
+import AminBraqImg1 from "@assets/amin-braq/a1.jpeg";
+import AminBraqImg2 from "@assets/amin-braq/a2.jpeg";
+import AminBraqImg3 from "@assets/amin-braq/a3.jpeg";
+import ShiptonSpireImg1 from "@assets/shipton/s1.jfif";
+// import ShiptonSpireImg2 from "@assets/"
+// import ShiptonSpireImg3 from "@assets/"
+import ShingoChatpaImg1 from "@assets/shingo/s1.webp";
+// import ShingoChatpaImg2 from "@assets/"
+// import ShingoChatpaImg3 from "@assets/"
+
 export interface RockClimbingTimeline {
   day: string;
   title: string;
@@ -51,7 +73,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 22000,
     groupSize: "2-6 climbers",
-    image: heroImage1,
+    image: TrangoTowerImg1,
+    gallery: [TrangoTowerImg1, TrangoTowerImg2, TrangoTowerImg3],
     description:
       "Trango Tower is one of the most challenging and iconic rock climbing destinations in the world, featuring pristine granite walls.",
     overview:
@@ -158,7 +181,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: GreatTowerImg1,
+    gallery: [GreatTowerImg1, GreatTowerImg2],
     description:
       "Great Tower is a striking granite spire in Nangma Valley, offering some of the most technical and demanding rock climbing in the Karakoram.",
     overview:
@@ -277,7 +301,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: MitrePeakImg1,
+    gallery: [MitrePeakImg1, MitrePeakImg2],
     description:
       "Mitre Peak is a striking alpine peak near Concordia, offering climbers spectacular views of the world’s greatest Karakoram mountains.",
     overview:
@@ -420,7 +445,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: K7CharkusaImg1,
+    gallery: [K7CharkusaImg1, K7CharkusaImg2, K7CharkusaImg3],
     description:
       "K7 is a formidable technical peak in the Charakusa Valley, renowned for its vast granite faces and demanding rock and ice climbing routes.",
     overview:
@@ -521,7 +547,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: AminBraqImg1,
+    gallery: [AminBraqImg1, AminBraqImg2, AminBraqImg3],
     description:
       "Amin Brakk offers highly challenging rock climbing with stunning Karakoram views and technical alpine routes.",
     overview:
@@ -628,7 +655,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: ShiptonSpireImg1,
+    gallery: [ShiptonSpireImg1],
     description:
       "Shipton Spire is a striking granite tower near Trango Towers, offering highly technical big-wall climbing with superb rock quality and breathtaking Karakoram views.",
     overview:
@@ -741,7 +769,8 @@ export const rockClimbings: RockClimbingData[] = [
     bestSeason: null,
     price: 20000,
     groupSize: "2-6 climbers",
-    image: heroImage2,
+    image: ShingoChatpaImg1,
+    gallery: [ShingoChatpaImg1],
     description:
       "Shingo Chatpa Peak is a magnificent climbing objective in the Nangma Valley, offering technical routes and a pristine alpine environment ideal for experienced climbers.",
     overview:
