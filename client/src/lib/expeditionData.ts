@@ -3,12 +3,80 @@ import {
   COMMON_SERVICES_NOT_INCLUDED,
   COMMON_SERVICES_REQUIREMENTS,
 } from "@/constants/expeditionData";
-import nangaParbatImage1 from "@assets/nanga_parbat_1_1766090260999.png";
-import nangaParbatImage2 from "@assets/nanga_perbat_2_1766090261000.png";
 import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
 import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
 import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
 import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
+
+import K2Img1 from "@assets/k2/k21.jpeg";
+import K2Img2 from "@assets/k2/k22.jpeg";
+import K2Img3 from "@assets/k2/k23.jpg";
+import BroadPeakImg1 from "@assets/broad-peak/br1.jpeg";
+import BroadPeakImg2 from "@assets/broad-peak/br2.jpg";
+import BroadPeakImg3 from "@assets/broad-peak/br3.jpg";
+import NangaParbatImg1 from "@assets/nanga-parbat/n1.jpeg";
+import NangaParbatImg2 from "@assets/nanga-parbat/n2.jpg";
+import NangaParbatImg3 from "@assets/nanga-parbat/n3.jpg";
+import GashebrumIImg1 from "@assets/g1/g1.jpg";
+import GashebrumIImg2 from "@assets/g1/g2.jpg";
+import GashebrumIImg3 from "@assets/g1/g3.jpeg";
+import GashebrumIIImg1 from "@assets/g2/g1.jpeg";
+import GashebrumIIImg2 from "@assets/g2/g2.jpeg";
+import GashebrumIIImg3 from "@assets/g2/g3.jpeg";
+import GashebrumIIIImg1 from "@assets/g3/g1.jpg";
+// import GashebrumIIImg2 from "@assets/"
+// import GashebrumIIImg3 from "@assets/"
+import GashebrumIVImg1 from "@assets/g4/g1.jpeg";
+import GashebrumIVImg2 from "@assets/g4/g2.jpg";
+import GashebrumIVImg3 from "@assets/g4/g3.jpg";
+
+import SpantikImg1 from "@assets/spantik/s1.jfif";
+// import SpantikImg2 from "@assets/"
+// import SpantikImg3 from "@assets/"
+// import GashebrumIIIImg1 from "@assets/"
+// import GashebrumIIIImg2 from "@assets/"
+// import GashebrumIIIImg3 from "@assets/"
+// import GashebrumIVImg1 from "@assets/"
+// import GashebrumIVImg2 from "@assets/"
+// import GashebrumIVImg3 from "@assets/"
+import MashebrumImg1 from "@assets/mashabrum/m1.jpeg";
+import MashebrumImg2 from "@assets/mashabrum/m2.jpg";
+import MashebrumImg3 from "@assets/mashabrum/m3.jpeg";
+import RakaposhiImg1 from "@assets/rakaposhi/r1.jpeg";
+import RakaposhiImg2 from "@assets/rakaposhi/r2.jpeg";
+// import RakaposhiImg3 from "@assets/"
+import ChogolisaImg1 from "@assets/chogolisa/c1.jpeg";
+import TirichMirImg1 from "@assets/tirich-mir/t1.jpg";
+// import TirichMirImg2 from "@assets/"
+// import TirichMirImg3 from "@assets/"
+import K6Img1 from "@assets/k6/k61.jpeg";
+import K6Img2 from "@assets/k6/k62.jpeg";
+import K6Img3 from "@assets/k6/k63.jpeg";
+
+import LailaPeakImg1 from "@assets/laila-peak/l1.jpg";
+import LailaPeakImg2 from "@assets/laila-peak/l2.jpg";
+import LailaPeakImg3 from "@assets/laila-peak/l3.jpg";
+import PastorePeakImg1 from "@assets/pastore/p1.jpeg";
+// import PastorePeakImg2 from "@assets/"
+// import PastorePeakImg3 from "@assets/"
+import GandogoroPeakImg1 from "@assets/gondogoro/g1.jpg";
+// import GandogoroPeakImg2 from "@assets/"
+// import GandogoroPeakImg3 from "@assets/"
+import BonditPeakImg1 from "@assets/bondit/b1.webp";
+// import BonditPeakImg2 from "@assets/"
+// import BonditPeakImg3 from "@assets/"
+import K7PeakImg1 from "@assets/k7/k1.jpeg";
+import K7PeakImg2 from "@assets/k7/k2.jpeg";
+import K7PeakImg3 from "@assets/k7/k3.jpeg";
+import DrifikaImg1 from "@assets/drifika/d1.jpeg";
+// import DrifikaImg2 from "@assets/"
+// import DrifikaImg3 from "@assets/"
+import CigarettePeakImg1 from "@assets/cigarette/c1.jfif";
+// import CigarettePeakImg2 from "@assets/"
+// import CigarettePeakImg3 from "@assets/"
+import KhosarGangImg1 from "@assets/khosar-gang/k1.jpg";
+// import KhosarGangImg2 from "@assets/"
+// import KhosarGangImg3 from "@assets/"
 
 export interface ExpeditionTimeline {
   day: string;
@@ -52,7 +120,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "February - August",
     price: 45000,
     groupSize: "6-12 climbers",
-    image: expeditionImage1,
+    image: K2Img1,
+    gallery: [K2Img1, K2Img2, K2Img3],
     description:
       "K2, the second highest mountain in the world, stands at 8,611 meters. Known as the 'Savage Mountain,' K2 is considered the most difficult and dangerous climb of all the 8,000m peaks.",
     overview:
@@ -214,8 +283,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "February - August",
     price: 32000,
     groupSize: "6-12 climbers",
-    image: heroImage1,
-    gallery: [nangaParbatImage1, nangaParbatImage2, nangaParbatImage1],
+    image: BroadPeakImg1,
+    gallery: [BroadPeakImg1, BroadPeakImg2, BroadPeakImg3],
     description:
       "Broad Peak, at 8,051m, is the 12th highest mountain in the world. Known for its massive summit plateau, it offers a technically accessible route compared to its neighbor K2.",
     overview:
@@ -340,8 +409,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 35000,
     groupSize: "6-10 climbers",
-    image: nangaParbatImage1,
-    gallery: [nangaParbatImage1, nangaParbatImage2, nangaParbatImage1],
+    image: NangaParbatImg1,
+    gallery: [NangaParbatImg1, NangaParbatImg2, NangaParbatImg3],
     description:
       "Nanga Parbat, the 'Killer Mountain,' rises 8,126 meters in the western Himalayas. It features the world's largest mountain face - the Rupal Face - rising 4,600m from base to summit.",
     overview:
@@ -455,7 +524,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "June - August",
     price: 38000,
     groupSize: "6-10 climbers",
-    image: expeditionImage3,
+    image: GashebrumIImg1,
+    gallery: [GashebrumIImg1, GashebrumIImg2, GashebrumIImg3],
     description:
       "Gasherbrum I, also known as Hidden Peak, rises to 8,080m and is the 11th highest mountain in the world. Located deep in the Karakoram Range, it is known for its remote setting and technically demanding upper sections.",
     overview:
@@ -622,7 +692,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "June - August",
     price: 38000,
     groupSize: "6-10 climbers",
-    image: expeditionImage3,
+    image: GashebrumIIImg1,
+    gallery: [GashebrumIIImg1, GashebrumIIImg2, GashebrumIIImg3],
     description:
       "Gasherbrum II rises to 8,035m and is the 13th highest mountain in the world. Known for its relatively more accessible route, it is a popular first 8000m peak for experienced climbers in the Karakoram.",
     overview:
@@ -789,7 +860,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "June - August",
     price: 23000,
     groupSize: "4-10 climbers",
-    image: heroImage1,
+    image: K6Img1,
+    gallery: [K6Img1, K6Img2, K6Img3],
     description:
       "K6 at 7,281m is one of the most accessible 7000m peaks in the Karakoram, ideal for ambitious high-altitude mountaineers.",
     overview:
@@ -890,7 +962,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 6500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: SpantikImg1,
+    gallery: [SpantikImg1],
     description:
       "Spantik, or Golden Peak, rises to 7,027m in the Karakoram. Known for its stunning golden color at sunset, it's an excellent introduction to high-altitude mountaineering.",
     overview:
@@ -1015,7 +1088,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: "June - August",
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: GashebrumIIIImg1,
+    gallery: [GashebrumIIIImg1],
     description:
       "Gasherbrum III, standing at 7,952m (26,089 ft), is the 15th highest mountain in the world and a challenging yet rewarding 7000m expedition.",
     overview:
@@ -1116,7 +1190,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 28500,
     groupSize: "4-8 climbers",
-    image: heroImage2,
+    image: GashebrumIVImg1,
+    gallery: [GashebrumIVImg1, GashebrumIVImg2, GashebrumIVImg3],
     description:
       "Gasherbrum IV, rising to 7,932m in the Karakoram Range, is a highly technical and remote peak renowned for its dramatic granite faces and extreme climbing challenges.",
     overview:
@@ -1276,7 +1351,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 26000,
     groupSize: "4-10 climbers",
-    image: heroImage1,
+    image: MashebrumImg1,
+    gallery: [MashebrumImg1, MashebrumImg2, MashebrumImg3],
     description:
       "Masherbrum, standing at 7,806m in the Karakoram Range, is a technically demanding peak renowned for its steep snow and ice routes, glacier travel, and remote, rugged beauty.",
     overview:
@@ -1384,7 +1460,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 24000,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: RakaposhiImg1,
+    gallery: [RakaposhiImg1, RakaposhiImg2],
     description:
       "Rakaposhi, at 7,788m, towers over the Hunza Valley with its stunning pyramid-shaped peak. It is a technically moderate 7000m mountain offering spectacular high-altitude scenery.",
     overview:
@@ -1521,7 +1598,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 25500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: ChogolisaImg1,
+    gallery: [ChogolisaImg1],
     description:
       "Chogolisa, at 7,668m in the Karakoram Range, is a high-altitude peak offering moderate technical climbing and excellent experience for mountaineers preparing for higher summits.",
     overview:
@@ -1686,7 +1764,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 25500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: TirichMirImg1,
+    gallery: [TirichMirImg1],
     description:
       "Trich Mir, at 7,708m in the Hindu Kush, is the highest peak of the range, offering a challenging high-altitude climb with spectacular views of Afghanistan and northern Pakistan.",
     overview:
@@ -1835,7 +1914,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 18000,
     groupSize: "4-10 climbers",
-    image: heroImage1,
+    image: LailaPeakImg1,
+    gallery: [LailaPeakImg1, LailaPeakImg2, LailaPeakImg3],
     description:
       "Laila Peak, at 6,096m in the Karakoram Range, is a strikingly steep and technical 6000m peak, offering climbers an excellent introduction to high-altitude alpine mountaineering.",
     overview:
@@ -1942,7 +2022,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 1300,
     groupSize: "4-10 trekkers",
-    image: heroImage2,
+    image: PastorePeakImg1,
+    gallery: [PastorePeakImg1],
     description:
       "Pastore Peak, at 4,708m near Skardu, offers a scenic trekking and mountaineering experience with sweeping views of the Karakoram and Hindukush ranges.",
     overview:
@@ -2097,7 +2178,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: GandogoroPeakImg1,
+    gallery: [GandogoroPeakImg1],
     description:
       "Gondogoro Peak, at 5,950m in the Karakoram, is a high-altitude peak offering an accessible yet rewarding alpine climbing experience for climbers with basic mountaineering skills.",
     overview:
@@ -2216,7 +2298,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: BonditPeakImg1,
+    gallery: [BonditPeakImg1],
     description:
       "Bondit Peak, at 5,800m in the Karakoram near Hushe, is a trekking and climbing peak ideal for gaining high-altitude experience with minimal technical challenges.",
     overview:
@@ -2329,7 +2412,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: K7PeakImg1,
+    gallery: [K7PeakImg1, K7PeakImg2, K7PeakImg3],
     description:
       "K7, at 6,934m in the Karakoram Range, is a technical high-altitude peak offering climbers a serious alpine challenge with glacier travel, snow, and mixed climbing sections.",
     overview:
@@ -2442,7 +2526,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: DrifikaImg1,
+    gallery: [DrifikaImg1],
     description:
       "Drifika Peak, at 6,200m in the Karakoram near Hushe, is a moderately technical high-altitude peak offering climbers excellent experience in glacier travel and alpine climbing.",
     overview:
@@ -2555,7 +2640,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: CigarettePeakImg1,
+    gallery: [CigarettePeakImg1],
     description:
       "Cigarette Peak, at 6,160m in the Karakoram near the Charakusa Glacier, is a moderately technical high-altitude peak offering climbers excellent experience in alpine and glacier climbing.",
     overview:
@@ -2650,7 +2736,8 @@ export const expeditions: ExpeditionData[] = [
     bestSeason: null,
     price: 17500,
     groupSize: "4-10 climbers",
-    image: heroImage2,
+    image: KhosarGangImg1,
+    gallery: [KhosarGangImg1],
     description:
       "Khosar Gang Peak, at 6,400m in the Karakoram near Hushe, is a challenging high-altitude peak offering steep snow, ice, and glacier climbing for mountaineers seeking advanced alpine experience.",
     overview:

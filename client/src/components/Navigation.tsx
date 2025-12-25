@@ -68,6 +68,7 @@ const expeditionItems: NavCategory = {
     { label: "Rakaposhi Expedition", href: "/expedition/rakaposhi-expedition" },
     { label: "Chogolisa Expedition", href: "/expedition/chogolisa-expedition" },
     { label: "Trich Mir Expedition", href: "/expedition/trich-mir-expedition" },
+    { label: "K6 Expedition", href: "/expedition/k6-expedition" },
   ],
   "6000m Peaks": [
     { label: "Laila Peak Expedition", href: "/expedition/laila-expedition" },
