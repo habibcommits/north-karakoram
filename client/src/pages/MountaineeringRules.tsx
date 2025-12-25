@@ -710,7 +710,7 @@ export default function MountaineeringRules() {
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/expeditions">
+                <Link href="/expedition">
                   <Button
                     size="lg"
                     className="group w-full md:w-fit sm:w-auto text-lg px-8 py-6 h-auto bg-white text-gray-900 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"

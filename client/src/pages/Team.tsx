@@ -133,13 +133,13 @@ const teamMembers = [
 const socialLinks = [
   {
     icon: SiYoutube,
-    href: "https://youtube.com/@northkarakoram?si=vYCoNIBV9C3J1flk",
+    href: "https://youtube.com/@northkarakoram?si=PJHwQm8bP2nMLBwe",
     label: "YouTube",
     color: "#FF0000",
   },
   {
     icon: SiTiktok,
-    href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92DeQDrmQvi",
+    href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92TItqmrAx7",
     label: "TikTok",
     color: "#000000",
   },
@@ -151,16 +151,16 @@ const socialLinks = [
   },
   {
     icon: SiFacebook,
-    href: "https://www.facebook.com/share/1CtcRSQ4Yw/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/profile.php?id=100093782443750&rdid=j90AVS0yTRTTZeBk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AhZLfuCzQ%2F#",
     label: "Facebook",
     color: "#1877F2",
   },
-  {
-    icon: SiWhatsapp,
-    href: "https://wa.me/923555718293",
-    label: "WhatsApp",
-    color: "#25D366",
-  },
+  // {
+  //   icon: SiWhatsapp,
+  //   href: "https://wa.me/923555718293",
+  //   label: "WhatsApp",
+  //   color: "#25D366",
+  // },
 ];
 
 const stats = [
@@ -733,7 +733,7 @@ export default function Team() {
                 Let our experienced team guide you through the majestic
                 mountains of Pakistan
               </p>
-              <Link href="/expeditions">
+              <Link href="/expedition">
                 <Button
                   size="lg"
                   className="w-full md:w-fit group text-lg px-8 py-6 h-auto text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1"

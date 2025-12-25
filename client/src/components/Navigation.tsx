@@ -2,10 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
 import {
   Menu,
-  Search,
   X,
   ChevronRight,
   ChevronDown,
@@ -15,13 +13,15 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Twitter,
+  Globe,
+  Check,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoImage from "@assets/logo-white-transparent.png";
+import { SiTiktok } from "react-icons/si";
 
 interface NavigationProps {
-  onSearch?: (query: string) => void;
+  onLanguageChange?: (language: string) => void;
 }
 
 interface NavItem {
@@ -33,7 +33,24 @@ interface NavCategory {
   [key: string]: NavItem[];
 }
 
+interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
+
 // --- DATA STRUCTURES ---
+
+const languages: Language[] = [
+  { code: "en", name: "English", flag: "🇺🇸" },
+  { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
+  { code: "de", name: "Deutsch", flag: "🇩🇪" },
+  { code: "zh", name: "中文", flag: "🇨🇳" },
+  { code: "ar", name: "العربية", flag: "🇸🇦" },
+  { code: "ru", name: "Русский", flag: "🇷🇺" },
+  { code: "ja", name: "日本語", flag: "🇯🇵" },
+];
 
 const expeditionItems: NavCategory = {
   "8000m Peaks": [
@@ -65,43 +82,27 @@ const expeditionItems: NavCategory = {
 };
 
 const trekkingItems: NavItem[] = [
-  { label: "K2 & Gondogoro La Trek", href: "/expedition/k2-gondogoro-trek" },
-  { label: "K2 Base Camp Concordia Trek", href: "/expedition/k2-base-camp-concordia-trek" },
-  { label: "Five 8000m Base Camp Trek", href: "/expedition/five-8000m-base-camp-trek" },
-  { label: "Nangma Valley Trek", href: "/expedition/nangma-valley-trek" },
-  { label: "Thalle La Trek", href: "/expedition/thalle-la-trek" },
-  { label: "Fairy Meadows Trek", href: "/expedition/fairy-meadows-trek" },
-  { label: "Around Nanga Parbat Trek", href: "/expedition/around-nanga-parbat-trek" },
-  { label: "Snow Lake-Hispar La Trek", href: "/expedition/snow-lake-hispar-trek" },
-  { label: "Barah Broq Trek", href: "/expedition/barah-broq-trek" },
-  { label: "Mashebrum Base Trek", href: "/expedition/mashebrum-base-camp-trek" },
-  { label: "Charkusa Valley Trek", href: "/expedition/charkusa-valley-trek" },
-  { label: "Machulo La K2 View Trek", href: "/expedition/machulo-la-k2-view-trek" },
-  { label: "Iqbal Top K2 View Trek", href: "/expedition/iqbal-top-k2-view-trek" },
-  { label: "Shimshal Pass Trek", href: "/expedition/shimshal-pass-trek" },
-  { label: "Naltar Pass Trek", href: "/expedition/naltar-pass-trek" },
+  { label: "K2 & Gondogoro La Trek", href: "/trekking/k2-gondogoro-trek" },
+  { label: "K2 Base Camp Concordia Trek", href: "/trekking/k2-base-camp-concordia-trek" },
+  { label: "Five 8000m Base Camp Trek", href: "/trekking/five-8000m-base-camp-trek" },
+  { label: "Nangma Valley Trek", href: "/trekking/nangma-valley-trek" },
+  { label: "Thalle La Trek", href: "/trekking/thalle-la-trek" },
 ];
 
 const rockClimbingItems: NavItem[] = [
-  { label: "Trango Tower", href: "/expedition/trango-tower" },
-  { label: "Amin Braq", href: "/expedition/amin-braq" },
-  { label: "Shipton Spire", href: "/expedition/shipton-spire" },
-  { label: "Shingo Chatpa Peak", href: "/expedition/shingo-chatpa-peak" },
+  { label: "Trango Tower", href: "/rock-climbing/trango-tower" },
+  { label: "Amin Braq", href: "/rock-climbing/amin-braq" },
+  { label: "Shipton Spire", href: "/rock-climbing/shipton-spire" },
+  { label: "Shingo Chatpa Peak", href: "/rock-climbing/shingo-chatpa-peak" },
 ];
 
-const tourItems: NavCategory = {
-  "Spring Tours": [
-    { label: "Deosai Plateau Tour", href: "/expedition/deosai-plateau-tour" },
-    { label: "Astore Valley Tour", href: "/expedition/astore-valley-tour" },
-    { label: "Fairy Meadow Tour", href: "/expedition/fairy-meadow-tour" },
-    { label: "Khunjerab Pass Tour", href: "/expedition/khunjerab-pass-tour" },
-    { label: "Hunza Valley Tour", href: "/expedition/hunza-valley-tour" },
-    { label: "Shandoor Polo Festival Tour", href: "/expedition/shandoor-polo-festival-tour" },
-    { label: "Skardu Valley Tour", href: "/expedition/skardu-valley-tour" },
-    { label: "Khaplu Valley Tour", href: "/expedition/khaplu-valley-tour" },
-    { label: "Phandar Valley Tour", href: "/expedition/phandar-valley-tour" },
-  ],
-};
+const tourItems: NavItem[] = [
+  { label: "Deosai Plateau Tour", href: "/tour/deosai-plateau-tour" },
+  { label: "Astore Valley Tour", href: "/tour/astore-valley-tour" },
+  { label: "Fairy Meadow Tour", href: "/tour/fairy-meadow-tour" },
+  { label: "Khunjerab Pass Tour", href: "/tour/khunjerab-pass-tour" },
+  { label: "Hunza Valley Tour", href: "/tour/hunza-valley-tour" },
+];
 
 const aboutItems: NavItem[] = [
   { label: "Our Team", href: "/team" },
@@ -111,13 +112,131 @@ const aboutItems: NavItem[] = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/northkarakoram", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com/northkarakoram", label: "Instagram" },
-  { icon: Youtube, href: "https://youtube.com/northkarakoram", label: "YouTube" },
-  { icon: Twitter, href: "https://twitter.com/northkarakoram", label: "Twitter" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100093782443750", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/northkarakoram", label: "Instagram" },
+  { icon: Youtube, href: "https://youtube.com/@northkarakoram", label: "YouTube" },
+  { icon: SiTiktok, href: "https://www.tiktok.com/@northkarakoram", label: "TikTok" },
 ];
 
 // --- HELPER COMPONENTS ---
+
+function LanguageSelector({
+  selectedLanguage,
+  onLanguageChange,
+  isMobile = false,
+}: {
+  selectedLanguage: Language;
+  onLanguageChange: (language: Language) => void;
+  isMobile?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    if (isMobile) return;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (isMobile) return;
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150);
+  };
+
+  const handleClick = () => {
+    if (isMobile) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div
+      ref={dropdownRef}
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        onClick={handleClick}
+        className={cn(
+          "flex items-center gap-2 rounded-xl transition-all duration-200",
+          isMobile
+            ? "w-full px-4 py-3 bg-white/10 hover:bg-white/15 justify-between"
+            : "px-3 py-2.5 text-white/80 hover:text-white bg-white/10 hover:bg-white/15"
+        )}
+      >
+        <div className="flex items-center gap-2">
+          <Globe className="w-4 h-4" />
+          <span className="text-lg">{selectedLanguage.flag}</span>
+          <span className={cn("font-medium", isMobile ? "text-base" : "text-sm")}>
+            {selectedLanguage.code.toUpperCase()}
+          </span>
+        </div>
+        <ChevronDown
+          className={cn(
+            "w-4 h-4 transition-transform duration-300",
+            isOpen && "rotate-180"
+          )}
+        />
+      </button>
+
+      {/* Dropdown */}
+      <div
+        className={cn(
+          "absolute z-50 min-w-[200px] rounded-xl shadow-2xl border border-white/10 py-2 transition-all duration-200 origin-top",
+          isMobile ? "left-0 right-0 top-full mt-2" : "right-0 top-[calc(100%+8px)]",
+          isOpen
+            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+        )}
+        style={{ backgroundColor: "#006F61" }}
+      >
+        {/* Arrow indicator - desktop only */}
+        {!isMobile && (
+          <div
+            className="absolute -top-2 right-4 w-4 h-4 rotate-45 border-l border-t border-white/10"
+            style={{ backgroundColor: "#006F61" }}
+          />
+        )}
+
+        <div className="relative z-10 max-h-[300px] overflow-y-auto">
+          {languages.map((language) => (
+            <button
+              key={language.code}
+              onClick={() => {
+                onLanguageChange(language);
+                setIsOpen(false);
+              }}
+              className={cn(
+                "w-full flex items-center gap-3 px-4 py-2.5 text-left transition-all duration-200",
+                selectedLanguage.code === language.code
+                  ? "text-white bg-white/15"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              )}
+            >
+              <span className="text-xl">{language.flag}</span>
+              <span className="text-sm font-medium flex-1">{language.name}</span>
+              {selectedLanguage.code === language.code && (
+                <Check className="w-4 h-4 text-[#f58220]" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function FlyoutMenuItem({
   label,
@@ -156,7 +275,7 @@ function FlyoutMenuItem({
           <div
             className={cn(
               "w-2 h-2 rounded-full transition-all duration-200",
-              isHovered ? "bg-white" : "bg-white/40"
+              isHovered ? "bg-[#f58220]" : "bg-white/40"
             )}
           />
           <span
@@ -171,15 +290,15 @@ function FlyoutMenuItem({
         <ChevronRight
           className={cn(
             "w-4 h-4 transition-all duration-200",
-            isHovered ? "text-white translate-x-0.5" : "text-white/50"
+            isHovered ? "text-[#f58220] translate-x-0.5" : "text-white/50"
           )}
         />
       </div>
 
-      {/* Flyout submenu - No gap between parent and child */}
+      {/* Flyout submenu */}
       <div
         className={cn(
-          "absolute left-full top-0 min-w-[240px] rounded-r-xl shadow-2xl border border-white/10 border-l-0 py-2 transition-all duration-200 origin-left",
+          "absolute left-full top-0 min-w-[260px] rounded-r-xl shadow-2xl border border-white/10 border-l-0 py-2 transition-all duration-200 origin-left",
           isHovered
             ? "opacity-100 scale-100 pointer-events-auto"
             : "opacity-0 scale-95 pointer-events-none"
@@ -196,7 +315,7 @@ function FlyoutMenuItem({
             className="group flex items-center gap-3 px-4 py-2.5 text-white/80 hover:text-white
               hover:bg-white/10 transition-all duration-200"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white transition-colors" />
+            <span className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-[#f58220] transition-colors" />
             <span className="text-sm font-medium">{item.label}</span>
           </Link>
         ))}
@@ -211,12 +330,14 @@ function DropdownMenu({
   isCategory = false,
   isActive = false,
   viewAllHref,
+  showViewAll = true,
 }: {
   trigger: string;
   items: NavCategory | NavItem[];
   isCategory?: boolean;
   isActive?: boolean;
-  viewAllHref: string;
+  viewAllHref?: string;
+  showViewAll?: boolean;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -228,7 +349,7 @@ function DropdownMenu({
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setIsOpen(false), 100);
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150);
   };
 
   return (
@@ -240,10 +361,10 @@ function DropdownMenu({
     >
       <button
         className={cn(
-          "flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+          "flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200",
           isActive || isOpen
-            ? "text-white bg-white/10"
-            : "text-white/80 hover:text-white hover:bg-white/5"
+            ? "text-white bg-white/15"
+            : "text-white/85 hover:text-white hover:bg-white/10"
         )}
       >
         {trigger}
@@ -255,7 +376,7 @@ function DropdownMenu({
         />
       </button>
 
-      {/* Invisible bridge to prevent gap issues */}
+      {/* Invisible bridge */}
       <div
         className={cn(
           "absolute top-full left-0 w-full h-3",
@@ -263,7 +384,7 @@ function DropdownMenu({
         )}
       />
 
-      {/* Dropdown panel - positioned directly below with no visual gap */}
+      {/* Dropdown panel */}
       <div
         className={cn(
           "absolute top-[calc(100%+8px)] left-0 min-w-[280px] rounded-xl shadow-2xl border border-white/10 py-2 transition-all duration-200 origin-top z-50",
@@ -298,24 +419,26 @@ function DropdownMenu({
                 className="group flex items-center gap-3 px-4 py-2.5 text-white/80 hover:text-white
                   hover:bg-white/10 transition-all duration-200"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white transition-colors" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-[#f58220] transition-colors" />
                 <span className="text-sm font-medium">{item.label}</span>
               </Link>
             ))
           )}
 
-          {/* View all link */}
-          <div className="mt-2 pt-2 border-t border-white/10 mx-2">
-            <Link
-              href={viewAllHref}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-white
-                hover:text-white transition-colors rounded-lg hover:bg-white/10"
-            >
-              <span>View All {trigger}</span>
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
+          {/* View all link - conditionally rendered */}
+          {showViewAll && viewAllHref && (
+            <div className="mt-2 pt-2 border-t border-white/10 mx-2">
+              <Link
+                href={viewAllHref}
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-white
+                  hover:text-white transition-colors rounded-lg hover:bg-white/10 group"
+              >
+                <span>View All {trigger}</span>
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -328,12 +451,14 @@ function MobileAccordionItem({
   isCategory = false,
   onClose,
   viewAllHref,
+  showViewAll = true,
 }: {
   label: string;
   items: NavCategory | NavItem[];
   isCategory?: boolean;
   onClose: () => void;
-  viewAllHref: string;
+  viewAllHref?: string;
+  showViewAll?: boolean;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [openSub, setOpenSub] = useState<string | null>(null);
@@ -366,7 +491,7 @@ function MobileAccordionItem({
       <div
         className={cn(
           "overflow-hidden transition-all duration-300",
-          isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <div className="bg-white/5 py-2">
@@ -379,7 +504,10 @@ function MobileAccordionItem({
                     hover:text-white hover:bg-white/5 transition-all duration-200"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-white/40" />
+                    <div className={cn(
+                      "w-2 h-2 rounded-full transition-colors",
+                      openSub === cat ? "bg-[#f58220]" : "bg-white/40"
+                    )} />
                     <span className="text-sm font-medium">{cat}</span>
                   </div>
                   <ChevronDown
@@ -426,16 +554,18 @@ function MobileAccordionItem({
             ))
           )}
 
-          {/* View All Link */}
-          <Link
-            href={viewAllHref}
-            onClick={onClose}
-            className="flex items-center justify-between mx-4 mt-2 px-4 py-3 text-sm font-semibold
-              text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200"
-          >
-            <span>View All {label}</span>
-            <ChevronRight className="w-4 h-4" />
-          </Link>
+          {/* View All Link - conditionally rendered */}
+          {showViewAll && viewAllHref && (
+            <Link
+              href={viewAllHref}
+              onClick={onClose}
+              className="flex items-center justify-between mx-4 mt-2 px-4 py-3 text-sm font-semibold
+                text-white bg-[#f58220]/20 rounded-lg hover:bg-[#f58220]/30 transition-all duration-200"
+            >
+              <span>View All {label}</span>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -444,13 +574,11 @@ function MobileAccordionItem({
 
 // --- MAIN COMPONENT ---
 
-export function Navigation({ onSearch }: NavigationProps = {}) {
-  const [location, setLocation] = useLocation();
+export function Navigation({ onLanguageChange }: NavigationProps = {}) {
+  const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(languages[0]);
 
   // Handle scroll effect
   useEffect(() => {
@@ -461,31 +589,10 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Focus search input when opened
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchOpen]);
-
-  // Close search on escape key
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSearchOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      if (onSearch) onSearch(searchQuery.trim());
-      setLocation(`/expeditions?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchOpen(false);
-      setSearchQuery("");
+  const handleLanguageSelect = (language: Language) => {
+    setSelectedLanguage(language);
+    if (onLanguageChange) {
+      onLanguageChange(language.code);
     }
   };
 
@@ -493,56 +600,59 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
     <>
       {/* Top Bar - Hidden on mobile */}
       <div
-        className="hidden lg:block border-b transition-all duration-300 text-black"
+        className="hidden lg:block border-b transition-all duration-300"
         style={{
           backgroundColor: "#fff",
-          borderColor: "rgba(255,255,255,0.1)",
+          borderColor: "rgba(0,0,0,0.08)",
         }}
       >
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-11">
+          <div className="flex items-center justify-between h-12">
             {/* Left - Contact Info */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
               <a
                 href="tel:+923330228111"
-                className="flex items-center gap-2 text-black hover:text-[#f58220] transition-colors text-sm font-semibold"
+                className="flex items-center gap-2.5 text-gray-700 hover:text-[#006F61] transition-colors group"
               >
-                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
-                  <Phone className="w-3 h-3" />
+                <div className="w-7 h-7 rounded-full bg-[#006F61] text-white flex items-center justify-center group-hover:bg-[#f58220] transition-colors">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
-                <span className="font-medium">+92 333 0228111</span>
+                <span className="font-semibold text-sm">+92 333 0228111</span>
               </a>
               <a
                 href="mailto:info@northkarakoram.com"
-                className="flex items-center gap-2 text-black font-semibold hover:text-[#f58220] transition-colors text-sm"
+                className="flex items-center gap-2.5 text-gray-700 hover:text-[#006F61] transition-colors group"
               >
-                <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
-                  <Mail className="w-3 h-3" />
+                <div className="w-7 h-7 rounded-full bg-[#006F61] text-white flex items-center justify-center group-hover:bg-[#f58220] transition-colors">
+                  <Mail className="w-3.5 h-3.5" />
                 </div>
-                <span className="font-medium">info@northkarakoram.com</span>
+                <span className="font-semibold text-sm">info@northkarakoram.com</span>
               </a>
             </div>
 
             {/* Right - Location & Social */}
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-black text-sm">
-                <MapPin className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                <MapPin className="w-4 h-4 text-[#006F61]" />
                 <span>Near Hishpar Hotel, Sathang, Skardu</span>
               </div>
 
+              {/* Divider */}
+              <div className="w-px h-6 bg-gray-200" />
+
               {/* Social Media Icons */}
-              <div className="flex items-center gap-1 pl-4 border-l border-white/20">
+              <div className="flex items-center gap-2">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-7 h-7 rounded-full bg-[#f58220] flex items-center justify-center
-                      text-white border border-[#f58220] hover:text-black hover:bg-white transition-all duration-200"
+                    className="w-8 h-8 rounded-full bg-[#006F61] flex items-center justify-center
+                      text-white hover:bg-[#f58220] transition-all duration-200 hover:scale-110"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-3.5 h-3.5" />
+                    <social.icon className="w-4 h-4" />
                   </a>
                 ))}
               </div>
@@ -555,27 +665,26 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
       <header
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300",
-          isScrolled ? "shadow-xl" : "shadow-md"
+          isScrolled ? "shadow-xl" : "shadow-lg"
         )}
         style={{ backgroundColor: "#006F61" }}
       >
         <div className="container mx-auto px-4 lg:px-6">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Logo - Made larger and more prominent */}
+            {/* Logo - Made larger */}
             <Link href="/" className="flex items-center flex-shrink-0 group">
               <div className="relative">
                 <img
                   src={logoImage}
                   alt="North Karakoram"
-                  className="h-14 sm:h-16 lg:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+                  className="h-16 sm:h-20 lg:h-24 xl:h-28 w-auto transition-all duration-300 group-hover:scale-105"
                 />
-                {/* Optional glow effect on hover */}
                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-lg transition-colors duration-300" />
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center gap-1">
+            <nav className="hidden xl:flex items-center gap-0.5">
               <Link
                 href="/"
                 className={cn(
@@ -593,39 +702,30 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 items={expeditionItems}
                 isCategory
                 isActive={location.includes("expedition")}
-                viewAllHref="/expeditions"
+                viewAllHref="/expedition"
+                showViewAll={true}
               />
               <DropdownMenu
                 trigger="Trekking"
                 items={trekkingItems}
-                isActive={location === "/trekking"}
+                isActive={location.includes("trekking")}
                 viewAllHref="/trekking"
+                showViewAll={true}
               />
               <DropdownMenu
                 trigger="Tours"
                 items={tourItems}
-                isCategory
-                isActive={location === "/tours"}
-                viewAllHref="/tours"
+                isActive={location.includes("tour")}
+                viewAllHref="/tour"
+                showViewAll={true}
               />
               <DropdownMenu
                 trigger="Rock Climbing"
                 items={rockClimbingItems}
-                isActive={location === "/rock-climbing"}
+                isActive={location.includes("rock-climbing")}
                 viewAllHref="/rock-climbing"
+                showViewAll={true}
               />
-
-              {/* <Link
-                href="/travel-info"
-                className={cn(
-                  "px-4 py-2.5 text-sm font-semibold rounded-lg transition-all duration-200",
-                  location === "/travel-info"
-                    ? "text-white bg-white/15"
-                    : "text-white/85 hover:text-white hover:bg-white/10"
-                )}
-              >
-                Travel Info
-              </Link> */}
 
               <Link
                 href="/pakistan-visa"
@@ -643,7 +743,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 trigger="About"
                 items={aboutItems}
                 isActive={location === "/team" || location === "/about"}
-                viewAllHref="/about"
+                showViewAll={false}
               />
 
               <Link
@@ -661,15 +761,13 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
 
             {/* Right Actions */}
             <div className="flex items-center gap-3">
-              {/* Search Button */}
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="w-11 h-11 flex items-center justify-center rounded-xl
-                  text-white/80 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5" />
-              </button>
+              {/* Language Selector - Desktop */}
+              <div className="hidden lg:block">
+                <LanguageSelector
+                  selectedLanguage={selectedLanguage}
+                  onLanguageChange={handleLanguageSelect}
+                />
+              </div>
 
               {/* Book Now Button - Desktop */}
               <Link href="/contact" className="hidden sm:block">
@@ -690,7 +788,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                 <SheetTrigger asChild>
                   <button
                     className="xl:hidden w-11 h-11 flex items-center justify-center rounded-xl
-                      text-white/80 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
+                      text-white/90 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
                     aria-label="Open menu"
                   >
                     <Menu className="w-6 h-6" />
@@ -699,7 +797,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
 
                 <SheetContent
                   side="right"
-                  className="w-full sm:w-[380px] p-0 border-l"
+                  className="w-full sm:w-[400px] p-0 border-l"
                   style={{
                     backgroundColor: "#006F61",
                     borderColor: "rgba(255,255,255,0.1)",
@@ -708,7 +806,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                   <div className="flex flex-col h-full">
                     {/* Mobile Header */}
                     <div className="flex items-center justify-between p-5 border-b border-white/10">
-                      <img src={logoImage} alt="Logo" className="h-12 w-auto" />
+                      <img src={logoImage} alt="Logo" className="h-14 w-auto" />
                       <button
                         onClick={() => setMobileMenuOpen(false)}
                         className="w-10 h-10 flex items-center justify-center rounded-xl
@@ -719,32 +817,16 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                       </button>
                     </div>
 
-                    {/* Mobile Search */}
-                    <div className="p-5 border-b border-white/10">
-                      <form onSubmit={handleSearch}>
-                        <div className="relative">
-                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
-                          <Input
-                            type="search"
-                            placeholder="Search expeditions, treks..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full h-12 pl-12 pr-4 bg-white/10 border-white/20
-                              text-white placeholder:text-white/50 rounded-xl text-base
-                              focus:bg-white/15 focus:border-white/30"
-                          />
-                          {searchQuery && (
-                            <button
-                              type="submit"
-                              className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5
-                                bg-white/20 hover:bg-white/30 text-white text-sm font-medium
-                                rounded-lg transition-colors"
-                            >
-                              Search
-                            </button>
-                          )}
-                        </div>
-                      </form>
+                    {/* Mobile Language Selector */}
+                    <div className="px-5 py-4 border-b border-white/10">
+                      <p className="text-white/60 text-xs font-medium uppercase tracking-wider mb-3">
+                        Select Language
+                      </p>
+                      <LanguageSelector
+                        selectedLanguage={selectedLanguage}
+                        onLanguageChange={handleLanguageSelect}
+                        isMobile
+                      />
                     </div>
 
                     {/* Mobile Navigation */}
@@ -767,43 +849,36 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                         items={expeditionItems}
                         isCategory
                         onClose={() => setMobileMenuOpen(false)}
-                        viewAllHref="/expeditions"
+                        viewAllHref="/expedition"
+                        showViewAll={true}
                       />
                       <MobileAccordionItem
                         label="Trekking"
                         items={trekkingItems}
                         onClose={() => setMobileMenuOpen(false)}
                         viewAllHref="/trekking"
+                        showViewAll={true}
                       />
                       <MobileAccordionItem
                         label="Tours"
                         items={tourItems}
-                        isCategory
                         onClose={() => setMobileMenuOpen(false)}
-                        viewAllHref="/tours"
+                        viewAllHref="/tour"
+                        showViewAll={true}
                       />
                       <MobileAccordionItem
                         label="Rock Climbing"
                         items={rockClimbingItems}
                         onClose={() => setMobileMenuOpen(false)}
                         viewAllHref="/rock-climbing"
+                        showViewAll={true}
                       />
                       <MobileAccordionItem
                         label="About"
                         items={aboutItems}
                         onClose={() => setMobileMenuOpen(false)}
-                        viewAllHref="/about"
+                        showViewAll={false}
                       />
-
-                      {/* <Link
-                        href="/travel-info"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center px-5 py-4 text-base font-semibold
-                          text-white/80 hover:text-white hover:bg-white/5
-                          border-b border-white/10 transition-all"
-                      >
-                        Travel Info
-                      </Link> */}
 
                       <Link
                         href="/pakistan-visa"
@@ -834,7 +909,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                           href="tel:+923330228111"
                           className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                          <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
                             <Phone className="w-4 h-4" />
                           </div>
                           <span className="text-sm font-medium">+92 333 0228111</span>
@@ -843,7 +918,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                           href="mailto:info@northkarakoram.com"
                           className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                          <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center">
                             <Mail className="w-4 h-4" />
                           </div>
                           <span className="text-sm font-medium">info@northkarakoram.com</span>
@@ -859,7 +934,7 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center
-                              text-white/70 hover:text-white hover:bg-white/20 transition-all duration-200"
+                              text-white/70 hover:text-white hover:bg-[#f58220] transition-all duration-200"
                             aria-label={social.label}
                           >
                             <social.icon className="w-4 h-4" />
@@ -884,81 +959,6 @@ export function Navigation({ onSearch }: NavigationProps = {}) {
                   </div>
                 </SheetContent>
               </Sheet>
-            </div>
-          </div>
-        </div>
-
-        {/* Full-width Search Overlay */}
-        <div
-          className={cn(
-            "absolute inset-x-0 top-full transition-all duration-300 z-50",
-            searchOpen
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-4 pointer-events-none"
-          )}
-        >
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setSearchOpen(false)}
-          />
-
-          {/* Search Container */}
-          <div className="relative" style={{ backgroundColor: "#005249" }}>
-            <div className="container mx-auto px-4 lg:px-6 py-6">
-              <form onSubmit={handleSearch} className="max-w-3xl mx-auto">
-                <div className="relative">
-                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-white/50" />
-                  <Input
-                    ref={searchInputRef}
-                    type="search"
-                    placeholder="Search expeditions, treks, tours..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-16 pl-14 pr-32 bg-white/10 border-2 border-white/20
-                      text-white text-lg placeholder:text-white/50 rounded-2xl
-                      focus:bg-white/15 focus:border-white/40 transition-all"
-                  />
-                  <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                    {searchQuery && (
-                      <Button
-                        type="submit"
-                        className="h-12 px-6 font-semibold rounded-xl"
-                        style={{ backgroundColor: "#f58220" }}
-                      >
-                        Search
-                      </Button>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => setSearchOpen(false)}
-                      className="w-12 h-12 flex items-center justify-center rounded-xl
-                        text-white/60 hover:text-white bg-white/10 hover:bg-white/20 transition-all"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Quick Links */}
-                <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="text-white/50 text-sm">Popular:</span>
-                  {["K2 Expedition", "Fairy Meadows", "Hunza Valley", "Broad Peak"].map((term) => (
-                    <button
-                      key={term}
-                      type="button"
-                      onClick={() => {
-                        setSearchQuery(term);
-                        searchInputRef.current?.focus();
-                      }}
-                      className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white
-                        bg-white/10 hover:bg-white/20 rounded-lg transition-all"
-                    >
-                      {term}
-                    </button>
-                  ))}
-                </div>
-              </form>
             </div>
           </div>
         </div>

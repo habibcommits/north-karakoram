@@ -2,59 +2,80 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Mountain, Footprints, Map, Users, Compass } from "lucide-react";
 import tourIcon from "@assets/tour_(1)_1766216911792.png";
-import climbingIcon from "@assets/family_tours_1766216911791.png";
+import climbingIcon from "@assets/rock-climbing-icon-removed-bg.png";
 import expeditionIcon from "@assets/expitions_1766216911790.png";
 import trekkingIcon from "@assets/treking_1766216911793.png";
 import backgroundImage from "@assets/stock_images/bg-for-holiday.jfif";
 
+// Import data sources for dynamic counts
+import { expeditions } from "@/lib/expeditionData";
+import { trekkings } from "@/lib/trekkingData";
+import { tours } from "@/lib/tourData";
+import { rockClimbings } from "@/lib/rockClimbingData";
+
 // Available holiday category options with enhanced metadata
-const categories = [
-  {
-    title: "Expeditions",
-    subtitle: "8000m+ Peaks",
-    description: "Summit the world's highest peaks with expert mountaineers and comprehensive support",
-    icon: expeditionIcon,
-    lucideIcon: Mountain,
-    href: "/expeditions",
-    stats: "15+ Routes",
-    featured: true,
-  },
-  {
-    title: "Trekking",
-    subtitle: "Mountain Trails",
-    description: "Trek through pristine valleys, ancient trails, and breathtaking landscapes",
-    icon: trekkingIcon,
-    lucideIcon: Footprints,
-    href: "/trekking",
-    stats: "30+ Trails",
-    featured: false,
-  },
-  {
-    title: "Tours",
-    subtitle: "Cultural Journeys",
-    description: "Explore scenic routes, historic sites, and authentic cultural experiences",
-    icon: tourIcon,
-    lucideIcon: Map,
-    href: "/tours",
-    stats: "25+ Tours",
-    featured: false,
-  },
-  {
-    title: "Family Tours",
-    subtitle: "All Ages Welcome",
-    description: "Family-friendly adventures designed for memorable experiences together",
-    icon: climbingIcon,
-    lucideIcon: Users,
-    href: "/expeditions",
-    stats: "20+ Trips",
-    featured: false,
-  },
-];
+const getCategories = () => {
+  // Calculate dynamic counts
+  const expeditionCount = expeditions?.length || 0;
+  const trekkingCount = trekkings?.length || 0;
+  const tourCount = tours?.length || 0;
+  const rockClimbingCount = rockClimbings?.length || 0;
+
+  return [
+    {
+      title: "Expeditions",
+      subtitle: "8000m+ Peaks",
+      description: "Summit the world's highest peaks with expert mountaineers and comprehensive support",
+      icon: expeditionIcon,
+      lucideIcon: Mountain,
+      href: "/expedition",
+      stats: `${expeditionCount}+ Routes`,
+      count: expeditionCount,
+      featured: true,
+    },
+    {
+      title: "Trekking",
+      subtitle: "Mountain Trails",
+      description: "Trek through pristine valleys, ancient trails, and breathtaking landscapes",
+      icon: trekkingIcon,
+      lucideIcon: Footprints,
+      href: "/trekking",
+      stats: `${trekkingCount}+ Trails`,
+      count: trekkingCount,
+      featured: false,
+    },
+    {
+      title: "Tours",
+      subtitle: "Cultural Journeys",
+      description: "Explore scenic routes, historic sites, and authentic cultural experiences",
+      icon: tourIcon,
+      lucideIcon: Map,
+      href: "/tour",
+      stats: `${tourCount}+ Tours`,
+      count: tourCount,
+      featured: false,
+    },
+    {
+      title: "Rock Climbing",
+      subtitle: "Adventure for All Levels",
+      description: "Experience thrilling rock climbing adventures suitable for families and beginners",
+      icon: climbingIcon,
+      lucideIcon: Mountain,
+      href: "/rock-climbing",
+      stats: `${rockClimbingCount}+ Routes`,
+      count: rockClimbingCount,
+      featured: false,
+    },
+  ];
+};
 
 export function HolidayCategories() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Get categories with dynamic counts
+  const categories = getCategories();
 
   // Intersection observer for scroll animations
   useEffect(() => {
@@ -270,7 +291,7 @@ export function HolidayCategories() {
                           {category.description}
                         </p>
 
-                        {/* Stats Badge */}
+                        {/* Stats Badge with dynamic count */}
                         <div
                           className={`inline-flex items-center gap-2 px-3 py-1.5
                             rounded-full text-xs font-semibold transition-all duration-300
@@ -279,7 +300,13 @@ export function HolidayCategories() {
                               : 'bg-white/10 text-white/80'
                             }`}
                         >
-                          <span>{category.stats}</span>
+                          <span className="font-bold">{category.count}</span>
+                          <span>
+                            {category.title === "Expeditions" && "Expeditions"}
+                            {category.title === "Trekking" && "Trails"}
+                            {category.title === "Tours" && "Tours"}
+                            {category.title === "Rock Climbing" && "Routes"}
+                          </span>
                         </div>
                       </div>
 
@@ -334,27 +361,30 @@ export function HolidayCategories() {
           </div>
         </div>
 
-        {/* Trust Indicators */}
-        {/* <div
+        {/* Total Adventures Count */}
+        <div
           className={`mt-12 flex flex-wrap items-center justify-center gap-8 md:gap-12
             transition-all duration-700 delay-700
             ${isVisible ? "opacity-100" : "opacity-0"}`}
         >
           {[
-            { value: "100+", label: "Adventures" },
+            {
+              value: categories.reduce((sum, cat) => sum + cat.count, 0),
+              label: "Total Adventures"
+            },
             { value: "4.9★", label: "Rating" },
             { value: "24/7", label: "Support" },
           ].map((item, index) => (
             <div key={index} className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-white">
-                {item.value}
+                {typeof item.value === 'number' ? `${item.value}+` : item.value}
               </div>
               <div className="text-white/50 text-xs uppercase tracking-wider">
                 {item.label}
               </div>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );

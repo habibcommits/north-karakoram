@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { expeditions, getExpeditionBySlug } from "@/lib/expeditionData";
+import { tours as expeditions, getTourBySlug } from "@/lib/tourData";
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,6 +11,7 @@ import {
   Clock,
   Compass,
   Download,
+  Footprints,
   Heart,
   Image as ImageIcon,
   MapPin,
@@ -29,9 +30,9 @@ import { useEffect, useRef, useState } from "react";
 import { SiWhatsapp } from "react-icons/si";
 import { Link, useParams } from "wouter";
 
-export default function ExpeditionDetail() {
+export default function TourDetails() {
   const { slug } = useParams<{ slug: string }>();
-  const expedition = getExpeditionBySlug(slug || "");
+  const expedition = getTourBySlug(slug || "");
   const [isVisible, setIsVisible] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -54,15 +55,15 @@ export default function ExpeditionDetail() {
               className="w-24 h-24 mx-auto mb-8 rounded-full flex items-center justify-center"
               style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
             >
-              <Mountain className="w-12 h-12" style={{ color: "#006F61" }} />
+              <Footprints className="w-12 h-12" style={{ color: "#006F61" }} />
             </div>
             <h1 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
-              Expedition Not Found
+              Tour Not Found
             </h1>
             <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto">
-              The expedition you're looking for doesn't exist or may have been moved.
+              The tour you're looking for doesn't exist or may have been moved.
             </p>
-            <Link href="/expedition">
+            <Link href="/tour">
               <Button
                 size="lg"
                 className="rounded-xl px-8 py-6 h-auto font-semibold"
@@ -70,7 +71,7 @@ export default function ExpeditionDetail() {
                 data-testid="button-back-expeditions"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
-                View All Expeditions
+                View All Tours
               </Button>
             </Link>
           </div>
@@ -79,38 +80,14 @@ export default function ExpeditionDetail() {
     );
   }
 
-  const getAltitudeNumber = (altitude: string): number => {
-    const match = altitude.match(/[\d,]+/);
-    return match ? parseInt(match[0].replace(/,/g, ""), 10) : 0;
-  };
+  const otherExpeditions = expeditions
+    .filter((e) => e.id !== expedition.id)
 
-  const currentAltitude = getAltitudeNumber(expedition.altitude);
-
-  let minAltitude = 6000;
-  let maxAltitude = Infinity;
-
-  if (currentAltitude >= 8000) {
-    minAltitude = 8000;
-  } else if (currentAltitude >= 7000) {
-    minAltitude = 7000;
-    maxAltitude = 8000;
-  } else if (currentAltitude >= 6000) {
-    minAltitude = 6000;
-    maxAltitude = 7000;
-  }
-
-  const otherExpeditions = expeditions.filter((e) => {
-    if (e.id === expedition.id) return false;
-
-    const alt = getAltitudeNumber(e.altitude);
-    return alt >= minAltitude && alt < maxAltitude;
-  });
-
-  function shuffleArray<T>(array: T[]): T[] {
+  function shuffleArray(array: any) {
     return array
-      .map(value => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
+      .map((value: any) => ({ value, sort: Math.random() }))
+      .sort((a: any, b: any) => a.sort - b.sort)
+      .map(({ value }: { value: any }) => value);
   }
 
   const shuffledExpeditions = shuffleArray(otherExpeditions);
@@ -161,14 +138,14 @@ export default function ExpeditionDetail() {
               ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
           >
             <Link
-              href="/expedition"
+              href="/tour"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
                 bg-white/10 backdrop-blur-sm text-white text-sm font-medium
                 hover:bg-white/20 transition-all duration-300"
               data-testid="link-back-expeditions"
             >
               <ArrowLeft className="w-4 h-4" />
-              All Expeditions
+              All Tours
             </Link>
           </div>
 
@@ -553,7 +530,7 @@ export default function ExpeditionDetail() {
                             Get Custom Pricing
                           </h3>
                           <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                            Every expedition is unique. Contact us for personalized pricing
+                            Every tour is unique. Contact us for personalized pricing
                             based on your group size, dates, and requirements.
                           </p>
                           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -632,7 +609,7 @@ export default function ExpeditionDetail() {
 
                           <div className="mt-8 pt-8 border-t border-gray-100">
                             <h4 className="font-bold text-lg text-gray-900 mb-4">
-                              About This Expedition
+                              About This Tour
                             </h4>
                             <p className="text-gray-600 leading-relaxed">
                               {expedition.description}
@@ -726,7 +703,7 @@ export default function ExpeditionDetail() {
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Sparkles className="w-5 h-5" />
-                        <span className="text-sm font-medium opacity-90">Premium Expedition</span>
+                        <span className="text-sm font-medium opacity-90">Premium Tour</span>
                       </div>
                       <h3 className="font-heading font-bold text-xl">Book Your Adventure</h3>
                     </div>
@@ -760,7 +737,7 @@ export default function ExpeditionDetail() {
                             style={{ backgroundColor: "#006F61" }}
                             data-testid="button-book-expedition"
                           >
-                            Book This Expedition
+                            Book This Tour
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
@@ -847,7 +824,7 @@ export default function ExpeditionDetail() {
                   </span>
                 </div>
                 <h2 className="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4">
-                  Other Expeditions
+                  Other Tour
                 </h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
                   Discover more incredible adventures in the Karakoram and beyond
@@ -855,10 +832,10 @@ export default function ExpeditionDetail() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                {shuffledExpeditions.splice(0, 3).map((exp: any, index: any) => (
+                {shuffledExpeditions.slice(0, 3).map((exp: any, index: any) => (
                   <Link
                     key={exp.id}
-                    href={`/expedition/${exp.slug}`}
+                    href={`/tour/${exp.slug}`}
                     data-testid={`card-expedition-${exp.id}`}
                   >
                     <Card
@@ -923,7 +900,7 @@ export default function ExpeditionDetail() {
               </div>
 
               <div className="text-center mt-10">
-                <Link href="/expedition">
+                <Link href="/tour">
                   <Button
                     size="lg"
                     variant="outline"
@@ -931,7 +908,7 @@ export default function ExpeditionDetail() {
                       hover:-translate-y-0.5 transition-all"
                     style={{ borderColor: "#006F61", color: "#006F61" }}
                   >
-                    View All Expeditions
+                    View All Tours
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -965,7 +942,7 @@ export default function ExpeditionDetail() {
                   Ready to Conquer {expedition.name.split(" ")[0]}?
                 </h2>
                 <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                  Join our expert team for an unforgettable expedition experience.
+                  Join our expert team for an unforgettable tour experience.
                   Limited spots available for the upcoming season.
                 </p>
 

@@ -255,7 +255,7 @@ export function ExpeditionsSection() {
                     </div>
 
                     {/* CTA Button */}
-                    <Link href="/expeditions" className="block">
+                    <Link href="/expedition" className="block">
                       <Button
                         className="w-full group/btn font-semibold rounded-xl py-5 h-auto
                           transition-all duration-300 text-white"
@@ -347,7 +347,7 @@ export function ExpeditionsSection() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/expeditions">
+                <Link href="/expedition">
                   <Button
                     size="lg"
                     className="w-full md:w-fit group bg-white hover:bg-gray-100 font-semibold

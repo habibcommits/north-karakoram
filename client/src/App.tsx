@@ -25,6 +25,9 @@ import NotFound from "@/pages/not-found";
 import { Footer } from "./components/Footer";
 import { Navigation } from "./components/Navigation";
 import RockClimbing from "./pages/RockClimbing";
+import TrekkingDetail from "./pages/TrekkingDetails";
+import TourDetails from "./pages/TourDetails";
+import RockClimbingDetails from "./pages/RockClimbingDetails";
 
 function Router() {
   return (
@@ -32,11 +35,14 @@ function Router() {
       {/* Main landing page */}
       <Route path="/" component={Home} />
       {/* Trip category pages */}
-      <Route path="/expeditions" component={Expeditions} />
+      <Route path="/expedition" component={Expeditions} />
       <Route path="/expedition/:slug" component={ExpeditionDetail} />
       <Route path="/trekking" component={Trekking} />
+      <Route path="/trekking/:slug" component={TrekkingDetail} />
+      <Route path="/tour" component={Tours} />
+      <Route path="/tour/:slug" component={TourDetails} />
       <Route path="/rock-climbing" component={RockClimbing} />
-      <Route path="/tours" component={Tours} />
+      <Route path="/rock-climbing/:slug" component={RockClimbingDetails} />
       {/* Information pages */}
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />

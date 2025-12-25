@@ -90,29 +90,29 @@ const contactInfo = [
 const socialLinks = [
   {
     icon: SiYoutube,
-    href: "https://youtube.com/@northkarakoram",
+    href: "https://youtube.com/@northkarakoram?si=PJHwQm8bP2nMLBwe",
     label: "YouTube",
   },
   {
     icon: SiTiktok,
-    href: "https://www.tiktok.com/@northkarakoram",
+    href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92TItqmrAx7",
     label: "TikTok",
   },
   {
     icon: SiInstagram,
-    href: "https://www.instagram.com/northkarakoram",
+    href: "https://www.instagram.com/northkarakoram?igsh=MWlseHgycWNybWx2MA%3D%3D&utm_source=qr",
     label: "Instagram",
   },
   {
     icon: SiFacebook,
-    href: "https://www.facebook.com/northkarakoram",
+    href: "https://www.facebook.com/profile.php?id=100093782443750&rdid=j90AVS0yTRTTZeBk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AhZLfuCzQ%2F#",
     label: "Facebook",
   },
-  {
-    icon: SiWhatsapp,
-    href: "https://wa.me/923555718293",
-    label: "WhatsApp",
-  },
+  // {
+  //   icon: SiWhatsapp,
+  //   href: "https://wa.me/923555718293",
+  //   label: "WhatsApp",
+  // },
 ];
 
 const reasons = [
@@ -891,7 +891,7 @@ export default function Contact() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                 <a
-                  href="/expeditions"
+                  href="/expedition"
                   className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <span>Explore Expeditions</span>

@@ -1,129 +1,221 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import {
   MapPin,
   Calendar,
   Clock,
-  Users,
-  Star,
+  Mountain,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   Sparkles,
-  Sun,
-  Flower2,
-  Leaf,
-  Snowflake,
-  Heart
+  TrendingUp,
+  ChevronRight,
+  ArrowUpRight
 } from "lucide-react";
-import hunzaImage from "@assets/stock_images/hunza_valley_spring__a35ac63e.jpg";
-import fairyMeadowImage from "@assets/stock_images/fairy_meadow_mountai_a8bee0ee.jpg";
-import skarduImage from "@assets/stock_images/skardu_valley_lake_m_4b59ff74.jpg";
-import deosaImage from "@assets/stock_images/deosai_plateau_wildf_f1a3427f.jpg";
+import { expeditions } from "@/lib/expeditionData";
+import type { ExpeditionData } from "@/lib/expeditionData";
 
-// Season configuration with colors and icons
-const seasonConfig = {
-  Spring: {
-    icon: Flower2,
-    color: "#ec4899",
-    bgColor: "bg-pink-500",
-    lightBg: "bg-pink-50",
-    textColor: "text-pink-600"
+// Peak category configuration with colors
+const categoryConfig = {
+  "all": {
+    label: "All Peaks",
+    color: "#006F61",
+    bgColor: "bg-[#006F61]",
+    lightBg: "bg-emerald-50",
+    textColor: "text-[#006F61]"
   },
-  Summer: {
-    icon: Sun,
+  "8000m": {
+    label: "8000m+",
     color: "#f59e0b",
-    bgColor: "bg-amber-500",
+    bgColor: "bg-gradient-to-r from-amber-500 to-orange-500",
     lightBg: "bg-amber-50",
-    textColor: "text-amber-600"
+    textColor: "text-amber-600",
+    badge: "Elite"
   },
-  Autumn: {
-    icon: Leaf,
-    color: "#ea580c",
-    bgColor: "bg-orange-500",
-    lightBg: "bg-orange-50",
-    textColor: "text-orange-600"
+  "7000m": {
+    label: "7000m+",
+    color: "#8b5cf6",
+    bgColor: "bg-gradient-to-r from-purple-500 to-indigo-500",
+    lightBg: "bg-purple-50",
+    textColor: "text-purple-600",
+    badge: "Advanced"
   },
-  Winter: {
-    icon: Snowflake,
-    color: "#0ea5e9",
-    bgColor: "bg-sky-500",
-    lightBg: "bg-sky-50",
-    textColor: "text-sky-600"
+  "6000m": {
+    label: "6000m+",
+    color: "#10b981",
+    bgColor: "bg-gradient-to-r from-emerald-500 to-teal-500",
+    lightBg: "bg-emerald-50",
+    textColor: "text-emerald-600",
+    badge: "Challenging"
   },
 };
 
-// Enhanced tour data with additional details
-const tours = [
-  {
-    id: 1,
-    title: "Hunza Valley Blossom Tour",
-    location: "Hunza Valley",
-    description: "Experience the spectacular spring blossoms across Hunza Valley. A scenic journey through blooming orchards and pristine landscapes.",
-    season: "Spring" as keyof typeof seasonConfig,
-    image: hunzaImage,
-    duration: "7 Days",
-    groupSize: "8-12",
-    rating: 4.9,
-    reviews: 128,
-    price: "$899",
-    featured: true,
-    highlights: ["Cherry Blossoms", "Karimabad", "Attabad Lake"],
-  },
-  {
-    id: 2,
-    title: "Fairy Meadow Adventure",
-    location: "Nanga Parbat Base",
-    description: "Trek to the stunning Fairy Meadow with breathtaking views of Nanga Parbat. Experience alpine meadows and mountain serenity.",
-    season: "Summer" as keyof typeof seasonConfig,
-    image: fairyMeadowImage,
-    duration: "5 Days",
-    groupSize: "6-10",
-    rating: 4.8,
-    reviews: 95,
-    price: "$749",
-    featured: false,
-    highlights: ["Nanga Parbat Views", "Alpine Meadows", "Camping"],
-  },
-  {
-    id: 3,
-    title: "Skardu Valley Explorer",
-    location: "Skardu, Baltistan",
-    description: "Explore the beautiful Skardu Valley during summer. Visit pristine lakes, ancient monasteries, and dramatic mountain passes.",
-    season: "Summer" as keyof typeof seasonConfig,
-    image: skarduImage,
-    duration: "8 Days",
-    groupSize: "8-15",
-    rating: 4.9,
-    reviews: 156,
-    price: "$999",
-    featured: true,
-    highlights: ["Shangrila Lake", "Deosai", "Cold Desert"],
-  },
-  {
-    id: 4,
-    title: "Deosai Plateau Expedition",
-    location: "Deosai, Baltistan",
-    description: "Discover the alpine beauty of Deosai Plateau. Trek through wildflower meadows and enjoy panoramic mountain views.",
-    season: "Summer" as keyof typeof seasonConfig,
-    image: deosaImage,
-    duration: "6 Days",
-    groupSize: "6-12",
-    rating: 4.7,
-    reviews: 82,
-    price: "$849",
-    featured: false,
-    highlights: ["Wildlife", "Sheosar Lake", "Wildflowers"],
-  },
-];
+// Helper to extract numeric altitude
+const getAltitudeNumber = (altitude: string): number => {
+  const match = altitude.match(/[\d,]+/);
+  if (match) {
+    return parseInt(match[0].replace(',', ''));
+  }
+  return 0;
+};
+
+// Helper to get peak category
+const getPeakCategory = (altitude: string): "8000m" | "7000m" | "6000m" => {
+  const alt = getAltitudeNumber(altitude);
+  if (alt >= 8000) return "8000m";
+  if (alt >= 7000) return "7000m";
+  return "6000m";
+};
+
+// Expedition Card Component
+function ExpeditionCard({ expedition, index, isVisible }: {
+  expedition: ExpeditionData;
+  index: number;
+  isVisible: boolean;
+}) {
+  const peakCategory = getPeakCategory(expedition.altitude);
+  const categoryData = categoryConfig[peakCategory];
+
+  return (
+    <Link href={`/expedition/${expedition.slug}`}>
+      <div
+        className={`group relative h-full transition-all duration-700
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+        style={{ transitionDelay: isVisible ? `${200 + index * 100}ms` : '0ms' }}
+      >
+        <div className="relative h-full bg-white rounded-2xl lg:rounded-3xl overflow-hidden
+          shadow-sm hover:shadow-2xl hover:shadow-black/10
+          border border-gray-100 hover:border-gray-200
+          transition-all duration-500 hover:-translate-y-2">
+
+          {/* Image Container */}
+          <div className="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={expedition.image}
+              alt={expedition.name}
+              className="w-full h-full object-cover transition-transform duration-700
+                group-hover:scale-110"
+            />
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+            {/* Top badges row */}
+            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex justify-between items-start">
+              {/* Category & Difficulty Badges */}
+              <div className="flex flex-col gap-2">
+                <span className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-white
+                  text-[10px] sm:text-xs font-bold uppercase tracking-wide
+                  shadow-lg backdrop-blur-sm ${categoryData.bgColor}`}>
+                  {categoryData.label}
+                </span>
+                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full
+                  bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs
+                  font-medium border border-white/30">
+                  {expedition.difficulty}
+                </span>
+              </div>
+
+              {/* Altitude Badge */}
+              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2
+                rounded-xl bg-black/40 backdrop-blur-md border border-white/20">
+                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#006F61]" />
+                <span className="text-white text-xs sm:text-sm font-bold">
+                  {expedition.altitude}
+                </span>
+              </div>
+            </div>
+
+            {/* Bottom Info Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+              <div className="flex items-center gap-2 text-white/80 text-xs sm:text-sm mb-2">
+                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                <span className="truncate">{expedition.location}</span>
+              </div>
+              <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-white
+                leading-tight line-clamp-2 group-hover:text-[#006F61]
+                transition-colors duration-300">
+                {expedition.name}
+              </h3>
+            </div>
+
+            {/* Hover Arrow */}
+            <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/0
+              flex items-center justify-center opacity-0 group-hover:opacity-100
+              group-hover:bg-white transition-all duration-300 z-20">
+              <ArrowUpRight className="w-5 h-5 text-[#006F61]" />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="p-4 sm:p-5 lg:p-6">
+            {/* Description */}
+            <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+              {expedition.description}
+            </p>
+
+            {/* Info Grid */}
+            <div className="grid grid-cols-1 gap-2 sm:gap-3 mb-5">
+              <div className="flex flex-col items-center p-2.5 sm:p-3 rounded-xl
+                bg-gray-50 hover:bg-[#006F61]/5 transition-colors">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
+                <span className="text-[10px] sm:text-xs text-gray-500">Duration</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
+                  {expedition.duration}
+                </span>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <Button
+              className="w-full group/btn font-semibold rounded-xl py-5 h-auto
+                bg-[#006F61] hover:bg-[#005a4d] transition-all duration-300
+                hover:shadow-lg hover:shadow-[#006F61]/30"
+            >
+              <span>View Expedition</span>
+              <ChevronRight className="w-4 h-4 ml-2 transition-transform
+                group-hover/btn:translate-x-1" />
+            </Button>
+          </div>
+
+          {/* Hover accent line */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-1 transition-transform duration-300
+              origin-left scale-x-0 group-hover:scale-x-100 bg-[#006F61]"
+          />
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export function SeasonWiseSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string>("All");
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [likedTours, setLikedTours] = useState<number[]>([]);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
   const sectionRef = useRef<HTMLElement>(null);
+
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    return [...array]
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
+  const randomizedExpeditions = useMemo(() => {
+    const list =
+      activeFilter === "all"
+        ? expeditions
+        : expeditions.filter(exp => {
+          const alt = getAltitudeNumber(exp.altitude);
+          if (activeFilter === "8000m") return alt >= 8000;
+          if (activeFilter === "7000m") return alt >= 7000 && alt < 8000;
+          if (activeFilter === "6000m") return alt >= 6000 && alt < 7000;
+          return true;
+        });
+
+    return shuffleArray(list).slice(0, 4);
+  }, [activeFilter]);
+
 
   // Intersection observer for scroll animations
   useEffect(() => {
@@ -144,44 +236,49 @@ export function SeasonWiseSection() {
   }, []);
 
   // Filter options
-  const filters = ["All", "Spring", "Summer", "Autumn", "Winter"];
+  const filters = ["all", "8000m", "7000m", "6000m"];
 
-  // Filter tours based on active filter
-  const filteredTours = activeFilter === "All"
-    ? tours
-    : tours.filter(tour => tour.season === activeFilter);
+  // Filter expeditions based on active filter
+  const filteredExpeditions = activeFilter === "all"
+    ? expeditions.slice(0, 8) // Show max 8 expeditions
+    : expeditions.filter(exp => {
+      const altNumber = getAltitudeNumber(exp.altitude);
+      if (activeFilter === "8000m") return altNumber >= 8000;
+      if (activeFilter === "7000m") return altNumber >= 7000 && altNumber < 8000;
+      if (activeFilter === "6000m") return altNumber >= 6000 && altNumber < 7000;
+      return true;
+    }).slice(0, 8);
 
-  // Toggle like
-  const toggleLike = (id: number, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setLikedTours(prev =>
-      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-    );
+  // Count expeditions by category
+  const counts = {
+    all: expeditions.length,
+    "8000m": expeditions.filter(e => getAltitudeNumber(e.altitude) >= 8000).length,
+    "7000m": expeditions.filter(e => getAltitudeNumber(e.altitude) >= 7000 && getAltitudeNumber(e.altitude) < 8000).length,
+    "6000m": expeditions.filter(e => getAltitudeNumber(e.altitude) >= 6000 && getAltitudeNumber(e.altitude) < 7000).length,
   };
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
-      data-testid="section-tours"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
+      data-testid="section-expeditions"
     >
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Large gradient blobs */}
         <div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.03]"
+          className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full opacity-[0.03]"
           style={{ backgroundColor: '#006F61' }}
         />
         <div
-          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.02]"
+          className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full opacity-[0.02]"
           style={{ backgroundColor: '#006F61' }}
         />
 
-        {/* Decorative dots pattern - right side */}
+        {/* Decorative dots pattern */}
         <div className="absolute top-40 right-10 hidden xl:block">
           <div className="grid grid-cols-4 gap-3">
-            {[...Array(16)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
               <div
                 key={i}
                 className="w-2 h-2 rounded-full"
@@ -202,383 +299,143 @@ export function SeasonWiseSection() {
 
         {/* Section Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-12 md:mb-16 transition-all duration-700
+          className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 sm:mb-6"
             style={{ backgroundColor: 'rgba(0, 111, 97, 0.1)' }}
           >
             <Sparkles className="w-4 h-4" style={{ color: '#006F61' }} />
             <span className="text-sm font-semibold" style={{ color: '#006F61' }}>
-              Featured Tours
+              Elite Mountaineering
             </span>
           </div>
 
           {/* Title */}
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
             Explore Our{" "}
             <span className="relative inline-block" style={{ color: '#006F61' }}>
-              Seasonal Tours
-              {/* Decorative underline */}
-              {/* <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 8.5C50 2.5 150 2.5 198 8.5"
-                  stroke="#006F61"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeOpacity="0.3"
-                />
-              </svg> */}
+              Peak Expeditions
             </span>
           </h2>
 
-          <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-            Discover northern Pakistan with expertly guided tours. From scenic mountain valleys
-            to culturally rich villages, experience safe and immersive adventures.
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed px-4 sm:px-0">
+            Professional expeditions to the world's most challenging peaks. From K2 to Broad Peak,
+            experience world-class mountaineering adventures with certified guides.
           </p>
         </div>
 
-        {/* Season Filter Tabs */}
+        {/* Category Filter Tabs */}
         <div
-          className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-700 delay-100
+          className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-12 transition-all duration-700 delay-100
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {filters.map((filter) => {
             const isActive = activeFilter === filter;
-            const seasonData = filter !== "All" ? seasonConfig[filter as keyof typeof seasonConfig] : null;
-            const SeasonIcon = seasonData?.icon;
+            const configData = categoryConfig[filter as keyof typeof categoryConfig];
 
             return (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`group flex items-center gap-2 px-5 py-2.5 rounded-full font-medium
-                  transition-all duration-300 text-sm md:text-base
+                className={`group flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-medium
+                  transition-all duration-300 text-sm
                   ${isActive
                     ? 'text-white shadow-lg'
                     : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:shadow-md'
                   }`}
                 style={isActive ? {
-                  backgroundColor: filter === "All" ? '#006F61' : seasonData?.color || '#006F61',
-                  boxShadow: `0 10px 30px -10px ${filter === "All" ? 'rgba(0, 111, 97, 0.4)' : seasonData?.color || 'rgba(0, 111, 97, 0.4)'}`
+                  backgroundColor: configData.color,
+                  boxShadow: `0 10px 30px -10px ${configData.color}66`
                 } : {}}
               >
-                {SeasonIcon && (
-                  <SeasonIcon className={`w-4 h-4 transition-transform group-hover:rotate-12
-                    ${isActive ? 'text-white' : ''}`}
-                    style={!isActive ? { color: seasonData?.color } : {}}
-                  />
-                )}
-                <span>{filter}</span>
+                <Mountain className={`w-4 h-4 transition-transform group-hover:scale-110
+                  ${isActive ? 'text-white' : ''}`}
+                  style={!isActive ? { color: configData.color } : {}}
+                />
+                <span>{configData.label}</span>
+                <span className={`px-2 py-0.5 rounded-full text-xs font-bold
+                  ${isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'}`}>
+                  {counts[filter as keyof typeof counts]}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Tours Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {filteredTours.map((tour, index) => {
-            const seasonData = seasonConfig[tour.season];
-            const SeasonIcon = seasonData.icon;
-            const isHovered = hoveredCard === tour.id;
-            const isLiked = likedTours.includes(tour.id);
-
-            return (
-              <Link key={tour.id} href="/tours">
-                <div
-                  className={`group relative h-full transition-all duration-700
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-                  style={{ transitionDelay: isVisible ? `${200 + index * 100}ms` : '0ms' }}
-                  onMouseEnter={() => setHoveredCard(tour.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  data-testid={`card-tour-${index}`}
-                >
-                  <div className="relative h-full bg-white rounded-2xl overflow-hidden
-                    shadow-sm hover:shadow-2xl hover:shadow-black/10
-                    border border-gray-100 hover:border-gray-200
-                    transition-all duration-500 hover:-translate-y-2">
-
-                    {/* Image Container */}
-                    <div className="relative h-52 md:h-56 overflow-hidden">
-                      <img
-                        src={tour.image}
-                        alt={tour.title}
-                        className="w-full h-full object-cover transition-transform duration-700
-                          group-hover:scale-110"
-                      />
-
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-
-                      {/* Top badges row */}
-                      <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                        {/* Season Badge */}
-                        <div
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full
-                            text-white text-xs font-bold uppercase tracking-wide
-                            shadow-lg backdrop-blur-sm ${seasonData.bgColor}`}
-                        >
-                          <SeasonIcon className="w-3.5 h-3.5" />
-                          <span>{tour.season}</span>
-                        </div>
-
-                        {/* Like Button */}
-                        <button
-                          onClick={(e) => toggleLike(tour.id, e)}
-                          className={`w-9 h-9 rounded-full flex items-center justify-center
-                            backdrop-blur-sm transition-all duration-300
-                            ${isLiked
-                              ? 'bg-red-500 text-white'
-                              : 'bg-white/20 text-white hover:bg-white/30'
-                            }`}
-                        >
-                          <Heart
-                            className={`w-4 h-4 transition-transform
-                              ${isLiked ? 'fill-current scale-110' : ''}`}
-                          />
-                        </button>
-                      </div>
-
-                      {/* Featured Badge */}
-                      {tour.featured && (
-                        <div className="absolute top-14 left-4">
-                          <span
-                            className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase
-                              tracking-wider text-white shadow-lg"
-                            style={{ backgroundColor: '#006F61' }}
-                          >
-                            Featured
-                          </span>
-                        </div>
-                      )}
-
-                      {/* Price Tag */}
-                      <div className="absolute bottom-4 right-4">
-                        <div className="bg-white rounded-xl px-3 py-2 shadow-lg">
-                          <span className="text-xs text-gray-500">From</span>
-                          <div className="font-bold text-lg" style={{ color: '#006F61' }}>
-                            {tour.price}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Location overlay */}
-                      <div className="absolute bottom-4 left-4">
-                        <div className="flex items-center gap-1.5 text-white/90 text-sm">
-                          <MapPin className="w-4 h-4" />
-                          <span className="font-medium">{tour.location}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      {/* Rating */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                          <span className="font-bold text-gray-900">{tour.rating}</span>
-                        </div>
-                        <span className="text-gray-400 text-sm">
-                          ({tour.reviews} reviews)
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="font-heading font-bold text-lg text-gray-900 mb-2
-                        group-hover:text-[#006F61] transition-colors line-clamp-2">
-                        {tour.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
-                        {tour.description}
-                      </p>
-
-                      {/* Meta info */}
-                      <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
-                        <div className="flex items-center gap-1.5">
-                          <Clock className="w-4 h-4" />
-                          <span>{tour.duration}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Users className="w-4 h-4" />
-                          <span>{tour.groupSize}</span>
-                        </div>
-                      </div>
-
-                      {/* Highlights Tags */}
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {tour.highlights.slice(0, 3).map((highlight, i) => (
-                          <span
-                            key={i}
-                            className="px-2.5 py-1 rounded-full text-xs font-medium
-                              bg-gray-100 text-gray-600"
-                          >
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* CTA Button */}
-                      <Button
-                        className="w-full group/btn font-semibold rounded-xl py-5 h-auto
-                          transition-all duration-300"
-                        style={{
-                          backgroundColor: '#006F61',
-                          boxShadow: isHovered ? '0 10px 30px -10px rgba(0, 111, 97, 0.5)' : 'none'
-                        }}
-                        data-testid={`button-tour-${index}`}
-                      >
-                        <span>View Details</span>
-                        <ArrowRight className="w-4 h-4 ml-2 transition-transform
-                          group-hover/btn:translate-x-1" />
-                      </Button>
-                    </div>
-
-                    {/* Hover accent line */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-1 transition-transform duration-300
-                        origin-left scale-x-0 group-hover:scale-x-100"
-                      style={{ backgroundColor: '#006F61' }}
-                    />
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+        {/* Expeditions Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+          {randomizedExpeditions.map((expedition, index) => (
+            <ExpeditionCard
+              key={expedition.id}
+              expedition={expedition}
+              index={index}
+              isVisible={isVisible}
+            />
+          ))}
         </div>
 
         {/* Empty State */}
-        {filteredTours.length === 0 && (
-          <div className="text-center py-16">
+        {filteredExpeditions.length === 0 && (
+          <div className="text-center py-12 sm:py-16">
             <div
-              className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+              className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full flex items-center justify-center"
               style={{ backgroundColor: 'rgba(0, 111, 97, 0.1)' }}
             >
-              <Calendar className="w-10 h-10" style={{ color: '#006F61' }} />
+              <Mountain className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#006F61' }} />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              No tours available for this season
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+              No expeditions available
             </h3>
-            <p className="text-gray-600 mb-6">
-              Check back soon or explore other seasonal tours.
+            <p className="text-gray-600 mb-6 text-sm sm:text-base">
+              Check back soon or explore other peak categories.
             </p>
             <Button
-              onClick={() => setActiveFilter("All")}
+              onClick={() => setActiveFilter("all")}
               style={{ backgroundColor: '#006F61' }}
               className="text-white"
             >
-              View All Tours
+              View All Expeditions
             </Button>
           </div>
         )}
 
         {/* Bottom CTA Section */}
         <div
-          className={`mt-16 md:mt-20 transition-all duration-700 delay-500
+          className={`mt-12 sm:mt-16 md:mt-20 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          {/* Stats Row */}
-          {/* <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12">
-            {[
-              { value: "50+", label: "Tours Available" },
-              { value: "4.9", label: "Average Rating" },
-              { value: "2500+", label: "Happy Travelers" },
-              { value: "100%", label: "Satisfaction" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div
-                  className="text-3xl md:text-4xl font-bold mb-1"
-                  style={{ color: '#006F61' }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-gray-500 text-sm font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div> */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link href="/expeditions">
+              <Button
+                size="lg"
+                className="w-full sm:w-fit group bg-[#006F61] hover:bg-[#005a4d] font-semibold
+                  px-6 sm:px-8 py-5 sm:py-6 h-auto rounded-xl shadow-lg transition-all duration-300
+                  hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#006F61]/30"
+              >
+                <span>Explore All Expeditions</span>
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform
+                  group-hover:translate-x-1" />
+              </Button>
+            </Link>
 
-          {/* CTA Card */}
-          <div
-            className="relative rounded-3xl overflow-hidden p-8 md:p-12 text-center"
-          // style={{ backgroundColor: '#006F61' }}
-          >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              {/* <div
-                className="absolute top-0 right-0 w-96 h-96 rounded-full
-                  bg-white blur-3xl -translate-y-1/2 translate-x-1/2"
-              />
-              <div
-                className="absolute bottom-0 left-0 w-64 h-64 rounded-full
-                  bg-white blur-3xl translate-y-1/2 -translate-x-1/2"
-              /> */}
-            </div>
-
-            {/* Decorative Elements */}
-            {/* <div className="absolute top-6 left-6 w-20 h-20 border border-white/10 rounded-full hidden md:block" />
-            <div className="absolute bottom-6 right-6 w-32 h-32 border border-white/10 rounded-full hidden md:block" />
-
-            <div className="relative z-10">
-              <h3 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-                Ready for Your Next Adventure?
-              </h3>
-              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                Explore all our tours and find the perfect journey for you.
-                Our expert team is ready to make your dream adventure a reality.
-              </p> */}
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/tours">
-                <Button
-                  size="lg"
-                  className="w-full md:w-fit group bg-white hover:bg-gray-100 font-semibold
-                      px-8 py-6 h-auto rounded-xl shadow-xl transition-all duration-300
-                      hover:-translate-y-0.5"
-                  style={{ color: '#006F61' }}
-                  data-testid="button-explore-all-tours"
-                >
-                  <span>Explore All Tours</span>
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform
-                      group-hover:translate-x-1" />
-                </Button>
-              </Link>
-
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full md:w-fit group font-semibold px-8 py-6 h-auto rounded-xl
-                      border-2 border-black/90 text-[#006F61] bg-white/10
-                      hover:bg-[#006F61] hover:border-white transition-all duration-300
-                      hover:-translate-y-0.5"
-                  style={{
-                    color: '#006F61',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#fff';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#006F61';
-                  }}
-                >
-                  <span>Plan Custom Tour</span>
-                </Button>
-              </Link>
-            </div>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-fit group font-semibold px-6 sm:px-8 py-5 sm:py-6 h-auto rounded-xl
+                  border-2 border-gray-300 text-gray-700 bg-white
+                  hover:bg-[#006F61] hover:border-[#006F61] hover:text-white
+                  transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <span>Plan Custom Expedition</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 }

@@ -18,28 +18,36 @@ import {
 // Slide content configuration with enhanced content
 const slides = [
   {
-    badge: "Featured Destination",
-    subtitle: "Discover Your Next Adventure",
-    title: "North Karakoram",
-    highlight: "Expeditions",
-    description: "Experience the world's most majestic peaks with expert guides and unforgettable journeys through Pakistan's breathtaking mountain landscapes.",
-    location: "Gilgit-Baltistan, Pakistan",
-  },
-  {
-    badge: "Popular Choice",
-    subtitle: "Journey to the World's",
-    title: "Hottest Destinations",
-    highlight: "& Hidden Gems",
-    description: "From ancient Silk Road trails to pristine alpine meadows, discover extraordinary places that few travelers have ever explored.",
-    location: "Multiple Destinations",
-  },
-  {
-    badge: "Elite Adventures",
+    badge: "Elite Expeditions",
     subtitle: "Conquer the Legendary",
-    title: "8000m Peaks",
-    highlight: "With Experts",
-    description: "Professional expeditions to K2, Nanga Parbat, Broad Peak, and the world's most challenging summits with certified mountaineers.",
-    location: "Karakoram Range",
+    title: "8000m Giants",
+    highlight: "K2 • Broad Peak • Nanga Parbat",
+    description: "Professional mountaineering expeditions to K2, Broad Peak, Nanga Parbat, Gasherbrum I & II – the world's most challenging and rewarding summits with certified guides.",
+    location: "Karakoram Range, Pakistan",
+  },
+  {
+    badge: "Iconic Treks",
+    subtitle: "Journey to the Throne Room of",
+    title: "Mountain",
+    highlight: "Concordia & Beyond",
+    description: "Trek to K2 Basecamp, cross Gondogoro La, explore Snow Lake, and witness five 8000m peaks from Concordia – the world's ultimate mountain amphitheater.",
+    location: "Baltoro Glacier, Gilgit-Baltistan",
+  },
+  {
+    badge: "Scenic Adventures",
+    subtitle: "Discover Pakistan's Hidden",
+    title: "Valley Treasures",
+    highlight: "Hunza • Skardu • Deosai",
+    description: "Explore ancient Silk Road heritage in Hunza, mystical Fairy Meadows, the world's second-highest plateau Deosai, and the enchanting valleys of the north.",
+    location: "Northern Areas, Pakistan",
+  },
+  {
+    badge: "Technical Climbing",
+    subtitle: "Scale the World's Greatest",
+    title: "Granite Spires",
+    highlight: "Trango Towers & Beyond",
+    description: "Technical rock climbing expeditions to legendary formations including Trango Tower, Great Tower, Nameless Tower, Shipton Spire, and Amin Braq.",
+    location: "Trango Glacier, Karakoram",
   },
 ];
 
@@ -113,10 +121,10 @@ export function Hero() {
             />
           </div>
 
-          {/* Multi-layer gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#006F61]/40 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_0%,rgba(0,0,0,0.4)_70%)]" />
+          {/* Enhanced gradient overlays for better text visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
       ))}
 
@@ -154,10 +162,11 @@ export function Hero() {
                 <div
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full
                     bg-[#006F61] text-white text-sm font-semibold mb-6
-                    shadow-lg shadow-[#006F61]/30 transition-all duration-500 delay-100
+                    shadow-lg shadow-black/30 border border-[#006F61]/50
+                    transition-all duration-500 delay-100
                     ${index === currentSlide ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
                 >
-                  <Compass className="w-4 h-4 animate-pulse" />
+                  <Compass className="w-4 h-4" />
                   <span className="tracking-wide">{slide.badge}</span>
                 </div>
 
@@ -165,7 +174,9 @@ export function Hero() {
                 <p
                   className={`text-white/90 text-lg md:text-xl lg:text-2xl mb-2
                     font-light tracking-wide transition-all duration-500 delay-150
+                    drop-shadow-lg
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                  style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
                 >
                   {slide.subtitle}
                 </p>
@@ -175,39 +186,47 @@ export function Hero() {
                   className={`font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
                     text-white mb-1 leading-[1.05] tracking-tight transition-all duration-500 delay-200
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                  style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)' }}
                 >
                   {slide.title}
                 </h1>
 
-                {/* Highlight Text - Brand Color */}
-                <h2
-                  className={`font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
-                    mb-6 leading-tight transition-all duration-500 delay-[250ms]
+                {/* Highlight Text - With background for visibility */}
+                <div
+                  className={`inline-block mb-6 transition-all duration-500 delay-[250ms]
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                  style={{
-                    color: '#006F61',
-                    textShadow: '0 4px 30px rgba(0, 111, 97, 0.3), 0 0 60px rgba(0, 111, 97, 0.2)'
-                  }}
                 >
-                  {slide.highlight}
-                </h2>
+                  <h2
+                    className="font-heading font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
+                      leading-tight px-4 py-2 -ml-4 rounded-lg
+                      bg-gradient-to-r from-[#006F61]/90 to-[#006F61]/70
+                      text-white backdrop-blur-sm
+                      shadow-xl shadow-[#006F61]/20
+                      border-l-4 border-white/30"
+                  >
+                    {slide.highlight}
+                  </h2>
+                </div>
 
                 {/* Description */}
                 <p
-                  className={`text-white/80 text-base sm:text-lg md:text-xl max-w-2xl
+                  className={`text-white/90 text-base sm:text-lg md:text-xl max-w-2xl
                     leading-relaxed mb-4 transition-all duration-500 delay-300
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                  style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}
                 >
                   {slide.description}
                 </p>
 
                 {/* Location Tag */}
                 <div
-                  className={`flex items-center gap-2 text-white/60 text-sm mb-8
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+                    bg-white/10 backdrop-blur-sm border border-white/20
+                    text-white/90 text-sm mb-8
                     transition-all duration-500 delay-[350ms]
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 >
-                  <MapPin className="w-4 h-4" />
+                  <MapPin className="w-4 h-4 text-[#006F61]" />
                   <span>{slide.location}</span>
                 </div>
 
@@ -216,12 +235,12 @@ export function Hero() {
                   className={`flex flex-col sm:flex-row gap-4 transition-all duration-500 delay-[400ms]
                     ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 >
-                  <Link href="/expeditions">
+                  <Link href="/expedition">
                     <Button
                       size="lg"
                       className="w-full md:w-fit group text-base sm:text-lg px-8 py-6 h-auto
                         bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold
-                        shadow-xl shadow-[#006F61]/30
+                        shadow-xl shadow-black/30 border border-[#006F61]
                         transition-all duration-300
                         hover:shadow-2xl hover:shadow-[#006F61]/40
                         hover:-translate-y-1 active:translate-y-0"
@@ -237,9 +256,10 @@ export function Hero() {
                       size="lg"
                       variant="outline"
                       className="w-full md:w-fit group text-base sm:text-lg px-8 py-6 h-auto
-                        bg-white/5 backdrop-blur-md
-                        border-2 border-white/30 text-white font-semibold
+                        bg-white/10 backdrop-blur-md
+                        border-2 border-white/40 text-white font-semibold
                         hover:bg-white hover:text-[#006F61] hover:border-white
+                        shadow-lg shadow-black/20
                         transition-all duration-300
                         hover:-translate-y-1 active:translate-y-0"
                       data-testid="button-hero-contact"
@@ -252,43 +272,12 @@ export function Hero() {
             ))}
           </div>
         </div>
-
-        {/* Stats Bar - Desktop */}
-        {/* <div className="absolute bottom-36 left-0 right-0 hidden lg:block">
-          <div className="container mx-auto px-8">
-            <div className="flex items-center gap-8 xl:gap-12">
-              <div className="w-16 h-px bg-gradient-to-r from-[#006F61] to-transparent" />
-
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="group flex items-center gap-3 text-white cursor-default"
-                >
-                  <div className="p-2.5 rounded-xl bg-white/10 backdrop-blur-sm
-                    border border-white/10 group-hover:bg-[#006F61]
-                    group-hover:border-[#006F61] transition-all duration-300
-                    group-hover:shadow-lg group-hover:shadow-[#006F61]/30">
-                    <stat.icon className="w-5 h-5" />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xl xl:text-2xl font-bold tracking-tight">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs xl:text-sm text-white/60 font-medium">
-                      {stat.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
       </div>
 
       {/* Navigation Controls */}
       <div className="absolute bottom-4 lg:bottom-16 left-1/2 -translate-x-1/2 z-30">
         <div className="flex items-center gap-4 sm:gap-6 px-4 py-3 rounded-full
-          bg-black/20 backdrop-blur-md border border-white/10">
+          bg-black/40 backdrop-blur-md border border-white/10 shadow-xl">
 
           {/* Previous Button */}
           <Button
@@ -371,7 +360,7 @@ export function Hero() {
       <button
         onClick={scrollToContent}
         className="absolute bottom-10 right-8 z-30 hidden md:flex flex-col items-center gap-3
-          text-white/50 hover:text-white transition-all duration-300 group"
+          text-white/60 hover:text-white transition-all duration-300 group"
         aria-label="Scroll to explore"
       >
         <span className="text-xs font-semibold tracking-[0.2em] uppercase
@@ -386,18 +375,6 @@ export function Hero() {
             group-hover:bg-[#006F61]" />
         </div>
       </button>
-
-      {/* Mobile Stats Bar */}
-      {/* <div className="absolute bottom-24 left-4 right-4 lg:hidden z-20">
-        <div className="flex justify-center gap-6 flex-wrap">
-          {stats.slice(0, 3).map((stat, index) => (
-            <div key={index} className="text-center text-white">
-              <div className="text-lg font-bold">{stat.value}</div>
-              <div className="text-xs text-white/60">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </section>
   );
 }

@@ -4,7 +4,7 @@ const socialLinks = [
   {
     name: "Facebook",
     icon: SiFacebook,
-    href: "https://www.facebook.com/share/1CtcRSQ4Yw/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/profile.php?id=100093782443750&rdid=j90AVS0yTRTTZeBk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AhZLfuCzQ%2F#",
     color: "bg-blue-600 hover:bg-blue-700",
   },
   {
@@ -16,21 +16,21 @@ const socialLinks = [
   {
     name: "YouTube",
     icon: SiYoutube,
-    href: "https://youtube.com/@northkarakoram?si=vYCoNIBV9C3J1flk",
+    href: "https://youtube.com/@northkarakoram?si=PJHwQm8bP2nMLBwe",
     color: "bg-red-600 hover:bg-red-700",
   },
   {
     name: "TikTok",
     icon: SiTiktok,
-    href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92DeQDrmQvi",
+    href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92TItqmrAx7",
     color: "bg-black hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-200",
   },
-  {
-    name: "WhatsApp",
-    icon: SiWhatsapp,
-    href: "https://wa.me/923330228111",
-    color: "bg-green-600 hover:bg-green-700",
-  },
+  // {
+  //   name: "WhatsApp",
+  //   icon: SiWhatsapp,
+  //   href: "https://wa.me/923330228111",
+  //   color: "bg-green-600 hover:bg-green-700",
+  // },
 ];
 
 export function SocialIcons() {

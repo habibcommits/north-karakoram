@@ -218,7 +218,7 @@ export default function PaymentMethod() {
         </section>
 
         {/* Stats Section */}
-        <section className="hidden md:block py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
+        {/* <section className="hidden md:block py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
           <div
             className="absolute inset-0"
             style={{
@@ -247,7 +247,7 @@ export default function PaymentMethod() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Introduction Section */}
         <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
