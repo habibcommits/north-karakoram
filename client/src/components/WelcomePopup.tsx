@@ -220,7 +220,7 @@ export function WelcomePopup() {
 
           {/* CTA Buttons */}
           <div
-            className={`space-y-2 sm:space-y-0 flex flex-col lg:flex-col justify-center transition-all duration-500 ${isAnimating
+            className={`space-y-2 sm:space-y-0 flex flex-col lg:flex-row gap-4 justify-center transition-all duration-500 ${isAnimating
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-3"
               }`}

@@ -66,11 +66,20 @@ const expeditionItems: NavCategory = {
 
 const trekkingItems: NavItem[] = [
   { label: "K2 & Gondogoro La Trek", href: "/expedition/k2-gondogoro-trek" },
-  { label: "K2 Base Camp Trek", href: "/expedition/k2-base-camp-trek" },
+  { label: "K2 Base Camp Concordia Trek", href: "/expedition/k2-base-camp-concordia-trek" },
   { label: "Five 8000m Base Camp Trek", href: "/expedition/five-8000m-base-camp-trek" },
-  { label: "Nanga Parbat Base Camp", href: "/expedition/nanga-parbat-base-camp-trek" },
+  { label: "Nangma Valley Trek", href: "/expedition/nangma-valley-trek" },
+  { label: "Thalle La Trek", href: "/expedition/thalle-la-trek" },
   { label: "Fairy Meadows Trek", href: "/expedition/fairy-meadows-trek" },
+  { label: "Around Nanga Parbat Trek", href: "/expedition/around-nanga-parbat-trek" },
   { label: "Snow Lake-Hispar La Trek", href: "/expedition/snow-lake-hispar-trek" },
+  { label: "Barah Broq Trek", href: "/expedition/barah-broq-trek" },
+  { label: "Mashebrum Base Trek", href: "/expedition/mashebrum-base-camp-trek" },
+  { label: "Charkusa Valley Trek", href: "/expedition/charkusa-valley-trek" },
+  { label: "Machulo La K2 View Trek", href: "/expedition/machulo-la-k2-view-trek" },
+  { label: "Iqbal Top K2 View Trek", href: "/expedition/iqbal-top-k2-view-trek" },
+  { label: "Shimshal Pass Trek", href: "/expedition/shimshal-pass-trek" },
+  { label: "Naltar Pass Trek", href: "/expedition/naltar-pass-trek" },
 ];
 
 const rockClimbingItems: NavItem[] = [
