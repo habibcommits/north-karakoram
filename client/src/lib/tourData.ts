@@ -5,6 +5,34 @@ import {
 } from "@/constants/expeditionData";
 import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
 
+import DeosaiPlateauImg1 from "@assets/deosai/d1.jpeg";
+import DeosaiPlateauImg2 from "@assets/deosai/d2.jpeg";
+import DeosaiPlateauImg3 from "@assets/deosai/d3.jpeg";
+import AstoreValleyImg1 from "@assets/astore/a1.jpeg";
+import AstoreValleyImg2 from "@assets/astore/a2.jpeg";
+// import AstoreValleyImg3 from "@assets/"
+import FairyMeadowTourImg1 from "@assets/fairy-medow-tour/f1.jpeg";
+// import FairyMeadowTourImg2 from "@assets/"
+// import FairyMeadowTourImg3 from "@assets/"
+import KhunjarabPassImg1 from "@assets/khunjuarab/k1.jpeg";
+import KhunjarabPassImg2 from "@assets/khunjuarab/k2.jpeg";
+// import KhunjarabPassImg3 from "@assets/"
+import HunzaValleyImg1 from "@assets/hunza-valley/h1.jpeg";
+import HunzaValleyImg2 from "@assets/hunza-valley/h2.jpeg";
+import HunzaValleyImg3 from "@assets/hunza-valley/h3.jpeg";
+import ShandoorPoloImg1 from "@assets/shandoor/s1.jpg";
+// import ShandoorPoloImg2 from "@assets/"
+// import ShandoorPoloImg3 from "@assets/"
+import SkarduValleyImg1 from "@assets/skardu-valley/s1.jpeg";
+import SkarduValleyImg2 from "@assets/skardu-valley/s2.jpg";
+import SkarduValleyImg3 from "@assets/skardu-valley/s3.jpg";
+import KhapluValleyImg1 from "@assets/khaplu-valley/k1.jpeg";
+import KhapluValleyImg2 from "@assets/khaplu-valley/k2.jpeg";
+import KhapluValleyImg3 from "@assets/khaplu-valley/k3.jpeg";
+import PhandarValleyImg1 from "@assets/phandar/p1.jpg";
+// import PhandarValleyImg2 from "@assets/"
+// import PhandarValleyImg3 from "@assets/"
+
 export interface TourTimeline {
   day: string;
   title: string;
@@ -46,7 +74,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: DeosaiPlateauImg1,
+    gallery: [DeosaiPlateauImg1, DeosaiPlateauImg2, DeosaiPlateauImg3],
     description:
       "The Deosai Plateau Tour explores the vast high-altitude plains of Deosai National Park, known for its unique alpine landscape, rich biodiversity, and breathtaking mountain scenery.",
     overview:
@@ -179,7 +208,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: AstoreValleyImg1,
+    gallery: [AstoreValleyImg1, AstoreValleyImg2],
     description:
       "The Astore Valley Tour is a scenic journey into one of Pakistan’s most beautiful Himalayan valleys, known for its lush landscapes, dramatic peaks, and tranquil natural beauty.",
     overview:
@@ -252,7 +282,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: FairyMeadowTourImg1,
+    gallery: [FairyMeadowTourImg1],
     description:
       "The Fairy Meadow Tour offers a scenic and accessible trekking experience to one of the most famous high-altitude grasslands in Pakistan, with breathtaking views of Nanga Parbat’s Raikot Face.",
     overview:
@@ -373,7 +404,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: KhunjarabPassImg1,
+    gallery: [KhunjarabPassImg1, KhunjarabPassImg2],
     description:
       "The Khunjerab Pass Tour takes you to the highest border crossing in the world, located at the northern tip of Pakistan along the Karakoram Highway, offering breathtaking high-altitude scenery.",
     overview:
@@ -476,7 +508,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: HunzaValleyImg1,
+    gallery: [HunzaValleyImg1, HunzaValleyImg2, HunzaValleyImg3],
     description:
       "The Hunza Valley Tour offers an immersive journey through one of Pakistan’s most picturesque valleys, combining breathtaking mountain scenery with rich cultural heritage and local traditions.",
     overview:
@@ -573,7 +606,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: ShandoorPoloImg1,
+    gallery: [ShandoorPoloImg1],
     description:
       "The Shandur Polo Festival is a unique cultural and sporting event held at the high-altitude Shandur Pass, celebrating the traditional sport of polo along with local music, dance, and festivities.",
     overview:
@@ -688,7 +722,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: SkarduValleyImg1,
+    gallery: [SkarduValleyImg1, SkarduValleyImg2, SkarduValleyImg3],
     description:
       "The Skardu Valley Tour offers an authentic journey into the heart of Baltistan, combining breathtaking mountain scenery with cultural and historical exploration.",
     overview:
@@ -791,7 +826,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: KhapluValleyImg1,
+    gallery: [KhapluValleyImg1, KhapluValleyImg2, KhapluValleyImg3],
     description:
       "The Khaplu Valley Tour immerses visitors in the natural beauty and rich culture of Khaplu, a scenic valley known for its traditional villages, alpine landscapes, and proximity to towering peaks like Masherbrum.",
     overview:
@@ -888,7 +924,8 @@ export const tours: TourData[] = [
     bestSeason: null,
     price: 28000,
     groupSize: "4-8 climbers",
-    image: heroImage1,
+    image: PhandarValleyImg1,
+    gallery: [PhandarValleyImg1],
     description:
       "The Phandar Valley Tour showcases the stunning beauty of Phandar, famous for its colorful autumn scenery, pristine rivers, and surrounding alpine landscapes.",
     overview:
