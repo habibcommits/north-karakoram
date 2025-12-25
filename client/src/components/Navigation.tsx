@@ -45,8 +45,8 @@ const expeditionItems: NavCategory = {
   ],
   "7000m Peaks": [
     { label: "Spantik Expedition", href: "/expedition/spantik-expedition" },
+    { label: "Gasherbrum III Expedition", href: "/expedition/gasherbrum-iii-expedition" },
     { label: "Gasherbrum IV Expedition", href: "/expedition/gasherbrum-iv-expedition" },
-    { label: "Gasherbrum V Expedition", href: "/expedition/gasherbrum-v-expedition" },
     { label: "Masherbrum Expedition", href: "/expedition/masherbrum-expedition" },
     { label: "Rakaposhi Expedition", href: "/expedition/rakaposhi-expedition" },
     { label: "Chogolisa Expedition", href: "/expedition/chogolisa-expedition" },
@@ -84,25 +84,22 @@ const trekkingItems: NavItem[] = [
 
 const rockClimbingItems: NavItem[] = [
   { label: "Trango Tower", href: "/expedition/trango-tower" },
-  { label: "Great Tower", href: "/expedition/great-tower" },
   { label: "Amin Braq", href: "/expedition/amin-braq" },
-  { label: "Nangma Valley", href: "/expedition/nangma-valley" },
+  { label: "Shipton Spire", href: "/expedition/shipton-spire" },
+  { label: "Shingo Chatpa Peak", href: "/expedition/shingo-chatpa-peak" },
 ];
 
 const tourItems: NavCategory = {
   "Spring Tours": [
-    { label: "Hunza Valley Spring", href: "/tours" },
-    { label: "Skardu Valley Spring", href: "/tours" },
-    { label: "Cherry Blossom Tour", href: "/tours" },
-  ],
-  "Summer Tours": [
-    { label: "Fairy Meadows Tour", href: "/tours" },
-    { label: "Deosai Plateau Tour", href: "/tours" },
-    { label: "Shandur Polo Festival", href: "/tours" },
-  ],
-  "Autumn Tours": [
-    { label: "Hunza Autumn Colors", href: "/tours" },
-    { label: "Baltistan Explorer", href: "/tours" },
+    { label: "Deosai Plateau Tour", href: "/expedition/deosai-plateau-tour" },
+    { label: "Astore Valley Tour", href: "/expedition/astore-valley-tour" },
+    { label: "Fairy Meadow Tour", href: "/expedition/fairy-meadow-tour" },
+    { label: "Khunjerab Pass Tour", href: "/expedition/khunjerab-pass-tour" },
+    { label: "Hunza Valley Tour", href: "/expedition/hunza-valley-tour" },
+    { label: "Shandoor Polo Festival Tour", href: "/expedition/shandoor-polo-festival-tour" },
+    { label: "Skardu Valley Tour", href: "/expedition/skardu-valley-tour" },
+    { label: "Khaplu Valley Tour", href: "/expedition/khaplu-valley-tour" },
+    { label: "Phandar Valley Tour", href: "/expedition/phandar-valley-tour" },
   ],
 };
 

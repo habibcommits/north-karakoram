@@ -46,105 +46,6 @@ import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
   },
 
   {
-    id: "gasherbrum-iii",
-    slug: "gasherbrum-iii-expedition",
-    name: "Gasherbrum III Expedition",
-    altitude: "7,952m",
-    location: "Gilgit Baltistan, Pakistan",
-    duration: "40-45 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - August",
-    price: 28000,
-    groupSize: "4-8 climbers",
-    image: heroImage1,
-    description:
-      "Gasherbrum III at 7,952m is the 15th highest mountain in the world. A challenging yet rewarding 7000m expedition.",
-    overview:
-      "The Gasherbrum III Expedition offers an excellent intermediate challenge between 6000m training peaks and 8000m summits. Located in the Karakoram, it provides spectacular alpine experiences with well-established climbing routes.",
-    timeline: [
-      {
-        day: "Day 1-2",
-        title: "Arrival & Briefing",
-        description:
-          "Arrive in Islamabad for expedition briefing and final preparations.",
-      },
-      {
-        day: "Day 3",
-        title: "Fly to Skardu",
-        description: "Scenic flight to Skardu with panoramic mountain views.",
-      },
-      {
-        day: "Day 4-5",
-        title: "Skardu Acclimatization",
-        description:
-          "Rest and acclimatization in Skardu with final gear checks.",
-      },
-      {
-        day: "Day 6-7",
-        title: "Drive to Askole",
-        description: "Jeep journey to Askole and porter organization.",
-      },
-      {
-        day: "Day 8-14",
-        title: "Trek to Base Camp",
-        description:
-          "7-day trek through Baltoro Glacier to Gasherbrum Base Camp.",
-      },
-      {
-        day: "Day 15-20",
-        title: "Base Camp Setup",
-        description: "Establish base camp and acclimatization hikes.",
-      },
-      {
-        day: "Day 21-35",
-        title: "Camp Rotations",
-        description:
-          "Establish higher camps with progressive acclimatization climbs.",
-      },
-      {
-        day: "Day 36-42",
-        title: "Summit Window",
-        description: "Wait for optimal weather and summit push.",
-      },
-      {
-        day: "Day 43-45",
-        title: "Descent & Return",
-        description: "Descend and trek back to Askole, return to Islamabad.",
-      },
-    ],
-    servicesIncluded: [
-      "Climbing permits",
-      "Liaison Officer",
-      "Professional guides",
-      "All meals",
-      "Camping equipment",
-      "Fixed ropes",
-      "Emergency communication",
-      "Porter services",
-      "Ground transportation",
-    ],
-    servicesNotIncluded: [
-      "International flights",
-      "Personal climbing gear",
-      "Travel insurance",
-      "Staff tips",
-      "Personal expenses",
-    ],
-    requirements: [
-      "Previous 6000m+ experience",
-      "Technical climbing skills",
-      "Excellent physical fitness",
-      "Medical clearance",
-    ],
-    highlights: [
-      "Climb a technical 7000m peak",
-      "Experience Baltoro Glacier",
-      "Alpine climbing adventure",
-      "Spectacular Karakoram views",
-    ],
-  },
-
-  {
     id: "k6",
     slug: "k6-expedition",
     name: "K6 Expedition",
@@ -425,89 +326,7 @@ import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
       "Alpine mountain views",
     ],
   },
-  {
-    id: "trango-tower",
-    slug: "trango-tower",
-    name: "Trango Tower Climbing",
-    altitude: "6,286m",
-    location: "Karakoram, Gilgit Baltistan, Pakistan",
-    duration: "20-25 Days",
-    difficulty: "Very Difficult",
-    bestSeason: "June - September",
-    price: 22000,
-    groupSize: "2-6 climbers",
-    image: heroImage1,
-    description:
-      "Trango Tower is one of the most challenging and iconic rock climbing destinations in the world, featuring pristine granite walls.",
-    overview:
-      "The Trango Tower Climbing expedition offers world-class rock climbing on one of the most magnificent granite towers. This advanced technical climb requires serious mountaineering and rock climbing expertise.",
-    timeline: [
-      {
-        day: "Day 1-2",
-        title: "Islamabad Briefing",
-        description: "Team gathering and expedition preparation.",
-      },
-      { day: "Day 3", title: "Skardu Flight", description: "Fly to Skardu." },
-      {
-        day: "Day 4-5",
-        title: "Skardu Preparation",
-        description: "Organize equipment and logistics.",
-      },
-      {
-        day: "Day 6-7",
-        title: "Askole Journey",
-        description: "Travel to Askole base village.",
-      },
-      {
-        day: "Day 8-11",
-        title: "Trek to Base Camp",
-        description: "Trek to Trango Base Camp via Baltoro Glacier.",
-      },
-      {
-        day: "Day 12-20",
-        title: "Climbing & Acclimatization",
-        description: "Rock climbing and technical training on various pitches.",
-      },
-      {
-        day: "Day 21-24",
-        title: "Tower Attempt",
-        description: "Climb Trango Tower with multiple advanced pitches.",
-      },
-      {
-        day: "Day 25",
-        title: "Return",
-        description: "Descent and return to Islamabad.",
-      },
-    ],
-    servicesIncluded: [
-      "Permits",
-      "Expert climbing guides",
-      "Base camp equipment",
-      "All meals",
-      "Fixed ropes",
-      "Communication gear",
-      "Porter services",
-    ],
-    servicesNotIncluded: [
-      "International flights",
-      "Personal climbing gear",
-      "Insurance",
-      "Staff tips",
-      "Personal expenses",
-    ],
-    requirements: [
-      "Advanced rock climbing experience",
-      "Previous 5.10+ climbing background",
-      "Excellent physical fitness",
-      "Technical mountaineering skills",
-    ],
-    highlights: [
-      "Iconic granite tower",
-      "World-class climbing",
-      "Advanced technical routes",
-      "Alpine adventure",
-    ],
-  },
+
   {
     id: "great-tower",
     slug: "great-tower",
@@ -595,6 +414,7 @@ import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
       "Karakoram wilderness",
     ],
   },
+
   {
     id: "amin-braq",
     slug: "amin-braq",
