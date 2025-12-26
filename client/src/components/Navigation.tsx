@@ -574,10 +574,10 @@ export function Navigation() {
               </div>
 
               {/* Divider */}
-              <div className="w-px h-5 bg-gray-200" />
+              {/* <div className="w-px h-5 bg-gray-200" /> */}
 
               {/* Book Now Button */}
-              <Link href="/contact">
+              {/* <Link href="/contact">
                 <Button
                   size="sm"
                   className="h-8 px-4 font-bold text-xs rounded-lg shadow-md
@@ -589,7 +589,7 @@ export function Navigation() {
                 >
                   Book Now
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
@@ -630,7 +630,7 @@ export function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-0">
+            <nav className="hidden lg:flex items-center gap-0 flex-1 justify-center">
               <Link
                 href="/"
                 className={cn(
@@ -704,6 +704,21 @@ export function Navigation() {
                 Contact
               </Link>
             </nav>
+
+            <Link href="/contact">
+              <Button
+                size="sm"
+                className="h-8 px-4 font-bold text-xs rounded-lg shadow-md
+                    hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "#f58220",
+                  color: "white",
+                }}
+              >
+                Book Now
+              </Button>
+            </Link>
+
 
             {/* Right Actions */}
             <div className="flex items-center gap-2">
