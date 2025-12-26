@@ -504,30 +504,30 @@ export function Navigation() {
 
   return (
     <>
-      {/* Top Bar - Hidden on mobile and tablet */}
+      {/* Top Bar - Responsive: hidden on mobile, simplified on md, full on xl */}
       <div
-        className="hidden xl:block border-b transition-all duration-300"
+        className="border-b transition-all duration-300"
         style={{
           backgroundColor: "#fff",
           borderColor: "rgba(0,0,0,0.08)",
         }}
       >
-        <div className="container mx-auto px-4 xl:px-6">
-          <div className="flex items-center justify-between h-11">
+        <div className="container mx-auto px-3 md:px-4 lg:px-4 xl:px-6">
+          <div className="flex items-center justify-between h-9 md:h-10 xl:h-11">
             {/* Left - Contact Info */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 md:gap-4 lg:gap-6">
               <a
                 href="tel:+923330228111"
-                className="flex items-center gap-2 text-gray-700 hover:text-[#006F61] transition-colors group"
+                className="flex items-center gap-1.5 md:gap-2 text-gray-700 hover:text-[#006F61] transition-colors group"
               >
-                <div className="w-6 h-6 rounded-full bg-[#006F61] text-white flex items-center justify-center group-hover:bg-[#f58220] transition-colors">
-                  <Phone className="w-3 h-3" />
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#006F61] text-white flex items-center justify-center group-hover:bg-[#f58220] transition-colors">
+                  <Phone className="w-2.5 h-2.5 md:w-3 md:h-3" />
                 </div>
-                <span className="font-medium text-xs">+92 333 0228111</span>
+                <span className="font-medium text-[10px] md:text-xs">+92 333 0228111</span>
               </a>
               <a
                 href="mailto:info@northkarakoram.com"
-                className="flex items-center gap-2 text-gray-700 hover:text-[#006F61] transition-colors group"
+                className="hidden lg:flex items-center gap-2 text-gray-700 hover:text-[#006F61] transition-colors group"
               >
                 <div className="w-6 h-6 rounded-full bg-[#006F61] text-white flex items-center justify-center group-hover:bg-[#f58220] transition-colors">
                   <Mail className="w-3 h-3" />
@@ -536,49 +536,49 @@ export function Navigation() {
               </a>
             </div>
 
-            {/* Center - Location */}
-            <div className="flex items-center gap-2 text-gray-600 text-xs">
+            {/* Center - Location (hidden on md, visible on xl) */}
+            <div className="hidden xl:flex items-center gap-2 text-gray-600 text-xs">
               <MapPin className="w-3.5 h-3.5 text-[#006F61]" />
               <span>Near Hishpar Hotel, Sathang, Skardu</span>
             </div>
 
-            {/* Right - Search, Social & Book Now */}
-            <div className="flex items-center gap-4">
-              {/* Search Toggle */}
+            {/* Right - Search, Social */}
+            <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
+              {/* Search Toggle - hidden on md, visible on lg */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="flex items-center gap-2 text-gray-600 hover:text-[#006F61] transition-colors"
+                className="hidden lg:flex items-center gap-2 text-gray-600 hover:text-[#006F61] transition-colors"
               >
                 <Search className="w-4 h-4" />
-                <span className="text-xs font-medium">Search</span>
+                <span className="text-xs font-medium hidden xl:inline">Search</span>
               </button>
 
-              {/* Divider */}
-              <div className="w-px h-5 bg-gray-200" />
+              {/* Divider - hidden on md, visible on lg */}
+              <div className="hidden lg:block w-px h-4 xl:h-5 bg-gray-200" />
 
               {/* Social Media Icons */}
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1 md:gap-1.5">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-7 h-7 rounded-full bg-[#006F61] flex items-center justify-center
+                    className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#006F61] flex items-center justify-center
                       text-white hover:bg-[#f58220] transition-all duration-200 hover:scale-110"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-3.5 h-3.5" />
+                    <social.icon className="w-3 h-3 md:w-3.5 md:h-3.5" />
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Search Bar - Expandable */}
+          {/* Search Bar - Expandable (only on lg and above) */}
           <div
             className={cn(
-              "overflow-hidden transition-all duration-300",
+              "hidden lg:block overflow-hidden transition-all duration-300",
               searchOpen ? "max-h-20 py-3 border-t border-gray-100" : "max-h-0"
             )}
           >
@@ -689,7 +689,7 @@ export function Navigation() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 flex-shrink-0">
-              {/* Desktop Search Button - Only on lg screens */}
+              {/* Desktop Search Button - Only on lg screens (when top bar search is hidden) */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 className="hidden lg:flex xl:hidden w-8 h-8 items-center justify-center rounded-lg
@@ -699,14 +699,14 @@ export function Navigation() {
                 <Search className="w-4 h-4" />
               </button>
 
-              {/* Mobile/Tablet Search Button */}
+              {/* Medium Screen Search Button (md only, hidden on sm and lg+) */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl
+                className="hidden md:flex lg:hidden w-8 h-8 items-center justify-center rounded-lg
                   text-white/90 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
                 aria-label="Search"
               >
-                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Search className="w-4 h-4" />
               </button>
 
               {/* Book Now Button - Visible on all screens */}
@@ -836,7 +836,7 @@ export function Navigation() {
                     </nav>
 
                     {/* Mobile Footer */}
-                    <div className="hidden p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
+                    <div className="p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
                       {/* Contact Info */}
                       <div className="space-y-2">
                         <a
@@ -897,20 +897,22 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile/Tablet Search Overlay */}
+        {/* Medium Screen Search Overlay (md to lg) */}
         <div
           className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300 border-t border-white/10",
+            "hidden md:block lg:hidden overflow-hidden transition-all duration-300 border-t border-white/10",
             searchOpen ? "max-h-20 py-3" : "max-h-0"
           )}
           style={{ backgroundColor: "#005a50" }}
         >
-          <div className="container mx-auto px-3 sm:px-4">
-            <SearchBar onClose={() => setSearchOpen(false)} />
+          <div className="container mx-auto px-4">
+            <div className="max-w-xl mx-auto">
+              <SearchBar onClose={() => setSearchOpen(false)} />
+            </div>
           </div>
         </div>
 
-        {/* Desktop Search Overlay - Only for lg screens without top bar */}
+        {/* Desktop Search Overlay - Only for lg screens without top bar search */}
         <div
           className={cn(
             "hidden lg:block xl:hidden overflow-hidden transition-all duration-300 border-t border-white/10",
