@@ -512,7 +512,7 @@ export function Navigation() {
           borderColor: "rgba(0,0,0,0.08)",
         }}
       >
-        <div className="container mx-auto px-3 md:px-4 lg:px-4 xl:px-6">
+        <div className="max-w-7xl mx-auto px-3 md:px-4 lg:px-4 xl:px-6">
           <div className="flex items-center justify-between h-9 md:h-10 xl:h-11">
             {/* Left - Contact Info */}
             <div className="flex items-center gap-3 md:gap-4 lg:gap-6">
@@ -597,7 +597,7 @@ export function Navigation() {
         )}
         style={{ backgroundColor: "#006F61" }}
       >
-        <div className="container mx-auto px-2 sm:px-3 lg:px-4 xl:px-6">
+        <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4 xl:px-6">
           <div className="flex items-center justify-between h-14 sm:h-16 lg:h-16 xl:h-20 gap-2 lg:gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0 group">
@@ -905,7 +905,7 @@ export function Navigation() {
           )}
           style={{ backgroundColor: "#005a50" }}
         >
-          <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="max-w-xl mx-auto">
               <SearchBar onClose={() => setSearchOpen(false)} />
             </div>
@@ -920,7 +920,7 @@ export function Navigation() {
           )}
           style={{ backgroundColor: "#005a50" }}
         >
-          <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="max-w-xl mx-auto">
               <SearchBar onClose={() => setSearchOpen(false)} />
             </div>

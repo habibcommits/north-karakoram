@@ -64,7 +64,7 @@ export default function TripDetail() {
         <main className="flex-1">
           <Skeleton className="h-[50vh] w-full" />
           <section className="py-12">
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div className="grid lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-6">
                   <Skeleton className="h-8 w-48" />
@@ -121,7 +121,7 @@ export default function TripDetail() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
           <div className="absolute bottom-0 left-0 right-0 p-8">
-            <div className="container mx-auto">
+            <div className="max-w-7xl mx-auto">
               <Link href="/" className="inline-flex items-center text-white/70 mb-4 hover:text-white transition-colors">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Trips
@@ -154,7 +154,7 @@ export default function TripDetail() {
         </section>
 
         <section className="py-12">
-          <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <div className="prose prose-lg max-w-none mb-8">
@@ -269,7 +269,7 @@ export default function TripDetail() {
 
         {relatedTrips.length > 0 && (
           <section className="py-12 bg-muted/30">
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8 text-center">
                 Related Trips
               </h2>

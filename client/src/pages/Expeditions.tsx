@@ -62,7 +62,7 @@ function ExpeditionCard({ expedition }: { expedition: ExpeditionData }) {
   return (
     <Link href={`/expedition/${expedition.slug}`}>
       <div className="group relative bg-white rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer h-full flex flex-col">
-        {/* Image Container */}
+        {/* Image max-w-7xl */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={expedition.image}
@@ -243,7 +243,7 @@ export default function Expeditions() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="h-full flex flex-col justify-center max-w-4xl">
             {/* Badge */}
             <div
@@ -310,7 +310,7 @@ export default function Expeditions() {
 
       {/* Filter Section */}
       <section className={`sticky top-0 z-40 bg-white/95 backdrop-blur-lg transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : 'shadow-sm'}`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           {/* Peak Category Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-3 sm:pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {peakCategories.map((cat) => (
@@ -434,7 +434,7 @@ export default function Expeditions() {
 
       {/* Expeditions Grid */}
       <section className="py-10 sm:py-12 md:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10 lg:mb-12">
             <div>
@@ -490,7 +490,7 @@ export default function Expeditions() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white rounded-full" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
               Ready to Conquer the Giants?

@@ -313,7 +313,7 @@ export default function TravelInfo() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -354,7 +354,7 @@ export default function TravelInfo() {
             background: "linear-gradient(135deg, #006F61 0%, #005249 100%)",
           }}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {quickFacts.map((fact, index) => (
                 <div
@@ -389,7 +389,7 @@ export default function TravelInfo() {
             />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
@@ -443,7 +443,7 @@ export default function TravelInfo() {
           id="seasons"
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${seasonsVisible
                 ? "opacity-100 translate-y-0"
@@ -545,7 +545,7 @@ export default function TravelInfo() {
           ref={sectionsRef}
           className="py-20 md:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${sectionsVisible
                 ? "opacity-100 translate-y-0"
@@ -748,7 +748,7 @@ export default function TravelInfo() {
           id="packing"
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${packingVisible
                 ? "opacity-100 translate-y-0"
@@ -844,7 +844,7 @@ export default function TravelInfo() {
           ref={faqRef}
           className="py-20 md:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
@@ -935,7 +935,7 @@ export default function TravelInfo() {
             <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"

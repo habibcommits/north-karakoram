@@ -350,7 +350,7 @@ export default function SearchPage() {
         <div className="absolute bottom-32 left-10 w-80 h-80 rounded-full border border-[#006F61]/10 hidden lg:block" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div
           className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700

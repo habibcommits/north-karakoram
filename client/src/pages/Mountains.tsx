@@ -45,14 +45,14 @@ export default function Mountains() {
       <main className="flex-1">
         {/* Header */}
         <div className="bg-gradient-to-r from-primary to-primary/80 py-12">
-          <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Mountains of Pakistan</h1>
             <p className="text-white/90 text-lg">Explore the world's highest and most challenging peaks</p>
           </div>
         </div>
 
         {/* Content */}
-        <div className="container mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="space-y-12">
             {mountainsData.map((section, idx) => (
               <div key={idx}>

@@ -87,7 +87,7 @@ export function ContactForm() {
 
   return (
     <section className="py-16" data-testid="section-contact">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-primary font-medium mb-2">Get in Touch</p>
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Contact Us</h2>

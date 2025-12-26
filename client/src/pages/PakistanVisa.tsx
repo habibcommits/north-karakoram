@@ -294,7 +294,7 @@ export default function PakistanVisa() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -349,7 +349,7 @@ export default function PakistanVisa() {
             <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
@@ -389,7 +389,7 @@ export default function PakistanVisa() {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <div
@@ -466,7 +466,7 @@ export default function PakistanVisa() {
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
           {/* Decorative Elements */}
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${optionsVisible
                 ? "opacity-100 translate-y-0"
@@ -580,7 +580,7 @@ export default function PakistanVisa() {
           ref={stepsRef}
           className="py-20 md:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${stepsVisible
                 ? "opacity-100 translate-y-0"
@@ -657,7 +657,7 @@ export default function PakistanVisa() {
           ref={docsRef}
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
               {/* Documents List */}
               <div
@@ -793,7 +793,7 @@ export default function PakistanVisa() {
           ref={embassiesRef}
           className="py-20 md:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${embassiesVisible
                 ? "opacity-100 translate-y-0"
@@ -899,7 +899,7 @@ export default function PakistanVisa() {
           ref={faqRef}
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
@@ -990,7 +990,7 @@ export default function PakistanVisa() {
             <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"

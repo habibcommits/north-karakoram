@@ -93,7 +93,7 @@ function TourCard({ tour, index, isVisible }: {
             : 'border-gray-100 shadow-lg shadow-gray-100/50 hover:border-[#006F61]/30'
           }`}>
 
-          {/* Image Container */}
+          {/* Image max-w-7xl */}
           <div className="relative aspect-[4/3] overflow-hidden">
             <img
               src={tour.image}
@@ -331,7 +331,7 @@ export function SeasonWiseSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <div

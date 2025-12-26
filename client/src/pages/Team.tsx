@@ -221,7 +221,7 @@ function TeamMemberCard({
       >
         {/* Front of Card */}
         <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-shadow duration-500">
-          {/* Image Container */}
+          {/* Image max-w-7xl */}
           <div className="relative h-[320px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
             <img
               src={member.image}
@@ -407,7 +407,7 @@ export default function Team() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -440,7 +440,7 @@ export default function Team() {
             <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
@@ -483,7 +483,7 @@ export default function Team() {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-4xl mx-auto text-center transition-all duration-700 ${introVisible
                 ? "opacity-100 translate-y-0"
@@ -539,7 +539,7 @@ export default function Team() {
           ref={teamRef}
           className="py-16 bg-gray-50/50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {teamMembers.map((member, index) => (
                 <TeamMemberCard
@@ -558,7 +558,7 @@ export default function Team() {
           ref={valuesRef}
           className="py-20 md:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${valuesVisible
                 ? "opacity-100 translate-y-0"
@@ -639,7 +639,7 @@ export default function Team() {
             <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center transition-all duration-700 ${socialVisible
                 ? "opacity-100 translate-y-0"
@@ -724,7 +724,7 @@ export default function Team() {
 
         {/* Join Us CTA Section */}
         <section className="py-16 md:py-20 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 mb-4">
                 Ready to Start Your Adventure?

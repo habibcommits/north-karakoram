@@ -94,7 +94,7 @@ function TrekkingCard({ trek, index, isVisible }: {
             : 'border-gray-100 shadow-lg shadow-gray-200/50 hover:border-[#006F61]/30'
           }`}>
 
-          {/* Image Container */}
+          {/* Image max-w-7xl */}
           <div className="relative aspect-[4/3] overflow-hidden">
             <img
               src={trek.image}
@@ -325,7 +325,7 @@ export function TrekkingSection() {
         <div className="absolute top-2/3 right-0 w-32 h-px bg-gradient-to-l from-[#006F61]/20 to-transparent hidden lg:block" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <div

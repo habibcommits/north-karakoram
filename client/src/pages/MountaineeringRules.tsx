@@ -374,7 +374,7 @@ export default function MountaineeringRules() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -449,7 +449,7 @@ export default function MountaineeringRules() {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-4xl mx-auto text-center transition-all duration-700 ${introVisible
                 ? "opacity-100 translate-y-0"
@@ -511,7 +511,7 @@ export default function MountaineeringRules() {
             <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {keyPrinciples.map((principle, index) => (
                 <div
@@ -558,7 +558,7 @@ export default function MountaineeringRules() {
             />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${rulesVisible
                 ? "opacity-100 translate-y-0"
@@ -650,7 +650,7 @@ export default function MountaineeringRules() {
 
         {/* Important Notice Section */}
         <section className="py-16 bg-amber-50 border-y border-amber-100">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
@@ -688,7 +688,7 @@ export default function MountaineeringRules() {
             <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"

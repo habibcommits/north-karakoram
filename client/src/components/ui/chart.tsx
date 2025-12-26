@@ -28,18 +28,18 @@ function useChart() {
   const context = React.useContext(ChartContext)
 
   if (!context) {
-    throw new Error("useChart must be used within a <ChartContainer />")
+    throw new Error("useChart must be used within a <Chartmax-w-7xl />")
   }
 
   return context
 }
 
-const ChartContainer = React.forwardRef<
+const Chartmax-w-7xl = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
     config: ChartConfig
     children: React.ComponentProps<
-      typeof RechartsPrimitive.ResponsiveContainer
+      typeof RechartsPrimitive.Responsivemax-w-7xl
     >["children"]
   }
 >(({ id, className, children, config, ...props }, ref) => {
@@ -58,14 +58,14 @@ const ChartContainer = React.forwardRef<
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer>
+        <RechartsPrimitive.Responsivemax-w-7xl>
           {children}
-        </RechartsPrimitive.ResponsiveContainer>
+        </RechartsPrimitive.Responsivemax-w-7xl>
       </div>
     </ChartContext.Provider>
   )
 })
-ChartContainer.displayName = "Chart"
+Chartmax-w-7xl.displayName = "Chart"
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
@@ -356,7 +356,7 @@ function getPayloadConfigFromPayload(
 }
 
 export {
-  ChartContainer,
+  Chartmax-w-7xl,
   ChartTooltip,
   ChartTooltipContent,
   ChartLegend,

@@ -18,7 +18,7 @@ export function FeaturedTrips() {
   if (isLoading) {
     return (
       <section className="py-10" data-testid="section-featured-trips">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-2/3">
               <Skeleton className="aspect-[16/9] rounded-md" />
@@ -38,7 +38,7 @@ export function FeaturedTrips() {
 
   return (
     <section className="py-10" data-testid="section-featured-trips">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-2/3">
             <div className="relative aspect-[16/9] rounded-md overflow-hidden mb-4">

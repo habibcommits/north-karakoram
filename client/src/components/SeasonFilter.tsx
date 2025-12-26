@@ -12,7 +12,7 @@ interface SeasonFilterProps {
 export function SeasonFilter({ selectedSeason, onSelectSeason }: SeasonFilterProps) {
   return (
     <section className="py-10 bg-muted/30" data-testid="section-seasons">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-6">
           <p className="text-primary font-medium mb-2">Find a Trip by</p>
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Season</h2>
@@ -23,9 +23,8 @@ export function SeasonFilter({ selectedSeason, onSelectSeason }: SeasonFilterPro
             <button
               key={season}
               onClick={() => onSelectSeason?.(season)}
-              className={`relative aspect-[4/3] rounded-md overflow-hidden group hover-elevate ${
-                selectedSeason === season ? "ring-2 ring-primary ring-offset-2" : ""
-              }`}
+              className={`relative aspect-[4/3] rounded-md overflow-hidden group hover-elevate ${selectedSeason === season ? "ring-2 ring-primary ring-offset-2" : ""
+                }`}
               data-testid={`button-season-${season.toLowerCase()}`}
             >
               <img

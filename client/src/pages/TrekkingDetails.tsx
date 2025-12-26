@@ -151,7 +151,7 @@ export default function TrekkingDetail() {
 
           {/* Hero Content */}
           <div className="absolute bottom-10 left-0 right-0 p-6 md:p-10 lg:p-12">
-            <div className="container mx-auto max-w-7xl">
+            <div className="max-w-7xl mx-auto max-w-7xl">
               <div
                 className={`transition-all duration-700 delay-100
                   ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -219,7 +219,7 @@ export default function TrekkingDetail() {
           className="relative -mt-6 z-10 px-4 md:px-6 lg:px-8"
           style={{ marginTop: "-3rem" }}
         >
-          <div className="container mx-auto max-w-7xl">
+          <div className="max-w-7xl mx-auto max-w-7xl">
             <div
               className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-4 md:p-6
                 transition-all duration-700 delay-300
@@ -277,7 +277,7 @@ export default function TrekkingDetail() {
 
         {/* Main Content */}
         <section className="py-12 md:py-16 lg:py-20">
-          <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Left Column - Main Content */}
               <div className="lg:col-span-2 space-y-10 md:space-y-12">
@@ -764,7 +764,7 @@ export default function TrekkingDetail() {
         {/* Other Expeditions */}
         {shuffledExpeditions.length > 0 && (
           <section className="py-16 md:py-20 bg-gray-50">
-            <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <div
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
@@ -871,7 +871,7 @@ export default function TrekkingDetail() {
 
         {/* CTA Section */}
         <section className="py-16 md:py-20">
-          <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
             <div
               className="relative rounded-3xl overflow-hidden p-8 md:p-12 lg:p-16"
               style={{ backgroundColor: "#006F61" }}

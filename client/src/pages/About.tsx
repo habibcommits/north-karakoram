@@ -247,7 +247,7 @@ export default function About() {
             className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -302,7 +302,7 @@ export default function About() {
             />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
             <div
               className={`text-center max-w-3xl mx-auto mb-16 md:mb-20 transition-all duration-700
@@ -643,7 +643,7 @@ export default function About() {
           ref={servicesRef}
           className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
@@ -711,7 +711,7 @@ export default function About() {
             />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
@@ -770,7 +770,7 @@ export default function About() {
           ref={galleryRef}
           className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
@@ -843,7 +843,7 @@ export default function About() {
           ref={commitmentRef}
           className="py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Text Content */}
               <div
@@ -929,7 +929,7 @@ export default function About() {
 
         {/* Trust Badges */}
         <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-gray-500 text-sm font-medium mb-8 uppercase tracking-wider text-center">
               Why Travelers Trust Us
             </p>
@@ -955,7 +955,7 @@ export default function About() {
 
         {/* CTA Section */}
         <section className="py-20 md:py-28" style={{ backgroundColor: "#006F61" }}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
                 Ready to Experience the Karakoram?

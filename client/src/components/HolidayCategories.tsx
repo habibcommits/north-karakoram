@@ -132,7 +132,7 @@ export function HolidayCategories() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
 
         {/* Section Header */}
         <div
@@ -177,7 +177,7 @@ export function HolidayCategories() {
                   onMouseLeave={() => setHoveredIndex(null)}
                   data-testid={`card-category-${category.title.toLowerCase().replace(' ', '-')}`}
                 >
-                  {/* Card Container */}
+                  {/* Card max-w-7xl */}
                   <div
                     className={`relative h-full min-h-[320px] md:min-h-[360px] lg:min-h-[340px] rounded-2xl
                       overflow-hidden cursor-pointer transition-all duration-500

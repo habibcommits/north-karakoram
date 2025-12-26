@@ -213,7 +213,7 @@ export default function PeakRoyalty() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4 sm:px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
                 style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
@@ -262,7 +262,7 @@ export default function PeakRoyalty() {
             <div className="absolute bottom-0 left-0 w-48 md:w-64 h-48 md:h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {stats.map((stat, index) => (
                 <div
@@ -299,7 +299,7 @@ export default function PeakRoyalty() {
             />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
@@ -343,7 +343,7 @@ export default function PeakRoyalty() {
           id="categories"
           className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${categoriesVisible
                 ? "opacity-100 translate-y-0"
@@ -456,7 +456,7 @@ export default function PeakRoyalty() {
           ref={regsRef}
           className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${regsVisible
                 ? "opacity-100 translate-y-0"
@@ -530,7 +530,7 @@ export default function PeakRoyalty() {
           ref={coveredRef}
           className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div
                 className={`text-center mb-10 sm:mb-12 transition-all duration-700 ${coveredVisible
@@ -620,7 +620,7 @@ export default function PeakRoyalty() {
           ref={faqRef}
           className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
@@ -710,7 +710,7 @@ export default function PeakRoyalty() {
             <div className="absolute bottom-10 right-10 w-24 sm:w-32 h-24 sm:h-32 border border-white/10 rounded-full hidden sm:block" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"

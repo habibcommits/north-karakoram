@@ -117,7 +117,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] sm:min-h-[700px] max-h-[1200px] overflow-hidden bg-black">
+    <section className="relative w-full h-[100dvh] min-h-[600px] sm:min-h-[700px] max-h-[1200px] overflow-hidden bg-black">
       {/* Background Images with Elegant Ken Burns */}
       {heroImages.map((image, index) => (
         <div
@@ -166,9 +166,9 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Main Content Container */}
+      {/* Main Content max-w-7xl */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="max-w-5xl pt-16 sm:pt-20 lg:pt-0">
             {slides.map((slide, index) => (
               <div
@@ -377,7 +377,7 @@ export function Hero() {
       {/* Stats Bar - Bottom, elegant minimal */}
       {/* <div className="absolute bottom-0 left-0 right-0 z-10 hidden lg:block">
         <div className="bg-gradient-to-t from-black/60 via-black/30 to-transparent pt-24 pb-8">
-          <div className="container mx-auto px-8 xl:px-12">
+          <div className="max-w-7xl mx-auto px-8 xl:px-12">
             <div className="flex justify-end items-center gap-8 xl:gap-12">
               {stats.map((stat, index) => (
                 <div

@@ -117,7 +117,7 @@ export function ExpeditionsSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div
           className={`text-center max-w-3xl mx-auto mb-12 md:mb-16 transition-all duration-700
@@ -168,7 +168,7 @@ export function ExpeditionsSection() {
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Card Container - Full height flex column */}
+                {/* Card max-w-7xl - Full height flex column */}
                 <div
                   className="relative h-full flex flex-col bg-white rounded-2xl overflow-hidden
                     shadow-sm hover:shadow-2xl hover:shadow-black/10

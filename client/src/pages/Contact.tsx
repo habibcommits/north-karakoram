@@ -280,7 +280,7 @@ export default function Contact() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Badge */}
               <div
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 transition-all duration-700 delay-100
@@ -375,7 +375,7 @@ export default function Contact() {
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#006F61]/3 rounded-full blur-3xl" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {reasons.map((reason, index) => (
                 <div
@@ -440,7 +440,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
             <div
               className={`text-center max-w-3xl mx-auto mb-12 md:mb-16 transition-all duration-700 ${formVisible
@@ -818,7 +818,7 @@ export default function Contact() {
           ref={infoRef}
           className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className={`text-center mb-10 md:mb-12 transition-all duration-700 ${infoVisible
                 ? "opacity-100 translate-y-0"
@@ -898,7 +898,7 @@ export default function Contact() {
             <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full border border-[#006F61]/5 hidden lg:block" />
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-10 md:mb-14 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
@@ -990,7 +990,7 @@ export default function Contact() {
           ref={ctaRef}
           className="py-16 sm:py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`max-w-4xl mx-auto transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"
