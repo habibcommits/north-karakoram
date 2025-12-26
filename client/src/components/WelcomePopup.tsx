@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import logoImage from "@assets/white_logo_(3)_1766041182585.png";
 import {
-  Mountain,
+  ChevronRight,
   MapPin,
+  Mountain,
   Phone,
   Sparkles,
-  ChevronRight,
   Star,
-  Shield,
-  X,
+  X
 } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
-import logoImage from "@assets/white_logo_(3)_1766041182585.png";
+import { useEffect, useState } from "react";
 
 const features = [
   {
