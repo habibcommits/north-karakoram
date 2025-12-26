@@ -65,17 +65,11 @@ export function WelcomePopup() {
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent
-        className="p-0 gap-0 border-0 overflow-hidden w-[92vw] max-w-[400px] sm:max-w-[480px] md:max-w-[520px] rounded-2xl shadow-2xl"
+        className="p-0 gap-0 border-0 overflow-y-auto w-[92vw] max-w-[400px] sm:max-w-[480px] md:max-w-[520px] max-h-[90vh] rounded-2xl shadow-2xl"
         data-testid="welcome-popup"
       >
         {/* Close Button */}
-        <button
-          onClick={handleClose}
-          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/30 transition-all duration-300"
-          aria-label="Close"
-        >
-          <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-        </button>
+
 
         {/* Header Section with Gradient Background */}
         <div
