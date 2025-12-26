@@ -186,7 +186,7 @@ function TourCard({ tour, index, isVisible }: {
 
             {/* CTA Button */}
             <Button
-              className={`w-full group/btn font-semibold rounded-xl py-5 h-auto
+              className={`text-xs md:text-md w-full group/btn font-semibold rounded-xl py-5 h-auto
                 transition-all duration-300
                 ${isHovered
                   ? 'bg-[#006F61] hover:bg-[#005a4d] text-white shadow-lg shadow-[#006F61]/30'
@@ -397,7 +397,7 @@ export function SeasonWiseSection() {
         </div>
 
         {/* Tours Grid - Always shows max 4 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 grid-cols-4 gap-2 lg:gap-2">
           {displayedTours.map((tour, index) => (
             <TourCard
               key={tour.id}

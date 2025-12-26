@@ -362,9 +362,9 @@ export function AboutSection() {
                     transition-all duration-300 hover:-translate-y-0.5"
                   data-testid="button-about-learn-more"
                 >
-                  <Users className="w-5 h-5 mr-2" />
+                  <Users className="hidden lg:block w-5 h-5 mr-2" />
                   Meet Our Team
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform
+                  <ArrowRight className="hidden lg:block w-5 h-5 ml-2 transition-transform
                     group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -379,7 +379,7 @@ export function AboutSection() {
                     transition-all duration-300 hover:-translate-y-0.5"
                   data-testid="button-about-contact"
                 >
-                  <MapPin className="w-5 h-5 mr-2" />
+                  <MapPin className="hidden lg:block w-5 h-5 mr-2" />
                   Plan Your Adventure
                 </Button>
               </Link>

@@ -162,7 +162,7 @@ function RockClimbingCard({ climb, index, isVisible }: {
             </p>
 
             {/* Info Grid */}
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-5">
+            <div className="grid grid-cols-1 gap-2 sm:gap-3 mb-5">
               <div className={`flex flex-col items-center p-2.5 sm:p-3 rounded-xl
                 transition-colors duration-300
                 ${isHovered ? 'bg-[#006F61]/10' : 'bg-gray-50'}`}>
@@ -172,7 +172,7 @@ function RockClimbingCard({ climb, index, isVisible }: {
                   {climb.duration}
                 </span>
               </div>
-              <div className={`flex flex-col items-center p-2.5 sm:p-3 rounded-xl
+              {/* <div className={`flex flex-col items-center p-2.5 sm:p-3 rounded-xl
                 transition-colors duration-300
                 ${isHovered ? 'bg-[#006F61]/10' : 'bg-gray-50'}`}>
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
@@ -180,12 +180,12 @@ function RockClimbingCard({ climb, index, isVisible }: {
                 <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
                   {climb.bestSeason || "Summer"}
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* CTA Button */}
             <Button
-              className={`w-full group/btn font-semibold rounded-xl py-5 h-auto
+              className={`text-xs md:text-md w-full group/btn font-semibold rounded-xl py-5 h-auto
                 transition-all duration-300
                 ${isHovered
                   ? 'bg-[#006F61] hover:bg-[#005a4d] text-white shadow-lg shadow-[#006F61]/30'
@@ -193,7 +193,7 @@ function RockClimbingCard({ climb, index, isVisible }: {
                 }`}
             >
               <span>View Climb Details</span>
-              <ChevronRight className="w-4 h-4 ml-2 transition-transform
+              <ChevronRight className="hidden md:block w-4 h-4 ml-2 transition-transform
                 group-hover/btn:translate-x-1" />
             </Button>
           </div>
@@ -392,7 +392,7 @@ export function RockClimbingSection() {
         </div>
 
         {/* Climbs Grid - Always shows max 4 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-4 gap-2 lg:gap-8">
           {displayedClimbs.map((climb, index) => (
             <RockClimbingCard
               key={climb.id}
