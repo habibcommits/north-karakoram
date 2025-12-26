@@ -141,20 +141,6 @@ export function ExpeditionsSection() {
             Guided Expeditions to{" "}
             <span className="relative inline-block" style={{ color: "#006F61" }}>
               Legendary Peaks
-              {/* <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 8.5C50 2.5 150 2.5 198 8.5"
-                  stroke="#006F61"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeOpacity="0.3"
-                />
-              </svg> */}
             </span>
           </h2>
 
@@ -166,7 +152,7 @@ export function ExpeditionsSection() {
           </p>
         </div>
 
-        {/* Expedition Cards Grid */}
+        {/* Expedition Cards Grid - Equal Height with Aligned Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {expeditionCategories.map((category, index) => {
             const isHovered = hoveredCard === index;
@@ -174,7 +160,7 @@ export function ExpeditionsSection() {
             return (
               <div
                 key={category.title}
-                className={`group relative transition-all duration-700
+                className={`group relative h-full transition-all duration-700
                   ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
                 style={{
                   transitionDelay: isVisible ? `${200 + index * 150}ms` : "0ms",
@@ -182,15 +168,16 @@ export function ExpeditionsSection() {
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
+                {/* Card Container - Full height flex column */}
                 <div
-                  className="relative h-full bg-white rounded-2xl overflow-hidden
+                  className="relative h-full flex flex-col bg-white rounded-2xl overflow-hidden
                     shadow-sm hover:shadow-2xl hover:shadow-black/10
                     border border-gray-100 hover:border-gray-200
                     transition-all duration-500 hover:-translate-y-2"
                 >
-                  {/* Header with gradient */}
+                  {/* Header with gradient - Fixed height, no shrink */}
                   <div
-                    className={`relative h-32 bg-gradient-to-r ${category.gradient} p-6 overflow-hidden`}
+                    className={`relative h-32 flex-shrink-0 bg-gradient-to-r ${category.gradient} p-6 overflow-hidden`}
                   >
                     {/* Background pattern */}
                     <div className="absolute inset-0 opacity-20">
@@ -198,7 +185,7 @@ export function ExpeditionsSection() {
                     </div>
 
                     {/* Icon */}
-                    <div className="hidden md:block absolute top-4 right-4 text-4xl opacity-30 group-hover:opacity-50 transition-opacity">
+                    <div className="hidden lg:block absolute top-4 right-4 text-4xl opacity-30 group-hover:opacity-50 transition-opacity">
                       {category.icon}
                     </div>
 
@@ -216,19 +203,19 @@ export function ExpeditionsSection() {
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6">
+                  {/* Content - Flex grow to fill space, flex column for internal layout */}
+                  <div className="flex-1 flex flex-col p-6">
                     {/* Description */}
                     <p className="text-gray-600 text-sm leading-relaxed mb-6">
                       {category.description}
                     </p>
 
-                    {/* Peaks List */}
-                    <div className="space-y-3 mb-6">
+                    {/* Peaks List - Flex grow to push button down */}
+                    <div className="space-y-3 flex-1">
                       {category.peaks.map((peak) => (
                         <div
                           key={peak.name}
-                          className="flex items-center justify-between p-3 rounded-xl
+                          className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-0 justify-between p-3 rounded-xl
                             bg-gray-50 group-hover:bg-gray-100/80 transition-colors"
                         >
                           <div className="flex items-center gap-3">
@@ -246,7 +233,7 @@ export function ExpeditionsSection() {
                             </div>
                           </div>
                           <span
-                            className={`px-2.5 py-1 rounded-full text-xs font-medium ${difficultyColors[peak.difficulty]}`}
+                            className={`px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap ${difficultyColors[peak.difficulty]}`}
                           >
                             {peak.difficulty}
                           </span>
@@ -254,25 +241,27 @@ export function ExpeditionsSection() {
                       ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <Link href="/expedition" className="block">
-                      <Button
-                        className="w-full group/btn font-semibold rounded-xl py-5 h-auto
-                          transition-all duration-300 text-white"
-                        style={{
-                          backgroundColor: "#006F61",
-                          boxShadow: isHovered
-                            ? "0 10px 30px -10px rgba(0, 111, 97, 0.5)"
-                            : "none",
-                        }}
-                      >
-                        <span>Explore Expeditions</span>
-                        <ArrowRight
-                          className="w-4 h-4 ml-2 transition-transform
-                          group-hover/btn:translate-x-1"
-                        />
-                      </Button>
-                    </Link>
+                    {/* CTA Button - Always at bottom with mt-auto */}
+                    <div className="mt-6 pt-0">
+                      <Link href="/expedition" className="block">
+                        <Button
+                          className="w-full group/btn font-semibold rounded-xl py-5 h-auto
+                            transition-all duration-300 text-white"
+                          style={{
+                            backgroundColor: "#006F61",
+                            boxShadow: isHovered
+                              ? "0 10px 30px -10px rgba(0, 111, 97, 0.5)"
+                              : "none",
+                          }}
+                        >
+                          <span>Explore Expeditions</span>
+                          <ArrowRight
+                            className="w-4 h-4 ml-2 transition-transform
+                            group-hover/btn:translate-x-1"
+                          />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Hover accent line */}
@@ -292,28 +281,6 @@ export function ExpeditionsSection() {
           className={`mt-16 md:mt-20 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          {/* Stats Row */}
-          {/* <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12">
-            {[
-              { value: "15+", label: "Peak Expeditions" },
-              { value: "98%", label: "Summit Success" },
-              { value: "500+", label: "Climbers Guided" },
-              { value: "25+", label: "Years Experience" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div
-                  className="text-3xl md:text-4xl font-bold mb-1"
-                  style={{ color: "#006F61" }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-gray-500 text-sm font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div> */}
-
           {/* CTA Card */}
           <div
             className="relative rounded-3xl overflow-hidden p-8 md:p-12 text-center"
