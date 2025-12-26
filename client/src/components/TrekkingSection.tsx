@@ -81,7 +81,7 @@ function TrekkingCard({ trek, index, isVisible }: {
   return (
     <Link href={`/trekking/${trek.slug}`}>
       <div
-        className={`group relative h-full transition-all duration-700
+        className={`group overflow-hidden relative h-full transition-all duration-700
           ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
         style={{ transitionDelay: isVisible ? `${200 + index * 100}ms` : '0ms' }}
         onMouseEnter={() => setIsHovered(true)}
@@ -90,7 +90,7 @@ function TrekkingCard({ trek, index, isVisible }: {
         <div className={`relative h-full bg-white rounded-2xl lg:rounded-3xl overflow-hidden
           border-2 transition-all duration-500
           ${isHovered
-            ? 'border-[#006F61] shadow-2xl shadow-[#006F61]/15 -translate-y-2'
+            ? 'border-[#006F61] shadow-2xl shadow-[#006F61]/15'
             : 'border-gray-100 shadow-lg shadow-gray-200/50 hover:border-[#006F61]/30'
           }`}>
 
@@ -99,12 +99,11 @@ function TrekkingCard({ trek, index, isVisible }: {
             <img
               src={trek.image}
               alt={trek.name}
-              className="w-full h-full object-cover transition-transform duration-700
-                group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700"
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black /80 via-black/30 to-transparent" />
 
             {/* Top badges row */}
             <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 flex justify-between items-start">
@@ -389,7 +388,7 @@ export function TrekkingSection() {
         </div>
 
         {/* Trekkings Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {randomizedTrekkings.map((trek, index) => (
             <TrekkingCard
               key={trek.id}

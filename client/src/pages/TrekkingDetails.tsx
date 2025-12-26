@@ -643,24 +643,24 @@ export default function TrekkingDetail() {
               <div className="lg:col-span-1">
                 <div
                   className={`sticky top-24 transition-all duration-700 delay-500
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
                   <Card className="border-0 shadow-xl rounded-2xl overflow-hidden">
                     {/* Card Header */}
                     <div
-                      className="p-6 text-white"
+                      className="p-4 text-white"
                       style={{ backgroundColor: "#006F61" }}
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Sparkles className="w-5 h-5" />
-                        <span className="text-sm font-medium opacity-90">Premium Trekking</span>
+                        <span className="text-sm font-medium opacity-90">Premium Expedition</span>
                       </div>
                       <h3 className="font-heading font-bold text-xl">Book Your Adventure</h3>
                     </div>
 
-                    <CardContent className="p-6">
+                    <CardContent className="p-4">
                       {/* Details List */}
-                      <div className="space-y-4 mb-6">
+                      <div className="space-y-2 mb-2">
                         {[
                           { label: "Duration", value: expedition.duration },
                           { label: "Difficulty", value: expedition.difficulty },
@@ -683,11 +683,11 @@ export default function TrekkingDetail() {
                         <Link href="/contact" className="block">
                           <Button
                             className="w-full h-12 font-semibold rounded-xl shadow-lg
-                              hover:shadow-xl transition-all hover:-translate-y-0.5"
+                                           hover:shadow-xl transition-all hover:-translate-y-0.5"
                             style={{ backgroundColor: "#006F61" }}
                             data-testid="button-book-expedition"
                           >
-                            Book This Trekking
+                            Book This Expedition
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
@@ -703,7 +703,7 @@ export default function TrekkingDetail() {
                           <Button
                             variant="outline"
                             className="w-full h-12 font-semibold rounded-xl border-2
-                              hover:-translate-y-0.5 transition-all"
+                                           hover:-translate-y-0.5 transition-all"
                             style={{ borderColor: "#25D366", color: "#25D366" }}
                           >
                             <SiWhatsapp className="w-5 h-5 mr-2" />
@@ -715,7 +715,7 @@ export default function TrekkingDetail() {
                           <Button
                             variant="ghost"
                             className="w-full h-12 font-semibold rounded-xl text-gray-600
-                              hover:bg-gray-100"
+                                           hover:bg-gray-100"
                           >
                             <Phone className="w-4 h-4 mr-2" />
                             +92 333 0228111
@@ -724,25 +724,25 @@ export default function TrekkingDetail() {
                       </div>
 
                       {/* Trust Badges */}
-                      <div className="mt-6 pt-6 border-t border-gray-100">
-                        <div className="flex items-center justify-center gap-4 text-gray-400">
-                          <div className="flex items-center gap-1.5">
-                            <Shield className="w-4 h-4" />
-                            <span className="text-xs">Secure</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <Star className="w-4 h-4 fill-current text-amber-400" />
-                            <span className="text-xs">Top Rated</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <Users className="w-4 h-4" />
-                            <span className="text-xs">Expert Guides</span>
-                          </div>
-                        </div>
-                      </div>
+                      {/* <div className="mt-6 pt-6 border-t border-gray-100">
+                                     <div className="flex items-center justify-center gap-4 text-gray-400">
+                                       <div className="flex items-center gap-1.5">
+                                         <Shield className="w-4 h-4" />
+                                         <span className="text-xs">Secure</span>
+                                       </div>
+                                       <div className="flex items-center gap-1.5">
+                                         <Star className="w-4 h-4 fill-current text-amber-400" />
+                                         <span className="text-xs">Top Rated</span>
+                                       </div>
+                                       <div className="flex items-center gap-1.5">
+                                         <Users className="w-4 h-4" />
+                                         <span className="text-xs">Expert Guides</span>
+                                       </div>
+                                     </div>
+                                   </div> */}
 
                       <p className="text-center text-gray-500 text-xs mt-4">
-                        Custom dates available. Group discounts offered.
+                        Custom dates available.
                       </p>
                     </CardContent>
                   </Card>

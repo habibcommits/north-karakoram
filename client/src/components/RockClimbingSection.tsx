@@ -237,7 +237,7 @@ export function RockClimbingSection() {
     }
 
     // Always shuffle and return max 4 climbs
-    return shuffleArray(filteredList).slice(0, 3);
+    return shuffleArray(filteredList).slice(0, 4);
   }, [activeFilter]);
 
   // Intersection observer for scroll animations
@@ -392,7 +392,7 @@ export function RockClimbingSection() {
         </div>
 
         {/* Climbs Grid - Always shows max 4 */}
-        <div className="grid grid-cols-3 gap-2 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {displayedClimbs.map((climb, index) => (
             <RockClimbingCard
               key={climb.id}

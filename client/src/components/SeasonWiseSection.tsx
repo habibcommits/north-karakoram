@@ -238,7 +238,7 @@ export function SeasonWiseSection() {
     }
 
     // Always shuffle and return max 4 tours
-    return shuffleArray(filteredList).slice(0, 3);
+    return shuffleArray(filteredList).slice(0, 4);
   }, [activeFilter]);
 
   // Intersection observer for scroll animations
@@ -397,7 +397,7 @@ export function SeasonWiseSection() {
         </div>
 
         {/* Tours Grid - Always shows max 4 */}
-        <div className="grid grid-cols-1 grid-cols-3 gap-2 lg:gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {displayedTours.map((tour, index) => (
             <TourCard
               key={tour.id}

@@ -465,6 +465,7 @@ export default function PakistanVisa() {
           ref={optionsRef}
           className="py-20 md:py-28 bg-gray-50 relative overflow-hidden"
         >
+          {/* Decorative Elements */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
               className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${optionsVisible
@@ -493,11 +494,11 @@ export default function PakistanVisa() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
               {visaOptions.map((option, index) => (
                 <Card
                   key={index}
-                  className={`group relative overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${option.recommended ? "ring-2 ring-[#006F61]" : ""
+                  className={`group relative flex flex-col overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${option.recommended ? "ring-2 ring-[#006F61]" : ""
                     } ${optionsVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
@@ -516,7 +517,7 @@ export default function PakistanVisa() {
                       RECOMMENDED
                     </div>
                   )}
-                  <CardContent className="p-8">
+                  <CardContent className="p-8 flex-1 flex flex-col">
                     <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110"
                       style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
@@ -557,7 +558,7 @@ export default function PakistanVisa() {
                       href="https://visa.nadra.gov.pk/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-semibold transition-colors"
+                      className="mt-auto inline-flex items-center gap-2 font-semibold transition-colors"
                       style={{ color: "#006F61" }}
                     >
                       Learn More

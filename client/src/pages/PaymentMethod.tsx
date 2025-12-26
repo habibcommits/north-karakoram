@@ -323,7 +323,7 @@ export default function PaymentMethod() {
               </div>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-8 sm:mt-10 md:mt-12">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8 sm:mt-10 md:mt-12">
                 {paymentFeatures.map((feature, index) => (
                   <div
                     key={index}
@@ -553,7 +553,7 @@ export default function PaymentMethod() {
                     />
                     What to Send Us
                   </h3>
-                  <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-8">
                     {[
                       {
                         num: 1,
@@ -812,7 +812,7 @@ export default function PaymentMethod() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
               {[
                 {
                   icon: Shield,

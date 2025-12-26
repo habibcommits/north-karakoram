@@ -98,7 +98,7 @@ export function HolidayCategories() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-white"
+      className="relative py-20 md:py-24 lg:py-28 overflow-hidden bg-white"
       data-testid="section-holiday-categories"
     >
       {/* Subtle Background Pattern */}
@@ -132,11 +132,11 @@ export function HolidayCategories() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-20">
 
         {/* Section Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 md:mb-20 transition-all duration-700
+          className={`text-center max-w-3xl mx-auto mb-12 md:mb-16 lg:mb-16 transition-all duration-700
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Badge */}
@@ -148,21 +148,21 @@ export function HolidayCategories() {
           </div>
 
           {/* Title */}
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-4xl text-gray-900 mb-4">
             Find Your Perfect{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-[#006F61]">Holiday</span>
             </span>
           </h2>
 
-          <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-600 text-base md:text-lg lg:text-lg leading-relaxed max-w-2xl mx-auto">
             Whether you seek adrenaline-pumping expeditions or peaceful family adventures,
             we have the perfect journey waiting for you
           </p>
         </div>
 
         {/* Category Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {categories.map((category, index) => {
             const IconComponent = category.lucideIcon;
             const isHovered = hoveredIndex === index;
@@ -179,7 +179,7 @@ export function HolidayCategories() {
                 >
                   {/* Card Container */}
                   <div
-                    className={`relative h-full min-h-[320px] md:min-h-[380px] rounded-2xl
+                    className={`relative h-full min-h-[320px] md:min-h-[360px] lg:min-h-[340px] rounded-2xl
                       overflow-hidden cursor-pointer transition-all duration-500
                       border-2
                       ${isHovered
@@ -204,14 +204,14 @@ export function HolidayCategories() {
                     )}
 
                     {/* Card Content */}
-                    <div className="relative h-full flex flex-col p-6 md:p-8">
+                    <div className="relative h-full flex flex-col p-6 md:p-7 lg:p-6">
 
                       {/* Icon Section */}
-                      <div className="flex-1 flex items-center justify-center mb-6">
+                      <div className="flex-1 flex items-center justify-center mb-6 lg:mb-4">
                         <div className="relative">
                           {/* Custom Icon (from assets) */}
                           <div
-                            className={`w-28 h-28 md:w-32 md:h-32 transition-all duration-500
+                            className={`w-28 h-28 md:w-32 md:h-32 lg:w-28 lg:h-28 transition-all duration-500
                               ${isHovered ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}
                           >
                             <img
@@ -252,7 +252,7 @@ export function HolidayCategories() {
                       </div>
 
                       {/* Text Content */}
-                      <div className="text-center space-y-3">
+                      <div className="text-center space-y-3 lg:space-y-2">
                         {/* Subtitle */}
                         <span
                           className={`text-xs font-semibold uppercase tracking-wider
@@ -264,7 +264,7 @@ export function HolidayCategories() {
 
                         {/* Title */}
                         <h3
-                          className={`font-heading font-bold text-xl md:text-2xl
+                          className={`font-heading font-bold text-xl md:text-2xl lg:text-xl
                             transition-colors duration-300
                             ${isHovered ? 'text-white' : 'text-gray-900'}`}
                         >
@@ -326,12 +326,12 @@ export function HolidayCategories() {
 
         {/* Bottom CTA Section */}
         <div
-          className={`mt-16 md:mt-20 text-center transition-all duration-700 delay-500
+          className={`mt-12 md:mt-16 lg:mt-16 text-center transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
             {/* Help text */}
-            <p className="text-gray-600 text-sm md:text-base">
+            <p className="text-gray-600 text-sm md:text-base lg:text-base">
               Not sure which adventure is right for you?
             </p>
 
@@ -352,7 +352,7 @@ export function HolidayCategories() {
 
         {/* Total Adventures Count */}
         <div
-          className={`mt-12 flex flex-wrap items-center justify-center gap-8 md:gap-12
+          className={`mt-10 md:mt-12 lg:mt-12 flex flex-wrap items-center justify-center gap-8 md:gap-12
             transition-all duration-700 delay-700
             ${isVisible ? "opacity-100" : "opacity-0"}`}
         >
@@ -365,7 +365,7 @@ export function HolidayCategories() {
             { value: "24/7", label: "Support" },
           ].map((item, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#006F61]">
+              <div className="text-2xl md:text-3xl lg:text-2xl font-bold text-[#006F61]">
                 {typeof item.value === 'number' ? `${item.value}+` : item.value}
               </div>
               <div className="text-gray-500 text-xs uppercase tracking-wider">

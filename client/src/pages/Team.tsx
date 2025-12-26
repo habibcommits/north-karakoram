@@ -318,14 +318,14 @@ function TeamMemberCard({
 
           <div className="relative z-10">
             {/* Quote Icon */}
-            <Quote className="w-10 h-10 text-white/30 mb-4" />
+            <Quote className="w-5 h-5 text-white/30 mb-4" />
 
-            <h3 className="font-heading font-bold text-2xl mb-2">
+            <h3 className="font-heading font-bold text-xl mb-2">
               {member.name}
             </h3>
-            <p className="text-white/80 font-medium mb-4">{member.role}</p>
+            <p className="text-white/80 font-medium font-lg mb-4">{member.role}</p>
 
-            <p className="text-white/90 text-sm leading-relaxed mb-6">
+            <p className="text-white/90 text-xs leading-relaxed mb-6">
               {member.description}
             </p>
 
@@ -333,7 +333,7 @@ function TeamMemberCard({
               <p className="text-xs uppercase tracking-wider mb-3 text-white/60 font-semibold">
                 Areas of Expertise
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1">
                 {member.expertise.map((skill, idx) => (
                   <span
                     key={idx}
@@ -540,7 +540,7 @@ export default function Team() {
           className="py-16 bg-gray-50/50 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {teamMembers.map((member, index) => (
                 <TeamMemberCard
                   key={member.id}
@@ -588,7 +588,7 @@ export default function Team() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {values.map((value, index) => (
                 <div
                   key={index}

@@ -146,98 +146,95 @@ export function AboutSection() {
 
           {/* LEFT COLUMN: Image Gallery */}
           <div
-            className={`relative transition-all duration-700 delay-200
+            className={`flex flex-col md:relative md:block gap-4 md:gap-0 md:h-[600px] transition-all duration-700 delay-200
               ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
           >
-            <div className="relative h-[500px] md:h-[600px]">
+            {/* Main Large Image */}
+            <div
+              className="md:absolute md:top-0 md:left-0 md:w-[75%] md:h-[65%] relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden
+                shadow-2xl shadow-black/10 z-20 group"
+            >
+              <img
+                src={mountainImage1}
+                alt="K2 and Concordia region - Karakoram Range"
+                className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-              {/* Main Large Image */}
-              <div
-                className="absolute top-0 left-0 w-[75%] h-[65%] rounded-2xl overflow-hidden
-                  shadow-2xl shadow-black/10 z-20 group"
-              >
-                <img
-                  src={mountainImage1}
-                  alt="K2 and Concordia region - Karakoram Range"
-                  className="w-full h-full object-cover transition-transform duration-700
-                    group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                {/* Location badge */}
-                <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full
-                  bg-white/95 backdrop-blur-sm shadow-lg">
-                  <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#006F61]" />
-                    Gilgit-Baltistan, Pakistan
-                  </span>
-                </div>
+              {/* Location badge */}
+              <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full
+                bg-white/95 backdrop-blur-sm shadow-lg">
+                <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#006F61]" />
+                  Gilgit-Baltistan, Pakistan
+                </span>
               </div>
+            </div>
 
-              {/* Secondary Image - Top Right */}
-              <div
-                className="absolute top-4 right-0 w-[45%] h-[40%] rounded-2xl overflow-hidden
-                  shadow-xl shadow-black/10 z-10 group border-4 border-white"
-              >
-                <img
-                  src={mountainImage2}
-                  alt="Trekking expedition in Hunza Valley"
-                  className="w-full h-full object-cover transition-transform duration-700
-                    group-hover:scale-105"
-                />
-              </div>
-
-              {/* Third Image - Bottom Center */}
-              <div
-                className="absolute bottom-0 left-[15%] w-[50%] h-[45%] rounded-2xl overflow-hidden
-                  shadow-xl shadow-black/10 z-30 group border-4 border-white"
-              >
-                <img
-                  src={mountainImage3}
-                  alt="Cultural heritage and local communities"
-                  className="w-full h-full object-cover transition-transform duration-700
-                    group-hover:scale-105"
-                />
-              </div>
-
-              {/* Fourth Image - Bottom Right */}
-              <div
-                className="absolute bottom-8 right-0 w-[40%] h-[35%] rounded-2xl overflow-hidden
-                  shadow-xl shadow-black/10 z-20 group border-4 border-white"
-              >
-                <img
-                  src={mountainImage4}
-                  alt="Deosai Plateau landscape"
-                  className="w-full h-full object-cover transition-transform duration-700
-                    group-hover:scale-105"
-                />
-              </div>
-
-              {/* License Badge - Floating Card */}
-              <div
-                className="absolute -bottom-6 -left-6 md:left-0 z-40
-                  bg-white rounded-2xl shadow-2xl shadow-black/10 p-4
-                  border border-gray-100"
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#006F61]"
-                  >
-                    <BadgeCheck className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-gray-900">DTS License #2640</div>
-                    <div className="text-xs text-gray-500">Registered & Verified</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Element */}
-              <div
-                className="absolute -top-6 right-[30%] w-24 h-24 rounded-full
-                  border-4 border-dashed border-[#006F61]/20 z-0 hidden md:block"
+            {/* Secondary Image - Top Right */}
+            <div
+              className="md:absolute md:top-4 md:right-0 md:w-[45%] md:h-[40%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-10 group border-4 border-white"
+            >
+              <img
+                src={mountainImage2}
+                alt="Trekking expedition in Hunza Valley"
+                className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
               />
             </div>
+
+            {/* Third Image - Bottom Center */}
+            <div
+              className="md:absolute md:bottom-0 md:left-[15%] md:w-[50%] md:h-[45%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-30 group border-4 border-white"
+            >
+              <img
+                src={mountainImage3}
+                alt="Cultural heritage and local communities"
+                className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+              />
+            </div>
+
+            {/* Fourth Image - Bottom Right */}
+            <div
+              className="md:absolute md:bottom-8 md:right-0 md:w-[40%] md:h-[35%] relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-20 group border-4 border-white"
+            >
+              <img
+                src={mountainImage4}
+                alt="Deosai Plateau landscape"
+                className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+              />
+            </div>
+
+            {/* License Badge - Floating Card */}
+            <div
+              className="md:absolute md:-bottom-6 md:-left-6 md:left-0 relative mt-4 z-40
+                bg-white rounded-2xl shadow-2xl shadow-black/10 p-4
+                border border-gray-100"
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#006F61]"
+                >
+                  <BadgeCheck className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-gray-900">DTS License #2640</div>
+                  <div className="text-xs text-gray-500">Registered & Verified</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative Element */}
+            <div
+              className="absolute -top-6 right-[30%] w-24 h-24 rounded-full
+                border-4 border-dashed border-[#006F61]/20 z-0 hidden md:block"
+            />
           </div>
 
           {/* RIGHT COLUMN: Text Content */}
@@ -362,10 +359,7 @@ export function AboutSection() {
                     transition-all duration-300 hover:-translate-y-0.5"
                   data-testid="button-about-learn-more"
                 >
-                  <Users className="hidden lg:block w-5 h-5 mr-2" />
                   Meet Our Team
-                  <ArrowRight className="hidden lg:block w-5 h-5 ml-2 transition-transform
-                    group-hover:translate-x-1" />
                 </Button>
               </Link>
 
@@ -379,7 +373,6 @@ export function AboutSection() {
                     transition-all duration-300 hover:-translate-y-0.5"
                   data-testid="button-about-contact"
                 >
-                  <MapPin className="hidden lg:block w-5 h-5 mr-2" />
                   Plan Your Adventure
                 </Button>
               </Link>

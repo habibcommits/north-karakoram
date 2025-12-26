@@ -118,17 +118,17 @@ function ExpeditionCard({ expedition }: { expedition: ExpeditionData }) {
           </p>
 
           {/* Info Grid */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-5">
+          <div className="grid grid-cols-1 gap-2 sm:gap-3 mb-4 sm:mb-5">
             <div className="flex flex-col items-center p-2 sm:p-3 rounded-xl bg-gray-50 hover:bg-[#006F61]/5 transition-colors">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
               <span className="text-[10px] sm:text-xs text-gray-500">Duration</span>
               <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">{expedition.duration}</span>
             </div>
-            <div className="flex flex-col items-center p-2 sm:p-3 rounded-xl bg-gray-50 hover:bg-[#006F61]/5 transition-colors">
+            {/* <div className="flex flex-col items-center p-2 sm:p-3 rounded-xl bg-gray-50 hover:bg-[#006F61]/5 transition-colors">
               <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#006F61] mb-1" />
               <span className="text-[10px] sm:text-xs text-gray-500">Season</span>
               <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">{expedition.bestSeason || "N/A"}</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Price & CTA */}
@@ -479,7 +479,7 @@ export default function Trekking() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
               {filteredExpeditions.map((expedition) => (
                 <ExpeditionCard key={expedition.id} expedition={expedition} />
               ))}

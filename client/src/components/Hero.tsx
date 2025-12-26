@@ -296,7 +296,7 @@ export function Hero() {
       </div>
 
       {/* Navigation Controls - Refined bottom center */}
-      <div className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 z-20">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
         <div
           className="flex items-center gap-3 sm:gap-4 lg:gap-6 px-4 sm:px-6 py-3 sm:py-4 rounded-full
           bg-white/5 backdrop-blur-md border border-white/10"

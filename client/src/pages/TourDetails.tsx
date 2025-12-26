@@ -648,19 +648,19 @@ export default function TourDetails() {
                   <Card className="border-0 shadow-xl rounded-2xl overflow-hidden">
                     {/* Card Header */}
                     <div
-                      className="p-6 text-white"
+                      className="p-4 text-white"
                       style={{ backgroundColor: "#006F61" }}
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Sparkles className="w-5 h-5" />
-                        <span className="text-sm font-medium opacity-90">Premium Tour</span>
+                        <span className="text-sm font-medium opacity-90">Premium Expedition</span>
                       </div>
                       <h3 className="font-heading font-bold text-xl">Book Your Adventure</h3>
                     </div>
 
-                    <CardContent className="p-6">
+                    <CardContent className="p-4">
                       {/* Details List */}
-                      <div className="space-y-4 mb-6">
+                      <div className="space-y-2 mb-2">
                         {[
                           { label: "Duration", value: expedition.duration },
                           { label: "Difficulty", value: expedition.difficulty },
@@ -687,7 +687,7 @@ export default function TourDetails() {
                             style={{ backgroundColor: "#006F61" }}
                             data-testid="button-book-expedition"
                           >
-                            Book This Tour
+                            Book This Expedition
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
@@ -724,7 +724,7 @@ export default function TourDetails() {
                       </div>
 
                       {/* Trust Badges */}
-                      <div className="mt-6 pt-6 border-t border-gray-100">
+                      {/* <div className="mt-6 pt-6 border-t border-gray-100">
                         <div className="flex items-center justify-center gap-4 text-gray-400">
                           <div className="flex items-center gap-1.5">
                             <Shield className="w-4 h-4" />
@@ -739,10 +739,10 @@ export default function TourDetails() {
                             <span className="text-xs">Expert Guides</span>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <p className="text-center text-gray-500 text-xs mt-4">
-                        Custom dates available. Group discounts offered.
+                        Custom dates available.
                       </p>
                     </CardContent>
                   </Card>
