@@ -98,42 +98,37 @@ export function HolidayCategories() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-white"
       data-testid="section-holiday-categories"
     >
-      {/* Background Image with Parallax Effect */}
+      {/* Subtle Background Pattern */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-fixed bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundAttachment: 'fixed'
-          }}
-        />
-
-        {/* Multi-layer gradient overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#006F61]/90 via-[#005249]/85 to-[#003d36]/95" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        {/* Light gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/30" />
 
         {/* Subtle pattern overlay */}
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23006F61' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
       </div>
 
       {/* Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-        {/* Floating circles */}
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full border border-white/10 hidden lg:block" />
-        <div className="absolute top-32 left-20 w-48 h-48 rounded-full border border-white/5 hidden lg:block" />
-        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full border border-white/10 hidden lg:block" />
+        {/* Floating circles with green accent */}
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full border border-[#006F61]/10 hidden lg:block" />
+        <div className="absolute top-32 left-20 w-48 h-48 rounded-full border border-[#006F61]/5 hidden lg:block" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full border border-[#006F61]/10 hidden lg:block" />
+
+        {/* Green accent blob */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#006F61]/5 rounded-full blur-3xl hidden lg:block" />
+        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#006F61]/3 rounded-full blur-3xl hidden lg:block" />
 
         {/* Accent lines */}
-        <div className="absolute top-1/2 left-0 w-24 h-px bg-gradient-to-r from-white/20 to-transparent hidden xl:block" />
-        <div className="absolute top-1/2 right-0 w-24 h-px bg-gradient-to-l from-white/20 to-transparent hidden xl:block" />
+        <div className="absolute top-1/2 left-0 w-24 h-px bg-gradient-to-r from-[#006F61]/20 to-transparent hidden xl:block" />
+        <div className="absolute top-1/2 right-0 w-24 h-px bg-gradient-to-l from-[#006F61]/20 to-transparent hidden xl:block" />
       </div>
 
       {/* Main Content */}
@@ -146,26 +141,21 @@ export function HolidayCategories() {
         >
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
-            bg-white/10 backdrop-blur-sm border border-white/20
-            text-white text-sm font-semibold mb-6">
+            bg-[#006F61]/10 border border-[#006F61]/20
+            text-[#006F61] text-sm font-semibold mb-6">
             <Compass className="w-4 h-4" />
             <span>Choose Your Adventure</span>
           </div>
 
           {/* Title */}
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
             Find Your Perfect{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">Holiday</span>
-              {/* Decorative underline */}
-              <span
-                className="absolute bottom-1 left-0 w-full h-3 bg-white/20 -z-0
-                  rounded-full transform -rotate-1"
-              />
+              <span className="relative z-10 text-[#006F61]">Holiday</span>
             </span>
           </h2>
 
-          <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             Whether you seek adrenaline-pumping expeditions or peaceful family adventures,
             we have the perfect journey waiting for you
           </p>
@@ -191,10 +181,10 @@ export function HolidayCategories() {
                   <div
                     className={`relative h-full min-h-[320px] md:min-h-[380px] rounded-2xl
                       overflow-hidden cursor-pointer transition-all duration-500
-                      border-2 backdrop-blur-sm
+                      border-2
                       ${isHovered
-                        ? 'bg-white border-white shadow-2xl shadow-black/20 -translate-y-2'
-                        : 'bg-white/5 border-white/20 hover:border-white/40'
+                        ? 'bg-[#006F61] border-[#006F61] shadow-2xl shadow-[#006F61]/20 -translate-y-2'
+                        : 'bg-white border-gray-200 hover:border-[#006F61]/40 shadow-lg shadow-gray-100'
                       }`}
                   >
                     {/* Featured Badge */}
@@ -204,8 +194,8 @@ export function HolidayCategories() {
                           className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
                             transition-colors duration-300
                             ${isHovered
-                              ? 'bg-[#006F61] text-white'
-                              : 'bg-white/20 text-white'
+                              ? 'bg-white/20 text-white'
+                              : 'bg-[#006F61] text-white'
                             }`}
                         >
                           Popular
@@ -230,8 +220,8 @@ export function HolidayCategories() {
                               className="w-full h-full object-contain"
                               style={{
                                 filter: isHovered
-                                  ? 'none'
-                                  : 'brightness(0) invert(1)'
+                                  ? 'brightness(0) invert(1)'
+                                  : 'brightness(0) saturate(100%) invert(27%) sepia(72%) saturate(1000%) hue-rotate(152deg) brightness(95%) contrast(101%)'
                               }}
                             />
                           </div>
@@ -243,8 +233,7 @@ export function HolidayCategories() {
                               ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-125'}`}
                           >
                             <div
-                              className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                              style={{ backgroundColor: '#006F61' }}
+                              className="w-20 h-20 rounded-2xl flex items-center justify-center bg-white/20"
                             >
                               <IconComponent className="w-10 h-10 text-white" />
                             </div>
@@ -255,8 +244,8 @@ export function HolidayCategories() {
                             className={`absolute inset-0 -m-4 rounded-full border-2 border-dashed
                               transition-all duration-500
                               ${isHovered
-                                ? 'border-[#006F61]/30 rotate-180'
-                                : 'border-white/20 rotate-0'
+                                ? 'border-white/30 rotate-180'
+                                : 'border-[#006F61]/20 rotate-0'
                               }`}
                           />
                         </div>
@@ -268,7 +257,7 @@ export function HolidayCategories() {
                         <span
                           className={`text-xs font-semibold uppercase tracking-wider
                             transition-colors duration-300
-                            ${isHovered ? 'text-[#006F61]' : 'text-white/60'}`}
+                            ${isHovered ? 'text-white/70' : 'text-[#006F61]'}`}
                         >
                           {category.subtitle}
                         </span>
@@ -277,7 +266,7 @@ export function HolidayCategories() {
                         <h3
                           className={`font-heading font-bold text-xl md:text-2xl
                             transition-colors duration-300
-                            ${isHovered ? 'text-gray-900' : 'text-white'}`}
+                            ${isHovered ? 'text-white' : 'text-gray-900'}`}
                         >
                           {category.title}
                         </h3>
@@ -286,7 +275,7 @@ export function HolidayCategories() {
                         <p
                           className={`text-sm leading-relaxed line-clamp-2
                             transition-colors duration-300
-                            ${isHovered ? 'text-gray-600' : 'text-white/70'}`}
+                            ${isHovered ? 'text-white/80' : 'text-gray-600'}`}
                         >
                           {category.description}
                         </p>
@@ -296,8 +285,8 @@ export function HolidayCategories() {
                           className={`inline-flex items-center gap-2 px-3 py-1.5
                             rounded-full text-xs font-semibold transition-all duration-300
                             ${isHovered
-                              ? 'bg-[#006F61]/10 text-[#006F61]'
-                              : 'bg-white/10 text-white/80'
+                              ? 'bg-white/20 text-white'
+                              : 'bg-[#006F61]/10 text-[#006F61]'
                             }`}
                         >
                           <span className="font-bold">{category.count}</span>
@@ -305,7 +294,7 @@ export function HolidayCategories() {
                             {category.title === "Expeditions" && "Expeditions"}
                             {category.title === "Trekking" && "Trails"}
                             {category.title === "Tours" && "Tours"}
-                            {category.title === "Rock Climbing" && "Routes"}
+                            {category.title === "Climbing" && "Routes"}
                           </span>
                         </div>
                       </div>
@@ -315,8 +304,8 @@ export function HolidayCategories() {
                         className={`absolute bottom-6 right-6 w-10 h-10 rounded-full
                           flex items-center justify-center transition-all duration-300
                           ${isHovered
-                            ? 'bg-[#006F61] text-white translate-x-0 opacity-100'
-                            : 'bg-white/10 text-white translate-x-2 opacity-0'
+                            ? 'bg-white text-[#006F61] translate-x-0 opacity-100'
+                            : 'bg-[#006F61]/10 text-[#006F61] translate-x-2 opacity-0'
                           }`}
                       >
                         <ArrowRight className="w-5 h-5" />
@@ -326,7 +315,7 @@ export function HolidayCategories() {
                     {/* Bottom accent line */}
                     <div
                       className={`absolute bottom-0 left-0 right-0 h-1 transition-all duration-500
-                        ${isHovered ? 'bg-[#006F61]' : 'bg-transparent'}`}
+                        ${isHovered ? 'bg-white/30' : 'bg-[#006F61]'}`}
                     />
                   </div>
                 </div>
@@ -342,7 +331,7 @@ export function HolidayCategories() {
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
             {/* Help text */}
-            <p className="text-white/70 text-sm md:text-base">
+            <p className="text-gray-600 text-sm md:text-base">
               Not sure which adventure is right for you?
             </p>
 
@@ -350,9 +339,9 @@ export function HolidayCategories() {
             <Link href="/contact">
               <button
                 className="group inline-flex items-center gap-2 px-6 py-3
-                  rounded-full bg-white text-[#006F61] font-semibold
-                  hover:bg-white/90 transition-all duration-300
-                  shadow-lg shadow-black/10 hover:shadow-xl hover:-translate-y-0.5"
+                  rounded-full bg-[#006F61] text-white font-semibold
+                  hover:bg-[#005a4f] transition-all duration-300
+                  shadow-lg shadow-[#006F61]/20 hover:shadow-xl hover:-translate-y-0.5"
               >
                 <span>Let Us Help You Decide</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -376,10 +365,10 @@ export function HolidayCategories() {
             { value: "24/7", label: "Support" },
           ].map((item, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white">
+              <div className="text-2xl md:text-3xl font-bold text-[#006F61]">
                 {typeof item.value === 'number' ? `${item.value}+` : item.value}
               </div>
-              <div className="text-white/50 text-xs uppercase tracking-wider">
+              <div className="text-gray-500 text-xs uppercase tracking-wider">
                 {item.label}
               </div>
             </div>

@@ -387,8 +387,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Trust & Expertise Section */}
-        <div
+        {/* <div
           className={`mt-20 md:mt-28 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
@@ -396,7 +395,6 @@ export function AboutSection() {
             className="relative bg-gradient-to-br from-[#006F61] to-[#005249]
               rounded-3xl p-8 md:p-12 overflow-hidden"
           >
-            {/* Background decorations */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-96 h-96 rounded-full
                 bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -405,7 +403,6 @@ export function AboutSection() {
             </div>
 
             <div className="relative z-10">
-              {/* Header */}
               <div className="text-center mb-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                   Explore Northern Pakistan With Confidence
@@ -416,7 +413,6 @@ export function AboutSection() {
                 </p>
               </div>
 
-              {/* Features Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10
                   hover:bg-white/15 transition-colors duration-300">
@@ -456,13 +452,11 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Decorative circles */}
             <div className="absolute top-6 left-6 w-20 h-20 border border-white/10 rounded-full" />
             <div className="absolute bottom-6 right-6 w-32 h-32 border border-white/10 rounded-full" />
           </div>
-        </div>
+        </div> */}
 
-        {/* Trust Badges */}
         <div
           className={`mt-16 text-center transition-all duration-700 delay-700
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}

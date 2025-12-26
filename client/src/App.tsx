@@ -28,6 +28,7 @@ import RockClimbing from "./pages/RockClimbing";
 import TrekkingDetail from "./pages/TrekkingDetails";
 import TourDetails from "./pages/TourDetails";
 import RockClimbingDetails from "./pages/RockClimbingDetails";
+import Search from "./pages/Search";
 
 function Router() {
   return (
@@ -53,6 +54,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/pakistan-visa" component={PakistanVisa} />
       <Route path="/payment-method" component={PaymentMethod} />
+      <Route path="/search" component={Search} />
       {/* <Route path="/trip/:id" component={TripDetail} /> */}
       <Route component={NotFound} />
     </Switch>

@@ -38,6 +38,8 @@ import {
   Calendar,
   HeadphonesIcon,
   CheckCircle,
+  Sparkles,
+  ChevronDown,
 } from "lucide-react";
 import {
   SiFacebook,
@@ -66,24 +68,28 @@ const contactInfo = [
     title: "Visit Our Office",
     details: ["Skardu, Gilgit Baltistan", "Pakistan"],
     action: null,
+    highlight: false,
   },
   {
     icon: Phone,
     title: "Call Us",
     details: ["+92 333 0228111", "+92 355 5718293"],
     action: "tel:+923330228111",
+    highlight: false,
   },
   {
     icon: Mail,
     title: "Email Us",
     details: ["info@northkarakoram.com"],
     action: "mailto:info@northkarakoram.com",
+    highlight: true,
   },
   {
     icon: Clock,
     title: "Business Hours",
     details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
     action: null,
+    highlight: false,
   },
 ];
 
@@ -92,34 +98,33 @@ const socialLinks = [
     icon: SiYoutube,
     href: "https://youtube.com/@northkarakoram?si=PJHwQm8bP2nMLBwe",
     label: "YouTube",
+    color: "#FF0000",
   },
   {
     icon: SiTiktok,
     href: "https://www.tiktok.com/@northkarakoram?_r=1&_t=ZS-92TItqmrAx7",
     label: "TikTok",
+    color: "#000000",
   },
   {
     icon: SiInstagram,
     href: "https://www.instagram.com/northkarakoram?igsh=MWlseHgycWNybWx2MA%3D%3D&utm_source=qr",
     label: "Instagram",
+    color: "#E4405F",
   },
   {
     icon: SiFacebook,
     href: "https://www.facebook.com/profile.php?id=100093782443750&rdid=j90AVS0yTRTTZeBk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AhZLfuCzQ%2F#",
     label: "Facebook",
+    color: "#1877F2",
   },
-  // {
-  //   icon: SiWhatsapp,
-  //   href: "https://wa.me/923555718293",
-  //   label: "WhatsApp",
-  // },
 ];
 
 const reasons = [
   {
     icon: HeadphonesIcon,
     title: "24/7 Support",
-    description: "We're here to help you anytime",
+    description: "We're here to help you anytime, anywhere",
   },
   {
     icon: Users,
@@ -142,7 +147,7 @@ const faqs = [
   {
     question: "How do I book an expedition?",
     answer:
-      "You can book through our website, send us an email, or contact us via WhatsApp. Our team will guide you through the entire process.",
+      "You can book through our website, send us an email at info@northkarakoram.com, or contact us via WhatsApp. Our team will guide you through the entire process.",
   },
   {
     question: "What's included in the tour packages?",
@@ -203,8 +208,8 @@ export default function Contact() {
     },
     onSuccess: () => {
       toast({
-        title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message Sent Successfully! ✨",
+        description: "We'll get back to you within 24 hours.",
       });
       form.reset();
     },
@@ -248,24 +253,25 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <main className="flex-1">
         {/* Hero Section */}
         <section
           ref={heroRef}
-          className="relative min-h-[500px] h-[60vh] sm:h-[65vh] md:h-[70vh]"
+          className="relative min-h-[480px] h-[55vh] sm:h-[60vh] md:h-[65vh] lg:h-[70vh]"
         >
           <img
             src={baseCampImage}
             alt="Mountain base camp"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/80" />
 
-          {/* Decorative Elements - Hidden on mobile */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
-            <div className="absolute top-20 left-10 w-24 h-24 lg:w-32 lg:h-32 border border-white/10 rounded-full" />
-            <div className="absolute bottom-20 right-10 w-32 h-32 lg:w-48 lg:h-48 border border-white/10 rounded-full" />
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute top-20 left-10 w-32 h-32 lg:w-48 lg:h-48 border border-white/10 rounded-full hidden md:block" />
+            <div className="absolute top-32 left-20 w-20 h-20 lg:w-32 lg:h-32 border border-white/5 rounded-full hidden md:block" />
+            <div className="absolute bottom-20 right-10 w-40 h-40 lg:w-56 lg:h-56 border border-white/10 rounded-full hidden md:block" />
           </div>
 
           <div
@@ -274,78 +280,121 @@ export default function Contact() {
               : "opacity-0 translate-y-8"
               }`}
           >
-            <div className="container mx-auto px-4 sm:px-6">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Badge */}
               <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 transition-all duration-700 delay-100
+                  bg-white/10 backdrop-blur-sm border border-white/20 ${heroVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                  }`}
               >
-                <span className="text-xs sm:text-sm text-white/90 font-semibold tracking-wide">
-                  WE'D LOVE TO HEAR FROM YOU
+                <Sparkles className="w-4 h-4 text-white" />
+                <span className="text-sm text-white font-medium tracking-wide">
+                  We'd Love to Hear From You
                 </span>
               </div>
-              <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-3 sm:mb-4">
-                Contact Us
+
+              <h1
+                className={`font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 transition-all duration-700 delay-200 ${heroVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+                  }`}
+              >
+                Get in{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Touch</span>
+                  <span className="absolute bottom-2 left-0 w-full h-3 bg-[#006F61]/50 rounded-full transform -rotate-1" />
+                </span>
               </h1>
-              <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
+
+              <p
+                className={`text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto mb-8 transition-all duration-700 delay-300 ${heroVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+                  }`}
+              >
                 Have questions about your next mountain adventure? Our team is
                 ready to help you plan the perfect expedition.
               </p>
 
               {/* Quick Contact Options */}
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 px-4 sm:px-0">
+              <div
+                className={`flex flex-col sm:flex-row justify-center gap-4 transition-all duration-700 delay-400 ${heroVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+                  }`}
+              >
                 <a
-                  href="https://wa.me/923555718293?text=I'm%20interested%20in%20your%20services."
+                  href="https://wa.me/923555718293?text=I'm%20interested%20in%20booking%20an%20adventure%20with%20North%20Karakoram."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-full md:w-fit inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${heroVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                    }`}
-                  style={{ transitionDelay: heroVisible ? "200ms" : "0ms" }}
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
+                    bg-white text-gray-900 font-semibold text-base
+                    shadow-2xl shadow-black/20 hover:shadow-xl hover:-translate-y-1
+                    transition-all duration-300"
                 >
-                  <SiWhatsapp className="hidden md:block w-5 h-5" style={{ color: "#25D366" }} />
+                  <SiWhatsapp
+                    className="w-5 h-5 transition-transform group-hover:scale-110"
+                    style={{ color: "#25D366" }}
+                  />
                   <span>Chat on WhatsApp</span>
                 </a>
+
                 <a
-                  href="tel:+923330228111"
-                  className={`w-full md:w-fit inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl border-2 border-white/50 text-white font-semibold text-sm sm:text-base hover:bg-white/10 transition-all duration-300 ${heroVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                    }`}
-                  style={{ transitionDelay: heroVisible ? "300ms" : "0ms" }}
+                  href="mailto:info@northkarakoram.com?subject=Booking%20Inquiry&body=Hello%20North%20Karakoram%20Team,%0A%0AI'm%20interested%20in%20booking%20an%20adventure.%20Please%20provide%20more%20information.%0A%0AThank%20you!"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
+                    border-2 border-white/40 text-white font-semibold text-base
+                    backdrop-blur-sm hover:bg-white hover:text-[#006F61] hover:border-white
+                    transition-all duration-300 hover:-translate-y-1"
                 >
-                  <Phone className="hidden md:block w-5 h-5" />
-                  <span>Call Now</span>
+                  <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
+                  <span>Book via Email</span>
                 </a>
+              </div>
+
+              {/* Scroll Indicator */}
+              <div
+                className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-700 delay-500 ${heroVisible ? "opacity-100" : "opacity-0"
+                  }`}
+              >
+                <div className="flex flex-col items-center gap-2 text-white/60">
+                  <span className="text-xs uppercase tracking-widest">
+                    Scroll Down
+                  </span>
+                  <ChevronDown className="w-5 h-5 animate-bounce" />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Why Contact Us Section */}
-        <section className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(135deg, #006F61 0%, #005249 100%)",
-            }}
-          />
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 rounded-full bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 md:w-64 h-48 md:h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <section className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden">
+          {/* Background Decorations */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#006F61]/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#006F61]/3 rounded-full blur-3xl" />
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {reasons.map((reason, index) => (
-                <div key={index} className="text-center group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mx-auto mb-2 sm:mb-3 rounded-xl sm:rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                    <reason.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
+                <div
+                  key={index}
+                  className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white
+                    border border-gray-100 hover:border-[#006F61]/20 hover:shadow-xl hover:shadow-[#006F61]/5
+                    transition-all duration-500 hover:-translate-y-1"
+                >
+                  <div
+                    className="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-2xl
+                    bg-[#006F61]/10 flex items-center justify-center
+                    group-hover:bg-[#006F61] group-hover:scale-110 transition-all duration-300"
+                  >
+                    <reason.icon className="w-7 h-7 md:w-8 md:h-8 text-[#006F61] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-0.5 sm:mb-1">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2">
                     {reason.title}
                   </h3>
-                  <p className="text-white/70 text-xs sm:text-sm font-medium hidden sm:block">
+                  <p className="text-gray-600 text-sm leading-relaxed hidden sm:block">
                     {reason.description}
                   </p>
                 </div>
@@ -357,26 +406,34 @@ export default function Contact() {
         {/* Contact Form Section */}
         <section
           ref={formRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden"
+          className="py-16 sm:py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
           data-testid="section-contact"
         >
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-white to-gray-50/50" />
+            <div
+              className="absolute inset-0 opacity-[0.02]"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23006F61' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
+          </div>
+
           {/* Decorative Elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute -top-20 -right-20 sm:-top-40 sm:-right-40 w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-            />
-            <div
-              className="absolute -bottom-20 -left-20 sm:-bottom-40 sm:-left-40 w-[250px] sm:w-[350px] md:w-[500px] h-[250px] sm:h-[350px] md:h-[500px] rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.02)" }}
-            />
-            <div className="absolute top-20 left-10 hidden xl:block">
+            <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#006F61]/5 blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#006F61]/3 blur-3xl" />
+            <div className="absolute top-32 left-10 w-64 h-64 rounded-full border border-[#006F61]/10 hidden lg:block" />
+            <div className="absolute bottom-32 right-10 w-48 h-48 rounded-full border border-[#006F61]/5 hidden lg:block" />
+
+            {/* Decorative dots */}
+            <div className="absolute top-40 right-20 hidden xl:block">
               <div className="grid grid-cols-5 gap-2">
                 {[...Array(25)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                    className="w-1.5 h-1.5 rounded-full bg-[#006F61]/10"
                   />
                 ))}
               </div>
@@ -386,72 +443,70 @@ export default function Contact() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
             <div
-              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${formVisible
+              className={`text-center max-w-3xl mx-auto mb-12 md:mb-16 transition-all duration-700 ${formVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-[#006F61]/10 border border-[#006F61]/20">
+                <Mail className="w-4 h-4 text-[#006F61]" />
+                <span className="text-sm font-semibold tracking-wide text-[#006F61]">
                   GET IN TOUCH
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
+              <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4">
                 Send Us a{" "}
-                <span style={{ color: "#006F61" }}>Message</span>
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-[#006F61]">Message</span>
+                  <span className="absolute bottom-1 left-0 w-full h-3 bg-[#006F61]/15 rounded-full transform -rotate-1" />
+                </span>
               </h2>
 
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed px-2">
+              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
                 Have questions about our trekking tours, mountaineering
                 expeditions, or customized adventures? Fill out the form below
                 and we'll respond within 24 hours.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-7xl mx-auto">
               {/* Contact Form */}
               <div
-                className={`lg:col-span-2 order-2 lg:order-1 transition-all duration-700 delay-200 ${formVisible
+                className={`lg:col-span-3 order-2 lg:order-1 transition-all duration-700 delay-200 ${formVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
                   }`}
               >
-                <Card className="shadow-lg sm:shadow-xl border-gray-100 overflow-hidden">
-                  <div
-                    className="h-1.5 sm:h-2"
-                    style={{ backgroundColor: "#006F61" }}
-                  />
-                  <CardContent className="p-5 sm:p-6 md:p-8 lg:p-10">
+                <Card className="shadow-2xl shadow-gray-200/50 border-0 overflow-hidden rounded-3xl">
+                  {/* Card Header Accent */}
+                  <div className="h-2 bg-gradient-to-r from-[#006F61] via-[#008577] to-[#006F61]" />
+
+                  <CardContent className="p-6 sm:p-8 md:p-10 lg:p-12">
                     <Form {...form}>
                       <form
                         onSubmit={form.handleSubmit(onSubmit)}
-                        className="space-y-4 sm:space-y-5 md:space-y-6"
+                        className="space-y-6"
                       >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <FormField
                             control={form.control}
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
-                                  Full Name
+                                <FormLabel className="text-gray-700 font-semibold text-sm">
+                                  Full Name <span className="text-[#006F61]">*</span>
                                 </FormLabel>
                                 <FormControl>
                                   <Input
                                     placeholder="John Doe"
-                                    className="h-11 sm:h-12 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                    className="h-12 sm:h-14 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20
+                                      rounded-xl text-base bg-gray-50/50 hover:bg-white transition-colors"
                                     {...field}
                                     data-testid="input-contact-name"
                                   />
                                 </FormControl>
-                                <FormMessage className="text-xs sm:text-sm" />
+                                <FormMessage />
                               </FormItem>
                             )}
                           />
@@ -461,33 +516,34 @@ export default function Contact() {
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
-                                  Email Address
+                                <FormLabel className="text-gray-700 font-semibold text-sm">
+                                  Email Address <span className="text-[#006F61]">*</span>
                                 </FormLabel>
                                 <FormControl>
                                   <Input
                                     type="email"
                                     placeholder="john@example.com"
-                                    className="h-11 sm:h-12 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                    className="h-12 sm:h-14 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20
+                                      rounded-xl text-base bg-gray-50/50 hover:bg-white transition-colors"
                                     {...field}
                                     data-testid="input-contact-email"
                                   />
                                 </FormControl>
-                                <FormMessage className="text-xs sm:text-sm" />
+                                <FormMessage />
                               </FormItem>
                             )}
                           />
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <FormField
                             control={form.control}
                             name="phone"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
+                                <FormLabel className="text-gray-700 font-semibold text-sm">
                                   Phone Number{" "}
-                                  <span className="text-gray-400 font-normal text-xs sm:text-sm">
+                                  <span className="text-gray-400 font-normal">
                                     (Optional)
                                   </span>
                                 </FormLabel>
@@ -495,12 +551,13 @@ export default function Contact() {
                                   <Input
                                     type="tel"
                                     placeholder="+1 234 567 8900"
-                                    className="h-11 sm:h-12 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                    className="h-12 sm:h-14 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20
+                                      rounded-xl text-base bg-gray-50/50 hover:bg-white transition-colors"
                                     {...field}
                                     data-testid="input-contact-phone"
                                   />
                                 </FormControl>
-                                <FormMessage className="text-xs sm:text-sm" />
+                                <FormMessage />
                               </FormItem>
                             )}
                           />
@@ -510,9 +567,9 @@ export default function Contact() {
                             name="tripInterest"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
+                                <FormLabel className="text-gray-700 font-semibold text-sm">
                                   Trip Interest{" "}
-                                  <span className="text-gray-400 font-normal text-xs sm:text-sm">
+                                  <span className="text-gray-400 font-normal">
                                     (Optional)
                                   </span>
                                 </FormLabel>
@@ -522,13 +579,14 @@ export default function Contact() {
                                 >
                                   <FormControl>
                                     <SelectTrigger
-                                      className="h-11 sm:h-12 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                      className="h-12 sm:h-14 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20
+                                        rounded-xl text-base bg-gray-50/50 hover:bg-white transition-colors"
                                       data-testid="select-trip-interest"
                                     >
                                       <SelectValue placeholder="Select a trip" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent>
+                                  <SelectContent className="rounded-xl">
                                     <SelectItem value="general">
                                       General Inquiry
                                     </SelectItem>
@@ -539,7 +597,7 @@ export default function Contact() {
                                     ))}
                                   </SelectContent>
                                 </Select>
-                                <FormMessage className="text-xs sm:text-sm" />
+                                <FormMessage />
                               </FormItem>
                             )}
                           />
@@ -550,18 +608,19 @@ export default function Contact() {
                           name="subject"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
-                                Subject
+                              <FormLabel className="text-gray-700 font-semibold text-sm">
+                                Subject <span className="text-[#006F61]">*</span>
                               </FormLabel>
                               <FormControl>
                                 <Input
                                   placeholder="How can we help you?"
-                                  className="h-11 sm:h-12 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                  className="h-12 sm:h-14 border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20
+                                    rounded-xl text-base bg-gray-50/50 hover:bg-white transition-colors"
                                   {...field}
                                   data-testid="input-contact-subject"
                                 />
                               </FormControl>
-                              <FormMessage className="text-xs sm:text-sm" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -571,43 +630,49 @@ export default function Contact() {
                           name="message"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-gray-700 font-semibold text-sm sm:text-base">
-                                Message
+                              <FormLabel className="text-gray-700 font-semibold text-sm">
+                                Message <span className="text-[#006F61]">*</span>
                               </FormLabel>
                               <FormControl>
                                 <Textarea
                                   placeholder="Tell us about your adventure plans, questions, or any specific requirements..."
-                                  className="min-h-[120px] sm:min-h-[140px] md:min-h-[160px] resize-none border-gray-200 focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-lg sm:rounded-xl text-sm sm:text-base"
+                                  className="min-h-[140px] sm:min-h-[160px] resize-none border-gray-200
+                                    focus:border-[#006F61] focus:ring-[#006F61]/20 rounded-xl text-base
+                                    bg-gray-50/50 hover:bg-white transition-colors"
                                   {...field}
                                   data-testid="textarea-contact-message"
                                 />
                               </FormControl>
-                              <FormMessage className="text-xs sm:text-sm" />
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
 
-                        <Button
-                          type="submit"
-                          size="lg"
-                          className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 h-auto font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 rounded-lg sm:rounded-xl"
-                          style={{ backgroundColor: "#006F61" }}
-                          disabled={submitMutation.isPending}
-                          data-testid="button-submit-contact"
-                        >
-                          {submitMutation.isPending ? (
-                            <>
-                              <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                              Sending...
-                            </>
-                          ) : (
-                            <>
-                              <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                              Send Message
-                              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-                            </>
-                          )}
-                        </Button>
+                        <div className="pt-2">
+                          <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full sm:w-auto px-10 py-6 h-auto font-semibold text-base
+                              bg-[#006F61] hover:bg-[#005a4d] text-white rounded-xl
+                              shadow-lg shadow-[#006F61]/20 hover:shadow-xl hover:shadow-[#006F61]/30
+                              transition-all duration-300 hover:-translate-y-0.5"
+                            disabled={submitMutation.isPending}
+                            data-testid="button-submit-contact"
+                          >
+                            {submitMutation.isPending ? (
+                              <>
+                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3" />
+                                Sending...
+                              </>
+                            ) : (
+                              <>
+                                <Send className="w-5 h-5 mr-3" />
+                                Send Message
+                                <ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" />
+                              </>
+                            )}
+                          </Button>
+                        </div>
                       </form>
                     </Form>
                   </CardContent>
@@ -616,19 +681,24 @@ export default function Contact() {
 
               {/* Contact Info Sidebar */}
               <div
-                className={`order-1 lg:order-2 space-y-4 sm:space-y-5 md:space-y-6 transition-all duration-700 delay-300 ${formVisible
+                className={`lg:col-span-2 order-1 lg:order-2 space-y-6 transition-all duration-700 delay-300 ${formVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
                   }`}
               >
-                {/* Mobile: Horizontal scroll / Desktop: Vertical stack */}
-                <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+                {/* Contact Cards */}
+                <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <Card
                       key={index}
-                      className={`group hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-gray-100 overflow-hidden ${formVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
+                      className={`group overflow-hidden rounded-2xl border-2 transition-all duration-300
+                        hover:shadow-xl hover:shadow-[#006F61]/10 hover:-translate-y-1
+                        ${info.highlight
+                          ? "border-[#006F61]/30 bg-[#006F61]/5"
+                          : "border-gray-100 hover:border-[#006F61]/20"
+                        } ${formVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
                         }`}
                       style={{
                         transitionDelay: formVisible
@@ -636,19 +706,20 @@ export default function Contact() {
                           : "0ms",
                       }}
                     >
-                      <CardContent className="p-4 sm:p-5 md:p-6">
-                        <div className="flex flex-col sm:flex-row lg:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
+                      <CardContent className="p-5 sm:p-6">
+                        <div className="flex items-start gap-4">
                           <div
-                            className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                            className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
+                              transition-all duration-300 group-hover:scale-110
+                              ${info.highlight
+                                ? "bg-[#006F61] text-white"
+                                : "bg-[#006F61]/10 text-[#006F61] group-hover:bg-[#006F61] group-hover:text-white"
+                              }`}
                           >
-                            <info.icon
-                              className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                              style={{ color: "#006F61" }}
-                            />
+                            <info.icon className="w-6 h-6" />
                           </div>
                           <div className="min-w-0 flex-1">
-                            <h3 className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 mb-1 sm:mb-2">
+                            <h3 className="font-heading font-bold text-base sm:text-lg text-gray-900 mb-1">
                               {info.title}
                             </h3>
                             {info.details.map((detail, idx) =>
@@ -656,14 +727,15 @@ export default function Contact() {
                                 <a
                                   key={idx}
                                   href={info.action}
-                                  className="block text-xs sm:text-sm md:text-base text-gray-600 hover:text-[#006F61] transition-colors truncate"
+                                  className="block text-sm sm:text-base text-gray-600 hover:text-[#006F61]
+                                    transition-colors font-medium"
                                 >
                                   {detail}
                                 </a>
                               ) : (
                                 <p
                                   key={idx}
-                                  className="text-xs sm:text-sm md:text-base text-gray-600 truncate"
+                                  className="text-sm sm:text-base text-gray-600"
                                 >
                                   {detail}
                                 </p>
@@ -672,34 +744,66 @@ export default function Contact() {
                           </div>
                         </div>
                       </CardContent>
-                      <div
-                        className="h-0.5 sm:h-1 transition-transform duration-300 origin-left scale-x-0 group-hover:scale-x-100"
-                        style={{ backgroundColor: "#006F61" }}
-                      />
+                      {info.highlight && (
+                        <div className="h-1 bg-[#006F61]" />
+                      )}
                     </Card>
                   ))}
                 </div>
 
-                {/* Social Links */}
-                <Card className="border-gray-100">
-                  <CardContent className="p-4 sm:p-5 md:p-6">
-                    <h3 className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 mb-3 sm:mb-4 text-center sm:text-left">
+                {/* Social Links Card */}
+                <Card className="border-2 border-gray-100 rounded-2xl overflow-hidden">
+                  <CardContent className="p-5 sm:p-6">
+                    <h3 className="font-heading font-bold text-lg text-gray-900 mb-4">
                       Follow Us
                     </h3>
-                    <div className="flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3">
+                    <div className="flex flex-wrap gap-3">
                       {socialLinks.map((social) => (
                         <a
                           key={social.label}
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-lg sm:rounded-xl flex items-center justify-center border border-gray-200 hover:border-[#006F61] hover:bg-[#006F61] hover:text-white text-gray-600 transition-all duration-300 hover:scale-110"
+                          className="group w-12 h-12 rounded-xl flex items-center justify-center
+                            border-2 border-gray-200 hover:border-[#006F61]
+                            bg-white hover:bg-[#006F61] text-gray-600 hover:text-white
+                            transition-all duration-300 hover:scale-110 hover:shadow-lg"
                           aria-label={social.label}
                         >
-                          <social.icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5" />
+                          <social.icon className="w-5 h-5" />
                         </a>
                       ))}
                     </div>
+                  </CardContent>
+                </Card>
+
+                {/* Quick Action Card */}
+                <Card className="border-2 border-[#006F61]/20 rounded-2xl overflow-hidden bg-gradient-to-br from-[#006F61]/5 to-white">
+                  <CardContent className="p-5 sm:p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full bg-[#006F61] flex items-center justify-center">
+                        <Mountain className="w-5 h-5 text-white" />
+                      </div>
+                      <h3 className="font-heading font-bold text-lg text-gray-900">
+                        Ready to Book?
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 text-sm mb-4">
+                      Email us directly at{" "}
+                      <span className="font-semibold text-[#006F61]">
+                        info@northkarakoram.com
+                      </span>{" "}
+                      for quick booking assistance.
+                    </p>
+                    <a
+                      href="mailto:info@northkarakoram.com?subject=Booking%20Inquiry"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                        bg-[#006F61] text-white font-semibold text-sm
+                        hover:bg-[#005a4d] transition-all duration-300 hover:shadow-lg"
+                    >
+                      <Mail className="w-4 h-4" />
+                      Book Now
+                    </a>
                   </CardContent>
                 </Card>
               </div>
@@ -710,56 +814,70 @@ export default function Contact() {
         {/* Map Section */}
         <section
           ref={infoRef}
-          className="py-12 sm:py-14 md:py-16 lg:py-20 bg-gray-50 relative overflow-hidden"
+          className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div
-              className={`text-center mb-8 sm:mb-10 transition-all duration-700 ${infoVisible
+              className={`text-center mb-10 md:mb-12 transition-all duration-700 ${infoVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
-              <h2 className="font-heading font-bold text-xl sm:text-2xl md:text-3xl text-gray-900 mb-2">
-                Find Us
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 bg-[#006F61]/10 border border-[#006F61]/20">
+                <MapPin className="w-4 h-4 text-[#006F61]" />
+                <span className="text-sm font-semibold text-[#006F61]">
+                  OUR LOCATION
+                </span>
+              </div>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3">
+                Find Us in{" "}
+                <span className="text-[#006F61]">Skardu</span>
               </h2>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Located in the heart of Skardu, gateway to the Karakoram
+              <p className="text-gray-600 text-lg max-w-xl mx-auto">
+                Located in the heart of Skardu, gateway to the majestic Karakoram range
               </p>
             </div>
 
             <div
-              className={`relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl h-[280px] sm:h-[320px] md:h-[380px] lg:h-[400px] bg-gray-200 transition-all duration-700 delay-200 ${infoVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
+              className={`relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50
+                h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]
+                border-2 border-gray-100 transition-all duration-700 delay-200 ${infoVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
                 }`}
             >
-              {/* Map Placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                <div className="text-center px-4">
-                  <div
-                    className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                  >
-                    <MapPin
-                      className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10"
-                      style={{ color: "#006F61" }}
-                    />
+              {/* Map Placeholder with elegant design */}
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#006F61]/5 via-gray-50 to-white">
+                <div className="text-center px-6">
+                  {/* Decorative rings */}
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#006F61]/20 animate-spin" style={{ animationDuration: '20s' }} />
+                    <div className="absolute inset-4 rounded-full border-2 border-[#006F61]/10" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 rounded-full bg-[#006F61]/10 flex items-center justify-center">
+                        <MapPin className="w-10 h-10 text-[#006F61]" />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-heading font-bold text-base sm:text-lg md:text-xl text-gray-900 mb-1 sm:mb-2">
+
+                  <h3 className="font-heading font-bold text-xl md:text-2xl text-gray-900 mb-2">
                     Skardu, Gilgit Baltistan
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
-                    Gateway to K2 and the Karakoram Range
+                  <p className="text-gray-600 mb-6 max-w-sm mx-auto">
+                    Gateway to K2, Concordia, and the legendary peaks of the Karakoram
                   </p>
                   <a
                     href="https://maps.google.com/?q=Skardu,+Gilgit+Baltistan,+Pakistan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-white font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 hover:-translate-y-0.5"
-                    style={{ backgroundColor: "#006F61" }}
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl
+                      bg-[#006F61] text-white font-semibold
+                      shadow-lg shadow-[#006F61]/20 hover:shadow-xl
+                      transition-all duration-300 hover:-translate-y-1"
                   >
-                    <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Globe className="w-5 h-5" />
                     Open in Google Maps
+                    <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
               </div>
@@ -770,44 +888,51 @@ export default function Contact() {
         {/* FAQ Section */}
         <section
           ref={faqRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
+          className="py-16 sm:py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Background Decorations */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-20 right-10 w-64 h-64 rounded-full border border-[#006F61]/10 hidden lg:block" />
+            <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full border border-[#006F61]/5 hidden lg:block" />
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
-              className={`text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ${faqVisible
+              className={`text-center max-w-3xl mx-auto mb-10 md:mb-14 transition-all duration-700 ${faqVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <MessageCircle
-                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                  style={{ color: "#006F61" }}
-                />
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-[#006F61]/10 border border-[#006F61]/20">
+                <MessageCircle className="w-4 h-4 text-[#006F61]" />
+                <span className="text-sm font-semibold text-[#006F61]">
                   COMMON QUESTIONS
                 </span>
               </div>
 
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3 sm:mb-4">
+              <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4">
                 Frequently Asked{" "}
-                <span style={{ color: "#006F61" }}>Questions</span>
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-[#006F61]">Questions</span>
+                  <span className="absolute bottom-1 left-0 w-full h-3 bg-[#006F61]/15 rounded-full transform -rotate-1" />
+                </span>
               </h2>
+              <p className="text-gray-600 text-lg">
+                Find answers to common questions about our expeditions and services
+              </p>
             </div>
 
-            <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+            <div className="max-w-3xl mx-auto space-y-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-700 ${faqVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                  className={`border-2 rounded-2xl overflow-hidden transition-all duration-500
+                    ${expandedFaq === index
+                      ? 'border-[#006F61]/30 shadow-lg shadow-[#006F61]/5'
+                      : 'border-gray-100 hover:border-[#006F61]/20'
+                    } ${faqVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
                     }`}
                   style={{
                     transitionDelay: faqVisible
@@ -819,19 +944,23 @@ export default function Contact() {
                     onClick={() =>
                       setExpandedFaq(expandedFaq === index ? null : index)
                     }
-                    className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-left hover:bg-gray-50 transition-colors"
+                    className={`w-full flex items-center justify-between p-5 sm:p-6 text-left transition-colors
+                      ${expandedFaq === index ? 'bg-[#006F61]/5' : 'hover:bg-gray-50'}`}
                   >
-                    <span className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 pr-3 sm:pr-4">
+                    <span className="font-heading font-bold text-base sm:text-lg text-gray-900 pr-4">
                       {faq.question}
                     </span>
                     <div
-                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${expandedFaq === index ? "rotate-45" : ""
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0
+                        transition-all duration-300
+                        ${expandedFaq === index
+                          ? 'bg-[#006F61] rotate-45'
+                          : 'bg-[#006F61]/10'
                         }`}
-                      style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                     >
                       <span
-                        className="text-xl sm:text-2xl leading-none"
-                        style={{ color: "#006F61" }}
+                        className={`text-2xl font-light leading-none transition-colors
+                          ${expandedFaq === index ? 'text-white' : 'text-[#006F61]'}`}
                       >
                         +
                       </span>
@@ -841,9 +970,12 @@ export default function Contact() {
                     className={`overflow-hidden transition-all duration-300 ${expandedFaq === index ? "max-h-48" : "max-h-0"
                       }`}
                   >
-                    <p className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed">
-                      {faq.answer}
-                    </p>
+                    <div className="px-5 sm:px-6 pb-5 sm:pb-6">
+                      <div className="h-px bg-gray-100 mb-4" />
+                      <p className="text-gray-600 text-base leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -854,59 +986,67 @@ export default function Contact() {
         {/* CTA Section */}
         <section
           ref={ctaRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
-          }}
+          className="py-16 sm:py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
         >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-10 left-10 w-16 sm:w-20 h-16 sm:h-20 border border-white/10 rounded-full hidden sm:block" />
-            <div className="absolute bottom-10 right-10 w-24 sm:w-32 h-24 sm:h-32 border border-white/10 rounded-full hidden sm:block" />
-          </div>
-
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
-              className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
+              className={`max-w-4xl mx-auto transition-all duration-700 ${ctaVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
                 }`}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4 sm:mb-6">
-                <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
-                  START YOUR JOURNEY
-                </span>
-              </div>
+              {/* CTA Card */}
+              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#006F61] via-[#005a4d] to-[#004a40] p-8 sm:p-12 md:p-16 text-center">
+                {/* Decorative Elements */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
+                  <div className="absolute top-10 left-10 w-24 h-24 border border-white/10 rounded-full hidden md:block" />
+                  <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full hidden md:block" />
+                </div>
 
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6 px-2">
-                Ready for Your Next Adventure?
-              </h2>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
+                    <Sparkles className="w-4 h-4 text-white" />
+                    <span className="text-white/90 text-sm font-medium">
+                      Start Your Journey
+                    </span>
+                  </div>
 
-              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-8 sm:mb-10 px-2">
-                Explore our collection of carefully crafted expeditions and find
-                the perfect mountain adventure that awaits you.
-              </p>
+                  <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-6">
+                    Ready for Your Next Adventure?
+                  </h2>
 
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                <a
-                  href="/expedition"
-                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span>Explore Expeditions</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
+                  <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+                    Explore our collection of carefully crafted expeditions and find
+                    the perfect mountain adventure that awaits you.
+                  </p>
 
-                <a
-                  href="https://wa.me/923555718293"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl border-2 border-white/50 text-white font-semibold text-sm sm:text-base md:text-lg hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
-                >
-                  <SiWhatsapp className="hidden md:block w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Quick Chat</span>
-                </a>
+                  <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                      href="/expedition"
+                      className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
+                        bg-white text-[#006F61] font-bold text-lg
+                        shadow-2xl hover:shadow-xl hover:-translate-y-1
+                        transition-all duration-300"
+                    >
+                      <Mountain className="w-5 h-5" />
+                      <span>Explore Expeditions</span>
+                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </a>
+
+                    <a
+                      href="mailto:info@northkarakoram.com?subject=Booking%20Inquiry"
+                      className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl
+                        border-2 border-white/40 text-white font-bold text-lg
+                        hover:bg-white hover:text-[#006F61] hover:border-white
+                        transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <Mail className="w-5 h-5" />
+                      <span>Book via Email</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

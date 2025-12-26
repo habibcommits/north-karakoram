@@ -447,91 +447,39 @@ export default function ExpeditionDetail() {
 
                     {/* Services Tab */}
                     <TabsContent value="services" className="mt-8">
-                      <div className="space-y-6">
-                        {/* Requirements */}
-                        {/* <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
+                      <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
+                        <div
+                          className="p-8 md:p-12 text-center"
+                          style={{
+                            background: "linear-gradient(135deg, rgba(0, 111, 97, 0.05) 0%, rgba(245, 130, 32, 0.05) 100%)",
+                          }}
+                        >
                           <div
-                            className="px-6 py-4 border-b border-gray-100"
-                            style={{ backgroundColor: "rgba(245, 130, 32, 0.05)" }}
+                            className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center"
+                            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                           >
-                            <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                              <div
-                                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                                style={{ backgroundColor: "rgba(245, 130, 32, 0.15)" }}
-                              >
-                                <AlertTriangle className="w-5 h-5" style={{ color: "#f58220" }} />
-                              </div>
-                              Climber Requirements
-                            </h3>
+                            <Compass className="w-10 h-10" style={{ color: "#006F61" }} />
                           </div>
-                          <CardContent className="p-6">
-                            <ul className="space-y-3">
-                              {expedition.requirements.map((req, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                  <ChevronRight
-                                    className="w-5 h-5 flex-shrink-0 mt-0.5"
-                                    style={{ color: "#006F61" }}
-                                  />
-                                  <span className="text-gray-700">{req}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </CardContent>
-                        </Card> */}
-
-                        {/* Services Grid */}
-                        <div className="grid md:grid-cols-2 gap-6">
-                          {/* Included */}
-                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
-                            <div
-                              className="px-6 py-4 border-b border-gray-100"
-                              style={{ backgroundColor: "rgba(34, 197, 94, 0.05)" }}
-                            >
-                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
-                                  <Check className="w-5 h-5 text-green-600" />
-                                </div>
-                                What's Included
-                              </h3>
-                            </div>
-                            <CardContent className="p-6">
-                              <ul className="space-y-3">
-                                {expedition.servicesIncluded.map((service, index) => (
-                                  <li key={index} className="flex items-start gap-3 text-sm">
-                                    <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">{service}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </CardContent>
-                          </Card>
-
-                          {/* Not Included */}
-                          <Card className="border-0 shadow-lg rounded-2xl overflow-hidden">
-                            <div
-                              className="px-6 py-4 border-b border-gray-100"
-                              style={{ backgroundColor: "rgba(239, 68, 68, 0.05)" }}
-                            >
-                              <h3 className="flex items-center gap-3 font-bold text-lg text-gray-900">
-                                <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
-                                  <X className="w-5 h-5 text-red-600" />
-                                </div>
-                                Not Included
-                              </h3>
-                            </div>
-                            <CardContent className="p-6">
-                              <ul className="space-y-3">
-                                {expedition.servicesNotIncluded.map((service, index) => (
-                                  <li key={index} className="flex items-start gap-3 text-sm">
-                                    <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">{service}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </CardContent>
-                          </Card>
+                          <h3 className="font-heading font-bold text-2xl text-gray-900 mb-3">
+                            Service Details
+                          </h3>
+                          <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                            For detailed information about what's included, excluded, and required equipment for this expedition, please contact us via WhatsApp or email.
+                          </p>
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link href="/contact">
+                              <Button
+                                size="lg"
+                                className="rounded-xl px-8 py-6 h-auto font-semibold"
+                                style={{ backgroundColor: "#006F61" }}
+                              >
+                                Book Now
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                              </Button>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
+                      </Card>
                     </TabsContent>
 
                     {/* Prices Tab */}

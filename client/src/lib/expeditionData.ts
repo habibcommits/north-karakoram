@@ -1,22 +1,8 @@
-import {
-  COMMON_SERVICES_INCLUDED,
-  COMMON_SERVICES_NOT_INCLUDED,
-  COMMON_SERVICES_REQUIREMENTS,
-} from "@/constants/expeditionData";
-import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
-import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
-import expeditionImage1 from "@assets/stock_images/mountain_expedition__228548ef.jpg";
-import expeditionImage3 from "@assets/stock_images/mountain_expedition__494acab3.jpg";
+import { COMMON_SERVICES_REQUIREMENTS } from "@/constants/expeditionData";
 
-import K2Img1 from "@assets/k2/k21.jpeg";
-import K2Img2 from "@assets/k2/k22.jpeg";
-import K2Img3 from "@assets/k2/k23.jpg";
 import BroadPeakImg1 from "@assets/broad-peak/br1.jpeg";
 import BroadPeakImg2 from "@assets/broad-peak/br2.jpg";
 import BroadPeakImg3 from "@assets/broad-peak/br3.jpg";
-import NangaParbatImg1 from "@assets/nanga-parbat/n1.jpeg";
-import NangaParbatImg2 from "@assets/nanga-parbat/n2.jpg";
-import NangaParbatImg3 from "@assets/nanga-parbat/n3.jpg";
 import GashebrumIImg1 from "@assets/g1/g1.jpg";
 import GashebrumIImg2 from "@assets/g1/g2.jpg";
 import GashebrumIImg3 from "@assets/g1/g3.jpeg";
@@ -24,6 +10,12 @@ import GashebrumIIImg1 from "@assets/g2/g1.jpeg";
 import GashebrumIIImg2 from "@assets/g2/g2.jpeg";
 import GashebrumIIImg3 from "@assets/g2/g3.jpeg";
 import GashebrumIIIImg1 from "@assets/g3/g1.jpg";
+import K2Img1 from "@assets/k2/k21.jpeg";
+import K2Img2 from "@assets/k2/k22.jpeg";
+import K2Img3 from "@assets/k2/k23.jpg";
+import NangaParbatImg1 from "@assets/nanga-parbat/n1.jpeg";
+import NangaParbatImg2 from "@assets/nanga-parbat/n2.jpg";
+import NangaParbatImg3 from "@assets/nanga-parbat/n3.jpg";
 // import GashebrumIIImg2 from "@assets/"
 // import GashebrumIIImg3 from "@assets/"
 import GashebrumIVImg1 from "@assets/g4/g1.jpeg";
@@ -65,10 +57,10 @@ import GandogoroPeakImg1 from "@assets/gondogoro/g1.jpg";
 import BonditPeakImg1 from "@assets/bondit/b1.webp";
 // import BonditPeakImg2 from "@assets/"
 // import BonditPeakImg3 from "@assets/"
+import DrifikaImg1 from "@assets/drifika/d1.jpeg";
 import K7PeakImg1 from "@assets/k7/k1.jpeg";
 import K7PeakImg2 from "@assets/k7/k2.jpeg";
 import K7PeakImg3 from "@assets/k7/k3.jpeg";
-import DrifikaImg1 from "@assets/drifika/d1.jpeg";
 // import DrifikaImg2 from "@assets/"
 // import DrifikaImg3 from "@assets/"
 import CigarettePeakImg1 from "@assets/cigarette/c1.jfif";
@@ -260,8 +252,8 @@ export const expeditions: ExpeditionData[] = [
           "We provide a transfer to Islamabad International Airport for your international flight back home. End of services.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Summit the world's second highest peak",
@@ -387,8 +379,8 @@ export const expeditions: ExpeditionData[] = [
           "Rest, base camp clean-up operations, celebrations, and distribution of porter bonuses before departure. Accommodation: Tent.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible first 8000m peak",
@@ -501,8 +493,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to the airport for your international flight home. Meals: Breakfast.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Climb the 'Killer Mountain' - the 9th highest mountain in the world",
@@ -670,8 +662,8 @@ export const expeditions: ExpeditionData[] = [
           "Final transfer for departure from Islamabad. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Summit Gasherbrum I (Hidden Peak), the 11th highest mountain in the world",
@@ -838,8 +830,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to Islamabad International Airport for your flight home. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Summit Gasherbrum II, the 13th highest mountain in the world",
@@ -940,8 +932,8 @@ export const expeditions: ExpeditionData[] = [
           "We provide a final transfer to Islamabad International Airport for your flight back home, marking the conclusion of the K6 Peak Expedition. End of services.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible 7000m peak",
@@ -1066,8 +1058,8 @@ export const expeditions: ExpeditionData[] = [
           "A contingency day reserved for potential weather delays or travel interruptions.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Perfect 7000m training peak",
@@ -1168,8 +1160,8 @@ export const expeditions: ExpeditionData[] = [
           "You will be transferred to Islamabad International Airport for your return flight home. End of services.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Climb a technical 7000m peak",
@@ -1328,8 +1320,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer for your international departure flight. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Extremely technical high-altitude climb",
@@ -1438,8 +1430,8 @@ export const expeditions: ExpeditionData[] = [
           "Final transfer to Islamabad International Airport for your departure flight, marking the end of the expedition services. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Technically demanding 7000m peak",
@@ -1576,8 +1568,8 @@ export const expeditions: ExpeditionData[] = [
           "Free time for shopping and sightseeing at locations such as Faisal Mosque and Lok Virsa Museum, followed by transfer to the airport for your flight home. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible 7000m climb with moderate technical difficulty",
@@ -1742,8 +1734,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer for your departure to your respective international destinations.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Moderate technical 7000m peak",
@@ -1892,8 +1884,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to the airport for your international departure flight home.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Highest peak of the Hindu Kush",
@@ -2000,8 +1992,8 @@ export const expeditions: ExpeditionData[] = [
           "Following breakfast, we provide a final transfer to Islamabad International Airport for your departure flight. End of services. Meals: Breakfast.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Technical yet accessible 6000m peak",
@@ -2156,8 +2148,8 @@ export const expeditions: ExpeditionData[] = [
           "Following breakfast, transfer to Islamabad International Airport for your return flight home, marking the conclusion of the Pastore Peak expedition. Meals: Breakfast.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Scenic summit views",
@@ -2276,8 +2268,8 @@ export const expeditions: ExpeditionData[] = [
           "Official farewell meeting and debriefing session. The afternoon is available for sightseeing in Islamabad before the final evening transfer to the airport for your return flight home.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible 6000m peak for acclimatization",
@@ -2390,8 +2382,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to the airport for your international flight home. End of expedition services. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Accessible 5000–6000m peak",
@@ -2504,8 +2496,8 @@ export const expeditions: ExpeditionData[] = [
           "Final transfer to Islamabad International Airport for your return flight home. End of expedition services.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Technical 6000m+ climb",
@@ -2618,8 +2610,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to the airport for your international flight home. End of expedition services. Transport: Fly out.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Moderately technical 6000m peak",
@@ -2714,8 +2706,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to the airport for your onward flight to your own destination. End of expedition services. Accommodation: Hotel.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Moderately technical 6000m peak",
@@ -2792,8 +2784,8 @@ export const expeditions: ExpeditionData[] = [
           "Transfer to Islamabad International Airport for your return flight home. Transport: On board.",
       },
     ],
-    servicesIncluded: COMMON_SERVICES_INCLUDED,
-    servicesNotIncluded: COMMON_SERVICES_NOT_INCLUDED,
+    servicesIncluded: [],
+    servicesNotIncluded: [],
     requirements: COMMON_SERVICES_REQUIREMENTS,
     highlights: [
       "Challenging technical 6000m peak",
