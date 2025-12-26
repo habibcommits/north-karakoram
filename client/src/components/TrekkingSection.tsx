@@ -115,7 +115,7 @@ function TrekkingCard({ trek, index, isVisible }: {
                   shadow-lg backdrop-blur-sm bg-[#006F61]">
                   {categoryConfig[peakCategory].label}
                 </span>
-                <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full
+                <span className="hidden px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full
                   bg-white/95 backdrop-blur-md text-[#006F61] text-[10px] sm:text-xs
                   font-semibold border border-white/30 shadow-sm">
                   {trek.difficulty}

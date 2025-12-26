@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Sparkles,
-  TrendingUp,
-  Mountain,
-  ChevronRight
+  TrendingUp
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
@@ -19,8 +17,9 @@ const expeditionCategories = [
       { name: "Nanga Parbat", elevation: "8126m", difficulty: "Extreme" },
       { name: "Gasherbrum II", elevation: "8034m", difficulty: "Very Hard" },
     ],
+    gradient: "from-rose-500 to-orange-500",
+    accentColor: "#ef4444",
     icon: "🏔️",
-    badge: "Elite",
   },
   {
     title: "7000M PEAKS",
@@ -31,8 +30,9 @@ const expeditionCategories = [
       { name: "Masherbrum", elevation: "7806m", difficulty: "Hard" },
       { name: "Spantik", elevation: "7027m", difficulty: "Moderate" },
     ],
+    gradient: "from-amber-500 to-yellow-500",
+    accentColor: "#f59e0b",
     icon: "⛰️",
-    badge: "Advanced",
   },
   {
     title: "6000M PEAKS",
@@ -43,16 +43,17 @@ const expeditionCategories = [
       { name: "Pastore Peak", elevation: "6210m", difficulty: "Moderate" },
       { name: "Khurdopin", elevation: "6400m", difficulty: "Moderate" },
     ],
+    gradient: "from-emerald-500 to-teal-500",
+    accentColor: "#10b981",
     icon: "🗻",
-    badge: "Starter",
   },
 ];
 
 const difficultyColors: Record<string, string> = {
-  "Extreme": "bg-[#006F61]/20 text-[#006F61] border border-[#006F61]/30",
-  "Very Hard": "bg-[#006F61]/15 text-[#006F61] border border-[#006F61]/25",
-  "Hard": "bg-[#006F61]/10 text-[#006F61] border border-[#006F61]/20",
-  "Moderate": "bg-[#006F61]/5 text-[#006F61] border border-[#006F61]/15",
+  "Extreme": "bg-red-100 text-red-700",
+  "Very Hard": "bg-orange-100 text-orange-700",
+  "Hard": "bg-amber-100 text-amber-700",
+  "Moderate": "bg-emerald-100 text-emerald-700",
 };
 
 export function ExpeditionsSection() {
@@ -80,32 +81,18 @@ export function ExpeditionsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 lg:py-32 bg-white overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
     >
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 z-0">
-        {/* Light gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50/80 via-white to-gray-50/50" />
-
-        {/* Subtle pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23006F61' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large gradient blobs */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#006F61]/5 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#006F61]/3 blur-3xl" />
-
-        {/* Decorative circles */}
-        <div className="absolute top-32 right-10 w-64 h-64 rounded-full border border-[#006F61]/10 hidden lg:block" />
-        <div className="absolute top-48 right-24 w-48 h-48 rounded-full border border-[#006F61]/5 hidden lg:block" />
-        <div className="absolute bottom-32 left-10 w-80 h-80 rounded-full border border-[#006F61]/10 hidden lg:block" />
+        <div
+          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.03]"
+          style={{ backgroundColor: "#006F61" }}
+        />
+        <div
+          className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.02]"
+          style={{ backgroundColor: "#006F61" }}
+        />
 
         {/* Decorative dots pattern */}
         <div className="absolute top-40 right-10 hidden xl:block">
@@ -113,26 +100,21 @@ export function ExpeditionsSection() {
             {[...Array(16)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-[#006F61]/10"
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
               />
             ))}
           </div>
         </div>
 
-        <div className="absolute bottom-40 left-20 hidden xl:block">
-          <div className="grid grid-cols-3 gap-3">
-            {[...Array(9)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 rounded-full bg-[#006F61]/10"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Decorative lines */}
-        <div className="absolute top-1/3 left-0 w-32 h-px bg-gradient-to-r from-[#006F61]/20 to-transparent hidden lg:block" />
-        <div className="absolute top-2/3 right-0 w-32 h-px bg-gradient-to-l from-[#006F61]/20 to-transparent hidden lg:block" />
+        {/* Decorative line */}
+        <div
+          className="absolute top-1/3 left-0 w-32 h-px hidden lg:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(0,111,97,0.2) 0%, transparent 100%)",
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -142,10 +124,14 @@ export function ExpeditionsSection() {
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6
-            bg-[#006F61]/10 border border-[#006F61]/20">
-            <Mountain className="w-4 h-4 text-[#006F61]" />
-            <span className="text-sm font-semibold tracking-wide text-[#006F61]">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+          >
+            <span
+              className="text-sm font-semibold tracking-wide"
+              style={{ color: "#006F61" }}
+            >
               EXPEDITIONS
             </span>
           </div>
@@ -153,8 +139,22 @@ export function ExpeditionsSection() {
           {/* Title */}
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
             Guided Expeditions to{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-[#006F61]">Legendary Peaks</span>
+            <span className="relative inline-block" style={{ color: "#006F61" }}>
+              Legendary Peaks
+              {/* <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8.5C50 2.5 150 2.5 198 8.5"
+                  stroke="#006F61"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeOpacity="0.3"
+                />
+              </svg> */}
             </span>
           </h2>
 
@@ -183,54 +183,34 @@ export function ExpeditionsSection() {
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div
-                  className={`relative h-full bg-white rounded-2xl overflow-hidden
-                    border-2 transition-all duration-500
-                    ${isHovered
-                      ? 'border-[#006F61] shadow-2xl shadow-[#006F61]/15 -translate-y-2'
-                      : 'border-gray-100 shadow-lg shadow-gray-200/50 hover:border-[#006F61]/30'
-                    }`}
+                  className="relative h-full bg-white rounded-2xl overflow-hidden
+                    shadow-sm hover:shadow-2xl hover:shadow-black/10
+                    border border-gray-100 hover:border-gray-200
+                    transition-all duration-500 hover:-translate-y-2"
                 >
-                  {/* Header */}
+                  {/* Header with gradient */}
                   <div
-                    className={`relative h-36 p-6 overflow-hidden transition-colors duration-500
-                      ${isHovered ? 'bg-[#006F61]' : 'bg-gray-50'}`}
+                    className={`relative h-32 bg-gradient-to-r ${category.gradient} p-6 overflow-hidden`}
                   >
                     {/* Background pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className={`absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2
-                        ${isHovered ? 'bg-white' : 'bg-[#006F61]'}`} />
-                    </div>
-
-                    {/* Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
-                        transition-colors duration-300
-                        ${isHovered
-                          ? 'bg-white/20 text-white'
-                          : 'bg-[#006F61] text-white'
-                        }`}>
-                        {category.badge}
-                      </span>
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white blur-3xl -translate-y-1/2 translate-x-1/2" />
                     </div>
 
                     {/* Icon */}
-                    <div className={`hidden md:block absolute bottom-4 right-4 text-4xl transition-opacity duration-300
-                      ${isHovered ? 'opacity-30' : 'opacity-20'}`}>
+                    <div className="hidden md:block absolute top-4 right-4 text-4xl opacity-30 group-hover:opacity-50 transition-opacity">
                       {category.icon}
                     </div>
 
                     {/* Title content */}
                     <div className="relative z-10">
                       <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className={`w-5 h-5 transition-colors duration-300
-                          ${isHovered ? 'text-white/80' : 'text-[#006F61]'}`} />
-                        <span className={`text-sm font-medium transition-colors duration-300
-                          ${isHovered ? 'text-white/80' : 'text-[#006F61]'}`}>
+                        <TrendingUp className="w-5 h-5 text-white/80" />
+                        <span className="text-white/80 text-sm font-medium">
                           {category.subtitle}
                         </span>
                       </div>
-                      <h3 className={`text-2xl font-bold tracking-wide transition-colors duration-300
-                        ${isHovered ? 'text-white' : 'text-gray-900'}`}>
+                      <h3 className="text-2xl font-bold text-white tracking-wide">
                         {category.title}
                       </h3>
                     </div>
@@ -248,12 +228,14 @@ export function ExpeditionsSection() {
                       {category.peaks.map((peak) => (
                         <div
                           key={peak.name}
-                          className={`flex items-center justify-between p-3 rounded-xl
-                            transition-colors duration-300
-                            ${isHovered ? 'bg-[#006F61]/5' : 'bg-gray-50'}`}
+                          className="flex items-center justify-between p-3 rounded-xl
+                            bg-gray-50 group-hover:bg-gray-100/80 transition-colors"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full flex-shrink-0 bg-[#006F61]" />
+                            <div
+                              className="w-2 h-2 rounded-full flex-shrink-0"
+                              style={{ backgroundColor: "#006F61" }}
+                            />
                             <div>
                               <span className="font-semibold text-gray-900">
                                 {peak.name}
@@ -275,15 +257,17 @@ export function ExpeditionsSection() {
                     {/* CTA Button */}
                     <Link href="/expedition" className="block">
                       <Button
-                        className={`w-full group/btn font-semibold rounded-xl py-5 h-auto
-                          transition-all duration-300
-                          ${isHovered
-                            ? 'bg-[#006F61] hover:bg-[#005a4d] text-white shadow-lg shadow-[#006F61]/30'
-                            : 'bg-white border-2 border-[#006F61] text-[#006F61] hover:bg-[#006F61] hover:text-white'
-                          }`}
+                        className="w-full group/btn font-semibold rounded-xl py-5 h-auto
+                          transition-all duration-300 text-white"
+                        style={{
+                          backgroundColor: "#006F61",
+                          boxShadow: isHovered
+                            ? "0 10px 30px -10px rgba(0, 111, 97, 0.5)"
+                            : "none",
+                        }}
                       >
                         <span>Explore Expeditions</span>
-                        <ChevronRight
+                        <ArrowRight
                           className="w-4 h-4 ml-2 transition-transform
                           group-hover/btn:translate-x-1"
                         />
@@ -291,10 +275,11 @@ export function ExpeditionsSection() {
                     </Link>
                   </div>
 
-                  {/* Bottom accent line */}
+                  {/* Hover accent line */}
                   <div
-                    className={`absolute bottom-0 left-0 right-0 h-1 transition-all duration-500
-                      ${isHovered ? 'bg-[#006F61]' : 'bg-transparent'}`}
+                    className="absolute bottom-0 left-0 right-0 h-1 transition-transform duration-300
+                      origin-left scale-x-0 group-hover:scale-x-100"
+                    style={{ backgroundColor: category.accentColor }}
                   />
                 </div>
               </div>
@@ -302,61 +287,60 @@ export function ExpeditionsSection() {
           })}
         </div>
 
-        {/* Stats Section */}
-        {/* <div
-          className={`mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-8 md:gap-12
-            transition-all duration-700 delay-300
-            ${isVisible ? "opacity-100" : "opacity-0"}`}
-        >
-          {[
-            { value: "15+", label: "Peak Expeditions" },
-            { value: "98%", label: "Summit Success" },
-            { value: "500+", label: "Climbers Guided" },
-            { value: "25+", label: "Years Experience" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#006F61]">
-                {stat.value}
-              </div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div> */}
-
-        {/* Bottom CTA Section */}
+        {/* Bottom Stats & CTA */}
         <div
-          className={`mt-12 md:mt-16 transition-all duration-700 delay-500
+          className={`mt-16 md:mt-20 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          {/* CTA Card */}
-          <div className="relative rounded-3xl overflow-hidden p-8 md:p-12 text-center
-            bg-gradient-to-br from-gray-50 to-white border-2 border-[#006F61]/20">
+          {/* Stats Row */}
+          {/* <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12">
+            {[
+              { value: "15+", label: "Peak Expeditions" },
+              { value: "98%", label: "Summit Success" },
+              { value: "500+", label: "Climbers Guided" },
+              { value: "25+", label: "Years Experience" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div
+                  className="text-3xl md:text-4xl font-bold mb-1"
+                  style={{ color: "#006F61" }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-gray-500 text-sm font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div> */}
 
+          {/* CTA Card */}
+          <div
+            className="relative rounded-3xl overflow-hidden p-8 md:p-12 text-center"
+            style={{ backgroundColor: "#006F61" }}
+          >
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#006F61] blur-3xl -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#006F61] blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white blur-3xl translate-y-1/2 -translate-x-1/2" />
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute top-6 left-6 w-20 h-20 border border-[#006F61]/10 rounded-full hidden md:block" />
-            <div className="absolute bottom-6 right-6 w-32 h-32 border border-[#006F61]/10 rounded-full hidden md:block" />
+            <div className="absolute top-6 left-6 w-20 h-20 border border-white/10 rounded-full hidden md:block" />
+            <div className="absolute bottom-6 right-6 w-32 h-32 border border-white/10 rounded-full hidden md:block" />
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#006F61]/10 mb-6">
-                <Sparkles className="w-4 h-4 text-[#006F61]" />
-                <span className="text-[#006F61] text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 mb-6">
+                <Sparkles className="w-4 h-4 text-white" />
+                <span className="text-white/90 text-sm font-medium">
                   Start Your Journey
                 </span>
               </div>
 
-              <h3 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 mb-4">
-                Ready to Conquer Your{" "}
-                <span className="text-[#006F61]">Peak</span>?
+              <h3 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
+                Ready to Conquer Your Peak?
               </h3>
-              <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
                 Explore all our expeditions and find the perfect challenge for
                 you. Our expert mountaineering team is ready to guide you to the
                 summit.
@@ -366,11 +350,11 @@ export function ExpeditionsSection() {
                 <Link href="/expedition">
                   <Button
                     size="lg"
-                    className="w-full sm:w-fit group bg-[#006F61] hover:bg-[#005a4d] font-semibold
-                      px-8 py-6 h-auto rounded-xl shadow-lg transition-all duration-300
-                      hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#006F61]/30"
+                    className="w-full md:w-fit group bg-white hover:bg-gray-100 font-semibold
+                      px-8 py-6 h-auto rounded-xl shadow-xl transition-all duration-300
+                      hover:-translate-y-0.5"
+                    style={{ color: "#006F61" }}
                   >
-                    <Mountain className="w-5 h-5 mr-2" />
                     <span>View All Expeditions</span>
                     <ArrowRight
                       className="w-5 h-5 ml-2 transition-transform
@@ -383,10 +367,10 @@ export function ExpeditionsSection() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full sm:w-fit group font-semibold px-8 py-6 h-auto rounded-xl
-                      border-2 border-[#006F61] text-[#006F61] bg-white
-                      hover:bg-[#006F61] hover:text-white
-                      transition-all duration-300 hover:-translate-y-0.5"
+                    className="w-full md:w-fit group font-semibold px-8 py-6 h-auto rounded-xl
+                      border-2 border-white/30 text-white bg-white/10
+                      hover:bg-white hover:border-white transition-all duration-300
+                      hover:-translate-y-0.5 hover:text-[#006F61]"
                   >
                     <span>Plan Custom Expedition</span>
                   </Button>

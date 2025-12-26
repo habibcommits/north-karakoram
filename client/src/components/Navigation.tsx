@@ -274,7 +274,7 @@ function DropdownMenu({
     >
       <button
         className={cn(
-          "flex items-center gap-1 px-2 lg:px-3 py-2 text-xs lg:text-sm font-semibold rounded-lg transition-all duration-200",
+          "flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 xl:px-3 py-1.5 lg:py-2 text-[11px] lg:text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap",
           isActive || isOpen
             ? "text-white bg-white/15"
             : "text-white/85 hover:text-white hover:bg-white/10"
@@ -283,7 +283,7 @@ function DropdownMenu({
         {trigger}
         <ChevronDown
           className={cn(
-            "w-3.5 h-3.5 transition-transform duration-300",
+            "w-3 h-3 lg:w-3.5 lg:h-3.5 transition-transform duration-300 flex-shrink-0",
             isOpen && "rotate-180"
           )}
         />
@@ -504,9 +504,9 @@ export function Navigation() {
 
   return (
     <>
-      {/* Top Bar - Hidden on mobile */}
+      {/* Top Bar - Hidden on mobile and tablet */}
       <div
-        className="hidden lg:block border-b transition-all duration-300"
+        className="hidden xl:block border-b transition-all duration-300"
         style={{
           backgroundColor: "#fff",
           borderColor: "rgba(0,0,0,0.08)",
@@ -537,7 +537,7 @@ export function Navigation() {
             </div>
 
             {/* Center - Location */}
-            <div className="hidden xl:flex items-center gap-2 text-gray-600 text-xs">
+            <div className="flex items-center gap-2 text-gray-600 text-xs">
               <MapPin className="w-3.5 h-3.5 text-[#006F61]" />
               <span>Near Hishpar Hotel, Sathang, Skardu</span>
             </div>
@@ -550,7 +550,7 @@ export function Navigation() {
                 className="flex items-center gap-2 text-gray-600 hover:text-[#006F61] transition-colors"
               >
                 <Search className="w-4 h-4" />
-                <span className="text-xs font-medium hidden xl:inline">Search</span>
+                <span className="text-xs font-medium">Search</span>
               </button>
 
               {/* Divider */}
@@ -572,24 +572,6 @@ export function Navigation() {
                   </a>
                 ))}
               </div>
-
-              {/* Divider */}
-              {/* <div className="w-px h-5 bg-gray-200" /> */}
-
-              {/* Book Now Button */}
-              {/* <Link href="/contact">
-                <Button
-                  size="sm"
-                  className="h-8 px-4 font-bold text-xs rounded-lg shadow-md
-                    hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                  style={{
-                    backgroundColor: "#f58220",
-                    color: "white",
-                  }}
-                >
-                  Book Now
-                </Button>
-              </Link> */}
             </div>
           </div>
 
@@ -615,26 +597,26 @@ export function Navigation() {
         )}
         style={{ backgroundColor: "#006F61" }}
       >
-        <div className="container mx-auto px-3 lg:px-4 xl:px-6">
-          <div className="flex items-center justify-between h-16 lg:h-18 xl:h-20">
+        <div className="container mx-auto px-2 sm:px-3 lg:px-4 xl:px-6">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-16 xl:h-20 gap-2 lg:gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center flex-shrink-0 group">
               <div className="relative">
                 <img
                   src={logoImage}
                   alt="North Karakoram"
-                  className="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto transition-all duration-300 group-hover:scale-105"
+                  className="h-10 sm:h-12 lg:h-14 xl:h-16 2xl:h-20 w-auto transition-all duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-lg transition-colors duration-300" />
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-0 flex-1 justify-center">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center min-w-0">
               <Link
                 href="/"
                 className={cn(
-                  "px-2 lg:px-3 py-2 text-xs lg:text-sm font-semibold rounded-lg transition-all duration-200",
+                  "px-1.5 lg:px-2 xl:px-3 py-1.5 lg:py-2 text-[11px] lg:text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap",
                   location === "/"
                     ? "text-white bg-white/15"
                     : "text-white/85 hover:text-white hover:bg-white/10"
@@ -676,13 +658,13 @@ export function Navigation() {
               <Link
                 href="/pakistan-visa"
                 className={cn(
-                  "px-2 lg:px-3 py-2 text-xs lg:text-sm font-semibold rounded-lg transition-all duration-200",
+                  "px-1.5 lg:px-2 xl:px-3 py-1.5 lg:py-2 text-[11px] lg:text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap",
                   location === "/pakistan-visa"
                     ? "text-white bg-white/15"
                     : "text-white/85 hover:text-white hover:bg-white/10"
                 )}
               >
-                Visa Info
+                Visa
               </Link>
 
               <DropdownMenu
@@ -695,7 +677,7 @@ export function Navigation() {
               <Link
                 href="/contact"
                 className={cn(
-                  "px-2 lg:px-3 py-2 text-xs lg:text-sm font-semibold rounded-lg transition-all duration-200",
+                  "px-1.5 lg:px-2 xl:px-3 py-1.5 lg:py-2 text-[11px] lg:text-xs xl:text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap",
                   location === "/contact"
                     ? "text-white bg-white/15"
                     : "text-white/85 hover:text-white hover:bg-white/10"
@@ -705,38 +687,34 @@ export function Navigation() {
               </Link>
             </nav>
 
-            <Link href="/contact">
-              <Button
-                size="sm"
-                className="h-8 px-4 font-bold text-xs rounded-lg shadow-md
-                    hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  backgroundColor: "#f58220",
-                  color: "white",
-                }}
-              >
-                Book Now
-              </Button>
-            </Link>
-
-
             {/* Right Actions */}
-            <div className="flex items-center gap-2">
-              {/* Mobile Search Button */}
+            <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 flex-shrink-0">
+              {/* Desktop Search Button - Only on lg screens */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl
+                className="hidden lg:flex xl:hidden w-8 h-8 items-center justify-center rounded-lg
                   text-white/90 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
                 aria-label="Search"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4" />
               </button>
 
-              {/* Mobile Book Now */}
-              <Link href="/contact" className="hidden sm:block lg:hidden">
+              {/* Mobile/Tablet Search Button */}
+              <button
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl
+                  text-white/90 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Book Now Button - Visible on all screens */}
+              <Link href="/contact" className="flex-shrink-0">
                 <Button
                   size="sm"
-                  className="h-9 px-4 font-bold text-xs rounded-lg shadow-md"
+                  className="h-8 sm:h-9 lg:h-8 xl:h-9 px-3 sm:px-4 lg:px-3 xl:px-4 font-bold text-[10px] sm:text-xs lg:text-[11px] xl:text-xs rounded-lg shadow-md
+                    hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
                   style={{
                     backgroundColor: "#f58220",
                     color: "white",
@@ -750,11 +728,11 @@ export function Navigation() {
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <button
-                    className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl
+                    className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl
                       text-white/90 hover:text-white bg-white/10 hover:bg-white/20 transition-all duration-200"
                     aria-label="Open menu"
                   >
-                    <Menu className="w-5 h-5" />
+                    <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                 </SheetTrigger>
 
@@ -769,7 +747,7 @@ export function Navigation() {
                   <div className="flex flex-col h-full">
                     {/* Mobile Header */}
                     <div className="flex items-center justify-between p-4 border-b border-white/10">
-                      <img src={logoImage} alt="Logo" className="h-12 w-auto" />
+                      <img src={logoImage} alt="Logo" className="h-10 sm:h-12 w-auto" />
                       <button
                         onClick={() => setMobileMenuOpen(false)}
                         className="w-9 h-9 flex items-center justify-center rounded-xl
@@ -858,7 +836,7 @@ export function Navigation() {
                     </nav>
 
                     {/* Mobile Footer */}
-                    <div className="hidden md:block p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
+                    <div className="hidden p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
                       {/* Contact Info */}
                       <div className="space-y-2">
                         <a
@@ -905,7 +883,7 @@ export function Navigation() {
                         className="block"
                       >
                         <Button
-                          className="w-full h-12 font-bold text-sm rounded-xl shadow-lg"
+                          className="w-full h-11 sm:h-12 font-bold text-sm rounded-xl shadow-lg"
                           style={{ backgroundColor: "#f58220" }}
                         >
                           Book Your Adventure
@@ -919,7 +897,7 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Search Overlay */}
+        {/* Mobile/Tablet Search Overlay */}
         <div
           className={cn(
             "lg:hidden overflow-hidden transition-all duration-300 border-t border-white/10",
@@ -927,8 +905,23 @@ export function Navigation() {
           )}
           style={{ backgroundColor: "#005a50" }}
         >
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-3 sm:px-4">
             <SearchBar onClose={() => setSearchOpen(false)} />
+          </div>
+        </div>
+
+        {/* Desktop Search Overlay - Only for lg screens without top bar */}
+        <div
+          className={cn(
+            "hidden lg:block xl:hidden overflow-hidden transition-all duration-300 border-t border-white/10",
+            searchOpen ? "max-h-20 py-3" : "max-h-0"
+          )}
+          style={{ backgroundColor: "#005a50" }}
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-xl mx-auto">
+              <SearchBar onClose={() => setSearchOpen(false)} />
+            </div>
           </div>
         </div>
       </header>

@@ -485,7 +485,9 @@ export default function Contact() {
                   <CardContent className="p-6 sm:p-8 md:p-10 lg:p-12">
                     <Form {...form}>
                       <form
-                        onSubmit={form.handleSubmit(onSubmit)}
+                        // onSubmit={form.handleSubmit(onSubmit)}
+                        action="https://formspree.io/f/xgoevnql"
+                        method="POST"
                         className="space-y-6"
                       >
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

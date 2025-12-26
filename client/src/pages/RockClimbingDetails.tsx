@@ -642,66 +642,53 @@ export default function RockClimbingDetails() {
               {/* Right Column - Booking Card */}
               <div className="lg:col-span-1">
                 <div
-                  className={`lg:sticky lg:top-24 transition-all duration-700 delay-500
-      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                  className={`sticky top-24 transition-all duration-700 delay-500
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
                   <Card className="border-0 shadow-xl rounded-2xl overflow-hidden">
                     {/* Card Header */}
                     <div
-                      className="p-4 sm:p-6 text-white"
+                      className="p-6 text-white"
                       style={{ backgroundColor: "#006F61" }}
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-                        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span className="text-xs sm:text-sm font-medium opacity-90">
-                          Premium Expedition
-                        </span>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Sparkles className="w-5 h-5" />
+                        <span className="text-sm font-medium opacity-90">Premium Rock Climbing</span>
                       </div>
-                      <h3 className="font-heading font-bold text-lg sm:text-xl">
-                        Book Your Adventure
-                      </h3>
+                      <h3 className="font-heading font-bold text-xl">Book Your Adventure</h3>
                     </div>
 
-                    <CardContent className="p-4 sm:p-6">
+                    <CardContent className="p-6">
                       {/* Details List */}
-                      <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
+                      <div className="space-y-4 mb-6">
                         {[
                           { label: "Duration", value: expedition.duration },
                           { label: "Difficulty", value: expedition.difficulty },
                           { label: "Location", value: expedition.location },
-                          {
-                            label: "Season",
-                            value:
-                              expedition.bestSeason !== null
-                                ? expedition.bestSeason
-                                : "N/A",
-                          },
+                          { label: "Season", value: expedition.bestSeason !== null ? expedition.bestSeason : "N/A" },
+                          // { label: "Group Size", value: expedition.groupSize },
                         ].map((item, index) => (
                           <div
                             key={index}
-                            className="flex flex-col xs:flex-row xs:items-center justify-between py-2 sm:py-3 border-b border-gray-100 last:border-0 gap-1 xs:gap-0"
+                            className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0"
                           >
-                            <span className="text-gray-500 text-xs sm:text-sm">
-                              {item.label}
-                            </span>
-                            <span className="font-semibold text-gray-900 text-xs sm:text-sm text-left xs:text-right break-words max-w-full xs:max-w-[60%]">
-                              {item.value}
-                            </span>
+                            <span className="text-gray-500 text-sm">{item.label}</span>
+                            <span className="font-semibold text-gray-900 text-sm">{item.value}</span>
                           </div>
                         ))}
                       </div>
 
                       {/* CTA Buttons */}
-                      <div className="space-y-2 sm:space-y-3">
+                      <div className="space-y-3">
                         <Link href="/contact" className="block">
                           <Button
-                            className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold rounded-xl shadow-lg
-                hover:shadow-xl transition-all hover:-translate-y-0.5"
+                            className="w-full h-12 font-semibold rounded-xl shadow-lg
+                              hover:shadow-xl transition-all hover:-translate-y-0.5"
                             style={{ backgroundColor: "#006F61" }}
                             data-testid="button-book-expedition"
                           >
-                            <span className="truncate">Book This Expedition</span>
-                            <ArrowRight className="w-4 h-4 ml-2 flex-shrink-0" />
+                            Book This Rock Climbing
+                            <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
 
@@ -715,46 +702,46 @@ export default function RockClimbingDetails() {
                         >
                           <Button
                             variant="outline"
-                            className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold rounded-xl border-2
-                hover:-translate-y-0.5 transition-all"
+                            className="w-full h-12 font-semibold rounded-xl border-2
+                              hover:-translate-y-0.5 transition-all"
                             style={{ borderColor: "#25D366", color: "#25D366" }}
                           >
-                            <SiWhatsapp className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                            <span className="truncate">WhatsApp Inquiry</span>
+                            <SiWhatsapp className="w-5 h-5 mr-2" />
+                            WhatsApp Inquiry
                           </Button>
                         </a>
 
                         <a href="tel:+923330228111" className="block">
                           <Button
                             variant="ghost"
-                            className="w-full h-10 sm:h-12 text-sm sm:text-base font-semibold rounded-xl text-gray-600
-                hover:bg-gray-100"
+                            className="w-full h-12 font-semibold rounded-xl text-gray-600
+                              hover:bg-gray-100"
                           >
-                            <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-                            <span className="truncate">+92 333 0228111</span>
+                            <Phone className="w-4 h-4 mr-2" />
+                            +92 333 0228111
                           </Button>
                         </a>
                       </div>
 
                       {/* Trust Badges */}
-                      <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
-                        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-gray-400">
-                          <div className="flex items-center gap-1 sm:gap-1.5">
-                            <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
-                            <span className="text-[10px] sm:text-xs">Secure</span>
+                      <div className="mt-6 pt-6 border-t border-gray-100">
+                        <div className="flex items-center justify-center gap-4 text-gray-400">
+                          <div className="flex items-center gap-1.5">
+                            <Shield className="w-4 h-4" />
+                            <span className="text-xs">Secure</span>
                           </div>
-                          <div className="flex items-center gap-1 sm:gap-1.5">
-                            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current text-amber-400" />
-                            <span className="text-[10px] sm:text-xs">Top Rated</span>
+                          <div className="flex items-center gap-1.5">
+                            <Star className="w-4 h-4 fill-current text-amber-400" />
+                            <span className="text-xs">Top Rated</span>
                           </div>
-                          <div className="flex items-center gap-1 sm:gap-1.5">
-                            <Users className="w-3 h-3 sm:w-4 sm:h-4" />
-                            <span className="text-[10px] sm:text-xs">Expert Guides</span>
+                          <div className="flex items-center gap-1.5">
+                            <Users className="w-4 h-4" />
+                            <span className="text-xs">Expert Guides</span>
                           </div>
                         </div>
                       </div>
 
-                      <p className="text-center text-gray-500 text-[10px] sm:text-xs mt-3 sm:mt-4 px-2">
+                      <p className="text-center text-gray-500 text-xs mt-4">
                         Custom dates available. Group discounts offered.
                       </p>
                     </CardContent>
@@ -763,10 +750,10 @@ export default function RockClimbingDetails() {
                   {/* Download Brochure */}
                   <Button
                     variant="ghost"
-                    className="w-full mt-3 sm:mt-4 h-10 sm:h-12 text-sm sm:text-base rounded-xl text-gray-600 hover:bg-gray-100"
+                    className="w-full mt-4 h-12 rounded-xl text-gray-600 hover:bg-gray-100"
                   >
-                    <Download className="w-4 h-4 mr-2 flex-shrink-0" />
-                    <span className="truncate">Download Brochure (PDF)</span>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Brochure (PDF)
                   </Button>
                 </div>
               </div>
