@@ -911,7 +911,9 @@ export default function TourDetails() {
                       <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
                   </Link>
-                  <a href="https://wa.me/923330228111" target="_blank" rel="noopener noreferrer">
+                  <a href={`https://wa.me/923330228111?text=${encodeURIComponent(
+                    `I'm interested in booking an adventure with North Karakoram: ${expedition.name}`
+                  )}`} target="_blank" rel="noopener noreferrer">
                     <Button
                       size="lg"
                       variant="outline"
