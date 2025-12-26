@@ -215,7 +215,7 @@ export function ExpeditionsSection() {
                       {category.peaks.map((peak) => (
                         <div
                           key={peak.name}
-                          className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-0 justify-between p-3 rounded-xl
+                          className="flex flex-col xl:flex-row items-start lg:items-center gap-2 lg:gap-0 justify-between p-3 rounded-xl
                             bg-gray-50 group-hover:bg-gray-100/80 transition-colors"
                         >
                           <div className="flex items-center gap-3">
