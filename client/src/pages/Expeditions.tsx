@@ -16,6 +16,12 @@ import {
 } from "lucide-react";
 import { expeditions } from "@/lib/expeditionData";
 import type { ExpeditionData } from "@/lib/expeditionData";
+import { usePageSEO } from "@/seo/hooks/useSeo";
+import { useQuery } from "@tanstack/react-query";
+import { SITE_CONFIG } from "@/seo/config";
+import { SEOHead } from "@/seo/SEOHead";
+import { CollectionSchema } from "@/seo/StructuredData";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 // Peak categories based on altitude
 const peakCategories = [
@@ -157,6 +163,15 @@ function ExpeditionCard({ expedition }: { expedition: ExpeditionData }) {
 }
 
 export default function Expeditions() {
+  const seo = usePageSEO('expeditions');
+
+  // Generate schema items from data
+  const schemaItems = expeditions?.map((exp) => ({
+    name: exp.name,
+    url: `${SITE_CONFIG.url}/expedition/${exp.slug}`,
+    image: exp.image,
+  })) || [];
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPeakCategory, setSelectedPeakCategory] = useState("all");
   const [selectedDifficulty, setSelectedDifficulty] = useState("All Levels");
@@ -211,310 +226,319 @@ export default function Expeditions() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] sm:h-[75vh] md:h-[70vh] min-h-[500px] max-h-[700px] overflow-hidden bg-gray-900">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <div className="w-full h-full animate-ken-burns">
-            <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop"
-              alt="Mountain expedition"
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <>
+      {seo && <SEOHead seo={seo} path="/expedition" />}
+      <CollectionSchema
+        name="Mountaineering Expeditions in Pakistan"
+        description="Complete list of our high-altitude expeditions to Pakistan's 8000m peaks and beyond"
+        url={`${SITE_CONFIG.url}/expedition`}
+        items={schemaItems}
+      />
 
-          {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 right-10 lg:right-20 w-20 lg:w-32 h-20 lg:h-32 border border-white/10 rounded-full hidden md:block" />
-          <div className="absolute top-24 right-14 lg:right-24 w-14 lg:w-24 h-14 lg:h-24 border border-[#006F61]/30 rounded-full hidden md:block" />
-
-          {/* Side decoration */}
-          <div className="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
-            <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/40 to-white/20" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#006F61] shadow-lg shadow-[#006F61]/50" />
-            <div className="w-px h-16 bg-gradient-to-b from-white/20 via-white/40 to-transparent" />
-          </div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="h-full flex flex-col justify-center max-w-4xl">
-            {/* Badge */}
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#006F61] text-white text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-lg w-fit animate-fade-in"
-            >
-              <Sparkles className="w-4 h-4" />
-              <span className="tracking-wide">Elite Mountain Expeditions</span>
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section */}
+        <section className="relative h-[70vh] sm:h-[75vh] md:h-[70vh] min-h-[500px] max-h-[700px] overflow-hidden bg-gray-900">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <div className="w-full h-full animate-ken-burns">
+              <img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop"
+                alt="Mountain expedition"
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            {/* Title */}
-            <h1
-              className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-2 sm:mb-3 leading-[1.1] tracking-tight animate-fade-in-up"
-              style={{ textShadow: '0 4px 20px rgba(0,0,0,0.4)' }}
-            >
-              8000m, 7000m & 6000m
-            </h1>
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+          </div>
 
-            {/* Subtitle with background */}
-            <div className="inline-block mb-4 sm:mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <h2
-                className="w-fit font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight px-3 sm:px-4 py-1.5 sm:py-2 -ml-3 sm:-ml-4 rounded-lg bg-gradient-to-r from-[#006F61] to-[#006F61]/80 text-white shadow-xl border-l-4 border-white/40"
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+            <div className="absolute top-20 right-10 lg:right-20 w-20 lg:w-32 h-20 lg:h-32 border border-white/10 rounded-full hidden md:block" />
+            <div className="absolute top-24 right-14 lg:right-24 w-14 lg:w-24 h-14 lg:h-24 border border-[#006F61]/30 rounded-full hidden md:block" />
+
+            {/* Side decoration */}
+            <div className="absolute left-6 lg:left-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
+              <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/40 to-white/20" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[#006F61] shadow-lg shadow-[#006F61]/50" />
+              <div className="w-px h-16 bg-gradient-to-b from-white/20 via-white/40 to-transparent" />
+            </div>
+          </div>
+
+          {/* Hero Content */}
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <div className="h-full flex flex-col justify-center max-w-4xl">
+              {/* Badge */}
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#006F61] text-white text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-lg w-fit animate-fade-in"
               >
-                Peak Expeditions
-              </h2>
-            </div>
+                <Sparkles className="w-4 h-4" />
+                <span className="tracking-wide">Elite Mountain Expeditions</span>
+              </div>
 
-            {/* Description */}
-            <p
-              className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed mb-6 sm:mb-8 animate-fade-in-up"
-              style={{ animationDelay: '0.2s', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
-            >
-              Professional expeditions to K2, Broad Peak, Nanga Parbat, Gasherbrum, Spantik, and more.
-              Challenge yourself with world-class mountaineering adventures.
-            </p>
+              {/* Title */}
+              <h1
+                className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-2 sm:mb-3 leading-[1.1] tracking-tight animate-fade-in-up"
+                style={{ textShadow: '0 4px 20px rgba(0,0,0,0.4)' }}
+              >
+                8000m, 7000m & 6000m
+              </h1>
 
-            {/* Quick Stats */}
-            <div
-              className="flex flex-wrap gap-3 sm:gap-4 animate-fade-in-up"
-              style={{ animationDelay: '0.3s' }}
-            >
-              {peakCategories.slice(1).map((cat) => (
-                <div
-                  key={cat.id}
-                  className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => {
-                    setSelectedPeakCategory(cat.id);
-                    window.scrollTo({ top: window.innerHeight * 0.65, behavior: 'smooth' });
-                  }}
+              {/* Subtitle with background */}
+              <div className="inline-block mb-4 sm:mb-6 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <h2
+                  className="w-fit font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight px-3 sm:px-4 py-1.5 sm:py-2 -ml-3 sm:-ml-4 rounded-lg bg-gradient-to-r from-[#006F61] to-[#006F61]/80 text-white shadow-xl border-l-4 border-white/40"
                 >
-                  <Mountain className="w-4 h-4 text-[#006F61]" />
-                  <span className="text-white text-xs sm:text-sm font-medium">{cat.label}</span>
-                  <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-white/20 text-white text-[10px] sm:text-xs font-bold">
+                  Peak Expeditions
+                </h2>
+              </div>
+
+              {/* Description */}
+              <p
+                className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed mb-6 sm:mb-8 animate-fade-in-up"
+                style={{ animationDelay: '0.2s', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
+              >
+                Professional expeditions to K2, Broad Peak, Nanga Parbat, Gasherbrum, Spantik, and more.
+                Challenge yourself with world-class mountaineering adventures.
+              </p>
+
+              {/* Quick Stats */}
+              <div
+                className="flex flex-wrap gap-3 sm:gap-4 animate-fade-in-up"
+                style={{ animationDelay: '0.3s' }}
+              >
+                {peakCategories.slice(1).map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors cursor-pointer"
+                    onClick={() => {
+                      setSelectedPeakCategory(cat.id);
+                      window.scrollTo({ top: window.innerHeight * 0.65, behavior: 'smooth' });
+                    }}
+                  >
+                    <Mountain className="w-4 h-4 text-[#006F61]" />
+                    <span className="text-white text-xs sm:text-sm font-medium">{cat.label}</span>
+                    <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-white/20 text-white text-[10px] sm:text-xs font-bold">
+                      {counts[cat.id as keyof typeof counts]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10" />
+        </section>
+
+        {/* Filter Section */}
+        <section className={`sticky top-0 z-40 bg-white/95 backdrop-blur-lg transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : 'shadow-sm'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+            {/* Peak Category Tabs */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-3 sm:pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+              {peakCategories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedPeakCategory(cat.id)}
+                  className={`flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 ${selectedPeakCategory === cat.id
+                    ? 'bg-[#006F61] text-white shadow-lg shadow-[#006F61]/30'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                >
+                  <span>{cat.label}</span>
+                  <span className={`px-2 py-0.5 rounded-full text-xs ${selectedPeakCategory === cat.id
+                    ? 'bg-white/20 text-white'
+                    : 'bg-gray-200 text-gray-500'
+                    }`}>
                     {counts[cat.id as keyof typeof counts]}
                   </span>
-                </div>
+                </button>
               ))}
-            </div>
-          </div>
-        </div>
 
-        {/* Bottom Fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10" />
-      </section>
-
-      {/* Filter Section */}
-      <section className={`sticky top-0 z-40 bg-white/95 backdrop-blur-lg transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : 'shadow-sm'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-          {/* Peak Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-3 sm:pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-            {peakCategories.map((cat) => (
+              {/* Mobile Filter Toggle */}
               <button
-                key={cat.id}
-                onClick={() => setSelectedPeakCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 ${selectedPeakCategory === cat.id
-                  ? 'bg-[#006F61] text-white shadow-lg shadow-[#006F61]/30'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                onClick={() => setShowFilters(!showFilters)}
+                className={`md:hidden flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 ml-auto ${showFilters
+                  ? 'bg-[#006F61] text-white'
+                  : 'bg-gray-100 text-gray-600'
                   }`}
               >
-                <span>{cat.label}</span>
-                <span className={`px-2 py-0.5 rounded-full text-xs ${selectedPeakCategory === cat.id
-                  ? 'bg-white/20 text-white'
-                  : 'bg-gray-200 text-gray-500'
-                  }`}>
-                  {counts[cat.id as keyof typeof counts]}
-                </span>
+                {showFilters ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
+                <span>Filters</span>
               </button>
-            ))}
-
-            {/* Mobile Filter Toggle */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`md:hidden flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 ml-auto ${showFilters
-                ? 'bg-[#006F61] text-white'
-                : 'bg-gray-100 text-gray-600'
-                }`}
-            >
-              {showFilters ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
-              <span>Filters</span>
-            </button>
-          </div>
-
-          {/* Search & Filters Row */}
-          <div className={`${showFilters ? 'block' : 'hidden md:block'} space-y-3`}>
-            <div className="flex flex-col md:flex-row gap-3">
-              {/* Search */}
-              <div className="relative flex-grow">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="search"
-                  placeholder="Search expeditions by name or location..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none focus:ring-2 focus:ring-[#006F61]/20 transition-all text-gray-700 placeholder-gray-400"
-                />
-              </div>
-
-              {/* Dropdowns */}
-              <div className="flex gap-3">
-                <select
-                  value={selectedDifficulty}
-                  onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="flex-1 md:flex-none px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer min-w-[140px]"
-                >
-                  {difficulties.map((diff) => (
-                    <option key={diff} value={diff}>{diff}</option>
-                  ))}
-                </select>
-
-                <select
-                  value={selectedSeason}
-                  onChange={(e) => setSelectedSeason(e.target.value)}
-                  className="flex-1 md:flex-none px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer min-w-[140px]"
-                >
-                  {seasons.map((season) => (
-                    <option key={season} value={season}>{season}</option>
-                  ))}
-                </select>
-              </div>
             </div>
 
-            {/* Active Filters */}
-            {hasActiveFilters && (
-              <div className="flex items-center gap-2 flex-wrap pt-2">
-                <span className="text-sm text-gray-500">Active:</span>
-                {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
-                    "{searchQuery}"
-                    <button onClick={() => setSearchQuery("")} className="ml-1 hover:text-[#005a4d]">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                )}
-                {selectedPeakCategory !== "all" && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium w-fit">
-                    {peakCategories.find(c => c.id === selectedPeakCategory)?.label}
-                    <button onClick={() => setSelectedPeakCategory("all")} className="ml-1 hover:text-[#005a4d]">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                )}
-                {selectedDifficulty !== "All Levels" && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
-                    {selectedDifficulty}
-                    <button onClick={() => setSelectedDifficulty("All Levels")} className="ml-1 hover:text-[#005a4d]">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                )}
-                {selectedSeason !== "All Seasons" && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
-                    {selectedSeason}
-                    <button onClick={() => setSelectedSeason("All Seasons")} className="ml-1 hover:text-[#005a4d]">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </span>
-                )}
+            {/* Search & Filters Row */}
+            <div className={`${showFilters ? 'block' : 'hidden md:block'} space-y-3`}>
+              <div className="flex flex-col md:flex-row gap-3">
+                {/* Search */}
+                <div className="relative flex-grow">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="search"
+                    placeholder="Search expeditions by name or location..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none focus:ring-2 focus:ring-[#006F61]/20 transition-all text-gray-700 placeholder-gray-400"
+                  />
+                </div>
+
+                {/* Dropdowns */}
+                <div className="flex gap-3">
+                  <select
+                    value={selectedDifficulty}
+                    onChange={(e) => setSelectedDifficulty(e.target.value)}
+                    className="flex-1 md:flex-none px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer min-w-[140px]"
+                  >
+                    {difficulties.map((diff) => (
+                      <option key={diff} value={diff}>{diff}</option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={selectedSeason}
+                    onChange={(e) => setSelectedSeason(e.target.value)}
+                    className="flex-1 md:flex-none px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#006F61] focus:outline-none transition-colors text-gray-700 bg-white cursor-pointer min-w-[140px]"
+                  >
+                    {seasons.map((season) => (
+                      <option key={season} value={season}>{season}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Active Filters */}
+              {hasActiveFilters && (
+                <div className="flex items-center gap-2 flex-wrap pt-2">
+                  <span className="text-sm text-gray-500">Active:</span>
+                  {searchQuery && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                      "{searchQuery}"
+                      <button onClick={() => setSearchQuery("")} className="ml-1 hover:text-[#005a4d]">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  )}
+                  {selectedPeakCategory !== "all" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium w-fit">
+                      {peakCategories.find(c => c.id === selectedPeakCategory)?.label}
+                      <button onClick={() => setSelectedPeakCategory("all")} className="ml-1 hover:text-[#005a4d]">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  )}
+                  {selectedDifficulty !== "All Levels" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                      {selectedDifficulty}
+                      <button onClick={() => setSelectedDifficulty("All Levels")} className="ml-1 hover:text-[#005a4d]">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  )}
+                  {selectedSeason !== "All Seasons" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#006F61]/10 text-[#006F61] text-sm font-medium">
+                      {selectedSeason}
+                      <button onClick={() => setSelectedSeason("All Seasons")} className="ml-1 hover:text-[#005a4d]">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  )}
+                  <button
+                    onClick={clearFilters}
+                    className="px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium transition-colors"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Expeditions Grid */}
+        <section className="py-10 sm:py-12 md:py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10 lg:mb-12">
+              <div>
+                <p className="text-[#006F61] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-1 sm:mb-2">
+                  {selectedPeakCategory === "all" ? "All Categories" : peakCategories.find(c => c.id === selectedPeakCategory)?.label}
+                </p>
+                <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900">
+                  {selectedPeakCategory === "8000m" && "Eight-Thousander Expeditions"}
+                  {selectedPeakCategory === "7000m" && "Seven-Thousander Expeditions"}
+                  {selectedPeakCategory === "6000m" && "Six-Thousander Expeditions"}
+                  {selectedPeakCategory === "all" && "All Peak Expeditions"}
+                </h2>
+              </div>
+              <p className="text-gray-500 text-sm sm:text-base">
+                <span className="font-semibold text-gray-800">{filteredExpeditions.length}</span> {filteredExpeditions.length === 1 ? 'expedition' : 'expeditions'} available
+              </p>
+            </div>
+
+            {/* No Results */}
+            {filteredExpeditions.length === 0 ? (
+              <div className="text-center py-16 sm:py-20 lg:py-24">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
+                  <Mountain className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">No expeditions found</h3>
+                <p className="text-gray-500 text-base sm:text-lg mb-8 max-w-md mx-auto">
+                  We couldn't find any expeditions matching your current filters. Try adjusting your search criteria.
+                </p>
                 <button
                   onClick={clearFilters}
-                  className="px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold transition-all duration-300 hover:shadow-lg"
                 >
-                  Clear all
+                  <X className="w-4 h-4" />
+                  Clear All Filters
                 </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+                {filteredExpeditions.map((expedition) => (
+                  <ExpeditionCard key={expedition.id} expedition={expedition} />
+                ))}
               </div>
             )}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Expeditions Grid */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10 lg:mb-12">
-            <div>
-              <p className="text-[#006F61] font-semibold text-xs sm:text-sm uppercase tracking-wider mb-1 sm:mb-2">
-                {selectedPeakCategory === "all" ? "All Categories" : peakCategories.find(c => c.id === selectedPeakCategory)?.label}
-              </p>
-              <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900">
-                {selectedPeakCategory === "8000m" && "Eight-Thousander Expeditions"}
-                {selectedPeakCategory === "7000m" && "Seven-Thousander Expeditions"}
-                {selectedPeakCategory === "6000m" && "Six-Thousander Expeditions"}
-                {selectedPeakCategory === "all" && "All Peak Expeditions"}
+        {/* CTA Section */}
+        <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#006F61] to-[#004d44] relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-40 h-40 border border-white rounded-full" />
+            <div className="absolute bottom-10 right-10 w-60 h-60 border border-white rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white rounded-full" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+                Ready to Conquer the Giants?
               </h2>
-            </div>
-            <p className="text-gray-500 text-sm sm:text-base">
-              <span className="font-semibold text-gray-800">{filteredExpeditions.length}</span> {filteredExpeditions.length === 1 ? 'expedition' : 'expeditions'} available
-            </p>
-          </div>
-
-          {/* No Results */}
-          {filteredExpeditions.length === 0 ? (
-            <div className="text-center py-16 sm:py-20 lg:py-24">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
-                <Mountain className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">No expeditions found</h3>
-              <p className="text-gray-500 text-base sm:text-lg mb-8 max-w-md mx-auto">
-                We couldn't find any expeditions matching your current filters. Try adjusting your search criteria.
+              <p className="text-white/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed">
+                Join our expert-led expeditions to the world's most challenging peaks. From K2 to Broad Peak, we'll guide you every step of the way.
               </p>
-              <button
-                onClick={clearFilters}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold transition-all duration-300 hover:shadow-lg"
-              >
-                <X className="w-4 h-4" />
-                Clear All Filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
-              {filteredExpeditions.map((expedition) => (
-                <ExpeditionCard key={expedition.id} expedition={expedition} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#006F61] to-[#004d44] relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-40 h-40 border border-white rounded-full" />
-          <div className="absolute bottom-10 right-10 w-60 h-60 border border-white rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white rounded-full" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Ready to Conquer the Giants?
-            </h2>
-            <p className="text-white/80 text-base sm:text-lg md:text-xl mb-6 sm:mb-8 leading-relaxed">
-              Join our expert-led expeditions to the world's most challenging peaks. From K2 to Broad Peak, we'll guide you every step of the way.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-[#006F61] font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                  Plan Your Expedition
-                </button>
-              </Link>
-              <Link href="/about">
-                <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-base sm:text-lg hover:bg-white/20 transition-all duration-300">
-                  Learn About Us
-                </button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact">
+                  <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-[#006F61] font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    Plan Your Expedition
+                  </button>
+                </Link>
+                <Link href="/about">
+                  <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-base sm:text-lg hover:bg-white/20 transition-all duration-300">
+                    Learn About Us
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <style>{`
+        <style>{`
         @keyframes ken-burns {
           0% { transform: scale(1); }
           100% { transform: scale(1.1); }
@@ -558,6 +582,7 @@ export default function Expeditions() {
           display: none;
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }

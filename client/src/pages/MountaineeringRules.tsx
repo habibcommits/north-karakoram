@@ -25,6 +25,10 @@ import {
   AlertCircle,
 } from "lucide-react";
 import mountainImage from "@assets/stock_images/beautiful_mountain_p_1088467d.jpg";
+import { usePageSEO } from "@/seo/hooks/useSeo";
+import { SEOHead } from "@/seo/SEOHead";
+import { ArticleSchema, BreadcrumbSchema } from "@/seo/StructuredData";
+import { SITE_CONFIG } from "@/seo/config";
 
 const sections = [
   {
@@ -312,6 +316,13 @@ const stats = [
 ];
 
 export default function MountaineeringRules() {
+  const seo = usePageSEO('mountaineeringRules');
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Mountaineering Rules', path: '/mountaineering-rules' },
+  ];
+
   const [heroVisible, setHeroVisible] = useState(false);
   const [introVisible, setIntroVisible] = useState(false);
   const [principlesVisible, setPrinciplesVisible] = useState(false);
@@ -351,47 +362,59 @@ export default function MountaineeringRules() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section ref={heroRef} className="relative h-[55vh] min-h-[450px]">
-          <img
-            src={mountainImage}
-            alt="Mountaineering"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+    <>
+      {seo && <SEOHead seo={seo} path="/mountaineering-rules" />}
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleSchema
+        title="Mountaineering Rules & Regulations in Pakistan"
+        description="Official mountaineering regulations, permit requirements, and climbing rules for Pakistan's peaks from the Alpine Club of Pakistan."
+        image={`${SITE_CONFIG.url}/logo.jpeg`}
+        datePublished="2024-01-01"
+        dateModified="2024-12-01"
+        path="/mountaineering-rules"
+      />
 
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-20 left-10 w-32 h-32 border border-white/10 rounded-full" />
-            <div className="absolute bottom-20 right-10 w-48 h-48 border border-white/10 rounded-full" />
-          </div>
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-1">
+          {/* Hero Section */}
+          <section ref={heroRef} className="relative h-[55vh] min-h-[450px]">
+            <img
+              src={mountainImage}
+              alt="Mountaineering"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
 
-          <div
-            className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${heroVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-              }`}
-          >
-            <div className="max-w-7xl mx-auto px-4">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
-              >
-                <span className="text-white/90 text-sm font-semibold tracking-wide">
-                  SAFETY & EXCELLENCE
-                </span>
-              </div>
-              <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-6xl text-white mb-4">
-                Mountaineering Rules
-              </h1>
-              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-                Essential guidelines for a safe and successful expedition in the world's greatest mountain ranges
-              </p>
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-20 left-10 w-32 h-32 border border-white/10 rounded-full" />
+              <div className="absolute bottom-20 right-10 w-48 h-48 border border-white/10 rounded-full" />
+            </div>
 
-              {/* Quick Stats */}
-              {/* <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-8">
+            <div
+              className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+                }`}
+            >
+              <div className="max-w-7xl mx-auto px-4">
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
+                >
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">
+                    SAFETY & EXCELLENCE
+                  </span>
+                </div>
+                <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-6xl text-white mb-4">
+                  Mountaineering Rules
+                </h1>
+                <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                  Essential guidelines for a safe and successful expedition in the world's greatest mountain ranges
+                </p>
+
+                {/* Quick Stats */}
+                {/* <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-8">
                 {stats.map((stat, index) => (
                   <div
                     key={index}
@@ -414,65 +437,65 @@ export default function MountaineeringRules() {
                   </div>
                 ))}
               </div> */}
+              </div>
             </div>
-          </div>
 
-          {/* Scroll Indicator */}
-          {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            {/* Scroll Indicator */}
+            {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
             <div className="w-8 h-12 rounded-full border-2 border-white/50 flex items-start justify-center p-2">
               <div className="w-1.5 h-3 bg-white/70 rounded-full animate-pulse" />
             </div>
           </div> */}
-        </section>
+          </section>
 
-        {/* Introduction Section */}
-        <section
-          ref={introRef}
-          className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden"
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-            />
-            <div className="absolute top-20 left-10 hidden xl:block">
-              <div className="grid grid-cols-4 gap-2">
-                {[...Array(16)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                  />
-                ))}
+          {/* Introduction Section */}
+          <section
+            ref={introRef}
+            className="py-20 md:py-28 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden"
+          >
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div
+                className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-3xl"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
+              />
+              <div className="absolute top-20 left-10 hidden xl:block">
+                <div className="grid grid-cols-4 gap-2">
+                  {[...Array(16)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`max-w-4xl mx-auto text-center transition-all duration-700 ${introVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                className={`max-w-4xl mx-auto text-center transition-all duration-700 ${introVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
               >
-                <span
-                  className="text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                 >
-                  OUR STANDARDS
-                </span>
-              </div>
+                  <span
+                    className="text-sm font-semibold tracking-wide"
+                    style={{ color: "#006F61" }}
+                  >
+                    OUR STANDARDS
+                  </span>
+                </div>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
-                Safety, Respect &{" "}
-                <span className="relative inline-block" style={{ color: "#006F61" }}>
-                  Excellence
-                  {/* <svg
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6">
+                  Safety, Respect &{" "}
+                  <span className="relative inline-block" style={{ color: "#006F61" }}>
+                    Excellence
+                    {/* <svg
                     className="absolute -bottom-2 left-0 w-full h-3"
                     viewBox="0 0 200 12"
                     fill="none"
@@ -486,254 +509,255 @@ export default function MountaineeringRules() {
                       strokeOpacity="0.3"
                     />
                   </svg> */}
-                </span>
-              </h2>
+                  </span>
+                </h2>
 
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-                At North Karakoram, we believe that the summit is only half the journey;
-                <span className="font-semibold text-gray-800"> returning home safely is the other half</span>.
-                Mountaineering in the high ranges requires discipline, respect, and strict adherence to safety protocols.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Key Principles Section */}
-        <section
-          ref={principlesRef}
-          className="py-12 md:py-16 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #006F61 0%, #005249 100%)",
-          }}
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {keyPrinciples.map((principle, index) => (
-                <div
-                  key={index}
-                  className={`text-center group transition-all duration-700 ${principlesVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: principlesVisible
-                      ? `${200 + index * 100}ms`
-                      : "0ms",
-                  }}
-                >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                    <principle.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-md lg:text-xl font-bold text-white mb-2">
-                    {principle.title}
-                  </h3>
-                  <p className="text-xs text-white/70 lg:text-sm font-medium">
-                    {principle.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Rules Section */}
-        <section
-          ref={rulesRef}
-          className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute top-40 right-20 w-64 h-64 rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-            />
-            <div
-              className="absolute bottom-40 left-20 w-80 h-80 rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.02)" }}
-            />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${rulesVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
-                  ESSENTIAL GUIDELINES
-                </span>
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                  At North Karakoram, we believe that the summit is only half the journey;
+                  <span className="font-semibold text-gray-800"> returning home safely is the other half</span>.
+                  Mountaineering in the high ranges requires discipline, respect, and strict adherence to safety protocols.
+                </p>
               </div>
+            </div>
+          </section>
 
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
-                Rules Every <span style={{ color: "#006F61" }}>Climber</span> Must Follow
-              </h2>
-
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                These guidelines ensure the safety and success of every expedition member
-              </p>
+          {/* Key Principles Section */}
+          <section
+            ref={principlesRef}
+            className="py-12 md:py-16 relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #006F61 0%, #005249 100%)",
+            }}
+          >
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/20 blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl translate-y-1/2 -translate-x-1/2" />
             </div>
 
-            {/* Rules Grid */}
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-              {sections.map((section, idx) => {
-                const Icon = section.icon;
-                return (
-                  <Card
-                    key={idx}
-                    className={`group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-gray-100 overflow-hidden ${rulesVisible
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                {keyPrinciples.map((principle, index) => (
+                  <div
+                    key={index}
+                    className={`text-center group transition-all duration-700 ${principlesVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
                       }`}
                     style={{
-                      transitionDelay: rulesVisible
-                        ? `${200 + idx * 100}ms`
+                      transitionDelay: principlesVisible
+                        ? `${200 + index * 100}ms`
                         : "0ms",
                     }}
                   >
-                    <CardContent className="p-0">
-                      {/* Card Header */}
-                      <div
-                        className="p-6 border-b border-gray-100"
-                        style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-                      >
-                        <div className="flex items-start gap-4">
-                          <div
-                            className="hidden md:flex w-14 h-14 rounded-2xl items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                          >
-                            <Icon className="w-7 h-7" style={{ color: "#006F61" }} />
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <span
-                                className="px-2.5 py-1 rounded-full text-xs font-semibold text-white"
-                                style={{ backgroundColor: "#006F61" }}
-                              >
-                                {section.badge}
-                              </span>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+                      <principle.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-md lg:text-xl font-bold text-white mb-2">
+                      {principle.title}
+                    </h3>
+                    <p className="text-xs text-white/70 lg:text-sm font-medium">
+                      {principle.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Rules Section */}
+          <section
+            ref={rulesRef}
+            className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
+          >
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className="absolute top-40 right-20 w-64 h-64 rounded-full blur-3xl"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
+              />
+              <div
+                className="absolute bottom-40 left-20 w-80 h-80 rounded-full blur-3xl"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.02)" }}
+              />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div
+                className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${rulesVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
+              >
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                >
+                  <span
+                    className="text-sm font-semibold tracking-wide"
+                    style={{ color: "#006F61" }}
+                  >
+                    ESSENTIAL GUIDELINES
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+                  Rules Every <span style={{ color: "#006F61" }}>Climber</span> Must Follow
+                </h2>
+
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  These guidelines ensure the safety and success of every expedition member
+                </p>
+              </div>
+
+              {/* Rules Grid */}
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+                {sections.map((section, idx) => {
+                  const Icon = section.icon;
+                  return (
+                    <Card
+                      key={idx}
+                      className={`group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-gray-100 overflow-hidden ${rulesVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-8"
+                        }`}
+                      style={{
+                        transitionDelay: rulesVisible
+                          ? `${200 + idx * 100}ms`
+                          : "0ms",
+                      }}
+                    >
+                      <CardContent className="p-0">
+                        {/* Card Header */}
+                        <div
+                          className="p-6 border-b border-gray-100"
+                          style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
+                        >
+                          <div className="flex items-start gap-4">
+                            <div
+                              className="hidden md:flex w-14 h-14 rounded-2xl items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                              style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                            >
+                              <Icon className="w-7 h-7" style={{ color: "#006F61" }} />
                             </div>
-                            <h3 className="font-heading font-bold text-xl text-gray-900">
-                              {section.title}
-                            </h3>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-2">
+                                <span
+                                  className="px-2.5 py-1 rounded-full text-xs font-semibold text-white"
+                                  style={{ backgroundColor: "#006F61" }}
+                                >
+                                  {section.badge}
+                                </span>
+                              </div>
+                              <h3 className="font-heading font-bold text-xl text-gray-900">
+                                {section.title}
+                              </h3>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Card Content */}
-                      <div className="p-6">{section.content}</div>
+                        {/* Card Content */}
+                        <div className="p-6">{section.content}</div>
 
-                      {/* Bottom Accent */}
-                      <div
-                        className="h-1 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"
-                        style={{ backgroundColor: "#006F61" }}
-                      />
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                        {/* Bottom Accent */}
+                        <div
+                          className="h-1 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"
+                          style={{ backgroundColor: "#006F61" }}
+                        />
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Important Notice Section */}
-        <section className="py-16 bg-amber-50 border-y border-amber-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="flex flex-col md:flex-row items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="w-8 h-8 text-amber-600" />
+          {/* Important Notice Section */}
+          <section className="py-16 bg-amber-50 border-y border-amber-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+                    <AlertTriangle className="w-8 h-8 text-amber-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-2xl text-gray-900 mb-3">
+                      Important Notice
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed mb-4">
+                      These rules are not suggestions—they are mandatory requirements for participation in any North Karakoram expedition. Failure to comply with these guidelines may result in removal from the expedition without refund, as the safety of all participants is our highest priority.
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      By joining our expedition, you acknowledge that you have read, understood, and agree to follow all safety rules and guidelines.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading font-bold text-2xl text-gray-900 mb-3">
-                    Important Notice
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    These rules are not suggestions—they are mandatory requirements for participation in any North Karakoram expedition. Failure to comply with these guidelines may result in removal from the expedition without refund, as the safety of all participants is our highest priority.
-                  </p>
-                  <p className="text-gray-600 text-sm">
-                    By joining our expedition, you acknowledge that you have read, understood, and agree to follow all safety rules and guidelines.
-                  </p>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section
+            ref={ctaRef}
+            className="py-20 md:py-28 relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
+            }}
+          >
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
+              <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-full" />
+              <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div
+                className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">
+                    START YOUR JOURNEY
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
+                  Ready for Your Adventure?
+                </h2>
+
+                <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10">
+                  Now that you understand our safety standards, explore our expeditions and find the perfect adventure that matches your skill level and aspirations.
+                </p>
+
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <Link href="/expedition">
+                    <Button
+                      size="lg"
+                      className="group w-full md:w-fit sm:w-auto text-lg px-8 py-6 h-auto bg-white text-gray-900 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    >
+                      Explore Expeditions
+                      <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+
+                  <Link href="/contact">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full md:w-fit sm:w-auto text-lg px-8 py-6 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1"
+                    >
+                      Contact Our Team
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section
-          ref={ctaRef}
-          className="py-20 md:py-28 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
-          }}
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-10 left-10 w-20 h-20 border border-white/10 rounded-full" />
-            <div className="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full" />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
-                <span className="text-white/90 text-sm font-semibold tracking-wide">
-                  START YOUR JOURNEY
-                </span>
-              </div>
-
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
-                Ready for Your Adventure?
-              </h2>
-
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10">
-                Now that you understand our safety standards, explore our expeditions and find the perfect adventure that matches your skill level and aspirations.
-              </p>
-
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/expedition">
-                  <Button
-                    size="lg"
-                    className="group w-full md:w-fit sm:w-auto text-lg px-8 py-6 h-auto bg-white text-gray-900 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                  >
-                    Explore Expeditions
-                    <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full md:w-fit sm:w-auto text-lg px-8 py-6 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1"
-                  >
-                    Contact Our Team
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
+    </>
   );
 }

@@ -1,0 +1,13 @@
+// Create: public/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow search results and utility pages
+Disallow: /search
+
+# Sitemap
+Sitemap: https://northkarakoram.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

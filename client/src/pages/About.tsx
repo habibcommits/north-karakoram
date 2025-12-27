@@ -39,6 +39,9 @@ import {
   Home,
   UserCheck,
 } from "lucide-react";
+import { usePageSEO } from "@/seo/hooks/useSeo";
+import { SEOHead } from "@/seo/SEOHead";
+import { BreadcrumbSchema, OrganizationSchema } from "@/seo/StructuredData";
 
 const values = [
   {
@@ -188,6 +191,13 @@ const stats = [
 ];
 
 export default function About() {
+  const seo = usePageSEO('about');
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+  ];
+
   const [isVisible, setIsVisible] = useState(false);
   const [storyVisible, setStoryVisible] = useState(false);
   const [valuesVisible, setValuesVisible] = useState(false);
@@ -233,256 +243,260 @@ export default function About() {
 
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section ref={heroRef} className="relative h-[50vh] min-h-[400px]">
-          <img
-            src={trekkingImage}
-            alt="Mountain expedition in Gilgit-Baltistan"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-          <div
-            className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-          >
-            <div className="max-w-7xl mx-auto px-4">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
-              >
-                <BadgeCheck className="w-4 h-4 text-white" />
-                <span className="text-white/90 text-sm font-semibold tracking-wide">
-                  DTS LICENSE NO. 2640
-                </span>
-              </div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-4">
-                About North Karakoram
-              </h1>
-              <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto">
-                Your gateway to the world's greatest mountain ranges — the Karakoram, Himalaya, and Hindu Kush
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Story Section */}
-        <section
-          ref={sectionRef}
-          className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
-          data-testid="section-about"
-        >
-          {/* Decorative Background Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full
-            bg-[#006F61]/[0.03] blur-3xl"
+    <>
+      {seo && <SEOHead seo={seo} path="/about" />}
+      <BreadcrumbSchema items={breadcrumbs} />
+      <OrganizationSchema />
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-1">
+          {/* Hero Section */}
+          <section ref={heroRef} className="relative h-[50vh] min-h-[400px]">
+            <img
+              src={trekkingImage}
+              alt="Mountain expedition in Gilgit-Baltistan"
+              className="w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
             <div
-              className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full
-            bg-[#006F61]/[0.02] blur-3xl"
-            />
-
-            {/* Decorative dots pattern */}
-            <div className="absolute top-20 left-10 hidden xl:block">
-              <div className="grid grid-cols-5 gap-2">
-                {[...Array(25)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-[#006F61]/10"
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div
-              className="absolute top-1/2 right-0 w-32 h-px
-            bg-gradient-to-l from-[#006F61]/20 to-transparent hidden lg:block"
-            />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Section Header */}
-            <div
-              className={`text-center max-w-3xl mx-auto mb-16 md:mb-20 transition-all duration-700
-            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
-            bg-[#006F61]/10 text-[#006F61] text-sm font-semibold mb-6">
-                <Mountain className="w-4 h-4" />
-                <span>Our Story</span>
-              </div>
-
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl
-            text-gray-900 mb-4 leading-tight">
-                Not Just Adventures —{" "}
-                <span className="text-[#006F61]">
-                  Life-Changing Experiences
-                </span>
-              </h2>
-
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                Gateway to the world's greatest mountain ranges — the Karakoram, Himalaya, and Hindu Kush
-              </p>
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
-
-              {/* LEFT COLUMN: Image Gallery */}
-              <div
-                className={`flex flex-col md:relative md:block gap-4 md:gap-0 md:h-[600px] transition-all duration-700 delay-200
-              ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
-              >
-                {/* Main Large Image */}
+              <div className="max-w-7xl mx-auto px-4">
                 <div
-                  className="md:absolute md:top-0 md:left-0 md:w-[75%] md:h-[65%] relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden
-                shadow-2xl shadow-black/10 z-20 group"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
                 >
-                  <img
-                    src={mountainImage1}
-                    alt="K2 and Concordia region - Karakoram Range"
-                    className="w-full h-full object-cover transition-transform duration-700
-                  group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                  {/* Location badge */}
-                  <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full
-                bg-white/95 backdrop-blur-sm shadow-lg">
-                    <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-[#006F61]" />
-                      Gilgit-Baltistan, Pakistan
-                    </span>
-                  </div>
-                </div>
-
-                {/* Secondary Image - Top Right */}
-                <div
-                  className="md:absolute md:top-4 md:right-0 md:w-[45%] md:h-[40%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
-                shadow-xl shadow-black/10 z-10 group border-4 border-white"
-                >
-                  <img
-                    src={mountainImage2}
-                    alt="Trekking expedition in Hunza Valley"
-                    className="w-full h-full object-cover transition-transform duration-700
-                  group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Third Image - Bottom Center */}
-                <div
-                  className="md:absolute md:bottom-0 md:left-[15%] md:w-[50%] md:h-[45%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
-                shadow-xl shadow-black/10 z-30 group border-4 border-white"
-                >
-                  <img
-                    src={mountainImage3}
-                    alt="Cultural heritage and local communities"
-                    className="w-full h-full object-cover transition-transform duration-700
-                  group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Fourth Image - Bottom Right */}
-                <div
-                  className="md:absolute md:bottom-8 md:right-0 md:w-[40%] md:h-[35%] relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden
-                shadow-xl shadow-black/10 z-20 group border-4 border-white"
-                >
-                  <img
-                    src={mountainImage4}
-                    alt="Deosai Plateau landscape"
-                    className="w-full h-full object-cover transition-transform duration-700
-                  group-hover:scale-105"
-                  />
-                </div>
-
-                {/* License Badge - Floating Card */}
-                <div
-                  className="md:absolute md:-bottom-6 md:-left-6 md:left-0 relative mt-4 z-40
-                bg-white rounded-2xl shadow-2xl shadow-black/10 p-4
-                border border-gray-100"
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#006F61]"
-                    >
-                      <BadgeCheck className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-900">DTS License #2640</div>
-                      <div className="text-xs text-gray-500">Registered & Verified</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Decorative Element */}
-                <div
-                  className="absolute -top-6 right-[30%] w-24 h-24 rounded-full
-                border-4 border-dashed border-[#006F61]/20 z-0 hidden md:block"
-                />
-              </div>
-
-              {/* RIGHT COLUMN: Text Content */}
-              <div
-                className={`transition-all duration-700 delay-300
-              ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
-              >
-                {/* Subtitle Tag */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-1 rounded-full bg-[#006F61]" />
-                  <span className="text-[#006F61] font-semibold text-sm uppercase tracking-wider">
-                    About North Karakoram
+                  <BadgeCheck className="w-4 h-4 text-white" />
+                  <span className="text-white/90 text-sm font-semibold tracking-wide">
+                    DTS LICENSE NO. 2640
                   </span>
                 </div>
+                <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-4">
+                  About North Karakoram
+                </h1>
+                <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto">
+                  Your gateway to the world's greatest mountain ranges — the Karakoram, Himalaya, and Hindu Kush
+                </p>
+              </div>
+            </div>
+          </section>
 
-                {/* Main Heading */}
-                <h3 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl
-              text-gray-900 mb-6 leading-tight">
-                  Your Trusted Partner for{" "}
-                  <span className="text-[#006F61]">Mountain Adventures</span>{" "}
-                  in Pakistan
-                </h3>
+          {/* Our Story Section */}
+          <section
+            ref={sectionRef}
+            className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white overflow-hidden"
+            data-testid="section-about"
+          >
+            {/* Decorative Background Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div
+                className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full
+            bg-[#006F61]/[0.03] blur-3xl"
+              />
+              <div
+                className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full
+            bg-[#006F61]/[0.02] blur-3xl"
+              />
 
-                {/* Description */}
-                <div className="space-y-4 mb-8">
-                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                    <span className="font-semibold text-gray-800">North Karakoram Trek & Tours</span> is
-                    a registered adventure travel company based in Gilgit-Baltistan, Pakistan. Founded by
-                    local professionals with firsthand mountain experience, we specialize in{" "}
-                    <span className="font-medium text-gray-700">trekking expeditions, mountaineering logistics,
-                      K2 Base Camp treks, cultural tours, and jeep safaris</span> throughout the highlands
-                    of northern Pakistan.
-                  </p>
-                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                    We don't just take you to the mountains — <span className="font-semibold text-gray-800">
-                      we help you experience them</span>. Our journeys combine adventure, culture, and nature,
-                    offering genuine connections with the land and the people who call it home. From permits
-                    and logistics to accommodation and professional guiding, every detail is handled with precision.
-                  </p>
+              {/* Decorative dots pattern */}
+              <div className="absolute top-20 left-10 hidden xl:block">
+                <div className="grid grid-cols-5 gap-2">
+                  {[...Array(25)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-1.5 h-1.5 rounded-full bg-[#006F61]/10"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="absolute top-1/2 right-0 w-32 h-px
+            bg-gradient-to-l from-[#006F61]/20 to-transparent hidden lg:block"
+              />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              {/* Section Header */}
+              <div
+                className={`text-center max-w-3xl mx-auto mb-16 md:mb-20 transition-all duration-700
+            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              >
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full
+            bg-[#006F61]/10 text-[#006F61] text-sm font-semibold mb-6">
+                  <Mountain className="w-4 h-4" />
+                  <span>Our Story</span>
                 </div>
 
-                {/* Destinations Tag Cloud */}
-                <div className="mb-8">
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                    Destinations We Cover
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {destinations.map((dest, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1.5 text-sm font-medium text-[#006F61] bg-[#006F61]/10
-                      rounded-full border border-[#006F61]/20"
-                      >
-                        {dest}
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl
+            text-gray-900 mb-4 leading-tight">
+                  Not Just Adventures —{" "}
+                  <span className="text-[#006F61]">
+                    Life-Changing Experiences
+                  </span>
+                </h2>
+
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Gateway to the world's greatest mountain ranges — the Karakoram, Himalaya, and Hindu Kush
+                </p>
+              </div>
+
+              {/* Main Content Grid */}
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+
+                {/* LEFT COLUMN: Image Gallery */}
+                <div
+                  className={`flex flex-col md:relative md:block gap-4 md:gap-0 md:h-[600px] transition-all duration-700 delay-200
+              ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+                >
+                  {/* Main Large Image */}
+                  <div
+                    className="md:absolute md:top-0 md:left-0 md:w-[75%] md:h-[65%] relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden
+                shadow-2xl shadow-black/10 z-20 group"
+                  >
+                    <img
+                      src={mountainImage1}
+                      alt="K2 and Concordia region - Karakoram Range"
+                      className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                    {/* Location badge */}
+                    <div className="absolute bottom-4 left-4 px-4 py-2 rounded-full
+                bg-white/95 backdrop-blur-sm shadow-lg">
+                      <span className="text-sm font-semibold text-gray-800 flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-[#006F61]" />
+                        Gilgit-Baltistan, Pakistan
                       </span>
-                    ))}
+                    </div>
                   </div>
+
+                  {/* Secondary Image - Top Right */}
+                  <div
+                    className="md:absolute md:top-4 md:right-0 md:w-[45%] md:h-[40%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-10 group border-4 border-white"
+                  >
+                    <img
+                      src={mountainImage2}
+                      alt="Trekking expedition in Hunza Valley"
+                      className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Third Image - Bottom Center */}
+                  <div
+                    className="md:absolute md:bottom-0 md:left-[15%] md:w-[50%] md:h-[45%] relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-30 group border-4 border-white"
+                  >
+                    <img
+                      src={mountainImage3}
+                      alt="Cultural heritage and local communities"
+                      className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Fourth Image - Bottom Right */}
+                  <div
+                    className="md:absolute md:bottom-8 md:right-0 md:w-[40%] md:h-[35%] relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden
+                shadow-xl shadow-black/10 z-20 group border-4 border-white"
+                  >
+                    <img
+                      src={mountainImage4}
+                      alt="Deosai Plateau landscape"
+                      className="w-full h-full object-cover transition-transform duration-700
+                  group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* License Badge - Floating Card */}
+                  <div
+                    className="md:absolute md:-bottom-6 md:-left-6 md:left-0 relative mt-4 z-40
+                bg-white rounded-2xl shadow-2xl shadow-black/10 p-4
+                border border-gray-100"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#006F61]"
+                      >
+                        <BadgeCheck className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-gray-900">DTS License #2640</div>
+                        <div className="text-xs text-gray-500">Registered & Verified</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative Element */}
+                  <div
+                    className="absolute -top-6 right-[30%] w-24 h-24 rounded-full
+                border-4 border-dashed border-[#006F61]/20 z-0 hidden md:block"
+                  />
                 </div>
 
-                {/* Why Choose Us Section */}
-                {/* <div className="mb-10">
+                {/* RIGHT COLUMN: Text Content */}
+                <div
+                  className={`transition-all duration-700 delay-300
+              ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+                >
+                  {/* Subtitle Tag */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-1 rounded-full bg-[#006F61]" />
+                    <span className="text-[#006F61] font-semibold text-sm uppercase tracking-wider">
+                      About North Karakoram
+                    </span>
+                  </div>
+
+                  {/* Main Heading */}
+                  <h3 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl
+              text-gray-900 mb-6 leading-tight">
+                    Your Trusted Partner for{" "}
+                    <span className="text-[#006F61]">Mountain Adventures</span>{" "}
+                    in Pakistan
+                  </h3>
+
+                  {/* Description */}
+                  <div className="space-y-4 mb-8">
+                    <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                      <span className="font-semibold text-gray-800">North Karakoram Trek & Tours</span> is
+                      a registered adventure travel company based in Gilgit-Baltistan, Pakistan. Founded by
+                      local professionals with firsthand mountain experience, we specialize in{" "}
+                      <span className="font-medium text-gray-700">trekking expeditions, mountaineering logistics,
+                        K2 Base Camp treks, cultural tours, and jeep safaris</span> throughout the highlands
+                      of northern Pakistan.
+                    </p>
+                    <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                      We don't just take you to the mountains — <span className="font-semibold text-gray-800">
+                        we help you experience them</span>. Our journeys combine adventure, culture, and nature,
+                      offering genuine connections with the land and the people who call it home. From permits
+                      and logistics to accommodation and professional guiding, every detail is handled with precision.
+                    </p>
+                  </div>
+
+                  {/* Destinations Tag Cloud */}
+                  <div className="mb-8">
+                    <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                      Destinations We Cover
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {destinations.map((dest, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1.5 text-sm font-medium text-[#006F61] bg-[#006F61]/10
+                      rounded-full border border-[#006F61]/20"
+                        >
+                          {dest}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Why Choose Us Section */}
+                  {/* <div className="mb-10">
                   <h4 className="font-heading font-bold text-xl text-gray-900 mb-5
                 flex items-center gap-2">
                     <span className="w-8 h-8 rounded-lg bg-[#006F61]/10 flex items-center justify-center">
@@ -531,42 +545,42 @@ export default function About() {
                   </div>
                 </div> */}
 
-                {/* Call-to-Action Buttons */}
-                <div
-                  className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[800ms]
+                  {/* Call-to-Action Buttons */}
+                  <div
+                    className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[800ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                >
-                  <Link href="/team">
-                    <Button
-                      size="lg"
-                      className="group w-full sm:w-auto text-base px-8 py-6 h-auto
+                  >
+                    <Link href="/team">
+                      <Button
+                        size="lg"
+                        className="group w-full sm:w-auto text-base px-8 py-6 h-auto
                     bg-[#006F61] hover:bg-[#005a4d] text-white font-semibold
                     shadow-lg shadow-[#006F61]/25 hover:shadow-xl hover:shadow-[#006F61]/30
                     transition-all duration-300 hover:-translate-y-0.5"
-                      data-testid="button-about-learn-more"
-                    >
-                      Meet Our Team
-                    </Button>
-                  </Link>
+                        data-testid="button-about-learn-more"
+                      >
+                        Meet Our Team
+                      </Button>
+                    </Link>
 
-                  <Link href="/contact">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="group w-full sm:w-auto text-base px-8 py-6 h-auto
+                    <Link href="/contact">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="group w-full sm:w-auto text-base px-8 py-6 h-auto
                     border-2 border-[#006F61] text-[#006F61] font-semibold
                     hover:bg-[#006F61] hover:text-white
                     transition-all duration-300 hover:-translate-y-0.5"
-                      data-testid="button-about-contact"
-                    >
-                      Plan Your Adventure
-                    </Button>
-                  </Link>
+                        data-testid="button-about-contact"
+                      >
+                        Plan Your Adventure
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* <div
+              {/* <div
           className={`mt-20 md:mt-28 transition-all duration-700 delay-500
             ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
@@ -635,365 +649,366 @@ export default function About() {
             <div className="absolute bottom-6 right-6 w-32 h-32 border border-white/10 rounded-full" />
           </div>
         </div> */}
-          </div>
-        </section>
+            </div>
+          </section>
 
-        {/* Services Section */}
-        <section
-          ref={servicesRef}
-          className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-            >
+          {/* Services Section */}
+          <section
+            ref={servicesRef}
+            className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <ClipboardCheck className="w-4 h-4" style={{ color: "#006F61" }} />
-                <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
-                  WHAT WE OFFER
-                </span>
-              </div>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
-                Our <span style={{ color: "#006F61" }}>Services</span>
-              </h2>
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                Full-board expedition services and flexible, customized travel arrangements for every type of adventurer
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {services.map((service, index) => (
-                <Card
-                  key={index}
-                  className={`group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: servicesVisible ? `${200 + index * 100}ms` : "0ms",
-                  }}
-                >
-                  <CardContent className="p-6 md:p-8 relative overflow-hidden">
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                    >
-                      <service.icon className="w-7 h-7" style={{ color: "#006F61" }} />
-                    </div>
-                    <h3 className="font-heading font-bold text-lg md:text-xl mb-3 text-gray-900">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                      {service.description}
-                    </p>
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-1 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
-                      style={{ backgroundColor: "#006F61" }}
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Values Section */}
-        <section
-          ref={valuesRef}
-          className="py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
-        >
-          <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute top-40 right-20 w-64 h-64 rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-            />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <Target className="w-4 h-4" style={{ color: "#006F61" }} />
-                <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
-                  WHAT DRIVES US
-                </span>
-              </div>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
-                Our Values & <span style={{ color: "#006F61" }}>Mission</span>
-              </h2>
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                The principles that guide every expedition and interaction with our valued travelers
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {values.map((value, index) => (
-                <Card
-                  key={index}
-                  className={`group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: valuesVisible ? `${200 + index * 100}ms` : "0ms",
-                  }}
-                >
-                  <CardContent className="p-4 text-center relative overflow-hidden">
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                    >
-                      <value.icon className="w-8 h-8" style={{ color: "#006F61" }} />
-                    </div>
-                    <h3 className="font-heading font-bold text-xl mb-4 text-gray-900">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-1 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"
-                      style={{ backgroundColor: "#006F61" }}
-                    />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Gallery Section */}
-        <section
-          ref={galleryRef}
-          className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <Compass className="w-4 h-4" style={{ color: "#006F61" }} />
-                <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
-                  GLIMPSES OF ADVENTURE
-                </span>
-              </div>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
-                Experience the <span style={{ color: "#006F61" }}>Karakoram</span>
-              </h2>
-              <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                Peak trekking and expedition seasons are summer and early autumn, when conditions
-                in the high mountains are most favorable
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {[mountainImage5, mountainImage6, mountainImage7, mountainImage4].map((img, index) => (
-                <div
-                  key={index}
-                  className={`relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-700 ${index === 0 ? "col-span-2 row-span-2" : ""
-                    } ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                  style={{
-                    transitionDelay: galleryVisible ? `${200 + index * 100}ms` : "0ms",
-                  }}
-                >
-                  <div className={`${index === 0 ? "aspect-square" : "aspect-[4/3]"}`}>
-                    <img
-                      src={img}
-                      alt={`Adventure in Gilgit-Baltistan ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="text-white font-semibold text-sm md:text-base">
-                      Discover More
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div
-              className={`text-center mt-12 transition-all duration-700 delay-500 ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-            >
-              <Link href="/expedition">
-                <Button
-                  size="lg"
-                  className="group text-base px-8 py-6 h-auto text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-                  style={{ backgroundColor: "#006F61" }}
-                >
-                  View All Expeditions
-                  <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Commitment Section */}
-        <section
-          ref={commitmentRef}
-          className="py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Text Content */}
-              <div
-                className={`transition-all duration-700 ${commitmentVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-1 rounded-full" style={{ backgroundColor: "#006F61" }} />
-                  <span
-                    className="font-semibold text-sm uppercase tracking-wider"
-                    style={{ color: "#006F61" }}
-                  >
-                    Our Commitment
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                >
+                  <ClipboardCheck className="w-4 h-4" style={{ color: "#006F61" }} />
+                  <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
+                    WHAT WE OFFER
                   </span>
                 </div>
-
-                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight">
-                  Responsible <span style={{ color: "#006F61" }}>Travel</span> & Sustainability
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+                  Our <span style={{ color: "#006F61" }}>Services</span>
                 </h2>
-
-                <p className="text-gray-600 text-lg leading-relaxed mb-10">
-                  Safety, responsible tourism, and environmental awareness are central to our operations.
-                  We work closely with local communities and follow ethical trekking and mountaineering
-                  practices to ensure that tourism benefits the region sustainably.
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Full-board expedition services and flexible, customized travel arrangements for every type of adventurer
                 </p>
+              </div>
 
-                <div className="space-y-6">
-                  {commitments.map((item, index) => (
-                    <div
-                      key={index}
-                      className={`flex items-start gap-4 transition-all duration-700 ${commitmentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                        }`}
-                      style={{
-                        transitionDelay: commitmentVisible ? `${300 + index * 100}ms` : "0ms",
-                      }}
-                    >
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {services.map((service, index) => (
+                  <Card
+                    key={index}
+                    className={`group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                      }`}
+                    style={{
+                      transitionDelay: servicesVisible ? `${200 + index * 100}ms` : "0ms",
+                    }}
+                  >
+                    <CardContent className="p-6 md:p-8 relative overflow-hidden">
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
                         style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                       >
-                        <item.icon className="w-6 h-6" style={{ color: "#006F61" }} />
+                        <service.icon className="w-7 h-7" style={{ color: "#006F61" }} />
                       </div>
-                      <div>
-                        <h3 className="font-heading font-bold text-lg text-gray-900 mb-1">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                      <h3 className="font-heading font-bold text-lg md:text-xl mb-3 text-gray-900">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                        {service.description}
+                      </p>
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-1 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                        style={{ backgroundColor: "#006F61" }}
+                      />
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
+            </div>
+          </section>
 
-              {/* Image */}
+          {/* Values Section */}
+          <section
+            ref={valuesRef}
+            className="py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
+          >
+            <div className="absolute inset-0 pointer-events-none">
               <div
-                className={`relative transition-all duration-700 delay-300 ${commitmentVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                className="absolute top-40 right-20 w-64 h-64 rounded-full blur-3xl"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
+              />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div
+                className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
               >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={mountainImage7}
-                    alt="Sustainable mountain adventure in Deosai"
-                    className="w-full h-[500px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                >
+                  <Target className="w-4 h-4" style={{ color: "#006F61" }} />
+                  <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
+                    WHAT DRIVES US
+                  </span>
                 </div>
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+                  Our Values & <span style={{ color: "#006F61" }}>Mission</span>
+                </h2>
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  The principles that guide every expedition and interaction with our valued travelers
+                </p>
+              </div>
 
-                {/* Floating Quote Card */}
-                <div className="absolute -bottom-8 -left-8 md:left-8 bg-white rounded-2xl shadow-xl p-6 max-w-sm border border-gray-100">
-                  <Quote className="w-8 h-8 mb-3" style={{ color: "#006F61" }} />
-                  <p className="text-gray-700 italic leading-relaxed">
-                    "Our goal is not only to guide travelers through the mountains, but to offer them
-                    a deeper connection with the landscapes, cultures, and people of Gilgit-Baltistan."
-                  </p>
-                  <p className="mt-3 font-semibold text-sm" style={{ color: "#006F61" }}>
-                    — North Karakoram Team
-                  </p>
-                </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {values.map((value, index) => (
+                  <Card
+                    key={index}
+                    className={`group hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border-gray-100 ${valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                      }`}
+                    style={{
+                      transitionDelay: valuesVisible ? `${200 + index * 100}ms` : "0ms",
+                    }}
+                  >
+                    <CardContent className="p-4 text-center relative overflow-hidden">
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-all duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                      >
+                        <value.icon className="w-8 h-8" style={{ color: "#006F61" }} />
+                      </div>
+                      <h3 className="font-heading font-bold text-xl mb-4 text-gray-900">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-1 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"
+                        style={{ backgroundColor: "#006F61" }}
+                      />
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Trust Badges */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-gray-500 text-sm font-medium mb-8 uppercase tracking-wider text-center">
-              Why Travelers Trust Us
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              {[
-                "DTS Licensed (#2640)",
-                "Local Expert Team",
-                "Safety First",
-                "Eco-Friendly Practices",
-                "Community Partner",
-              ].map((item, index) => (
+          {/* Gallery Section */}
+          <section
+            ref={galleryRef}
+            className="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div
+                className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+              >
                 <div
-                  key={index}
-                  className="flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#006F61]/30 transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                 >
-                  <Check className="w-4 h-4" style={{ color: "#006F61" }} />
-                  <span className="text-gray-700 text-sm font-medium">{item}</span>
+                  <Compass className="w-4 h-4" style={{ color: "#006F61" }} />
+                  <span className="text-sm font-semibold tracking-wide" style={{ color: "#006F61" }}>
+                    GLIMPSES OF ADVENTURE
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
+                  Experience the <span style={{ color: "#006F61" }}>Karakoram</span>
+                </h2>
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Peak trekking and expedition seasons are summer and early autumn, when conditions
+                  in the high mountains are most favorable
+                </p>
+              </div>
 
-        {/* CTA Section */}
-        <section className="py-20 md:py-28" style={{ backgroundColor: "#006F61" }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
-                Ready to Experience the Karakoram?
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
-                Whether you're planning a classic trek, a high-altitude expedition, or a private
-                adventure tailored to your interests, we're committed to providing reliable services
-                and unforgettable experiences.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[mountainImage5, mountainImage6, mountainImage7, mountainImage4].map((img, index) => (
+                  <div
+                    key={index}
+                    className={`relative overflow-hidden rounded-2xl group cursor-pointer transition-all duration-700 ${index === 0 ? "col-span-2 row-span-2" : ""
+                      } ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                    style={{
+                      transitionDelay: galleryVisible ? `${200 + index * 100}ms` : "0ms",
+                    }}
+                  >
+                    <div className={`${index === 0 ? "aspect-square" : "aspect-[4/3]"}`}>
+                      <img
+                        src={img}
+                        alt={`Adventure in Gilgit-Baltistan ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <span className="text-white font-semibold text-sm md:text-base">
+                        Discover More
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                className={`text-center mt-12 transition-all duration-700 delay-500 ${galleryVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+              >
                 <Link href="/expedition">
                   <Button
                     size="lg"
-                    className="group w-full sm:w-auto text-base px-8 py-6 h-auto bg-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-                    style={{ color: "#006F61" }}
+                    className="group text-base px-8 py-6 h-auto text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                    style={{ backgroundColor: "#006F61" }}
                   >
-                    <Mountain className="w-5 h-5 mr-2" />
-                    Browse Expeditions
+                    View All Expeditions
                     <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="group w-full sm:w-auto text-base px-8 py-6 h-auto font-semibold transition-all duration-300 hover:-translate-y-0.5 border-2 border-white text-white hover:bg-white hover:text-[#006F61]"
-                  >
-                    <Handshake className="w-5 h-5 mr-2" />
-                    Contact Us Today
                   </Button>
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <Affiliations />
-      </main>
-    </div>
+          {/* Commitment Section */}
+          <section
+            ref={commitmentRef}
+            className="py-20 md:py-28 lg:py-32 bg-white relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Text Content */}
+                <div
+                  className={`transition-all duration-700 ${commitmentVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                    }`}
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-1 rounded-full" style={{ backgroundColor: "#006F61" }} />
+                    <span
+                      className="font-semibold text-sm uppercase tracking-wider"
+                      style={{ color: "#006F61" }}
+                    >
+                      Our Commitment
+                    </span>
+                  </div>
+
+                  <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight">
+                    Responsible <span style={{ color: "#006F61" }}>Travel</span> & Sustainability
+                  </h2>
+
+                  <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                    Safety, responsible tourism, and environmental awareness are central to our operations.
+                    We work closely with local communities and follow ethical trekking and mountaineering
+                    practices to ensure that tourism benefits the region sustainably.
+                  </p>
+
+                  <div className="space-y-6">
+                    {commitments.map((item, index) => (
+                      <div
+                        key={index}
+                        className={`flex items-start gap-4 transition-all duration-700 ${commitmentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                          }`}
+                        style={{
+                          transitionDelay: commitmentVisible ? `${300 + index * 100}ms` : "0ms",
+                        }}
+                      >
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                          style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                        >
+                          <item.icon className="w-6 h-6" style={{ color: "#006F61" }} />
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-bold text-lg text-gray-900 mb-1">
+                            {item.title}
+                          </h3>
+                          <p className="text-gray-600">{item.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div
+                  className={`relative transition-all duration-700 delay-300 ${commitmentVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                    }`}
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img
+                      src={mountainImage7}
+                      alt="Sustainable mountain adventure in Deosai"
+                      className="w-full h-[500px] object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  </div>
+
+                  {/* Floating Quote Card */}
+                  <div className="absolute -bottom-8 -left-8 md:left-8 bg-white rounded-2xl shadow-xl p-6 max-w-sm border border-gray-100">
+                    <Quote className="w-8 h-8 mb-3" style={{ color: "#006F61" }} />
+                    <p className="text-gray-700 italic leading-relaxed">
+                      "Our goal is not only to guide travelers through the mountains, but to offer them
+                      a deeper connection with the landscapes, cultures, and people of Gilgit-Baltistan."
+                    </p>
+                    <p className="mt-3 font-semibold text-sm" style={{ color: "#006F61" }}>
+                      — North Karakoram Team
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Trust Badges */}
+          <section className="py-16 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <p className="text-gray-500 text-sm font-medium mb-8 uppercase tracking-wider text-center">
+                Why Travelers Trust Us
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                {[
+                  "DTS Licensed (#2640)",
+                  "Local Expert Team",
+                  "Safety First",
+                  "Eco-Friendly Practices",
+                  "Community Partner",
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-[#006F61]/30 transition-all duration-300"
+                  >
+                    <Check className="w-4 h-4" style={{ color: "#006F61" }} />
+                    <span className="text-gray-700 text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-20 md:py-28" style={{ backgroundColor: "#006F61" }}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
+                  Ready to Experience the Karakoram?
+                </h2>
+                <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed">
+                  Whether you're planning a classic trek, a high-altitude expedition, or a private
+                  adventure tailored to your interests, we're committed to providing reliable services
+                  and unforgettable experiences.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/expedition">
+                    <Button
+                      size="lg"
+                      className="group w-full sm:w-auto text-base px-8 py-6 h-auto bg-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                      style={{ color: "#006F61" }}
+                    >
+                      <Mountain className="w-5 h-5 mr-2" />
+                      Browse Expeditions
+                      <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="group w-full sm:w-auto text-base px-8 py-6 h-auto font-semibold transition-all duration-300 hover:-translate-y-0.5 border-2 border-white text-white hover:bg-white hover:text-[#006F61]"
+                    >
+                      <Handshake className="w-5 h-5 mr-2" />
+                      Contact Us Today
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <Affiliations />
+        </main>
+      </div>
+    </>
   );
 }

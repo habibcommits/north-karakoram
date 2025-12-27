@@ -8,18 +8,17 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  
   app.get("/api/trips", async (req, res) => {
     try {
       const { category, season, destination, search } = req.query;
-      
+
       const trips = await storage.filterTrips({
         category: typeof category === "string" ? category : undefined,
         season: typeof season === "string" ? season : undefined,
         destination: typeof destination === "string" ? destination : undefined,
         search: typeof search === "string" ? search : undefined,
       });
-      
+
       res.json(trips);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch trips" });
@@ -29,7 +28,7 @@ export async function registerRoutes(
   app.get("/api/trips/featured", async (req, res) => {
     try {
       const trips = await storage.getAllTrips();
-      const featured = trips.filter(t => t.featured);
+      const featured = trips.filter((t) => t.featured);
       res.json(featured);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch featured trips" });
@@ -40,11 +39,11 @@ export async function registerRoutes(
     try {
       const { id } = req.params;
       const trip = await storage.getTripById(id);
-      
+
       if (!trip) {
         return res.status(404).json({ error: "Trip not found" });
       }
-      
+
       res.json(trip);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch trip" });
@@ -58,7 +57,9 @@ export async function registerRoutes(
       res.status(201).json({ success: true, id: inquiry.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return res.status(400).json({ error: "Invalid form data", details: error.errors });
+        return res
+          .status(400)
+          .json({ error: "Invalid form data", details: error.errors });
       }
       res.status(500).json({ error: "Failed to submit contact inquiry" });
     }
@@ -67,7 +68,7 @@ export async function registerRoutes(
   app.get("/api/destinations", async (req, res) => {
     try {
       const trips = await storage.getAllTrips();
-      const destinations = [...new Set(trips.map(t => t.destination))];
+      const destinations = [...new Set(trips.map((t) => t.destination))];
       res.json(destinations);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch destinations" });
@@ -77,7 +78,7 @@ export async function registerRoutes(
   app.get("/api/categories", async (req, res) => {
     try {
       const trips = await storage.getAllTrips();
-      const categories = [...new Set(trips.map(t => t.category))];
+      const categories = [...new Set(trips.map((t) => t.category))];
       res.json(categories);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch categories" });
@@ -87,7 +88,7 @@ export async function registerRoutes(
   app.get("/api/seasons", async (req, res) => {
     try {
       const trips = await storage.getAllTrips();
-      const seasons = [...new Set(trips.map(t => t.season))];
+      const seasons = [...new Set(trips.map((t) => t.season))];
       res.json(seasons);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch seasons" });

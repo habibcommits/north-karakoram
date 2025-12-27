@@ -23,6 +23,11 @@ import {
   Calendar,
   MapPin,
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { usePageSEO } from "@/seo/hooks/useSeo";
+import { SEOHead } from "@/seo/SEOHead";
+import { ArticleSchema, BreadcrumbSchema } from "@/seo/StructuredData";
+import { SITE_CONFIG } from "@/seo/config";
 
 const feeCategories = [
   {
@@ -140,7 +145,29 @@ const faqs = [
   },
 ];
 
+function PeakRoyaltyTableSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Table',
+    about: 'Peak Royalty Fees in Pakistan',
+    description: 'Official peak royalty and permit fees for climbing mountains in Pakistan, including 8000m peaks, 7000m peaks, and trekking peaks.',
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+}
+
 export default function PeakRoyalty() {
+  const seo = usePageSEO('peakRoyalty');
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Peak Royalty Fees', path: '/peak-royalty' },
+  ];
+
   const [heroVisible, setHeroVisible] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
   const [categoriesVisible, setCategoriesVisible] = useState(false);
@@ -187,67 +214,79 @@ export default function PeakRoyalty() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section
-          ref={heroRef}
-          className="relative min-h-[400px] h-[50vh] sm:h-[55vh] md:h-[60vh]"
-        >
-          <img
-            src={mountainImage}
-            alt="Peak Royalty"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
-
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
-            <div className="absolute top-20 left-10 w-24 lg:w-32 h-24 lg:h-32 border border-white/10 rounded-full" />
-            <div className="absolute bottom-20 right-10 w-32 lg:w-48 h-32 lg:h-48 border border-white/10 rounded-full" />
-          </div>
-
-          <div
-            className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${heroVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-              }`}
+    <>
+      {seo && <SEOHead seo={seo} path="/peak-royalty" />}
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleSchema
+        title="Peak Royalty Fees in Pakistan - 2024-2025 Updated Rates"
+        description="Complete guide to peak royalty and permit fees for climbing in Pakistan including K2, Broad Peak, Nanga Parbat, Gasherbrum, and all trekking peaks."
+        image={`${SITE_CONFIG.url}/logo.jpeg`}
+        datePublished="2024-01-01"
+        dateModified="2024-12-01"
+        path="/peak-royalty"
+      />
+      <PeakRoyaltyTableSchema />
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <main className="flex-1">
+          {/* Hero Section */}
+          <section
+            ref={heroRef}
+            className="relative min-h-[400px] h-[50vh] sm:h-[55vh] md:h-[60vh]"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
-              >
-                <span className="text-white/90 text-xs md:text-sm font-semibold tracking-wide">
-                  GOVERNMENT FEES
-                </span>
-              </div>
-              <h1 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-3 sm:mb-4">
-                Peak Royalty Fees
-              </h1>
-              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
-                Understanding Pakistan's climbing permit structure and
-                conservation fees for the world's greatest peaks
-              </p>
+            <img
+              src={mountainImage}
+              alt="Peak Royalty"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40" />
 
-              {/* Quick Action Button */}
-              <a
-                href="#categories"
-                className={`w-full md:w-fit inline-flex items-center justify-center gap-2 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-                  }`}
-                style={{ transitionDelay: heroVisible ? "500ms" : "0ms" }}
-              >
-                <span>View Fee Structure</span>
-                <ChevronRight className="hidden md:block w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+              <div className="absolute top-20 left-10 w-24 lg:w-32 h-24 lg:h-32 border border-white/10 rounded-full" />
+              <div className="absolute bottom-20 right-10 w-32 lg:w-48 h-32 lg:h-48 border border-white/10 rounded-full" />
             </div>
-          </div>
-        </section>
 
-        {/* Stats Section */}
-        {/* <section
+            <div
+              className={`absolute inset-0 flex items-center justify-center text-center transition-all duration-1000 ${heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+                }`}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.6)" }}
+                >
+                  <span className="text-white/90 text-xs md:text-sm font-semibold tracking-wide">
+                    GOVERNMENT FEES
+                  </span>
+                </div>
+                <h1 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-3 sm:mb-4">
+                  Peak Royalty Fees
+                </h1>
+                <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
+                  Understanding Pakistan's climbing permit structure and
+                  conservation fees for the world's greatest peaks
+                </p>
+
+                {/* Quick Action Button */}
+                <a
+                  href="#categories"
+                  className={`w-full md:w-fit inline-flex items-center justify-center gap-2 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-xl bg-white text-gray-900 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${heroVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                    }`}
+                  style={{ transitionDelay: heroVisible ? "500ms" : "0ms" }}
+                >
+                  <span>View Fee Structure</span>
+                  <ChevronRight className="hidden md:block w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Stats Section */}
+          {/* <section
           ref={statsRef}
           className="py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden"
         >
@@ -290,250 +329,62 @@ export default function PeakRoyalty() {
           </div>
         </section> */}
 
-        {/* Introduction Section */}
-        <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div
-              className="absolute -top-20 -right-20 sm:-top-40 sm:-right-40 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full blur-3xl"
-              style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
-            />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
+          {/* Introduction Section */}
+          <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
+                className="absolute -top-20 -right-20 sm:-top-40 sm:-right-40 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full blur-3xl"
+                style={{ backgroundColor: "rgba(0, 111, 97, 0.03)" }}
+              />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="max-w-4xl mx-auto text-center">
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
                 >
-                  TRANSPARENCY FIRST
-                </span>
+                  <span
+                    className="text-xs sm:text-sm font-semibold tracking-wide"
+                    style={{ color: "#006F61" }}
+                  >
+                    TRANSPARENCY FIRST
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
+                  Understanding{" "}
+                  <span style={{ color: "#006F61" }}>Royalty Fees</span>
+                </h2>
+
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-4 sm:mb-6">
+                  In Pakistan, the Government of Gilgit-Baltistan and the Ministry
+                  of Tourism require all climbing expeditions attempting peaks
+                  above 6,500 meters to pay a royalty fee.
+                </p>
+
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                  These fees are vital for the{" "}
+                  <span className="font-semibold" style={{ color: "#006F61" }}>
+                    conservation of our mountain ranges
+                  </span>
+                  , maintenance of trekking routes, and economic support of local
+                  communities. At North Karakoram, we believe in complete
+                  transparency.
+                </p>
               </div>
-
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
-                Understanding{" "}
-                <span style={{ color: "#006F61" }}>Royalty Fees</span>
-              </h2>
-
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-4 sm:mb-6">
-                In Pakistan, the Government of Gilgit-Baltistan and the Ministry
-                of Tourism require all climbing expeditions attempting peaks
-                above 6,500 meters to pay a royalty fee.
-              </p>
-
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
-                These fees are vital for the{" "}
-                <span className="font-semibold" style={{ color: "#006F61" }}>
-                  conservation of our mountain ranges
-                </span>
-                , maintenance of trekking routes, and economic support of local
-                communities. At North Karakoram, we believe in complete
-                transparency.
-              </p>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Fee Categories Section */}
-        <section
-          ref={categoriesRef}
-          id="categories"
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${categoriesVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
+          {/* Fee Categories Section */}
+          <section
+            ref={categoriesRef}
+            id="categories"
+            className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
-                  FEE STRUCTURE 2024-2025
-                </span>
-              </div>
-
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
-                Royalty <span style={{ color: "#006F61" }}>Categories</span>
-              </h2>
-
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
-                Fees are determined by peak altitude and season. Off-season
-                climbs often receive significant discounts.
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
-              {feeCategories.map((category, index) => (
-                <Card
-                  key={index}
-                  className={`group overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border-gray-100 ${categoriesVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: categoriesVisible
-                      ? `${200 + index * 100}ms`
-                      : "0ms",
-                  }}
-                >
-                  <CardContent className="p-5 sm:p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-xl items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                          style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                        >
-                          <category.icon
-                            className="w-5 h-5 sm:w-6 sm:h-6"
-                            style={{ color: "#006F61" }}
-                          />
-                        </div>
-                        <div>
-                          <h3 className="font-heading font-bold text-base sm:text-lg text-gray-900">
-                            {category.title}
-                          </h3>
-                          <p className="text-gray-500 text-xs sm:text-sm">
-                            {category.subtitle}
-                          </p>
-                        </div>
-                      </div>
-                      <span
-                        className="px-2 py-1 rounded-full text-white text-[10px] sm:text-xs font-bold"
-                        style={{ backgroundColor: category.badgeColor }}
-                      >
-                        {category.badge}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-2 sm:space-y-3">
-                      {category.items.map((item, itemIdx) => (
-                        <li
-                          key={itemIdx}
-                          className="flex gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600"
-                        >
-                          <CheckCircle2
-                            className="w-4 h-4 flex-shrink-0 mt-0.5"
-                            style={{ color: "#006F61" }}
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <div
-                    className="h-1 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"
-                    style={{ backgroundColor: "#006F61" }}
-                  />
-                </Card>
-              ))}
-            </div>
-
-            <p
-              className={`text-center text-xs sm:text-sm text-gray-500 mt-6 sm:mt-8 italic transition-all duration-700 ${categoriesVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-                }`}
-              style={{ transitionDelay: categoriesVisible ? "600ms" : "0ms" }}
-            >
-              Note: Official rates change periodically. Contact us for the
-              latest fee structure for your team size and target peak.
-            </p>
-          </div>
-        </section>
-
-        {/* Essential Regulations Section */}
-        <section
-          ref={regsRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${regsVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
-                  IMPORTANT REQUIREMENTS
-                </span>
-              </div>
-
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
-                Essential <span style={{ color: "#006F61" }}>Regulations</span>
-              </h2>
-
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
-                Key requirements for all climbing expeditions in Pakistan
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
-              {essentialRegs.map((reg, index) => (
-                <Card
-                  key={index}
-                  className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border-gray-100 ${regsVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: regsVisible
-                      ? `${200 + index * 100}ms`
-                      : "0ms",
-                  }}
-                >
-                  <CardContent className="p-5 sm:p-6">
-                    <div className="flex gap-3 sm:gap-4">
-                      <div
-                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
-                        style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                      >
-                        <reg.icon
-                          className="w-5 h-5 sm:w-6 sm:h-6"
-                          style={{ color: "#006F61" }}
-                        />
-                      </div>
-                      <div>
-                        <h3 className="font-heading font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">
-                          {reg.title}
-                        </h3>
-                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                          {reg.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What's Covered Section */}
-        <section
-          ref={coveredRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div
-                className={`text-center mb-10 sm:mb-12 transition-all duration-700 ${coveredVisible
+                className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${categoriesVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
                   }`}
@@ -546,239 +397,428 @@ export default function PeakRoyalty() {
                     className="text-xs sm:text-sm font-semibold tracking-wide"
                     style={{ color: "#006F61" }}
                   >
-                    INCLUDED IN OUR PACKAGES
+                    FEE STRUCTURE 2024-2025
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
+                  Royalty <span style={{ color: "#006F61" }}>Categories</span>
+                </h2>
+
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
+                  Fees are determined by peak altitude and season. Off-season
+                  climbs often receive significant discounts.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
+                {feeCategories.map((category, index) => (
+                  <Card
+                    key={index}
+                    className={`group overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border-gray-100 ${categoriesVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                      }`}
+                    style={{
+                      transitionDelay: categoriesVisible
+                        ? `${200 + index * 100}ms`
+                        : "0ms",
+                    }}
+                  >
+                    <CardContent className="p-5 sm:p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-xl items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                          >
+                            <category.icon
+                              className="w-5 h-5 sm:w-6 sm:h-6"
+                              style={{ color: "#006F61" }}
+                            />
+                          </div>
+                          <div>
+                            <h3 className="font-heading font-bold text-base sm:text-lg text-gray-900">
+                              {category.title}
+                            </h3>
+                            <p className="text-gray-500 text-xs sm:text-sm">
+                              {category.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        <span
+                          className="px-2 py-1 rounded-full text-white text-[10px] sm:text-xs font-bold"
+                          style={{ backgroundColor: category.badgeColor }}
+                        >
+                          {category.badge}
+                        </span>
+                      </div>
+
+                      <ul className="space-y-2 sm:space-y-3">
+                        {category.items.map((item, itemIdx) => (
+                          <li
+                            key={itemIdx}
+                            className="flex gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600"
+                          >
+                            <CheckCircle2
+                              className="w-4 h-4 flex-shrink-0 mt-0.5"
+                              style={{ color: "#006F61" }}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                    <div
+                      className="h-1 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"
+                      style={{ backgroundColor: "#006F61" }}
+                    />
+                  </Card>
+                ))}
+              </div>
+
+              <p
+                className={`text-center text-xs sm:text-sm text-gray-500 mt-6 sm:mt-8 italic transition-all duration-700 ${categoriesVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+                  }`}
+                style={{ transitionDelay: categoriesVisible ? "600ms" : "0ms" }}
+              >
+                Note: Official rates change periodically. Contact us for the
+                latest fee structure for your team size and target peak.
+              </p>
+            </div>
+          </section>
+
+          {/* Essential Regulations Section */}
+          <section
+            ref={regsRef}
+            className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div
+                className={`text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${regsVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
+              >
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                >
+                  <span
+                    className="text-xs sm:text-sm font-semibold tracking-wide"
+                    style={{ color: "#006F61" }}
+                  >
+                    IMPORTANT REQUIREMENTS
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-3 sm:mb-4">
+                  Essential <span style={{ color: "#006F61" }}>Regulations</span>
+                </h2>
+
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
+                  Key requirements for all climbing expeditions in Pakistan
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                {essentialRegs.map((reg, index) => (
+                  <Card
+                    key={index}
+                    className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border-gray-100 ${regsVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                      }`}
+                    style={{
+                      transitionDelay: regsVisible
+                        ? `${200 + index * 100}ms`
+                        : "0ms",
+                    }}
+                  >
+                    <CardContent className="p-5 sm:p-6">
+                      <div className="flex gap-3 sm:gap-4">
+                        <div
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300"
+                          style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                        >
+                          <reg.icon
+                            className="w-5 h-5 sm:w-6 sm:h-6"
+                            style={{ color: "#006F61" }}
+                          />
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">
+                            {reg.title}
+                          </h3>
+                          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            {reg.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* What's Covered Section */}
+          <section
+            ref={coveredRef}
+            className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gray-50 relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <div
+                  className={`text-center mb-10 sm:mb-12 transition-all duration-700 ${coveredVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                    }`}
+                >
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                    style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                  >
+                    <span
+                      className="text-xs sm:text-sm font-semibold tracking-wide"
+                      style={{ color: "#006F61" }}
+                    >
+                      INCLUDED IN OUR PACKAGES
+                    </span>
+                  </div>
+
+                  <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3 sm:mb-4">
+                    What We <span style={{ color: "#006F61" }}>Cover</span>
+                  </h2>
+
+                  <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
+                    Our full-service expedition packages include all essential
+                    fees and permits
+                  </p>
+                </div>
+
+                <Card
+                  className={`border-gray-100 shadow-xl overflow-hidden transition-all duration-700 ${coveredVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                    }`}
+                  style={{ transitionDelay: coveredVisible ? "200ms" : "0ms" }}
+                >
+                  <div className="h-2" style={{ backgroundColor: "#006F61" }} />
+                  <CardContent className="p-5 sm:p-6 md:p-8">
+                    <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                      {whatsCovered.map((item, index) => (
+                        <div
+                          key={index}
+                          className={`flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all duration-300 ${coveredVisible
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-4"
+                            }`}
+                          style={{
+                            transitionDelay: coveredVisible
+                              ? `${300 + index * 75}ms`
+                              : "0ms",
+                          }}
+                        >
+                          <div
+                            className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                          >
+                            <item.icon
+                              className="w-4 h-4 sm:w-5 sm:h-5"
+                              style={{ color: "#006F61" }}
+                            />
+                          </div>
+                          <span className="font-medium text-gray-900 text-xs sm:text-sm">
+                            {item.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div
+                      className="mt-6 p-4 rounded-xl border border-amber-200"
+                      style={{ backgroundColor: "rgba(245, 158, 11, 0.1)" }}
+                    >
+                      <p className="text-amber-800 text-xs sm:text-sm">
+                        <strong>Note:</strong> Unless you book "Base Camp Services
+                        Only," these items are included in our full-service
+                        expedition packages.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section
+            ref={faqRef}
+            className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div
+                className={`text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ${faqVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
+              >
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
+                  style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                >
+                  <span
+                    className="text-xs sm:text-sm font-semibold tracking-wide"
+                    style={{ color: "#006F61" }}
+                  >
+                    FAQ
                   </span>
                 </div>
 
                 <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3 sm:mb-4">
-                  What We <span style={{ color: "#006F61" }}>Cover</span>
+                  Common <span style={{ color: "#006F61" }}>Questions</span>
                 </h2>
-
-                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed px-2">
-                  Our full-service expedition packages include all essential
-                  fees and permits
-                </p>
               </div>
 
-              <Card
-                className={`border-gray-100 shadow-xl overflow-hidden transition-all duration-700 ${coveredVisible
+              <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className={`border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden bg-white transition-all duration-700 ${faqVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
+                      }`}
+                    style={{
+                      transitionDelay: faqVisible
+                        ? `${200 + index * 100}ms`
+                        : "0ms",
+                    }}
+                  >
+                    <button
+                      onClick={() =>
+                        setExpandedFaq(expandedFaq === index ? null : index)
+                      }
+                      className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-left hover:bg-gray-50 transition-colors"
+                    >
+                      <span className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 pr-3 sm:pr-4">
+                        {faq.question}
+                      </span>
+                      <div
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${expandedFaq === index ? "rotate-45" : ""
+                          }`}
+                        style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
+                      >
+                        <span
+                          className="text-xl sm:text-2xl leading-none"
+                          style={{ color: "#006F61" }}
+                        >
+                          +
+                        </span>
+                      </div>
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${expandedFaq === index ? "max-h-48" : "max-h-0"
+                        }`}
+                    >
+                      <p className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section
+            ref={ctaRef}
+            className="py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
+            }}
+          >
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute bottom-0 left-0 w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
+              <div className="absolute top-10 left-10 w-16 sm:w-20 h-16 sm:h-20 border border-white/10 rounded-full hidden sm:block" />
+              <div className="absolute bottom-10 right-10 w-24 sm:w-32 h-24 sm:h-32 border border-white/10 rounded-full hidden sm:block" />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div
+                className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
                   }`}
-                style={{ transitionDelay: coveredVisible ? "200ms" : "0ms" }}
               >
-                <div className="h-2" style={{ backgroundColor: "#006F61" }} />
-                <CardContent className="p-5 sm:p-6 md:p-8">
-                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                    {whatsCovered.map((item, index) => (
-                      <div
-                        key={index}
-                        className={`flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all duration-300 ${coveredVisible
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 -translate-x-4"
-                          }`}
-                        style={{
-                          transitionDelay: coveredVisible
-                            ? `${300 + index * 75}ms`
-                            : "0ms",
-                        }}
-                      >
-                        <div
-                          className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                        >
-                          <item.icon
-                            className="w-4 h-4 sm:w-5 sm:h-5"
-                            style={{ color: "#006F61" }}
-                          />
-                        </div>
-                        <span className="font-medium text-gray-900 text-xs sm:text-sm">
-                          {item.text}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div
-                    className="mt-6 p-4 rounded-xl border border-amber-200"
-                    style={{ backgroundColor: "rgba(245, 158, 11, 0.1)" }}
-                  >
-                    <p className="text-amber-800 text-xs sm:text-sm">
-                      <strong>Note:</strong> Unless you book "Base Camp Services
-                      Only," these items are included in our full-service
-                      expedition packages.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section
-          ref={faqRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              className={`text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ${faqVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
-                style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-              >
-                <span
-                  className="text-xs sm:text-sm font-semibold tracking-wide"
-                  style={{ color: "#006F61" }}
-                >
-                  FAQ
-                </span>
-              </div>
-
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-gray-900 mb-3 sm:mb-4">
-                Common <span style={{ color: "#006F61" }}>Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className={`border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden bg-white transition-all duration-700 ${faqVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                    }`}
-                  style={{
-                    transitionDelay: faqVisible
-                      ? `${200 + index * 100}ms`
-                      : "0ms",
-                  }}
-                >
-                  <button
-                    onClick={() =>
-                      setExpandedFaq(expandedFaq === index ? null : index)
-                    }
-                    className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <span className="font-heading font-bold text-sm sm:text-base md:text-lg text-gray-900 pr-3 sm:pr-4">
-                      {faq.question}
-                    </span>
-                    <div
-                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${expandedFaq === index ? "rotate-45" : ""
-                        }`}
-                      style={{ backgroundColor: "rgba(0, 111, 97, 0.1)" }}
-                    >
-                      <span
-                        className="text-xl sm:text-2xl leading-none"
-                        style={{ color: "#006F61" }}
-                      >
-                        +
-                      </span>
-                    </div>
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${expandedFaq === index ? "max-h-48" : "max-h-0"
-                      }`}
-                  >
-                    <p className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 text-gray-600 text-sm sm:text-base leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4 sm:mb-6">
+                  <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
+                    PLAN YOUR EXPEDITION
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* CTA Section */}
-        <section
-          ref={ctaRef}
-          className="py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #006F61 0%, #004d44 100%)",
-          }}
-        >
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 rounded-full bg-white/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 rounded-full bg-white/5 blur-3xl translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-10 left-10 w-16 sm:w-20 h-16 sm:h-20 border border-white/10 rounded-full hidden sm:block" />
-            <div className="absolute bottom-10 right-10 w-24 sm:w-32 h-24 sm:h-32 border border-white/10 rounded-full hidden sm:block" />
-          </div>
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6 px-2">
+                  Ready to Conquer Your Peak?
+                </h2>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-              className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4 sm:mb-6">
-                <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide">
-                  PLAN YOUR EXPEDITION
-                </span>
-              </div>
+                <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8 px-2">
+                  Royalty fees vary by season and team size. We handle the
+                  paperwork so you can focus on the climb.
+                </p>
 
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6 px-2">
-                Ready to Conquer Your Peak?
-              </h2>
+                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                  <Link href="/contact">
+                    <Button
+                      size="lg"
+                      className="w-full md:w-fit sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto bg-white text-gray-900 font-semibold hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-lg rounded-lg sm:rounded-xl"
+                    >
+                      <Mail className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      Get Custom Quote
+                    </Button>
+                  </Link>
 
-              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8 px-2">
-                Royalty fees vary by season and team size. We handle the
-                paperwork so you can focus on the climb.
-              </p>
-
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-                <Link href="/contact">
                   <Button
                     size="lg"
-                    className="w-full md:w-fit sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto bg-white text-gray-900 font-semibold hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 shadow-lg rounded-lg sm:rounded-xl"
+                    variant="outline"
+                    className="w-full md:w-fit sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1 rounded-lg sm:rounded-xl"
+                    onClick={() =>
+                      window.open("https://wa.me/923330228111", "_blank")
+                    }
                   >
-                    <Mail className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                    Get Custom Quote
+                    <MessageCircle className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                    WhatsApp Us
                   </Button>
-                </Link>
+                </div>
 
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full md:w-fit sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 h-auto border-2 border-white/50 text-white bg-transparent hover:bg-white/10 font-semibold transition-all duration-300 hover:-translate-y-1 rounded-lg sm:rounded-xl"
-                  onClick={() =>
-                    window.open("https://wa.me/923330228111", "_blank")
-                  }
-                >
-                  <MessageCircle className="hidden md:block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  WhatsApp Us
-                </Button>
-              </div>
-
-              {/* Contact Info */}
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white/70 text-xs sm:text-sm">
-                <a
-                  href="tel:+923330228111"
-                  className="flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  <span>+92 333 0228111</span>
-                </a>
-                <a
-                  href="mailto:info@northkarakoram.com"
-                  className="flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  <span className="break-all sm:break-normal">
-                    info@northkarakoram.com
-                  </span>
-                </a>
+                {/* Contact Info */}
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white/70 text-xs sm:text-sm">
+                  <a
+                    href="tel:+923330228111"
+                    className="flex items-center gap-2 hover:text-white transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span>+92 333 0228111</span>
+                  </a>
+                  <a
+                    href="mailto:info@northkarakoram.com"
+                    className="flex items-center gap-2 hover:text-white transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="break-all sm:break-normal">
+                      info@northkarakoram.com
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+          </section>
+        </main>
+      </div>
+    </>
   );
 }
