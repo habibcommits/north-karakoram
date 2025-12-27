@@ -434,7 +434,7 @@ export function Hero() {
       </button>
 
       {/* Mobile Stats - Bottom of screen on mobile */}
-      <div className="absolute bottom-20 sm:bottom-24 left-0 right-0 z-10 lg:hidden px-4 sm:px-6">
+      {/* <div className="absolute bottom-20 sm:bottom-24 left-0 right-0 z-10 lg:hidden px-4 sm:px-6">
         <div className="flex justify-center gap-4 sm:gap-6">
           {stats.slice(0, 3).map((stat, index) => (
             <div key={index} className="text-center">
@@ -450,7 +450,7 @@ export function Hero() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
