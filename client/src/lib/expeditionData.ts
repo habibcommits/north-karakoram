@@ -45,7 +45,7 @@ import K6Img1 from "@assets/k6/k61.jpeg";
 import K6Img2 from "@assets/k6/k62.jpeg";
 import K6Img3 from "@assets/k6/k63.jpeg";
 
-import LailaPeakImg1 from "@assets/laila-peak/l1.jpg";
+import LailaPeakImg1 from "@assets/laila-peak/l1.jpeg";
 import LailaPeakImg2 from "@assets/laila-peak/l2.jpg";
 import LailaPeakImg3 from "@assets/laila-peak/l3.jpg";
 import PastorePeakImg1 from "@assets/pastore/p1.jpeg";

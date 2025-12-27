@@ -3,40 +3,38 @@ import {
   COMMON_SERVICES_NOT_INCLUDED,
   COMMON_SERVICES_REQUIREMENTS,
 } from "@/constants/expeditionData";
-import heroImage2 from "@assets/stock_images/majestic_mountain_pe_34e27685.jpg";
-import heroImage1 from "@assets/stock_images/majestic_mountain_pe_743f6593.jpg";
 
-import K2BasecampGondogorlaImg1 from "@assets/k2-base-camp-trek/k1.jpeg";
-import K2BasecampGondogorlaImg2 from "@assets/k2-base-camp-trek/k2.jpeg";
-import K2BasecampGondogorlaImg3 from "@assets/k2-base-camp-trek/k3.jpeg";
-import K2BasecampConcordiaImg1 from "@assets/k2-base-camp-concordia-trek/k1.jpeg";
-import K2BasecampConcordiaImg2 from "@assets/k2-base-camp-concordia-trek/k2.jpeg";
-import K2BasecampConcordiaImg3 from "@assets/k2-base-camp-concordia-trek/k3.jpg";
 import Five8000mBasecampImg1 from "@assets/five-8000m-base-camp/f1.jpeg";
 import Five8000mBasecampImg2 from "@assets/five-8000m-base-camp/f2.jpg";
 import Five8000mBasecampImg3 from "@assets/five-8000m-base-camp/f3.jpeg";
+import K2BasecampConcordiaImg1 from "@assets/k2-base-camp-concordia-trek/k1.jpeg";
+import K2BasecampConcordiaImg2 from "@assets/k2-base-camp-concordia-trek/k2.jpeg";
+import K2BasecampConcordiaImg3 from "@assets/k2-base-camp-concordia-trek/k3.jpg";
+import K2BasecampGondogorlaImg1 from "@assets/k2-base-camp-trek/k1.jpeg";
+import K2BasecampGondogorlaImg2 from "@assets/k2-base-camp-trek/k2.jpeg";
+import K2BasecampGondogorlaImg3 from "@assets/k2-base-camp-trek/k3.jpeg";
 import NangmaValleyImg1 from "@assets/nangma-valley-trek/n1.jpeg";
 import NangmaValleyImg2 from "@assets/nangma-valley-trek/n2.jpg";
-// import NangmaValleyImg3 from "@assets/nangma-valley-trek/n1.jpeg"
-import ThalleLaImg1 from "@assets/thalle-la-trek/t1.jpeg";
-import ThalleLaImg2 from "@assets/thalle-la-trek/t2.jpeg";
-import ThalleLaImg3 from "@assets/thalle-la-trek/t3.jpeg";
-import FairyMeadowImg1 from "@assets/fairy-meadow/f1.jpeg";
-import FairyMeadowImg2 from "@assets/fairy-meadow/f2.jpeg";
-import FairyMeadowImg3 from "@assets/fairy-meadow/f3.jpeg";
+import NangmaValleyImg3 from "@assets/nangma-valley-trek/n3.jpg";
 import AroundNangaParbatImg1 from "@assets/around-nanga-parbat/a1.jpeg";
 import AroundNangaParbatImg2 from "@assets/around-nanga-parbat/a2.jpeg";
 import AroundNangaParbatImg3 from "@assets/around-nanga-parbat/a3.jpeg";
+import FairyMeadowImg1 from "@assets/fairy-meadow/f1.jpeg";
+import FairyMeadowImg2 from "@assets/fairy-meadow/f2.jpeg";
+import FairyMeadowImg3 from "@assets/fairy-meadow/f3.jpeg";
 import SnowLakeHisperLaImg1 from "@assets/snow-lake/s1.jpeg";
+import ThalleLaImg1 from "@assets/thalle-la-trek/t1.jpeg";
+import ThalleLaImg2 from "@assets/thalle-la-trek/t2.jpeg";
+import ThalleLaImg3 from "@assets/thalle-la-trek/t3.jpeg";
 // import SnowLakeHisperLaImg2 from "@assets/"
 // import SnowLakeHisperLaImg3 from "@assets/"
 import BaraBroqImg1 from "@assets/bara-broq/b1.jpeg";
 import BaraBroqImg2 from "@assets/bara-broq/b2.jpeg";
 import BaraBroqImg3 from "@assets/bara-broq/b3.jpeg";
+import CharkusaValleyImg1 from "@assets/charakusa/c1.jfif";
 import MasherbrumBasecampImg1 from "@assets/mashabrum-trek/m1.jpg";
 import MasherbrumBasecampImg2 from "@assets/mashabrum-trek/m2.jpeg";
 import MasherbrumBasecampImg3 from "@assets/mashabrum-trek/m3.jpeg";
-import CharkusaValleyImg1 from "@assets/charakusa/c1.jfif";
 // import CharkusaValleyImg2 from "@assets/"
 // import CharkusaValleyImg3 from "@assets/"
 import MachuloLaImg1 from "@assets/machulo/m1.jpeg";
@@ -45,10 +43,10 @@ import MachuloLaImg1 from "@assets/machulo/m1.jpeg";
 import IqbalTopImg1 from "@assets/iqbal-top/i1.jpg";
 // import IqbalTopImg2 from "@assets/"
 // import IqbalTopImg3 from "@assets/"
+import NalterPassImg1 from "@assets/naltar/n1.jfif";
 import ShimshalPassImg1 from "@assets/shimshal/s1.jpeg";
 import ShimshalPassImg2 from "@assets/shimshal/s2.jpeg";
 import ShimshalPassImg3 from "@assets/shimshal/s3.jpeg";
-import NalterPassImg1 from "@assets/naltar/n1.jfif";
 // import NalterPassImg2 from "@assets/"
 // import NalterPassImg3 from "@assets/"
 
@@ -636,8 +634,8 @@ export const trekkings: TrekkingData[] = [
     bestSeason: null,
     price: 1100,
     groupSize: "4-12 trekkers",
-    image: NangmaValleyImg1,
-    gallery: [NangmaValleyImg1, NangmaValleyImg2],
+    image: NangmaValleyImg3,
+    gallery: [NangmaValleyImg1, NangmaValleyImg2, NangmaValleyImg3],
     description:
       "The Nangma Valley Trek is a scenic and culturally rich journey through one of the most beautiful valleys in the Karakoram, known for its dramatic granite spires, alpine meadows, and traditional mountain villages.",
     overview:
