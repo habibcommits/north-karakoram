@@ -99,7 +99,7 @@ const faqs = [
   {
     question: "What is the cancellation policy?",
     answer:
-      "Refunds depend on the timing of the cancellation. Generally, cancellations 30+ days prior receive an 80% refund. Please refer to our terms and conditions for full details.",
+      "Refunds depend on the timing of the cancellation. Generally, cancellations 30+ days prior receive an 80% refund.",
   },
 ];
 
