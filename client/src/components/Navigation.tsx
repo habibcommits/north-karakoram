@@ -836,7 +836,7 @@ export function Navigation() {
                     </nav>
 
                     {/* Mobile Footer */}
-                    <div className="p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
+                    <div className="hidden p-4 border-t border-white/10 space-y-3" style={{ backgroundColor: "#005249" }}>
                       {/* Contact Info */}
                       <div className="space-y-2">
                         <a
